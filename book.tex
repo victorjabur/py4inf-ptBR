@@ -19,6 +19,13 @@
 \usepackage{alltt}
 \usepackage{upquote}
 
+% This make possible to translate to ptBR language
+% Library required on Ubuntu Linux
+% sudo apt-get texlive-lang-portuguese
+\usepackage[brazilian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
 %\newcommand{\thetitle}{Python for Informatics: Exploring Information}
 \newcommand{\thetitle}{Python para Informáticos: Explorando a Informação}
 \newcommand{\thesubtitle}{Viagem com os cientistas de dados através de pesquisa de informação}
@@ -34,7 +41,7 @@
 \frontmatter
 
 \input{00-cover}
-% TODO \input{00-preface}
+\input{00-preface}
 
 % START THE BOOK
 \mainmatter
