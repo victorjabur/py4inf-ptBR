@@ -1,9 +1,7 @@
 Python para Informáticos: Explorando a Informação
 =============================================
 
-Este é o código fonte para ""
-
-This is the source code for "Python para Informáticos: Explorando a Informação"
+Este é o código fonte para "Python para Informáticos: Explorando a Informação"
 o website para este livro é http://www.pythonlearn.com
 
 LaTeX Files
