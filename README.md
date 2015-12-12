@@ -1,62 +1,66 @@
-Python for Informatics: Exploring Information
+Python para Informáticos: Explorando a Informação
 =============================================
 
-This is the source code for "Python for Informatics: Exploring Information"
-the web site for this book is http://www.pythonlearn.com/
+Este é o código fonte para ""
+
+This is the source code for "Python para Informáticos: Explorando a Informação"
+o website para este livro é http://www.pythonlearn.com
 
 LaTeX Files
 -----------
 
-The source file for the book is *book.tex* - this file includes the 
-per-chapter files *00-cover.tex* through *AD-copyright.tex*
+Esta é a estrutura dos arquivos:
 
-Workflow
+*book.tex* - Este é o arquivo principal da compilação, ele contém uma
+referência para todos os outros arquivos que representam os capítulos.
+
+*TODO_Translation_PTBR* - Pasta que contém todos os arquivos e imagens a 
+serem traduzidos, ao todo são 16 capítulos e mais 4 arquivos complementares.
+
+*00-cover.tex* até *AD-copyright.tex* - Arquivos a serem traduzidos
+
+Fluxo de Trabalho
 --------
 
-Once you have LaTeX and HeVeA installed properly the workflow is simple. 
-To produce the PDF version of the book you type:
+Uma vez que você instalou o LaTeX e HeveA adequadamente, o fluxo é simples.
+Para compilar o livro e gerar uma versão PDF do livro, basta executar:
 
     bash book.sh
 
-This leaves the output on *book.pdf* and if you are on a Mac or Linux, it
-even attempts to open the PDF viewer for your system.
+Este comando produz um arquivo no diretório raiz *book.pdf* e se você está em um Mac
+ou Linux, o arquivo PDF já é até aberto para vocẽ.
 
-To produce the HTML version of the book you type:
+Para produzir uma versão HTML do livro, você digita:
 
     bash html.sh
 
-This produces files in the *html* folder.  This folder contains the book, chapters in
-HTML and the images for the book.  
+Isto produz arquivos no diretório *html*. Este diretório contém o livro, capítulos em 
+HTML as imagens do livro.
 
-To make EPUB or MOBI files I use the Calibre software.  The steps that I take in Caliper
-are here:
+Para gerar arquivos EPUB ou MOBI eu uso o Calibre Software. Faços isto no Calibre:
 
-* [Importing HTML into Calibre](CALIBRE.md)
+* [Importando HTML para o Calibre](CALIBRE.md)
 
-I also have a server that builds the latest version from this repository at this URL:
+Eu também tenho um servidor que compila a última versão deste repositório nesta URL:
 
 * http://do1.dr-chuck.com/py4inf/EN-us/
 
-I don't yet have the files that make up the build server checked in because it is 
-still a bit of a hack.  If you want to set up your own build server - I will check
-the files in.
 
-Software Installation - Macintosh
+Instalação de Software - Macintosh
 ---------------------------------
 
-Running the script to produce the PDF is really easy and convenent on the Mac.  Simply
-install this software:
+Rodando o script para produzir o PDF é muito simples e conveniente no Mac. Simplesmente
+instale este software:
 
 * https://tug.org/mactex/
 
-Make sure to install the extras as well.   If you have a recent Mac you **cannot** make
-the binary download of *hevea* work as it is a PowerPC binary.  If you want to do the HTML
-generation, you need a variant of Linux.
+Certifique-se de instalr os extras também. Não consegui gerar os arquivos html no Mac, tive
+que utilizar o Lnux para isto.
 
-Software Installation - Ubuntu
+Instalação de Software - Ubuntu
 ------------------------------
 
-This is the rough set of steps I use on Ubuntu:
+Rode estes comandos em seu terminal:
 
     sudo apt-get install texlive-latex-base
     sudo apt-get install texlive-latex-recommended
@@ -66,61 +70,44 @@ This is the rough set of steps I use on Ubuntu:
     sudo apt-get install imagemagick
     sudo apt-get install texlive-fonts-extra
 
-    sudo apt-get install texlive-lang-spanish texlive-doc-es 
+    sudo apt-get install texlive-lang-portuguese texlive-doc-pt
 
-You could put them all on one long apt-get, but I like to see if they work :)
+Você pode colocar todos os comando em um único e longo apt-get, mas eu gosto de ver como eles funcionam :)
 
-Once this is done, the *book.sh* and *html.sh* should both work just fine.  For
-my own sanity, I have Parallels with an Ubuntu image that I can use to generate
-HTML.  It was easier than keeping a four-year-old MacBook running with Rosetta
-support.
+Uma vez terminado, o *book.sh* e *html.sh* devem funcionar. 
 
-Translating This Book
+Traduzindo este Livro
 ---------------------
 
-This book is available with a 
+Este livro está disponível com a
 Creative Commons
-Attribution-NonCommercial-ShareAlike 3.0 Unported License.  So as long as you
-are not intending to profit from the translation, no permission to translate
-and publish is needed.  If you want to sell the resulting translated book 
-commercially, please see the Appendix on Copyright and contact me.
+Attribution-NonCommercial-ShareAlike 3.0 Unported License.  Então se você está
+pretendendo lucrar com a tradução, nenhuma permissão para a publicação é necessária
+Se você vender o resultado do livro traduzido comercialmente, por favor veja o 
+apêndice no Copyright e me contate.
 
-Here are some of the translations in-progress:
+Aqui estão algumas das traduções em progresso:
 
-* Korean - [Formatted Book](http://do1.dr-chuck.com/py4inf/KO-ko/book.pdf) | [Book Source](https://github.com/statkclee/py4inf-kor) (Lead: Victor KC Lee)
-* Italian - [Google Doc](https://docs.google.com/document/d/1ZyxzXGe2qGgsc-Dbqs-pXvQFPKbpJfLs1cq2gUFkxqw/edit?usp=sharing) (Lead: Mauro Toselli)
-* Spanish - [Formatted Book](http://do1.dr-chuck.com/py4inf/ES-es/) | [Book Source](https://github.com/hedemarrie/py4inf-esp) (Lead: Hedemarrie Dussan)
+* Koreano - [Livro Formatado](http://do1.dr-chuck.com/py4inf/KO-ko/book.pdf) | [Código Fonte](https://github.com/statkclee/py4inf-kor) (Lead: Victor KC Lee)
+* Italiano - [Google Doc](https://docs.google.com/document/d/1ZyxzXGe2qGgsc-Dbqs-pXvQFPKbpJfLs1cq2gUFkxqw/edit?usp=sharing) (Líder: Mauro Toselli)
+* Espanhol - [Livro Formatado](http://do1.dr-chuck.com/py4inf/ES-es/) | [Código Fonte](https://github.com/hedemarrie/py4inf-esp) (Líder: Hedemarrie Dussan)
+* Chinês - [Livro Formatado](http://fanwscu.gitbooks.io/py4inf-zh-cn/)
 
-Feel free to send me a link (or just edit this page and send me a Pull Request).
+Sinta-se livre para enviar-me o link (ou apenas edite esta página e me envie um Pull Request)
 
-You can use any technology you like LaTeX, Google Docs, WikiBook or whatever you choose.
+Você pode usar qualquer tecnolgia que você gostar: LaTeX, Google Docs, WikiBook ou qualquer outra escolha.
 
-If you can figure out LaTeX, the easiest way to translate the book is to fork
-my repo on GitHub and start translating in your own repo.  That way it will be easier
-to catch up with changes I make to the English version of the book.  
+Se você conseguir utilizar o LaTeX, a maneira mais fácil para traduzir este livro
+é fazer um fork deste repositório no GitHub e iniciar a tradução em seu próprio repositório.
+Desta forma, será rápido e fácil fazer as alterações neste livro.
 
-If you start a translation in github, please contact me so I can add it to my automatic 
-build process:
+Se você iniciar a tradução no github, por favor me contate e eu posso adicioná-lo ao
+meu processo de build automático: 
 
 * http://do1.dr-chuck.com/py4inf/
 
-This way your latest work will be easily found by students and linked from my web site
-once the translation is under way.
-
-TO DO
------
-
-I need to document and check in the code to run a build server.  The build server
-is another way for a MacBook user without HeVeA to develop.  Edit locally, check 
-the PDF and then check in the changes wait a tick and then the HTML is made in 
-the build server.
-
-I have no idea how LaTeX works on Windows.  I would be happy to get a PR
-with some documentation.
+Desta forma seu último trabalho será facilmente encontrado pelos estudantes e linkado 
+no meu web site uma vez que a tradução for iniciada.
 
 Chuck Severance - 
 Mon Aug 18 22:20:12 EDT 2014
-
-
-
-
