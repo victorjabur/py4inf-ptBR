@@ -17,5 +17,6 @@ deploy:
     access_key_id: $ARTIFACTS_KEY
     secret_access_key: $ARTIFACTS_SECRET
     bucket: $ARTIFACTS_BUCKET
+    region: "us-east-1"
     skip_cleanup: true
     local_dir: $HOME/.py4inf
