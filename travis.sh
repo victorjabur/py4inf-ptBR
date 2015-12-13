@@ -11,7 +11,7 @@ mkdir -p $HOME/.py4inf/pdf
 latex book
 makeindex book
 latex book
-dvipdf book.dvi $HOME/.py4inf/pdf/book$startAt.pdf
+dvipdf book.dvi $HOME/.py4inf/pdf/book_$startAt.pdf
 ls -larth $HOME/.py4inf/pdf/book_$startAt.pdf
 
 echo Removed temporary files
