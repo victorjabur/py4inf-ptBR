@@ -1,14 +1,16 @@
 sudo: false
-install:
-    - apt-get install -qq texlive-latex-base 
-    - apt-get install -qq texlive-latex-recommended 
-    - apt-get install -qq texlive-fonts-recommended 
-    - apt-get install -qq texlive-latex-extra 
-    - apt-get install -qq hevea 
-    - apt-get install -qq imagemagick 
-    - apt-get install -qq texlive-fonts-extra 
-    - apt-get install -qq texlive-lang-portuguese 
-    - apt-get install -qq texlive-doc-pt
+addons:
+  apt:
+    packages:
+    - texlive-latex-base 
+    - texlive-latex-recommended 
+    - texlive-fonts-recommended 
+    - texlive-latex-extra 
+    - hevea 
+    - imagemagick 
+    - texlive-fonts-extra 
+    - texlive-lang-portuguese 
+    - texlive-doc-pt
 script:
     ./travis.sh
 addons:
