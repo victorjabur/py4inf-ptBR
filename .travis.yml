@@ -12,9 +12,10 @@ install:
     - sudo apt-get install -qq texlive-doc-pt
 script:
     ./travis.sh
-addons:
-  artifacts:
-    paths:
-        - ./book.pdf
-    s3_region: "us-east-1"
-    debug: true
+deploy:
+    provider: s3
+    access_key_id: $ARTIFACTS_KEY
+    secret_access_key: $ARTIFACTS_SECRET
+    bucket: $ARTIFACTS_BUCKET
+    skip_cleanup: true
+    local_dir: $HOME/.py4inf
