@@ -6,7 +6,6 @@ startAt=$(date)
 
 echo "Generating book"
 
-rm *.tmp *.aux
 latex book
 makeindex book
 latex book
