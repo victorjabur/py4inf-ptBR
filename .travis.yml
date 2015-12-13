@@ -10,3 +10,6 @@ install:
     - sudo apt-get install -qq texlive-doc-pt
 script:
     ./travis.sh
+cache:
+    - $HOME/.py4inf
+
