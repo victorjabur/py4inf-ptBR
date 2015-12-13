@@ -1,12 +1,12 @@
 install:
-    - sudo apt-get install texlive-latex-base 
-    - sudo apt-get install texlive-latex-recommended 
-    - sudo apt-get install texlive-fonts-recommended 
-    - sudo apt-get install texlive-latex-extra 
-    - sudo apt-get install hevea 
-    - sudo apt-get install imagemagick 
-    - sudo apt-get install texlive-fonts-extra 
-    - sudo apt-get install texlive-lang-portuguese 
-    - sudo apt-get install texlive-doc-p
+    - sudo apt-get install -qq texlive-latex-base 
+    - sudo apt-get install -qq texlive-latex-recommended 
+    - sudo apt-get install -qq texlive-fonts-recommended 
+    - sudo apt-get install -qq texlive-latex-extra 
+    - sudo apt-get install -qq hevea 
+    - sudo apt-get install -qq imagemagick 
+    - sudo apt-get install -qq texlive-fonts-extra 
+    - sudo apt-get install -qq texlive-lang-portuguese 
+    - sudo apt-get install -qq texlive-doc-pt
 script:
     travis.sh
