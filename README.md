@@ -17,6 +17,35 @@ serem traduzidos, ao todo são 16 capítulos e mais 4 arquivos complementares.
 
 *00-cover.tex* até *AD-copyright.tex* - Arquivos a serem traduzidos
 
+Responsáveis pela Tradução por Capítulo
+--------
+
+| Capítulo  | Responsável |
+|---|---|
+|00-cover.tex           |  Victor Jabur       |
+|00-preface.tex         |  Victor Jabur       |
+|01-intro.tex           |  Victor Jabur       |
+|02-variables.tex       |  Eduardo Cândido    |
+|03-conditional.tex     |  Fernando Moreira   |
+|04-functions.tex       |  Rodrigo Bravo      |
+|05-iterations.tex      |  Emir Neto          |
+|06-strings.tex         |  Élio Capelati      |
+|07-files.tex           |  Kaio Cesar         |
+|08-lists.tex           |  Rafael Costa       |
+|09-dictionaries.tex    |  Rafael Covre       |
+|10-tuples.tex          |  Clodonil Trigo     |
+|11-regex.tex           |  Não Definido       |
+|12-network.tex         |  Não Definido       |
+|13-web.tex             |  Não Definido       |
+|14-database.tex        |  Não Definido       |
+|15-viz.tex             |  Não Definido       |
+|16-tasks.tex           |  Não Definido       |
+|AA-windows.tex         |  Não Definido       |
+|AB-apple.tex           |  Não Definido       |
+|AC-contrib.tex         |  Não Definido       |
+|AD-copyright.tex       |  Não Definido       |
+
+
 Fluxo de Trabalho
 --------
 
