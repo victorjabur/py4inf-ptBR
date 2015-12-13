@@ -9,4 +9,4 @@ install:
     - sudo apt-get install -qq texlive-lang-portuguese 
     - sudo apt-get install -qq texlive-doc-pt
 script:
-    travis.sh
+    ./travis.sh
