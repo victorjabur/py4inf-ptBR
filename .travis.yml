@@ -13,9 +13,8 @@ install:
 script:
     ./travis.sh
 addons:
-  artifacts: true
-  s3_region: "us-east-1"
-    debug: true
+  artifacts:
     paths:
-     - ./book.pdf
-
+        - ./book.pdf
+    s3_region: "us-east-1"
+    debug: true
