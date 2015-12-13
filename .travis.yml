@@ -15,6 +15,7 @@ script:
 addons:
   artifacts: true
   s3_region: "us-east-1"
-  paths:
-    - ./book.pdf
+    debug: true
+    paths:
+     - ./book.pdf
 
