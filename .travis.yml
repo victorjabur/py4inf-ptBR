@@ -1,6 +1,10 @@
 sudo: false
+cache:
+    - apt
 addons:
   apt:
+    sources:
+    - extras-precise
     packages:
     - texlive-latex-base 
     - texlive-latex-recommended 
