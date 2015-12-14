@@ -37,7 +37,7 @@ Responsáveis pela Tradução por Capítulo
 |11-regex.tex           |  Felipe Souza       |
 |12-network.tex         |  Rafael Costa       |
 |13-web.tex             |  Kaio Cesar         |
-|14-database.tex        |  Não Definido       |
+|14-database.tex        |  Maykon Chagas      |
 |15-viz.tex             |  Não Definido       |
 |16-tasks.tex           |  Não Definido       |
 |AA-windows.tex         |  Não Definido       |
