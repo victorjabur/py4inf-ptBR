@@ -38,7 +38,7 @@ Responsáveis pela Tradução por Capítulo
 |12-network.tex         |  Rafael Costa       |
 |13-web.tex             |  Kaio Cesar         |
 |14-database.tex        |  Maykon Chagas      |
-|15-viz.tex             |  Não Definido       |
+|15-viz.tex             |  Kléber Takazawa    |
 |16-tasks.tex           |  Não Definido       |
 |AA-windows.tex         |  Não Definido       |
 |AB-apple.tex           |  Não Definido       |
