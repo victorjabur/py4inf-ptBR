@@ -4,6 +4,8 @@ Python para Informáticos: Explorando a Informação
 Este é o código fonte para "Python para Informáticos: Explorando a Informação"
 o website para este livro é http://www.pythonlearn.com
 
+![Py4Inf](https://github.com/victorjabur/py4inf-ptBR/BookCoverPreviewFront.jpg)
+
 LaTeX Files
 -----------
 
