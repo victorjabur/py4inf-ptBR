@@ -34,9 +34,9 @@ Responsáveis pela Tradução por Capítulo
 |08-lists.tex           |  Rafael Costa       |
 |09-dictionaries.tex    |  Rafael Covre       |
 |10-tuples.tex          |  Clodonil Trigo     |
-|11-regex.tex           |  Não Definido       |
-|12-network.tex         |  Não Definido       |
-|13-web.tex             |  Não Definido       |
+|11-regex.tex           |  Felipe Souza       |
+|12-network.tex         |  Rafael Costa       |
+|13-web.tex             |  Kaio Cesar         |
 |14-database.tex        |  Não Definido       |
 |15-viz.tex             |  Não Definido       |
 |16-tasks.tex           |  Não Definido       |
