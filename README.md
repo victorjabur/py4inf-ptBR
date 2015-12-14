@@ -103,6 +103,15 @@ Você pode colocar todos os comando em um único e longo apt-get, mas eu gosto d
 
 Uma vez terminado, o *book.sh* e *html.sh* devem funcionar. 
 
+Instruções para Build Automático
+---------------------
+
+O Élio Capelati criou um mecanismo de build automático para a geração do PDF e publicação do PDF no S3
+Para maiores informações, favor olhar o link abaixo:
+
+[Build Automático usando o Travis + AWS S3](https://github.com/victorjabur/py4inf-ptBR/pull/1)
+
+
 Traduzindo este Livro
 ---------------------
 
