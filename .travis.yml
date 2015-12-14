@@ -1,0 +1,22 @@
+cache:
+    - apt
+install:
+    - sudo apt-get install -qq texlive-latex-base 
+    - sudo apt-get install -qq texlive-latex-recommended 
+    - sudo apt-get install -qq texlive-fonts-recommended 
+    - sudo apt-get install -qq texlive-latex-extra 
+    - sudo apt-get install -qq hevea 
+    - sudo apt-get install -qq imagemagick 
+    - sudo apt-get install -qq texlive-fonts-extra 
+    - sudo apt-get install -qq texlive-lang-portuguese 
+    - sudo apt-get install -qq texlive-doc-pt
+script:
+    ./travis.sh
+deploy:
+    provider: s3
+    access_key_id: $ARTIFACTS_KEY
+    secret_access_key: $ARTIFACTS_SECRET
+    bucket: $ARTIFACTS_BUCKET
+    region: "us-east-1"
+    skip_cleanup: true
+    local_dir: $HOME/.py4inf
