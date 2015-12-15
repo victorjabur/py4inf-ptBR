@@ -1,89 +1,156 @@
 % The contents of this file is 
 % Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
 
-\chapter{Using databases and Structured Query Language (SQL)}
+%\chapter{Using databases and Structured Query Language (SQL)}
+\chapter{Utilizando Banco de Datos e Structured Query Language (SQL)}
 
-\section{What is a database?}
+\section{O que é um banco de dados?}
 \index{database}
 
-A {\bf database} is a file that is organized for storing data.
-Most databases are organized like a dictionary in the sense
-that they map from keys to values.  The biggest difference
-is that the database is on disk (or other permanent storage),
-so it persists after the program ends.  Because a database is
-stored on permanent storage, it can store far more data than
-a dictionary, which is limited to the size of the memory 
-in the computer.
+%A {\bf database} is a file that is organized for storing data.
+%Most databases are organized like a dictionary in the sense
+%that they map from keys to values.  The biggest difference
+%is that the database is on disk (or other permanent storage),
+%so it persists after the program ends.  Because a database is
+%stored on permanent storage, it can store far more data than
+%a dictionary, which is limited to the size of the memory 
+%in the computer.
+
+Um {\bf banco de dados} é um tipo de arquivo organizado para armazenaento de
+dados. A maioria dos bancos de dados são orgazanizados como um dicionário, no
+sentido de que eles realizam o mapeamento por chaves e valores. A grande
+diferença é que os bancos de dados estão em disco (ou outros dispositivos de
+armazenamentos permanentes), então eles continuam armazenando os dados mesmo
+depois que o programa termina. Porque um banco de dados é armazenado de forma
+permanente, ele pode armazenar muito mais dados que um dicionário, que é
+limitado ao tamanho da memória no computador.
 
 \index{database!indexes}
-Like a dictionary, database software is designed to keep 
-the inserting and accessing of data very fast, even for large
-amounts of data.   Database software maintains its performance by 
-building {\bf indexes} as data is added to the database
-to allow the computer to jump quickly to a particular
-entry.
+%Like a dictionary, database software is designed to keep 
+%the inserting and accessing of data very fast, even for large
+%amounts of data.   Database software maintains its performance by 
+%building {\bf indexes} as data is added to the database
+%to allow the computer to jump quickly to a particular
+%entry.
 
-There are many different database systems which are used for a wide
-variety of purposes including: Oracle, MySQL, Microsoft SQL Server, 
-PostgreSQL, and SQLite.  We focus on SQLite in this book because
-it is a very common database and is already built into Python.  
-SQLite is designed to be \emph{embedded} into other applications
-to provide database support within the application.  For example,
-the Firefox browser also uses the SQLite database internally as do 
-many other products.
+Como um dicionário, um banco de dados é um software desenvolvido para manter a
+inserção e acesso aos dados de forma muito rápida, até para grandes volumes de
+dados. O banco de dados mantém sua performance através da construção de
+{\bf indices} assim que o dado é adicionado no banco de dados para permitir ao
+computador acessar rapidamente uma entrada em particular.
+
+%There are many different database systems which are used for a wide
+%variety of purposes including: Oracle, MySQL, Microsoft SQL Server, 
+%PostgreSQL, and SQLite.  We focus on SQLite in this book because
+%it is a very common database and is already built into Python.  
+%SQLite is designed to be \emph{embedded} into other applications
+%to provide database support within the application.  For example,
+%the Firefox browser also uses the SQLite database internally as do 
+%many other products.
+
+Existem diferentes tipos de sistemas de bancos de dados que são utilizados 
+para diferentes propósitos, alguns deles incluem: Oracle, MySQL, Microsoft SQL
+Server, PostgreSQL, e SQLite. Focaremos no uso do SQLite neste livro porque é
+um banco de dados comum e já está integrado ao Python. O SQLite foi
+desenvolvido com o propósito de ser \emph{embarcado} em outras aplicações para
+prover suporte a banco de dados à outras aplicações. Por exemplo, o navegador
+({\it browser}) Firefox utiliza o banco de dados SQLite internamente, assim
+como muitos outros produtos.
 
 \url{http://sqlite.org/}
 
-SQLite is well suited to some of the data manipulation problems that we 
-see in Informatics such as the Twitter spidering application that we 
-describe in this chapter.
+%SQLite is well suited to some of the data manipulation problems that we 
+%see in Informatics such as the Twitter spidering application that we 
+%describe in this chapter.
 
-\section{Database concepts}
+SQLite é adequado para alguns problemas de manipulação de dados que podemos
+ver na informática como a aplicação de propagação do Twitter que descrevemos
+neste capítulo.
 
-When you first look at a database it looks like a 
-spreadsheet with multiple sheets.   The primary data structures 
-in a database are:
-{\bf tables}, {\bf rows}, and {\bf columns}.  
+%\section{Database concepts}
+\section{Conceitos de bancos de dados}
+
+%When you first look at a database it looks like a 
+%spreadsheet with multiple sheets.   The primary data structures 
+%in a database are:
+%{\bf tables}, {\bf rows}, and {\bf columns}.  
+
+Quando você olha para um banco de dados pela primeira vez, parece uma planilha
+(como uma planilha de cálculo do LibreOffice) com múltiplas folhas. A
+estrutura de dados básica que compõem um banco de dados são:
+{\bf tabelas}, {\bf linhas}, e {\bf colunas}.
 
 \beforefig
 \centerline{\includegraphics[height=1.50in]{figs2/relational.eps}}
 \afterfig
 
-In technical descriptions of relational databases the concepts of 
-table, row, and column are more formally referred
-to as {\bf relation}, {\bf tuple}, and {\bf attribute}, respectively.
-We will use the less formal terms in this chapter.
+%In technical descriptions of relational databases the concepts of 
+%table, row, and column are more formally referred
+%to as {\bf relation}, {\bf tuple}, and {\bf attribute}, respectively.
+%We will use the less formal terms in this chapter.
 
-\section{SQLite manager Firefox add-on}
+Na descrição técnica de um banco de dados relacional o conceito de
+tabela, linha e coluna são referências formais para {\bf relação},
+{\bf tupla}, e {\bf atributo}, respectivamente.
+Usaremos os termos menos formais neste capítulo.
 
-While this chapter will focus on using Python to work with data 
-in SQLite database files, many operations can be done more
-conveniently using a Firefox add-on called the {\bf SQLite
-Database Manager} which is freely available from:
+%\section{SQLite manager Firefox add-on}
+\section{Plugin do Firefox de Gerencia SQLite}
 
+%While this chapter will focus on using Python to work with data 
+%in SQLite database files, many operations can be done more
+%conveniently using a Firefox add-on called the {\bf SQLite
+%Database Manager} which is freely available from:
+
+O foco deste capítulo é o uso do Python para trabalhar com dados
+com o SQLite, muitas operações podem ser feitas de forma mais
+conveniente utilizando um {\it plugin} do Firefox, o {\bf SQLite
+Database Manager} que está disponível gratuitamente através do {\it link}:
 \url{https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/}
 
-Using the browser you can easily create tables, insert data, edit data, 
-or run simple SQL queries on the data in the database.
+%Using the browser you can easily create tables, insert data, edit data, 
+%or run simple SQL queries on the data in the database.
 
-In a sense, the database manager is similar to a text editor
-when working with text files.   When you want to do one or
-very few operations on a text file, you can just open it
-in a text editor and make the changes you want.   When you have 
-many changes that you need to do to a text file, often you 
-will write a simple Python program.  You will find the same 
-pattern when working with databases.  You will do simple
-operations in the database manager and more complex operations
-will be most conveniently done in Python.
+Utilizando o navegador você pode facilmente criar tabelas, inserir,
+editar ou executar consultas SQL nos dados da base de dados.
 
-\section{Creating a database table}
+%In a sense, the database manager is similar to a text editor
+%when working with text files.   When you want to do one or
+%very few operations on a text file, you can just open it
+%in a text editor and make the changes you want.   When you have 
+%many changes that you need to do to a text file, often you 
+%will write a simple Python program.  You will find the same 
+%pattern when working with databases.  You will do simple
+%operations in the database manager and more complex operations
+%will be most conveniently done in Python.
 
-Databases require more defined structure than Python lists 
-or dictionaries\footnote{SQLite actually does allow some 
-flexibility in the type of data stored in a column,
-but we will keep our data types strict in this chapter
-so the concepts apply equally to other database systems 
-such as MySQL.}.  
+De certa forma, o gerenciador de banco de dados é similar a um
+editor de texto quando utilizado arquivos de texto. Quando você
+quer fazer uma ou mais operações com um arquivo de texto, você
+pode simplesmente abrir o arquivo em um editor de texto e fazer
+as alterações que desejar. Quando você tem que fazer muitas
+alterações para fazer, normalmente você pode escrever um programa
+em Python simples para executar esta tarefa. Você encontrará os
+mesmos padrões quando for trabalhar com banco de dados. Você fará
+operações em um gerenciador de banco de dados e as operações mais
+complexas serão mais convenientes se forem feitas com Python.
+
+%\section{Creating a database table}
+\section{Criado uma tabela em um banco de dados}
+
+%Databases require more defined structure than Python lists 
+%or dictionaries\footnote{SQLite actually does allow some 
+%flexibility in the type of data stored in a column,
+%but we will keep our data types strict in this chapter
+%so the concepts apply equally to other database systems 
+%such as MySQL.}.
+
+Bancos de dados precisam de estruturas mais bem definidas do quê listas ou
+dicionários em Python\footnote{Atualmente o SQLite permite uma maior
+  flexibilidade em relação aos tipos de dados que são armazenados em uma
+  coluna, mas vamos manter os tipos de dados restritos neste capítulo, assim
+  os mesmos conceitos aprendidos aqui podem ser aplicados a outros sistemas
+  de banco de dados como MySQL.}.
 
 When we create a database {\bf table} we
 must tell the database in advance the names of each of the
@@ -92,6 +159,14 @@ planning to store in each {\bf column}.   When the database software
 knows the type of data in each column, it can choose the most 
 efficient way to store and look up the data based on the type of
 data. 
+
+Quando criamos uma {\bf tabela} em um banco de dados, precisamos informar ao
+banco de dados previamente o nome de cada {\bf coluna} na tabela e o tipo de
+dados que planejamos armazenar em cada {\bf coluna}. Quando o sistema de
+banco de dados conhece o tipo de dado em cada coluna, ele pode definiar a
+forma mais eficiente de armazenar e consultar o dado baseado no tipo do dado.
+
+
 
 You can look at the various data types supported by SQLite
 at the following url:
