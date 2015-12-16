@@ -40,6 +40,13 @@ words = text.split()
 ![Py4Inf](https://github.com/victorjabur/py4inf-ptBR/blob/master/traducao_imagem_exemplo.png)
 
 <br/>
+#####**Tabela de Termos Técnicos**
+| Termo                 | Tradução              |
+|---|---|
+|hash table             |  tabela hash          |
+
+
+<br/>
 #####**Siga as boas práticas - Material de Referência**
 
 >[http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores](http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores)
