@@ -16,6 +16,7 @@ Quando for realizada a tradução, deve-se manter o texto em Inglês comentado, 
 >%Assistant that is quite helpful and capable of helping
 >%us do many different things.
 
+
 #####**Regra 2 - Não traduzir código fonte**
 
 Não traduza códigos fontes:
@@ -27,6 +28,7 @@ text = handle.read()
 words = text.split()
 ```
 
+
 #####**Regra 3 - Traduzir as Imagens**
 
 >Utilize o software inkscape:
@@ -34,6 +36,7 @@ words = text.split()
 
 >Está presente no software centre padrão do ubuntu:
 >[https://apps.ubuntu.com/cat/applications/inkscape/](https://apps.ubuntu.com/cat/applications/inkscape/)
+
 
 #####**Siga as boas práticas - Material de Referência**
 
