@@ -2,7 +2,6 @@ Notas de Tradução para o Livro:
 ##Python para Informáticos: Explorando a Informação
 
 A seguir são detalhadas as regras para a tradução e revisão deste trabalho:
-
 <br/>
 #####**Regra 1 - Manter o bloco de texto original em Inglês comentado**
 
