@@ -27,6 +27,14 @@ text = handle.read()
 words = text.split()
 ```
 
+#####**Regra 3 - Traduzir as Imagens**
+
+>Utilize o software inkscape:
+>[https://inkscape.org](https://inkscape.org)
+
+>Está presente no software centre padrão do ubuntu:
+>[https://apps.ubuntu.com/cat/applications/inkscape/](https://apps.ubuntu.com/cat/applications/inkscape/)
+
 #####**Siga as boas práticas - Material de Referência**
 
-[http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores](http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores)
+>[http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores](http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores)
