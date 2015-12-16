@@ -7,14 +7,14 @@ A seguir são detalhadas as regras para a tradução e revisão deste trabalho:
 
 Quando for realizada a tradução, deve-se manter o texto em Inglês comentado, para facilitar durante o trabalho de revisão, veja abaixo:
 
-Programadores adicionam um sistema operacional e um conjunto de<br/>
-aplicações ao hardware e nós terminamos com um Assistente <br/>
-Pessoal Digital que é muito útil e capaz de nos ajudar a fazer<br/>
-diversas coisas.<br/>
-%Programmers add an operating system and a set of applications<br/>
-%to the hardware and we end up with a Personal Digital<br/>
-%Assistant that is quite helpful and capable of helping<br/>
-%us do many different things.<br/>
+>Programadores adicionam um sistema operacional e um conjunto de<br/>
+>aplicações ao hardware e nós terminamos com um Assistente <br/>
+>Pessoal Digital que é muito útil e capaz de nos ajudar a fazer<br/>
+>diversas coisas.<br/>
+>%Programmers add an operating system and a set of applications<br/>
+>%to the hardware and we end up with a Personal Digital<br/>
+>%Assistant that is quite helpful and capable of helping<br/>
+>%us do many different things.<br/>
 
 
 #####**Regra 2 - Não traduzir código fonte**
