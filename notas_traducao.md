@@ -37,7 +37,7 @@ words = text.split()
 >Está presente no software centre padrão do ubuntu:
 >[https://apps.ubuntu.com/cat/applications/inkscape/](https://apps.ubuntu.com/cat/applications/inkscape/)
 
-![Py4Inf](https://github.com/victorjabur/py4inf-ptBR/blob/master/traducao_imagem_exemplo.png?raw=true)
+![Py4Inf](https://github.com/victorjabur/py4inf-ptBR/blob/master/traducao_imagem_exemplo.png)
 
 <br/>
 #####**Siga as boas práticas - Material de Referência**
