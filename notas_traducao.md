@@ -32,14 +32,14 @@ words = text.split()
 #####**Regra 3 - Traduzir as Imagens**
 
 >Utilize o software inkscape:
->[https://inkscape.org](https://inkscape.org){:target="_blank"}
+>[https://inkscape.org](https://inkscape.org)
 
 >Está presente no software centre padrão do ubuntu:
->[https://apps.ubuntu.com/cat/applications/inkscape/](https://apps.ubuntu.com/cat/applications/inkscape/){:target="_blank"}
+>[https://apps.ubuntu.com/cat/applications/inkscape/](https://apps.ubuntu.com/cat/applications/inkscape/)
 
-![Py4Inf](https://github.com/victorjabur/py4inf-ptBR/blob/master/traducao_imagem_exemplo.png){:target="_blank"}
+![Py4Inf](https://github.com/victorjabur/py4inf-ptBR/blob/master/traducao_imagem_exemplo.png)
 
 <br/>
 #####**Siga as boas práticas - Material de Referência**
 
->[http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores](http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores){:target="_blank"}
+>[http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores](http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores)
