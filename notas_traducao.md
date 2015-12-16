@@ -16,7 +16,7 @@ Quando for realizada a tradução, deve-se manter o texto em Inglês comentado, 
 >%Assistant that is quite helpful and capable of helping<br/>
 >%us do many different things.<br/>
 
-
+<br/>
 #####**Regra 2 - Não traduzir código fonte**
 
 Não traduza códigos fontes:
@@ -28,7 +28,7 @@ text = handle.read()
 words = text.split()
 ```
 
-
+<br/>
 #####**Regra 3 - Traduzir as Imagens**
 
 >Utilize o software inkscape:
@@ -37,7 +37,7 @@ words = text.split()
 >Está presente no software centre padrão do ubuntu:
 >[https://apps.ubuntu.com/cat/applications/inkscape/](https://apps.ubuntu.com/cat/applications/inkscape/)
 
-
+<br/>
 #####**Siga as boas práticas - Material de Referência**
 
 >[http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores](http://turing.com.br/pydoc/2.7/tutorial/NOTAS.html#notas-tradutores)
