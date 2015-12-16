@@ -3,6 +3,7 @@ Notas de Tradução para o Livro:
 
 A seguir são detalhadas as regras para a tradução e revisão deste trabalho:
 
+<br/>
 #####**Regra 1 - Manter o bloco de texto original em Inglês comentado**
 
 Quando for realizada a tradução, deve-se manter o texto em Inglês comentado, para facilitar durante o trabalho de revisão, veja abaixo:
