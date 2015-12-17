@@ -43,7 +43,7 @@ Responsáveis pela Tradução por Capítulo
 |15-viz.tex             |  Kléber Takazawa      |
 |16-tasks.tex           |  Paulo Henrique Silva |
 |AA-windows.tex         |  Não Definido         |
-|AB-apple.tex           |  Não Definido         |
+|AB-apple.tex           |  Rodolfo Póvoa        |
 |AC-contrib.tex         |  Não Definido         |
 |AD-copyright.tex       |  Não Definido         |
 

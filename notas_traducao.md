@@ -43,7 +43,7 @@ words = text.split()
 #####**Tabela de Termos Técnicos**
 | Termo                 | Tradução              |
 |---|---|
-|hash table             |  tabela hash          |
+|hash table             |tabela hash            |
 
 
 <br/>
