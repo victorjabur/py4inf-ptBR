@@ -428,20 +428,33 @@ executar o programa outras vezes. Depois de executar o {\tt DELETE} chamamos o
 
 
 %\section{Structured Query Language summary}
-\section{Structured Query Language summary}
+\section{Resumo de Structured Query Language (SQL)}
 
-So far, we have been using the Structured Query Language in our Python
-examples and have covered many of the basics of the SQL commands.
-In this section, we look at the SQL language in particular
-and give an overview of SQL syntax.
+%So far, we have been using the Structured Query Language in our Python
+%examples and have covered many of the basics of the SQL commands.
+%In this section, we look at the SQL language in particular
+%and give an overview of SQL syntax.
 
-Since there are so many different database vendors, the Structured Query
-Language (SQL) was standardized so we could communicate in a portable
-manner to database systems from multiple vendors.
+Estamos utilizando SQL junto com os exemplos de Python e até agora cobrimos
+muitos comandos SQL básicos. Nesta seção, vamos olhar a linguagem SQL com
+mais atenção e apresentaremos uma visão geral da sintaxe do SQL.
 
-A relational database is made up of tables, rows, and columns.  The columns
-generally have a type such as text, numeric, or date data.  When we create
-a table, we indicate the names and types of the columns:
+%Since there are so many different database vendors, the Structured Query
+%Language (SQL) was standardized so we could communicate in a portable
+%manner to database systems from multiple vendors.
+
+Existem diferentes fornecedores de bancos de dados, a linguagem SQL foi
+padronizada, desta forma podemos nos comunicar de maneira portável entre os
+diferentes sistemas de banco de dados dos diferentes fornecedores.
+
+%A relational database is made up of tables, rows, and columns.  The columns
+%generally have a type such as text, numeric, or date data.  When we create
+%a table, we indicate the names and types of the columns:
+
+Basicamente um banco de dados relacional é composto por tabelas, linhas e
+colunas. As colunas geralmente possuem tipos, como textos, números ou
+informação de data. Quando criamos uma tabela, indicamos os nomes e tipos das
+colunas:
 
 \beforeverb
 \begin{verbatim}
@@ -449,24 +462,34 @@ CREATE TABLE Tracks (title TEXT, plays INTEGER)
 \end{verbatim}
 \afterverb
 %
-To insert a row into a table, we use the SQL {\tt INSERT} command:
-
+%To insert a row into a table, we use the SQL {\tt INSERT} command:
+Para inserir uma linha em uma tabela, utilizamos o comando SQL {\tt INSERT}:
 \beforeverb
 \begin{verbatim}
 INSERT INTO Tracks (title, plays) VALUES ('My Way', 15)
 \end{verbatim}
 \afterverb
 %
-The {\tt INSERT} statement specifies the table name, then a list of
-the fields/columns that you would like to set in the new row, and then 
-the keyword {\tt VALUES} and a list of corresponding values 
-for each of the fields.
+%The {\tt INSERT} statement specifies the table name, then a list of
+%the fields/columns that you would like to set in the new row, and then 
+%the keyword {\tt VALUES} and a list of corresponding values 
+%for each of the fields.
+A declaração do {\tt INSERT} especifica o nome da tabela, e então, uma lista
+dos campos/colunas que gostaríamos de definir na nova linha, e por fim,
+através do campo {\tt VALUES} passamos uma lista de valores correspondentes a
+cada campo.
 
-The SQL {\tt SELECT} command is used to retrieve rows and columns from a database.
-The {\tt SELECT} statement lets you specify which columns you would
-like to retrieve as well as a {\tt WHERE} clause to select which 
-rows you would like to see.  It also allows an optional 
-{\tt ORDER BY} clause to control the sorting of the returned rows.
+%The SQL {\tt SELECT} command is used to retrieve rows and columns from a database.
+%The {\tt SELECT} statement lets you specify which columns you would
+%like to retrieve as well as a {\tt WHERE} clause to select which 
+%rows you would like to see.  It also allows an optional 
+%{\tt ORDER BY} clause to control the sorting of the returned rows.
+
+O comando {\tt SELECT} é utilizado para buscar as linhas e colunas de um banco
+de dados. A declaração do {\tt SELECT} permite que você especifique qual coluna
+gostaria de buscar, bem como utilizando a condição do {\tt WHERE}, permite
+selecionar qual linha gostaríamos de visualizar. Isto também possibilita o uso
+de uma condição opcional, {\tt ORDER BY}, para ordenar as linhas retornadas.
 
 \beforeverb
 \begin{verbatim}
@@ -474,32 +497,37 @@ SELECT * FROM Tracks WHERE title = 'My Way'
 \end{verbatim}
 \afterverb
 %
-Using \verb"*" indicates that you want the database to return all of 
-the columns for each row that matches the {\tt WHERE} clause.  
+%Using \verb"*" indicates that you want the database to return all of 
+%the columns for each row that matches the {\tt WHERE} clause.  
+O uso do \verb"*" indica que o banco de dados deve retornar todas as colunas
+para cada linha que casa com a condição {\tt WHERE}.
 
-Note, unlike in Python, in a SQL {\tt WHERE} clause 
-we use a single equal sign 
-to indicate a test for equality rather than a double equal sign.
-Other logical operations allowed in a {\tt WHERE} clause include 
+%Note, unlike in Python, in a SQL {\tt WHERE} clause 
+%we use a single equal sign 
+%to indicate a test for equality rather than a double equal sign.
+%Other logical operations allowed in a {\tt WHERE} clause include
+Atenção, diferente de Python, a condição {\tt WHERE}, em SQL, utiliza o sinal
+de igual simples (\verb"="), para indicar uma condição de igualdade, ao invés de
+um sinal duplo (\verb"==")
 \verb"<",
 \verb">",
 \verb"<=",
 \verb">=",
 \verb"!=",
-as well as {\tt AND} and {\tt OR} and parentheses
-to build your logical expressions.
+assim como é possível utilizar as condições {\tt AND} e {\tt OR} e parênteses
+para construir expressões lógicas.
 
-You can request that the returned rows be sorted by one of 
-the fields as follows:
-
+Você pode pedir que as linhas retornadas sejam ordenadas por um dos campos
+como apresentados no exemplo a seguir:
 \beforeverb
 \begin{verbatim}
 SELECT title,plays FROM Tracks ORDER BY title
 \end{verbatim}
 \afterverb
 %
-To remove a row, you need a {\tt WHERE} clause on an SQL {\tt DELETE}
-statement.  The {\tt WHERE} clause determines which rows are to be deleted:
+Para remover uma linha, é preciso combinar a condição {\tt WHERE} com a
+condição {\tt DELETE}. O {\tt WHERE} irá determinar quais linhas serão
+removidas:
 
 \beforeverb
 \begin{verbatim}
@@ -507,8 +535,8 @@ DELETE FROM Tracks WHERE title = 'My Way'
 \end{verbatim}
 \afterverb
 %
-It is possible to {\tt UPDATE} a column or columns within one or more rows
-in a table using the SQL {\tt UPDATE} statement as follows:
+É possível alterar/atualizar uma ou mais colunas e suas linhas de uma tabela
+utilizando a condição SQL {\tt UPDATE}, da seguinte forma:
 
 \beforeverb
 \begin{verbatim}
@@ -516,17 +544,16 @@ UPDATE Tracks SET plays = 16 WHERE title = 'My Way'
 \end{verbatim}
 \afterverb
 %
-The {\tt UPDATE} statement specifies a table and 
-then a list of fields and values to change after the {\tt SET} 
-keyword and then an optional {\tt WHERE} clause to select
-the rows that are to be updated.  A single {\tt UPDATE} statement
-will change all of the rows that match the {\tt WHERE} clause.  If 
-a {\tt WHERE} clause is not specified, it performs the {\tt UPDATE}
-on all of the rows in the table.
+A condição {\tt UPDATE} especifica uma tabela e depois uma lista de campos e
+valores que serão alterados após o comando {\tt SET}, e utilizando uma condição
+{\tt WHERE}, opctional, é possível selecionar as linhas que serão atualizadas.
+Uma condição {\tt UPDATE} irá mudar todas as linhas que casam com a condição
+{\tt WHERE}. Se a condição {\tt WHERE} não for especificada, o {\tt UPDATE}
+será aplicado em todas as linhas da tabela.
 
-These four basic SQL commands (INSERT, SELECT, UPDATE, and DELETE) allow 
-the four basic operations needed to create and maintain data.
-
+Os quatros comandos básicos de SQL (INSERT, SELECT, UPDTE e DELETE) permitem
+as quatro operações básicas necessárias para criação e manutenção das
+informações em um banco de dados.
 
 \section{Spidering Twitter using a database}
 
