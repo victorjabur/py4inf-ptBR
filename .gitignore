@@ -1,0 +1,8 @@
+*.[oa]
+*~
+#*
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+
+# Ignore all files in the build directory
+build/
