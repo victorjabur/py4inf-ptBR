@@ -358,20 +358,36 @@ Os quatros comandos básicos de SQL (INSERT, SELECT, UPDTE e DELETE) permitem
 as quatro operações básicas necessárias para criação e manutenção das
 informações em um banco de dados.
 
-\section{Spidering Twitter using a database}
+%\section{Spidering Twitter using a database}
+\section{Rastreando o Twitter utilizando um banco de dados}
 
-In this section, we will create a simple spidering program that will 
-go through Twitter accounts and build a database of them.
-\emph{Note: Be very careful when running this program.  You do not
-want to pull too much data or run the program for too long and
-end up having your Twitter access shut off.}
+%In this section, we will create a simple spidering program that will 
+%go through Twitter accounts and build a database of them.
+%\emph{Note: Be very careful when running this program.  You do not
+%want to pull too much data or run the program for too long and
+%end up having your Twitter access shut off.}
 
-One of the problems of any kind of spidering program is that it 
-needs to be able to be stopped and restarted many times and 
-you do not want to lose the data that you have retrieved so far.
-You don't want to always restart your data retrieval at the
-very beginning so we want to store data as we retrieve it so our
-program can start back up and pick up where it left off.
+Nesta seção criaremos um programa simples para rastreamento que navegará
+através de contas de usuários do Twitter e construirá um banco de dados
+destas referentes as estes usuários.
+\emph{Nota: Seja cuidadoso quando executar este programa. Você não irá querer
+  extrair muitas informações ou executar o programa por muito tempo e acabar
+  tendo sua conta do Twitter bloqueada.}
+
+%One of the problems of any kind of spidering program is that it 
+%needs to be able to be stopped and restarted many times and 
+%you do not want to lose the data that you have retrieved so far.
+%You don't want to always restart your data retrieval at the
+%very beginning so we want to store data as we retrieve it so our
+%program can start back up and pick up where it left off.
+
+Um dos problemas, em qualquer tipo de programas de rastreamento, é que precisa
+ser capaz de ser interrompido e reiniciado muitas vezes e você não quer perder
+informações que você já tenha recuperado até agora. Não quer sempre reiniciar
+a recuperação dos dados desde o começo, então armazenamos as informações tão
+logo seja recuperada, assim o programa poderá reiniciar a busca do ponto onde
+parou.
+
 
 We will start by retrieving one person's Twitter friends and their
 statuses, looping through the list of friends, and adding each 
