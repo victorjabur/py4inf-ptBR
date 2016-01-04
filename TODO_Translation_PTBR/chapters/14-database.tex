@@ -1,110 +1,106 @@
 % The contents of this file is 
 % Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
 
-\chapter{Using databases and Structured Query Language (SQL)}
+\chapter{Utilizando Banco de Datos e Structured Query Language (SQL)}
 
-\section{What is a database?}
+\section{O que é um banco de dados?}
 \index{database}
 
-A {\bf database} is a file that is organized for storing data.
-Most databases are organized like a dictionary in the sense
-that they map from keys to values.  The biggest difference
-is that the database is on disk (or other permanent storage),
-so it persists after the program ends.  Because a database is
-stored on permanent storage, it can store far more data than
-a dictionary, which is limited to the size of the memory 
-in the computer.
+Um {\bf banco de dados} é um tipo de arquivo organizado para armazenamento de
+dados. A maioria dos bancos de dados são orgazanizados como um dicionário, no
+sentido de que eles realizam o mapeamento por chaves e valores. A grande
+diferença é que os bancos de dados estão em disco (ou outros dispositivos de
+armazenamentos permanentes), então eles continuam armazenando os dados mesmo
+depois que o programa termina. Porque um banco de dados é armazenado de forma
+permanente, isto permite armazenar muito mais dados que um dicionário, que é
+limitado ao tamanho da memória no computador.
 
 \index{database!indexes}
-Like a dictionary, database software is designed to keep 
-the inserting and accessing of data very fast, even for large
-amounts of data.   Database software maintains its performance by 
-building {\bf indexes} as data is added to the database
-to allow the computer to jump quickly to a particular
-entry.
 
-There are many different database systems which are used for a wide
-variety of purposes including: Oracle, MySQL, Microsoft SQL Server, 
-PostgreSQL, and SQLite.  We focus on SQLite in this book because
-it is a very common database and is already built into Python.  
-SQLite is designed to be \emph{embedded} into other applications
-to provide database support within the application.  For example,
-the Firefox browser also uses the SQLite database internally as do 
-many other products.
+Como um dicionário, um banco de dados é um software desenvolvido para manter a
+inserção e acesso aos dados de forma muito rápida, até para grandes volumes de
+dados. O banco de dados mantém sua performance através da construção de
+{\bf indices} assim que o dado é adicionado, isto permite ao computador acessar
+rapidamente uma entrada em particular.
+
+Existem diferentes tipos de sistemas de bancos de dados que são utilizados 
+para diferentes propósitos, alguns destes são: Oracle, MySQL, Microsoft SQL
+Server, PostgreSQL, e SQLite. Focaremos no uso do SQLite neste livro pois é
+um banco de dados comum e já está integrado ao Python. O SQLite foi
+desenvolvido com o propósito de ser \emph{embarcado} em outras aplicações para
+prover suporte a banco de dados junto à aplicação. Por exemplo, o navegador
+Firefox utiliza o SQLite internamente, assim como muitos outros produtos.
 
 \url{http://sqlite.org/}
 
-SQLite is well suited to some of the data manipulation problems that we 
-see in Informatics such as the Twitter spidering application that we 
-describe in this chapter.
+SQLite é adequado para alguns problemas de manipulação de dados que podemos
+ver na informática como a aplicação de indexação do Twitter que descrevemos
+neste capítulo.
 
-\section{Database concepts}
+\section{Conceitos de bancos de dados}
 
-When you first look at a database it looks like a 
-spreadsheet with multiple sheets.   The primary data structures 
-in a database are:
-{\bf tables}, {\bf rows}, and {\bf columns}.  
+Quando você olha para um banco de dados pela primeira vez, parece uma planilha
+(como uma planilha de cálculo do LibreOffice) com múltiplas folhas. A
+estrutura de dados básica que compõem um banco de dados são:
+{\bf tabelas}, {\bf linhas}, e {\bf colunas}.
 
 \beforefig
 \centerline{\includegraphics[height=1.50in]{figs2/relational.eps}}
 \afterfig
 
-In technical descriptions of relational databases the concepts of 
-table, row, and column are more formally referred
-to as {\bf relation}, {\bf tuple}, and {\bf attribute}, respectively.
-We will use the less formal terms in this chapter.
+Na descrição técnica de um banco de dados relacional o conceito de
+tabela, linha e coluna são referências formais para {\bf relação},
+{\bf tupla}, e {\bf atributo}, respectivamente.
+Usaremos os termos menos formais neste capítulo.
 
-\section{SQLite manager Firefox add-on}
+\section{Plugin do Firefox de Gerencia SQLite}
 
-While this chapter will focus on using Python to work with data 
-in SQLite database files, many operations can be done more
-conveniently using a Firefox add-on called the {\bf SQLite
-Database Manager} which is freely available from:
+O foco deste capítulo é o uso do Python para trabalhar com dados
+com o SQLite, muitas operações podem ser feitas de forma mais
+conveniente utilizando um {\it plugin} do Firefox, o {\bf SQLite
+  Database Manager} que está disponível gratuitamente através do {\it link}:
 
 \url{https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/}
 
-Using the browser you can easily create tables, insert data, edit data, 
-or run simple SQL queries on the data in the database.
+Utilizando o navegador você pode facilmente criar tabelas, inserir, editar ou
+executar consultas SQL nos dados da base de dados.
 
-In a sense, the database manager is similar to a text editor
-when working with text files.   When you want to do one or
-very few operations on a text file, you can just open it
-in a text editor and make the changes you want.   When you have 
-many changes that you need to do to a text file, often you 
-will write a simple Python program.  You will find the same 
-pattern when working with databases.  You will do simple
-operations in the database manager and more complex operations
-will be most conveniently done in Python.
+De certa forma, o gerenciador de banco de dados é similar a um editor de texto
+quando utilizado arquivos de texto. Quando você quer fazer uma ou mais
+operações com um arquivo de texto, você pode simplesmente abrir o arquivo em
+um editor de texto e fazer as alterações que desejar. Quando você tem que fazer
+muitas alterações para fazer, normalmente você pode escrever um programa em
+Python simples para executar esta tarefa. Você encontrará os mesmos padrões
+quando for trabalhar com banco de dados. Você fará operações em um gerenciador
+de banco de dados e as operações mais complexas serão mais convenientes se
+forem feitas com Python.
 
-\section{Creating a database table}
+\section{Criado uma tabela em um banco de dados}
 
-Databases require more defined structure than Python lists 
-or dictionaries\footnote{SQLite actually does allow some 
-flexibility in the type of data stored in a column,
-but we will keep our data types strict in this chapter
-so the concepts apply equally to other database systems 
-such as MySQL.}.  
+Bancos de dados precisam de estruturas mais bem definidas do quê listas ou
+dicionários em Python\footnote{Atualmente o SQLite permite uma maior
+  flexibilidade em relação aos tipos de dados que são armazenados em uma
+  coluna, mas vamos manter os tipos de dados restritos neste capítulo, assim
+  os mesmos conceitos aprendidos aqui podem ser aplicados a outros sistemas
+  de banco de dados como MySQL.}.
 
-When we create a database {\bf table} we
-must tell the database in advance the names of each of the
-{\bf columns} in the table and the type of data which we are 
-planning to store in each {\bf column}.   When the database software
-knows the type of data in each column, it can choose the most 
-efficient way to store and look up the data based on the type of
-data. 
+Quando criamos uma {\bf tabela} em um banco de dados, precisamos informar ao
+banco de dados previamente o nome de cada {\bf coluna} na tabela e o tipo de
+dados que planejamos armazenar em cada {\bf coluna}. Quando o sistema de
+banco de dados conhece o tipo de dado em cada coluna, ele pode definir a
+forma mais eficiente de armazenar e consultar o dado baseado no tipo do dado.
 
-You can look at the various data types supported by SQLite
-at the following url:
+Você pode visualizar os diversos tipos de dados que são suportados pelo SQLite
+através do seguinte endereço:
 
 \url{http://www.sqlite.org/datatypes.html}
 
-Defining structure for your data up front may seem inconvenient
-at the beginning, but the payoff is fast access to your data 
-even when the database contains a large amount of data.
+Definir a estrutura dos seus tipos de dados pode parecer inconveniente no
+começo, mas a recompensa é o acesso rápido aos dados mesmo quando o banco
+de dados contém um grande número de informações.
 
-The code to create a database file and a table 
-named {\tt Tracks} with two columns in the 
-database is as follows:
+O seguinte código cria um arquivo de banco de dados com uma tabela, chamada
+{\tt Tracks} e com duas colunas:
 
 \index{sqlite3 module}
 \index{module!sqlite3}
@@ -126,47 +122,45 @@ conn.close()
 \index{function!connect}
 \index{cursor function}
 \index{function!cursor}
-The {\tt connect} operation makes a ``connection'' to the database 
-stored in the file {\tt music.sqlite3} in the current directory.   If
-the file does not exist, it will be created.  The reason this
-is called a ``connection'' is that sometimes the database is stored
-on a separate ``database server'' from the server on which we 
-are running our application.  In our simple examples 
-the database will just be a local file in the same directory
-as the Python code we are running.
 
-A {\bf cursor} is like a file handle that we can use to perform
-operations on the data stored in the database.  Calling 
-{\tt cursor()} is very similar conceptually to calling
-{\tt open()} when dealing with text files.
+A operação {\tt connect} cria uma ``conexão'' com o banco de dados armazenado
+no arquivo {\tt music.sqlite3} no diretório corrente. Se o arquivo não
+existir, este será criado. O motivo para isto ser chamado de ``conexão'' é
+que algumas vezes o banco de dados está  em um ``servidor de banco de dados'' 
+separado da aplicação propriamente dita. Em nossos exemplos o banco de dados
+está armazenado localmente em um arquivo no mesmo diretório que o código
+Python está sendo executado.
+
+Um {\bf cursos} é como um identificador de arquivo que podemos utilizar para
+realizar operações sobre as informações armazenadas em um banco de dados. Ao
+chamar a função {\tt cursor()}, conceitualmente, é similar ao chamar a função
+{\tt open()} quando estamos trabalhando com arquivos de texto.
 
 \beforefig
 \centerline{\includegraphics[height=1.50in]{figs2/cursor.eps}}
 \afterfig
 
-Once we have the cursor, we can begin to execute 
-commands on the contents of the database using the {\tt execute()}
-method.
+Uma vez que temos o cursos, podemos começar a executar comandos no conteúdo
+armazenado no banco de dados utilizando o método {\tt execute()}.
 
-Database commands are expressed in a special language that has 
-been standardized across many different database vendors 
-to allow us to learn a single database language.   The database
-language is called {\bf Structured Query Language} or {\bf SQL}
-for short.
-
+Os comandos de um banco de dados são expressos em uma linguagem especial que
+foi padronizada por diferentes fornecedores de bancos de dados, que nos
+permite aprender uma única linguagem. A linguagem dos bancos de dados é
+chamada de {\bf Structured Query Language}\footnote{Em Português, pode ser
+  chamada de Linguagem de Consulta Estruturada} ou referenciada pelo acrônimo
+{\bf SQL}
 \url{http://en.wikipedia.org/wiki/SQL}
 
-In our example, we are executing two SQL commands in our database.
-As a convention, we will show the SQL keywords in uppercase 
-and the parts of the command that we are adding (such as the
-table and column names) will be shown in lowercase.
+Em nossos exemplos, estamos executando dois comandos SQL no banco de dados que
+criamos. Convencionaremos que os comandos SQL serão mostrados em maiúsculas e
+as partes que não são palavras reservadas do SQL (como os nomes das tabelas e
+colunas) serão mostrados em minúsculas.
 
-The first SQL command removes the {\tt Tracks} table from the 
-database if it exists.  This pattern is simply to allow us to 
-run the same program to create the {\tt Tracks} table over 
-and over again without causing an error.  Note that the
-{\tt DROP TABLE} command deletes the table and all of its contents
-from the database (i.e., there is no ``undo'').
+O primeiro comando SQL remove a tabela {\tt Tracks} do banco de dados se ela
+existir. Este padrão nos permite executar o mesmo programa para criar a tabela
+{\tt Tracks} repetidas vezes sem que cause erro. Perceba que o comando {\tt DROP
+  TABLE} remove a tabela e todo o seu conteúdo do banco de dados (i.e., não é
+possível desfazer esta operação)
 
 \beforeverb
 \begin{verbatim}
@@ -174,9 +168,8 @@ cur.execute('DROP TABLE IF EXISTS Tracks ')
 \end{verbatim}
 \afterverb
 %
-The second command creates a table named
-{\tt Tracks} with a text column named {\tt title}
-and an integer column named {\tt plays}.
+O segundo comando cria a tabela {\tt Tracks} com uma coluna chamada {\tt title}
+com o tipo texto e uma coluna chamada {\tt plays} com o tipo inteiro.
 
 \beforeverb
 \begin{verbatim}
@@ -184,18 +177,18 @@ cur.execute('CREATE TABLE Tracks (title TEXT, plays INTEGER)')
 \end{verbatim}
 \afterverb
 %
-Now that we have created a table named {\tt Tracks}, we can put some data
-into that table using the SQL {\tt INSERT} operation.   Again, we begin
-by making a connection to the database and obtaining the {\tt cursor}.
-We can then execute SQL commands using the cursor.
+Agora que criamos a tabela {\tt Tracks}, podemos inserir algum dado dentro
+dela utilizando a operação SQL {\tt INSERT}. Novamente, estamos
+estabelecendo uma conexão com o banco de dados e obtendo o {\tt cursos}.
+E então executamos o comando SQL utilizando o cursor.
 
-The SQL {\tt INSERT} command indicates which table we are using 
-and then defines a new row by listing the fields we want to 
-include {\tt (title, plays)} followed by the {\tt VALUES} we want
-placed in the new row.  We specify the values as question marks
-{\tt (?, ?)} to indicate that the actual values are passed in as a
-tuple {\tt ( 'My Way', 15 ) } as the second parameter to the
-{\tt execute()} call.
+O comando SQL {\tt INSERT} indica qual tabela estamos utilizando, e em seguida, 
+cria uma nova linha listando quais campos utilizaremos para incluir {\tt (title,
+  plays)} seguido pelo comando {\tt VALUES} com os valores que desejamos
+adicionar na nova linha. Especificamos os valores utilizando pontos de
+interrogação {\tt (?, ?)} para indicar que os valores serão passados como
+tuplas {\tt ( 'My Way', 15) } como um segundo parâmetro da chamada
+{\tt execute()}.
 
 \beforeverb
 \begin{verbatim}
@@ -222,26 +215,24 @@ cur.close()
 \end{verbatim}
 \afterverb
 %
-First we {\tt INSERT} two rows into our table and use {\tt commit()} 
-to force the data to be written to the database file.
+Primeiro nós adicionamos com {\tt INSERT} duas linha na nossa tabela e
+usamos {\tt commit()} para forçar a escrita da informação no arquivo do banco
+de dados.
 
 \beforefig
 \centerline{\includegraphics[height=1.00in]{figs2/tracks.eps}}
 \afterfig
 
-Then we use the {\tt SELECT} command
-to retrieve the rows we just inserted from the table.  
-On the 
-{\tt SELECT} command, we indicate which columns we would like {\tt (title, plays)}
-and indicate which table we want to retrieve the data from.  After we 
-execute the {\tt SELECT} statement, the cursor is something we can loop through
-in a {\tt for} statement.   For efficiency,
-the cursor does not read all of the data from the
-database when we execute the {\tt SELECT} statement.  
-Instead, the data is read on demand
-as we loop through the rows in the {\tt for} statement.
+Depois usamos o comando {\tt SELECT} para buscar a linha que acabamos de
+inserir na tabela. Com o comando {\tt SELECT}, indicamos que coluna gostaríamos
+{\tt (title, plays)} e de qual tabela queremos buscar a informação. Depois
+de confirmar a executação do comando {\tt SELECT}, o cursor pode ser utilizado
+como repetição através de um comando {\tt for}. Por questões de eficiência, o
+cursor não lê toda a informação da base de dados quando executamos o comando
+{\tt SELECT}. Ao invés disto, a informação é lida sob demanda enquanto
+iteramos através da linha com o comando {\tt for}.
 
-The output of the program is as follows:
+A saída do programa fica da seguinte forma:
 
 \beforeverb
 \begin{verbatim}
@@ -252,35 +243,37 @@ Tracks:
 \afterverb
 %
 \index{Unicode}
-Our {\tt for} loop finds two rows, and each row is a Python tuple with the
-first value as the {\tt title} and the second value as the number of {\tt plays}.
-Do not be concerned that the title strings are shown starting with 
-{\tt u'}.  This is an indication that the strings are {\bf Unicode} strings
-that are capable of storing non-Latin character sets.
 
-At the very end of the program, we execute an SQL command to {\tt DELETE} 
-the rows we have just created so we can run the program over and over.
-The {\tt DELETE} command shows the use of a {\tt WHERE} clause that
-allows us to express a selection criterion so that we can ask the database
-to apply the command to only the rows that match the criterion.  In this example
-the criterion happens to apply to all the rows so we empty the table
-out so we can run the program repeatedly.  After the {\tt DELETE} is performed,
-we also call {\tt commit()} to force the data to be removed from the database.
+A iteração do {\tt for} encontrou duas linhas, e cada linha é uma tupla em
+Python com o primeiro valor como {\tt title} e o segundo como o número de
+{\tt plays}. Não se preocupe com o fato de a {\it strings} são mostrados com
+o caractere {\tt u'} no começo. Isto é uma indicação que a {\it string} estão
+em {\bf Unicode}, o que indica que são capazes de armazenar um conjunto de
+caractere não-Latin.
 
-\section{Structured Query Language summary}
+No final do programa, executamos o comando SQL {\tt DELETE} para remover as
+linhas que acabamos de criar, assim podemos executar o programa repetidas
+vezes. O {\tt DELETE} pode ser utilizado com a condição {\tt WHERE} que permite
+selecionar através de uma expressão o critério permitindo pesquisar no banco
+de dados somente as linhas que correspondem com a expressão utilizada. Neste
+exemplo a expressão construida se aplica em todas as linhas, para que possamos
+executar o programa outras vezes. Depois de executar o {\tt DELETE} chamamos o
+{\tt commit()} para forçar que o dado seja removido do banco de dados.
 
-So far, we have been using the Structured Query Language in our Python
-examples and have covered many of the basics of the SQL commands.
-In this section, we look at the SQL language in particular
-and give an overview of SQL syntax.
+\section{Resumo de Structured Query Language (SQL)}
 
-Since there are so many different database vendors, the Structured Query
-Language (SQL) was standardized so we could communicate in a portable
-manner to database systems from multiple vendors.
+Estamos utilizando SQL junto com os exemplos de Python e até agora cobrimos
+muitos comandos SQL básicos. Nesta seção, vamos olhar a linguagem SQL com
+mais atenção e apresentaremos uma visão geral da sintaxe do SQL.
 
-A relational database is made up of tables, rows, and columns.  The columns
-generally have a type such as text, numeric, or date data.  When we create
-a table, we indicate the names and types of the columns:
+Existem diferentes fornecedores de bancos de dados, a linguagem SQL foi
+padronizada, desta forma podemos nos comunicar de maneira portável entre os
+diferentes sistemas de banco de dados dos diferentes fornecedores.
+
+Basicamente um banco de dados relacional é composto por tabelas, linhas e
+colunas. As colunas geralmente possuem tipos, como textos, números ou
+informação de data. Quando criamos uma tabela, indicamos os nomes e tipos das
+colunas:
 
 \beforeverb
 \begin{verbatim}
@@ -288,7 +281,7 @@ CREATE TABLE Tracks (title TEXT, plays INTEGER)
 \end{verbatim}
 \afterverb
 %
-To insert a row into a table, we use the SQL {\tt INSERT} command:
+Para inserir uma linha em uma tabela, utilizamos o comando SQL {\tt INSERT}:
 
 \beforeverb
 \begin{verbatim}
@@ -296,16 +289,16 @@ INSERT INTO Tracks (title, plays) VALUES ('My Way', 15)
 \end{verbatim}
 \afterverb
 %
-The {\tt INSERT} statement specifies the table name, then a list of
-the fields/columns that you would like to set in the new row, and then 
-the keyword {\tt VALUES} and a list of corresponding values 
-for each of the fields.
+A declaração do {\tt INSERT} especifica o nome da tabela, e então, uma lista
+dos campos/colunas que gostaríamos de definir na nova linha, e por fim,
+através do campo {\tt VALUES} passamos uma lista de valores correspondentes a
+cada campo.
 
-The SQL {\tt SELECT} command is used to retrieve rows and columns from a database.
-The {\tt SELECT} statement lets you specify which columns you would
-like to retrieve as well as a {\tt WHERE} clause to select which 
-rows you would like to see.  It also allows an optional 
-{\tt ORDER BY} clause to control the sorting of the returned rows.
+O comando {\tt SELECT} é utilizado para buscar as linhas e colunas de um banco
+de dados. A declaração do {\tt SELECT} permite que você especifique qual coluna
+gostaria de buscar, bem como utilizando a condição do {\tt WHERE}, permite
+selecionar qual linha gostaríamos de visualizar. Isto também possibilita o uso
+de uma condição opcional, {\tt ORDER BY}, para ordenar as linhas retornadas.
 
 \beforeverb
 \begin{verbatim}
@@ -313,32 +306,31 @@ SELECT * FROM Tracks WHERE title = 'My Way'
 \end{verbatim}
 \afterverb
 %
-Using \verb"*" indicates that you want the database to return all of 
-the columns for each row that matches the {\tt WHERE} clause.  
+O uso do \verb"*" indica que o banco de dados deve retornar todas as colunas
+para cada linha que casa com a condição {\tt WHERE}.
 
-Note, unlike in Python, in a SQL {\tt WHERE} clause 
-we use a single equal sign 
-to indicate a test for equality rather than a double equal sign.
-Other logical operations allowed in a {\tt WHERE} clause include 
+Atenção, diferente de Python, a condição {\tt WHERE}, em SQL, utiliza o sinal
+de igual simples (\verb"="), para indicar uma condição de igualdade, ao invés de
+um sinal duplo (\verb"==")
 \verb"<",
 \verb">",
 \verb"<=",
 \verb">=",
 \verb"!=",
-as well as {\tt AND} and {\tt OR} and parentheses
-to build your logical expressions.
+assim como é possível utilizar as condições {\tt AND} e {\tt OR} e parênteses
+para construir expressões lógicas.
 
-You can request that the returned rows be sorted by one of 
-the fields as follows:
-
+Você pode pedir que as linhas retornadas sejam ordenadas por um dos campos
+como apresentados no exemplo a seguir:
 \beforeverb
 \begin{verbatim}
 SELECT title,plays FROM Tracks ORDER BY title
 \end{verbatim}
 \afterverb
 %
-To remove a row, you need a {\tt WHERE} clause on an SQL {\tt DELETE}
-statement.  The {\tt WHERE} clause determines which rows are to be deleted:
+Para remover uma linha, é preciso combinar a condição {\tt WHERE} com a
+condição {\tt DELETE}. O {\tt WHERE} irá determinar quais linhas serão
+removidas:
 
 \beforeverb
 \begin{verbatim}
@@ -346,8 +338,8 @@ DELETE FROM Tracks WHERE title = 'My Way'
 \end{verbatim}
 \afterverb
 %
-It is possible to {\tt UPDATE} a column or columns within one or more rows
-in a table using the SQL {\tt UPDATE} statement as follows:
+É possível alterar/atualizar uma ou mais colunas e suas linhas de uma tabela
+utilizando a condição SQL {\tt UPDATE}, da seguinte forma:
 
 \beforeverb
 \begin{verbatim}
@@ -355,17 +347,16 @@ UPDATE Tracks SET plays = 16 WHERE title = 'My Way'
 \end{verbatim}
 \afterverb
 %
-The {\tt UPDATE} statement specifies a table and 
-then a list of fields and values to change after the {\tt SET} 
-keyword and then an optional {\tt WHERE} clause to select
-the rows that are to be updated.  A single {\tt UPDATE} statement
-will change all of the rows that match the {\tt WHERE} clause.  If 
-a {\tt WHERE} clause is not specified, it performs the {\tt UPDATE}
-on all of the rows in the table.
+A condição {\tt UPDATE} especifica uma tabela e depois uma lista de campos e
+valores que serão alterados após o comando {\tt SET}, e utilizando uma condição
+{\tt WHERE}, opctional, é possível selecionar as linhas que serão atualizadas.
+Uma condição {\tt UPDATE} irá mudar todas as linhas que casam com a condição
+{\tt WHERE}. Se a condição {\tt WHERE} não for especificada, o {\tt UPDATE}
+será aplicado em todas as linhas da tabela.
 
-These four basic SQL commands (INSERT, SELECT, UPDATE, and DELETE) allow 
-the four basic operations needed to create and maintain data.
-
+Os quatros comandos básicos de SQL (INSERT, SELECT, UPDTE e DELETE) permitem
+as quatro operações básicas necessárias para criação e manutenção das
+informações em um banco de dados.
 
 \section{Spidering Twitter using a database}
 

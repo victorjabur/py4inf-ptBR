@@ -10,42 +10,23 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1071.0338"
-   height="340.95703"
-   id="svg3935"
+   width="308.94894mm"
+   height="96.418579mm"
+   viewBox="0 0 1094.701 341.64063"
+   id="svg4346"
    version="1.1"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="New document 15">
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="relational.svg">
   <defs
-     id="defs3937">
-    <inkscape:perspective
-       sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 300 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="800 : 300 : 1"
-       inkscape:persp3d-origin="400 : 200 : 1"
-       id="perspective3943" />
-    <inkscape:perspective
-       id="perspective4516"
-       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
-       inkscape:vp_z="1 : 0.5 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_x="0 : 0.5 : 1"
-       sodipodi:type="inkscape:persp3d" />
-    <inkscape:perspective
-       id="perspective4553"
-       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
-       inkscape:vp_z="1 : 0.5 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_x="0 : 0.5 : 1"
-       sodipodi:type="inkscape:persp3d" />
-    <inkscape:perspective
-       id="perspective4581"
-       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
-       inkscape:vp_z="1 : 0.5 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_x="0 : 0.5 : 1"
-       sodipodi:type="inkscape:persp3d" />
+     id="defs4348">
+    <clipPath
+       id="clipPath4386-3"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4388-6"
+         d="m 5000,129 3560,0 0,2257 -3560,0 0,-2257 z" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -54,19 +35,23 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.6"
-     inkscape:cx="353.8672"
-     inkscape:cy="182.23306"
-     inkscape:current-layer="layer1"
+     inkscape:zoom="0.59572108"
+     inkscape:cx="179.19563"
+     inkscape:cy="123.08595"
      inkscape:document-units="px"
+     inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1080"
-     inkscape:window-height="670"
-     inkscape:window-x="40"
-     inkscape:window-y="40"
-     inkscape:window-maximized="0" />
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="748"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
   <metadata
-     id="metadata3940">
+     id="metadata4351">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -74,121 +59,167 @@
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-sa/3.0/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     transform="translate(-16.966135,-141.27603)">
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect3945"
-       width="375"
-       height="245"
-       x="103.33333"
-       y="193.33334" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.48704982;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect3947"
-       width="376.51294"
-       height="51.663723"
-       x="103.3348"
-       y="315.00146" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.48910689;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect3949"
-       width="69.994995"
-       height="244.995"
-       x="283.33585"
-       y="193.33545" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="115"
-       y="178.33334"
-       id="text3951"><tspan
-         sodipodi:role="line"
-         id="tspan3953"
-         x="115"
-         y="178.33334">Table</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="13.333323"
-       y="309.99997"
-       id="text3955"><tspan
-         sodipodi:role="line"
-         id="tspan3957"
-         x="13.333323"
-         y="309.99997">row</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="120"
-       y="481.66666"
-       id="text3959"><tspan
-         sodipodi:role="line"
-         id="tspan3961"
-         x="120"
-         y="481.66666">column</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="M 270,471.66667 316.66667,440"
-       id="path3963"
-       inkscape:connector-type="polyline" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 36.666667,313.33333 55,28.33334"
-       id="path4477"
-       inkscape:connector-type="polyline" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="289.33334"
-       y="353.66666"
-       id="text4479"><tspan
-         sodipodi:role="line"
-         id="tspan4481"
-         x="289.33334"
-         y="353.66666">2.3</tspan></text>
-    <image
-       y="183.99998"
-       x="642"
-       id="image4555"
-       height="282"
-       width="446"
-       xlink:href="file:///Users/csev/dev/py4inf/tex/figs2/inkscape_pasted_image_20100801_190048.png" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="583.33337"
-       y="291.66669"
-       id="text4587"><tspan
-         sodipodi:role="line"
-         id="tspan4589"
-         x="583.33337"
-         y="291.66669">tuple</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="716.66669"
-       y="171.66666"
-       id="text4591"><tspan
-         sodipodi:role="line"
-         id="tspan4593"
-         x="716.66669"
-         y="171.66666">Relation</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="693.33331"
-       y="476.66669"
-       id="text4595"><tspan
-         sodipodi:role="line"
-         id="tspan4597"
-         x="693.33331"
-         y="476.66669">attribute</tspan></text>
+     id="layer1"
+     transform="translate(-7.6966381,-710.69897)">
+    <g
+       id="g5033">
+      <text
+         id="text4276"
+         y="871.07874"
+         x="322.80002"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="871.07874"
+           x="322.80002"
+           id="tspan4278"
+           sodipodi:role="line" /></text>
+      <rect
+         y="763.43988"
+         x="119.38049"
+         height="245"
+         width="375"
+         id="rect3945"
+         style="fill:#ffffff;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <rect
+         y="885.10797"
+         x="119.38195"
+         height="51.663723"
+         width="376.51294"
+         id="rect3947"
+         style="fill:none;stroke:#000000;stroke-width:1.48704982;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <rect
+         y="763.44196"
+         x="299.38293"
+         height="244.995"
+         width="69.994995"
+         id="rect3949"
+         style="fill:none;stroke:#000000;stroke-width:1.48910689;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         id="text3951"
+         y="748.43988"
+         x="131.0471"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="748.43988"
+           x="131.0471"
+           id="tspan3953"
+           sodipodi:role="line">Tabela</tspan></text>
+      <text
+         id="text3955"
+         y="880.10651"
+         x="3.9271069"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="880.10651"
+           x="3.9271069"
+           id="tspan3957"
+           sodipodi:role="line">linha</tspan></text>
+      <text
+         id="text3959"
+         y="1051.7732"
+         x="136.0471"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="1051.7732"
+           x="136.0471"
+           id="tspan3961"
+           sodipodi:role="line">coluna</tspan></text>
+      <path
+         inkscape:connector-type="polyline"
+         id="path3963"
+         d="m 286.04719,1041.7732 46.6667,-31.6667"
+         style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-type="polyline"
+         id="path4477"
+         d="m 52.71389,883.43985 55,28.33334"
+         style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <text
+         id="text4479"
+         y="923.77319"
+         x="305.38049"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="923.77319"
+           x="305.38049"
+           id="tspan4481"
+           sodipodi:role="line">2.3</tspan></text>
+      <g
+         transform="matrix(0.125,0,0,-0.125,32.39759,1052.7534)"
+         id="g4382-1">
+        <g
+           id="g4384-1"
+           clip-path="url(#clipPath4386-3)">
+          <g
+             id="g4390-1"
+             transform="matrix(3568,0,0,2256,5000.27,129.865)">
+            <image
+               width="1"
+               height="1"
+               preserveAspectRatio="none"
+               transform="matrix(1,0,0,-1,0,1)"
+               xlink:href="data:image/png;base64,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"
+               id="image4392-1" />
+          </g>
+        </g>
+      </g>
+      <text
+         id="text4587"
+         y="861.77319"
+         x="599.38049"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="861.77319"
+           x="599.38049"
+           id="tspan4589"
+           sodipodi:role="line">tupla</tspan></text>
+      <text
+         id="text4591"
+         y="741.77319"
+         x="732.71387"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="741.77319"
+           x="732.71387"
+           id="tspan4593"
+           sodipodi:role="line">Relação</tspan></text>
+      <text
+         id="text4595"
+         y="1046.7732"
+         x="709.38049"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="1046.7732"
+           x="709.38049"
+           id="tspan4597"
+           sodipodi:role="line">atributo</tspan></text>
+    </g>
   </g>
 </svg>
