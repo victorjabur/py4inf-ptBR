@@ -154,6 +154,12 @@ então talvez a figura a seguir seja uma versão mais sensata de nosso PDA:
 \centerline{\includegraphics[height=1.00in]{figs2/pda2.eps}}
 \afterfig
 
+Por enquanto, nossa motivação primária não é ganhar dinheiro ou agradar usuários finais,
+para nós sermos mais produtivos na manipulação de dados e informações
+que nós encontraremos em nossas vidas.
+Quando você começar, você será tanto o programador quanto o usuário final de seus
+programas. Conforme você ganhar habilidades como programador e melhorar a criatividade
+em seus próprios programas, mais você pode pensar em programar para os outros.
 %For now, our primary motivation is not to make money or please end users, but
 %instead for us to be more productive in handling the data and 
 %information that we will encounter in our lives.
@@ -162,10 +168,20 @@ então talvez a figura a seguir seja uma versão mais sensata de nosso PDA:
 %programming feels more creative to you, your thoughts may turn
 %toward developing programs for others.
 %
+
+\section{Arquitetura física do Computador - Hardware}
+\index{hardware}
+\index{hardware!architecture}
 %\section{Computer hardware architecture}
 %\index{hardware}
 %\index{hardware!architecture}
 %
+
+Antes de começar a estudar a linguagem, nós falamos
+em dar instruções aos computadores para desenvolver software,
+nós precisamos aprender um pouco mais sobre como os computadores
+são construídos. Se você desmontar seu computador ou celular e olhar
+por dentro, você encontrará as seguintes partes:
 %Before we start learning the language we 
 %speak to give instructions to computers to 
 %develop software, we need to learn a small amount about 
@@ -173,14 +189,29 @@ então talvez a figura a seguir seja uma versão mais sensata de nosso PDA:
 %apart your computer or cell phone and look deep
 %inside, you would find the following parts:
 %
+
+\beforefig
+\centerline{\includegraphics[height=2.50in]{figs2/arch.eps}}
+\afterfig
 %\beforefig
 %\centerline{\includegraphics[height=2.50in]{figs2/arch.eps}}
 %\afterfig
 %
+
+As definições resumidas destas partes são:
 %The high-level definitions of these parts are as follows:
 %
+
+\begin{itemize}
 %\begin{itemize}
 %
+
+\item A {\bf Unidade Central de Processamento} (ou CPU) é
+a parte do computador que é feita para sempre te perguntar:
+``O que mais ?'' Se seu computador possui uma frequência de
+3.0 Gigahertz, significa que a CPU irá te perguntar ``O que mais ?''
+três bilhões de vezes por segundo. Você irá aprender como conversar
+tão rápido com a CPU.
 %\item The {\bf Central Processing Unit} (or CPU) is 
 %the part of the computer that is built to be obsessed 
 %with ``what is next?''  If your computer is rated
@@ -188,11 +219,23 @@ então talvez a figura a seguir seja uma versão mais sensata de nosso PDA:
 %three billion times per second.  You are going to have to 
 %learn how to talk fast to keep up with the CPU.
 %
+
+\item A {\bf Memória Principal} é utilizada para armazenar informação
+que a CPU precisa com muita pressa. A memória principal é aproximadamente
+tão rápida quanto a CPU. Mas a informação armazenada na memória principal
+se perde quando o computador é desligado (volátil).
 %\item The {\bf Main Memory} is used to store information
 %that the CPU needs in a hurry.  The main memory is nearly as 
 %fast as the CPU.  But the information stored in the main
 %memory vanishes when the computer is turned off.
 %
+
+\item A {\bf Memória Secundária} é também utilizada para armazenar
+informação, mas ela é muito mais lenta que a memória principal.
+A vantegem da memória secundária é que ela pode armazenar informação
+que não se perde quando o computador é desligado. Exemplos de memória
+secundária são discos rígidos (HD), pen drives, cartões de memória (sd card)
+(tipicamente) encontradas no formato de USB e portáteis.
 %\item The {\bf Secondary Memory} is also used to store
 %information, but it is much slower than the main memory.
 %The advantage of the secondary memory is that it can
@@ -201,10 +244,21 @@ então talvez a figura a seguir seja uma versão mais sensata de nosso PDA:
 %or flash memory (typically found in USB sticks and portable
 %music players).
 %
+
+\item Os {\bf Dispositivos de Entrada e Saídas} são simplesmente
+nosso monitor (tela), teclado, mouse, microfone, caixa de som, touchpad, etc.
+Eles são todas as formas com as quais interagimos com o computador.
 %\item The {\bf Input and Output Devices} are simply our
 %screen, keyboard, mouse, microphone, speaker, touchpad, etc.  
 %They are all of the ways we interact with the computer.
 %
+
+\item Atualmente, a maioria dos computadores tem uma
+{\bf Conexão de Rede} para buscar informação em uma rede.
+Nós podemos pensar a rede como um lugar muito lento para armazenar
+e buscar dados que podem não estar ``disponíveis''. Em essência,
+a rede é mais lenta e às vezes parece uma forma não confiável de
+{\bf Memória Secundária}.
 %\item These days, most computers also have a
 %{\bf Network Connection} to retrieve information over a network.
 %We can think of the network as a very slow place to store and
@@ -212,12 +266,26 @@ então talvez a figura a seguir seja uma versão mais sensata de nosso PDA:
 %the network is a slower and at times unreliable form of
 %{\bf Secondary Memory}.
 %
+
+\end{itemize}
 %\end{itemize}
 %
+
+É melhor deixar a maior parte dos detalhes de como estes componentes funcionam para
+os construtores dos computadores, isso nos ajuda a ter alguma terminologia
+que podemos utilizar para conversar sobre as diferentes partes nos programas
+que vamos escrever.
 %While most of the detail of how these components work is best left 
 %to computer builders, it helps to have some terminology
 %so we can talk about these different parts as we write our programs.
 %
+
+Como um programador, seu trabalho é usar e orquestrar
+cada um destes recursos para resolver um problema que você precisa resolver
+e analisar os dados que você obtém da solução. Como um programador você irá
+``conversar'' com a CPU e contar a ela o que fazer em um próximo passo.
+Algumas vezes você irá dizer à CPU para usar a memória principal, a memória
+secundária, a rede ou os dispositivos de entrada e saída.
 %As a programmer, your job is to use and orchestrate 
 %each of these resources to solve the problem that you need to solve
 %and analyze the data you get from the solution.  As a programmer you will 
@@ -225,10 +293,16 @@ então talvez a figura a seguir seja uma versão mais sensata de nosso PDA:
 %do next.  Sometimes you will tell the CPU to use the main memory,
 %secondary memory, network, or the input/output devices.
 %
+
+\beforefig
+\centerline{\includegraphics[height=2.50in]{figs2/arch2.eps}}
+\afterfig
 %\beforefig
 %\centerline{\includegraphics[height=2.50in]{figs2/arch2.eps}}
 %\afterfig
 %
+
+
 %You need to be the person who answers the CPU's ``What next?'' 
 %question.  But it would be very uncomfortable to shrink you 
 %down to 5mm tall and insert you into the computer just so you 
