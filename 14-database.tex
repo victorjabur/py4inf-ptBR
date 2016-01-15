@@ -1071,30 +1071,52 @@ Assim que os dados do programa estejam armazenados no disco em um banco de
 dados o rastreamento pode ser suspenso e reiniciado tantas vezes quando
 quiser sem a perda de informações.
 
-\section{Basic data modeling}
+%\section{Basic data modeling}
+\section{Modelagem de dados básica}
 
-The real power of a relational database is when we create multiple tables
-and make links between those tables.   The act of deciding how to break
-up your application data into multiple tables and establishing the
-relationships between the tables is called {\bf data modeling}.  The
-design document that shows the tables and their relationships 
-is called a {\bf data model}.
+%The real power of a relational database is when we create multiple tables
+%and make links between those tables.   The act of deciding how to break
+%up your application data into multiple tables and establishing the
+%relationships between the tables is called {\bf data modeling}.  The
+%design document that shows the tables and their relationships 
+%is called a {\bf data model}.
 
-Data modeling is a relatively sophisticated skill and we will only introduce
-the most basic concepts of relational data modeling in this section.  For more
-detail on data modeling you can start with:
+O verdadeiro poder de um banco de dados relacional é quando criamos múltiplas
+tabelas e criamos ligações entre elas. Decidir como dividir os dados da sua
+aplicação em diferentes tabelas e estabelecer a relação entre estas tabelas é
+o que chamamos de {\bf modelagem de dados}. O documento que mostra a estrutura 
+das tabelas e suas relações é chamado de {\bf modelo de dados}.
+
+%Data modeling is a relatively sophisticated skill and we will only introduce
+%the most basic concepts of relational data modeling in this section.  For more
+%detail on data modeling you can start with:
+
+Modelagem de dados é uma habilidade relativamente sofisticada e nesta seção
+nós iremos somente introduzir os conceitos mais básicos da modelagem de dados
+relacionais. Para maiores detalhes sobre modelagem de dados você pode começar
+com:
 
 \url{http://en.wikipedia.org/wiki/Relational_model}
 
-Let's say for our Twitter spider application, instead of just 
-counting a person's friends, we wanted to keep a list of 
-all of the incoming relationships so we could find a list of 
-everyone who is following a particular account.
+%Let's say for our Twitter spider application, instead of just
+%counting a person's friends, we wanted to keep a list of 
+%all of the incoming relationships so we could find a list of 
+%everyone who is following a particular account.
 
-Since everyone will potentially have many accounts that follow
-them, we cannot simply add a single column to our {\tt Twitter} table. 
-So we create a new table that keeps track of pairs of friends.
-The following is a simple way of making such a table:
+Digamos que para a nossa aplicação de rastreamento do Twitter, ao invés de
+só contar os amigos das pessoas, nós queiramos manter uma lista de todas as
+relações de entrada, então poderemos encontrar uma lista de todos que seguem
+uma pessoa em particular.
+
+%Since everyone will potentially have many accounts that follow
+%them, we cannot simply add a single column to our {\tt Twitter} table. 
+%So we create a new table that keeps track of pairs of friends.
+%The following is a simple way of making such a table:
+
+Já que todos, potencialmente, terão tantas contas que o sigam, nós não podemos
+simplesmente adicionar uma coluna para nossa tabela {\tt Twitter}. Então
+criamos uma nova tabela que mantém o controle dos pares de amigos. A seguir
+temos uma forma simples de criar tal tabela:
 
 \beforeverb
 \begin{verbatim}
@@ -1102,8 +1124,11 @@ CREATE TABLE Pals (from_friend TEXT, to_friend TEXT)
 \end{verbatim}
 \afterverb
 %
-Each time we encounter a person who {\tt drchuck} is following, we
-would insert a row of the form:
+%Each time we encounter a person who {\tt drchuck} is following, we
+%would insert a row of the form:
+%
+Toda vez que encontrarmos uma pessoa que {\tt drchuck} está seguindo, nós
+iremos inserir uma linha da seguinte forma:
 
 \beforeverb
 \begin{verbatim}
@@ -1111,38 +1136,64 @@ INSERT INTO Pals (from_friend,to_friend) VALUES ('drchuck', 'lhawthorn')
 \end{verbatim}
 \afterverb
 %
-As we are processing the 20 friends from the {\tt drchuck}
-Twitter feed, we will insert 20 records with ``drchuck''
-as the first parameter so we will end up duplicating the 
-string many times in the database.
+%As we are processing the 20 friends from the {\tt drchuck}
+%Twitter feed, we will insert 20 records with ``drchuck''
+%as the first parameter so we will end up duplicating the 
+%string many times in the database.
+%
+Como estamos processando 20 amigos da conta do {\it Twitter} do {\tt drchuck},
+inserimor 20 registros com ``drchuck'' como primeiro parâmetro e assim
+acaberemos duplicando a {\it string} muitas vezes no banco de dados.
 
-This duplication of string data violates one of the best practices 
-for {\bf database normalization} which basically states that
-we should never put the same string data in the database more than once.  
-If we need the data more than once, we create a 
-numeric {\bf key} for the data and reference the actual data 
-using this key.
+%This duplication of string data violates one of the best practices 
+%for {\bf database normalization} which basically states that
+%we should never put the same string data in the database more than once.  
+%If we need the data more than once, we create a 
+%numeric {\bf key} for the data and reference the actual data 
+%using this key.
 
-In practical terms, a string takes up a lot more 
-space than an integer on the disk
-and in the memory of our computer, and takes more processor time
-to compare and sort.  If we only have a few hundred entries, 
-the storage and processor time hardly matters.  But if we have 
-a million people in our database and a possibility of 100 million
-friend links, it is important to be able to scan data as quickly
-as possible.
+Esta duplicação de dados viola uma das melhores práticas da {\bf normatização
+  de banco de dados} que basicamente afirma que nunca devemos colocar o mesmo
+dado mais de uma vez em um banco de dados. Se precisarmos inserir um dado mais
+de uma vez, criamos uma referência numérica {\bf key} (chave) para o dado, e
+utilizamos a chave para referenciar o dado.
 
-We will store our Twitter accounts in a table named {\tt People}
-instead of the {\tt Twitter} table used in the previous example.
-The {\tt People} table has an additional column 
-to store the numeric key associated with the 
-row for this Twitter user.   
-SQLite has a feature that automatically adds the key value
-for any row we insert into a table using a special type of 
-data column ({\tt INTEGER PRIMARY KEY}).
+%In practical terms, a string takes up a lot more 
+%space than an integer on the disk
+%and in the memory of our computer, and takes more processor time
+%to compare and sort.  If we only have a few hundred entries, 
+%the storage and processor time hardly matters.  But if we have 
+%a million people in our database and a possibility of 100 million
+%friend links, it is important to be able to scan data as quickly
+%as possible.
 
-We can create the {\tt People} table with this additional 
-{\tt id} column as follows:
+Na prática, uma {\it string} ocupa muito mais espaço do que um inteiro, no
+disco e na memória do nosso computador, e leva mais tempo do processor para
+comparar e ordenar. Se tivermos somente algumas centenas de entradas, a base
+de dados e o tempo de processamento dificilmente importarão. Mas se tivermos
+um milhão de pessoas na nossa base de dados e uma possibilidade de 100 milhões
+de conexões de amigos, é importante permitir examinar os dados o mais rápido
+possível.
+
+%We will store our Twitter accounts in a table named {\tt People}
+%instead of the {\tt Twitter} table used in the previous example.
+%The {\tt People} table has an additional column 
+%to store the numeric key associated with the 
+%row for this Twitter user.   
+%SQLite has a feature that automatically adds the key value
+%for any row we insert into a table using a special type of 
+%data column ({\tt INTEGER PRIMARY KEY}).
+
+Nós armazenaremos nossas contas do Twitter em uma tabela chamada {\tt People}
+ao invés de utilizar a tabela {\tt Twitter} utilizada no exemplo anterior. A
+tabela {\tt People} tem uma coluna adicional para armazenar uma chave associada
+a linha para este usuário.
+
+%We can create the {\tt People} table with this additional 
+%{\tt id} column as follows:
+
+Podemos criar a tabela {\tt People} com esta coluna {\tt id} adicional com o
+seguinte comando:
 
 \beforeverb
 \begin{verbatim}
@@ -1151,19 +1202,33 @@ CREATE TABLE People
 \end{verbatim}
 \afterverb
 %
-Notice that we are no longer maintaining a friend count in each row
-of the {\tt People} table.
-When we select {\tt INTEGER PRIMARY KEY} as the type of our {\tt id} column,
-we are indicating that we would like SQLite to manage this column and 
-assign a unique numeric key to each row we insert automatically.
-We also add the keyword {\tt UNIQUE} to indicate that we will not 
-allow SQLite to insert two rows with the same value for {\tt name}.
+%Notice that we are no longer maintaining a friend count in each row
+%of the {\tt People} table.
+%When we select {\tt INTEGER PRIMARY KEY} as the type of our {\tt id} column,
+%we are indicating that we would like SQLite to manage this column and 
+%assign a unique numeric key to each row we insert automatically.
+%We also add the keyword {\tt UNIQUE} to indicate that we will not 
+%allow SQLite to insert two rows with the same value for {\tt name}.
+%
+Perceba que nós não estamos mais mantendo uma conta de amigo em cada linha da
+tabela {\tt People}. Quando selecionamos {\tt INTEGER PRIMARY KEY} como o tipo
+da nossa coluna {\tt id}, estamos indicando que gostaríamos que o SQLite
+gerencie esta coluna e defina uma chave numérica única automagicamente para
+cada linha que inserirmos. Também adicionamos uma palavra-chave {\tt UNIQUE}
+para indicar que não permitiremos ao SQLite inserir duas linhas com o mesmo
+valor para {\tt name}.
 
-Now instead of creating the table {\tt Pals} above, we create
-a table called {\tt Follows} with two integer columns
-\verb"from_id" and \verb"to_id" and a constraint on the table that
-the \emph{combination} of \verb"from_id" and \verb"to_id" must be unique 
-in this table (i.e., we cannot insert duplicate rows) in our database.
+%Now instead of creating the table {\tt Pals} above, we create
+%a table called {\tt Follows} with two integer columns
+%\verb"from_id" and \verb"to_id" and a constraint on the table that
+%the \emph{combination} of \verb"from_id" and \verb"to_id" must be unique 
+%in this table (i.e., we cannot insert duplicate rows) in our database.
+
+Agora, ao invés de criar a tabela {\tt Pals} acima, criaremos uma tabela
+chamada {\tt Follows} com duas colunas com o tipo inteiro \verb"from_id" e
+\verb"to_id" e associaremos na tabela onde a \emph{combinação} de
+\verb"from_id" e \verb"to_id" devem ser únicos nesta tabela (i.e., não podemos
+inserir linhas duplicadas) na nossa base de dados.
 
 \beforeverb
 \begin{verbatim}
@@ -1172,16 +1237,27 @@ CREATE TABLE Follows
 \end{verbatim}
 \afterverb
 %
-When we add {\tt UNIQUE} clauses to our tables, we are communicating a set
-of rules that we are asking the database to enforce when we attempt to insert
-records.   We are creating these rules as a convenience in our programs, as we
-will see in a moment.  The rules both keep us from making mistakes and make
-it simpler to write some of our code.
+%When we add {\tt UNIQUE} clauses to our tables, we are communicating a set
+%of rules that we are asking the database to enforce when we attempt to insert
+%records.   We are creating these rules as a convenience in our programs, as we
+%will see in a moment.  The rules both keep us from making mistakes and make
+%it simpler to write some of our code.
 
-In essence, in creating this {\tt Follows} table, we are modelling a 
-``relationship'' where one person ``follows'' someone else
-and representing it with a pair of numbers indicating that (a) the people are
-connected and (b) the direction of the relationship.
+Quando adicionamos a condição {\tt UNIQUE} a nossa tabela, estamos definindo
+um conjunto de regras e pedindo a base de dados para cumprir estas regras
+quando tentarmos inserir algum registro. Estamos criando estas regras como uma
+conveniencia no nosso programa, como veremos a seguir. As regras nos impede de
+cometer enganos e facilita na escrita dos nossos códigos.
+
+%In essence, in creating this {\tt Follows} table, we are modelling a 
+%``relationship'' where one person ``follows'' someone else
+%and representing it with a pair of numbers indicating that (a) the people are
+%connected and (b) the direction of the relationship.
+
+Em essencia, criando a tabela {\tt Follows}, estamos modelando uma ``relação''
+onde uma pessoa ``segue'' outro alguém e representamos isto com um par de
+números indicando que (a) as pessoas estão conectadas e (b) a direção do
+relacionamento.
 
 \beforefig
 \centerline{\includegraphics[height=2.50in]{figs2/twitter.eps}}
