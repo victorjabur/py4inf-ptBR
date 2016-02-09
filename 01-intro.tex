@@ -171,7 +171,7 @@ em seus próprios programas, mais você pode pensar em programar para os outros.
 
 \section{Arquitetura física do Computador - Hardware}
 \index{hardware}
-\index{hardware!architecture}
+\index{hardware!arquitetura}
 %\section{Computer hardware architecture}
 %\index{hardware}
 %\index{hardware!architecture}
@@ -302,7 +302,13 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\afterfig
 %
 
-
+Você precisa ser a pessoa que responde à pergunta ``O que mais ?'' 
+para a CPU. Mas seria muito desconfortável se você fosse encolhido
+para uma altura de apenas 5 mm e inserido dentro de um computador 
+e ainda ter que responder uma pergunta três bilhões de vezes por segundo.
+Então, ao invés disso, você deve escrever suas instruções previamente.
+Nós invocamos as instruções armazenadas de um {\bf programa} e o
+ato de escrita dessas instruções precisa ser correto.
 %You need to be the person who answers the CPU's ``What next?'' 
 %question.  But it would be very uncomfortable to shrink you 
 %down to 5mm tall and insert you into the computer just so you 
@@ -312,25 +318,52 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %of writing these instructions down and getting the instructions to 
 %be correct {\bf programming}.
 %
+
+\section{Entendendo programação}
 %\section{Understanding programming}
 %
+
+No restante deste livro, nós iremos tentar fazer de você uma pessoa
+com habilidades na arte da programação. No final você será um 
+{\bf programador}, no entanto não um programador profissional, mas
+pelo menos você terá os conhecimentos para analisar os problemas
+de dados/informações e desenvolver um programa para resolver tais 
+problemas.
 %In the rest of this book, we will try to turn you into a person
 %who is skilled in the art of programming.  In the end you will be a 
 %{\bf programmer} --- perhaps not a professional programmer, but 
 %at least you will have the skills to look at a data/information
 %analysis problem and develop a program to solve the problem.
 %
+
+\index{resolvendo problemas}
 %\index{problem solving}
 %
+
+Resumidamente, você precisa de duas qualidades para ser um programador:
 %In a sense, you need two skills to be a programmer:
 %
+
+\begin{itemize}
 %\begin{itemize}
 %
+
+\item Primeiramente, você precisa conhecer uma linguagem de programação (Python) -
+você precisa conhecer o vocabulario e a gramática. Você precisa saber
+pronunciar as palavras desta nova linguagem corretamente e conhecer como construir
+sentenças bem formadas nesta linguagem.
 %\item First, you need to know the programming language (Python) -
 %you need to know the vocabulary and the grammar.  You need to be able 
 %to spell the words in this new language properly and know how to construct 
 %well-formed ``sentences'' in this new language.
 %
+
+\item Segundo, você precisa ``contar uma estória''. Na escrita da estória,
+você combina palavras e sentenças para convencer o leitor.
+É necessário qualidade e arte na construção da estória, adquiri-se
+isto através da prática de contar estórias e obter um feedback.
+Na programação, nosso programa é a ``estória'' e o problema que você
+quer resolver é a ``idéia''.
 %\item Second, you need to ``tell a story''.  In writing a story,
 %you combine words and sentences to convey an idea to the reader. 
 %There is a skill and art in constructing the story, and skill in
@@ -338,14 +371,32 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %feedback.  In programming, our program is the ``story'' and the 
 %problem you are trying to solve is the ``idea''.
 %
+
+\end{itemize}
 %\end{itemize}
 %
+
+Uma vez que você aprende uma linguagem de programação, como o Python, você irá
+achar muito mais fácil aprender a segunda linguagem de programação, tal como
+JavaScript ou C++. A nova linguagem de programação possuirá um vocabulário
+e gramática bastante diferente, mas as habilidades na resolução do problemas
+serão as mesmas em qualquer linguagem.
 %Once you learn one programming language such as Python, you will 
 %find it much easier to learn a second programming language such
 %as JavaScript or C++.  The new programming language has very different 
 %vocabulary and grammar but the problem-solving skills 
 %will be the same across all programming languages.
 %
+
+Você aprenderá o ``vocabulário'' e ``sentenças'' do Python rapidamente.
+Levará muito tempo para você tornar-se hábil em escrever programas coerentes
+para resolver um novo problema. Nós ensinamos programação assim como ensinamos
+a escrever. Nós estaremos lendo e explicando programas, nós escreveremos programas
+simples, e então nós aumentaremos a complexidade dos programas ao longo do tempo.
+Em algum momento, você ``deslancha'' e vê os padrões por si próprio e pode visualizar
+com maior naturalidade como escrever um programa para resolver o problema. Uma
+vez que você chega neste pontoprogramar torna-se um processo muito agradável e
+criativo.
 %You will learn the ``vocabulary'' and ``sentences'' of Python pretty quickly.
 %It will take longer for you to be able to write a coherent program
 %to solve a brand-new problem.  We teach programming much like we teach
@@ -356,14 +407,30 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %write a program that solves that problem.  And once you get 
 %to that point, programming becomes a very pleasant and creative process.  
 %
+
+Nós iniciamos com o vocabulário e a estrutura de programas em Python. Seja paciente
+com os exemplos simples, relembre quando você iniciou a leitura pela primeira vez.
 %We start with the vocabulary and structure of Python programs.  Be patient
 %as the simple examples remind you of when you started reading for the first
 %time. 
 %
+
+\section{Programas e Sentenças}
+\index{linguagem de programação}
+\index{linguagem!programação}
 %\section{Words and sentences}
 %\index{programming language}
 %\index{language!programming}
 %
+
+Diferentemente dos idiomas humanos, o vocabulário do Python é atualmente muito pequeno.
+Nós chamamos isto de ``vocabulário'' e ``palavras reservadas''. Estas palavras tem
+um significado especial no Python. Quando o Python encontra estas palavras em um
+programa, elas possuem um e somente um significado para o Python. Quando você
+escreve seus programas você irá definir suas próprias palavras com significado,
+são chamadas {\bf variáveis}. Você pode escolher muitos nomes diferentes para
+as suas variáveis, mas você não pode usar qualquer palavra reservada do Python
+como o nome de uma variável.
 %Unlike human languages, the Python vocabulary is actually pretty small.
 %We call this ``vocabulary'' the ``reserved words''.  These are words that
 %have very special meaning to Python.  When Python sees these words in 
@@ -373,6 +440,17 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %your names for your variables, but you cannot use any of Python's 
 %reserved words as a name for a variable.
 %
+
+Quando nós treinamos um cachorro, nós usamos palavras especiais, tais como:
+``sentado'', ``fique'' e ``traga''. Quando você conversar com um cachorro e
+não usar qualquer uma destas palavras reservadas, eles ficarão olhando para você
+com um olhar curioso até que você diga uma palavra reservada.
+Por exemplo, se você disser: ``Eu desejo que mais pessoas possam caminhar para
+melhorar a sua saúde'', o que os cachorros vão ouvir será:
+``blah blah blah {\bf walk} blah blah blah blah.''
+Isto porque ``caminhar'' é uma palavra reservada na linguagem dos cachorros. Muitos
+podem sugerir que a linguagem entre humanos e gatos não tem palavras 
+reservadas\footnote{\url{http://xkcd.com/231/}}.
 %When we train a dog, we use special words like
 %``sit'', ``stay'', and ``fetch''.  When you talk to a dog and
 %don't use any of the reserved words, they just look at you with a 
@@ -385,46 +463,78 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %might suggest that the language between humans and cats has no
 %reserved words\footnote{\url{http://xkcd.com/231/}}.
 %
+
+As palavras reservadas na linguagem onde os humanos conversam com o
+Python, incluem o seguinte:
 %The reserved words in the language where humans talk to 
 %Python include the following:
 %
-%\beforeverb
-%\begin{verbatim}
-%and       del       from      not       while    
-%as        elif      global    or        with     
-%assert    else      if        pass      yield    
-%break     except    import    print              
-%class     exec      in        raise              
-%continue  finally   is        return             
-%def       for       lambda    try
-%\end{verbatim}
-%\afterverb
-%%
+
+\beforeverb
+\begin{verbatim}
+and       del       from      not       while    
+as        elif      global    or        with     
+assert    else      if        pass      yield    
+break     except    import    print              
+class     exec      in        raise              
+continue  finally   is        return             
+def       for       lambda    try
+\end{verbatim}
+\afterverb
+%
+
+É isto, e ao contrário do cachorro, o Python é completamente treinado.
+Quando você diz ``try'', o Python irá tentar todas as vezes que você pedir
+sem desobedecer.
 %That is it, and unlike a dog, Python is already completely trained.
 %When you say ``try'', Python will try every time you say it without
 %fail.
 %
+
+Nós aprenderemos as palavras reservadas e como elas são usadas mais adiante,
+por enquanto nós iremos focar no equivalente ao Python de ``falar'' (na 
+linguagem humano-para-cachorro). Uma coisa legal sobre pedir ao Python para falar
+é que nós podemos até mesmo pedir o que nós queremos através de uma mensagem
+entre aspas: 
 %We will learn these reserved words and how they are used in good time,
 %but for now we will focus on the Python equivalent of ``speak'' (in 
 %human-to-dog language).  The nice thing about telling Python to speak
 %is that we can even tell it what to say by giving it a message in quotes:
 %
-%\beforeverb
-%\begin{verbatim}
-%print 'Hello world!'
-%\end{verbatim}
-%\afterverb
+
+\beforeverb
+\begin{verbatim}
+print 'Hello world!'
+\end{verbatim}
+\afterverb
 %
+
+E finalmente nós escrevemos a nossa primeira sentença sintaticamente correta em Python.
+Nossa sentença inicia com uma palavra reservada {\bf print} seguida por
+uma cadeia de caracteres textuais de sua escolha entre aspas simples.
 %And we have even written our first syntactically correct Python sentence.
 %Our sentence starts with the reserved word {\bf print} followed
 %by a string of text of our choosing enclosed in single quotes.
 %
+
+\section{Conversando com Python}
 %\section{Conversing with Python}
 %
+
+Agora que você tem uma palavra e uma simples sentença que nós conhecemos em Python,
+nós precisamos saber como iniciar uma conversação com Python para testar
+nossas habilidades na nova linguagem.
 %Now that we have a word and a simple sentence that we know in Python,
 %we need to know how to start a conversation with Python to test 
 %our new language skills.
 %
+
+Antes de você conversar com o Python, você deve primeiramente instalar o programa
+Python em seu computador e aprender como inicializá-lo. Isto é muita informação
+para este capítulo, então eu sugiro que você consulte \url{www.pythonlearn.com}
+onde se encontra instruções e screencasts de preparação e inicialização do Python
+em sistemas Windows e Macintosh. Em algum momento, você estará no interpretador
+Python e estará executando o modo interativo e aparecer algo assim:
 %Before you can converse with Python, you must first install the Python
 %software on your computer and learn how to start Python on your 
 %computer.  That is too much detail for this chapter so I suggest
@@ -434,26 +544,47 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %a terminal or command window and you will type {\bf python} and 
 %the Python interpreter will start executing in interactive mode
 %and appear somewhat as follows:
-%\index{interactive mode}
+
+\index{modo interativo}
+
+\beforeverb
+\begin{verbatim}
+Python 2.6.1 (r261:67515, Jun 24 2010, 21:47:49) 
+[GCC 4.2.1 (Apple Inc. build 5646)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+\end{verbatim}
+\afterverb
 %
-%\beforeverb
-%\begin{verbatim}
-%Python 2.6.1 (r261:67515, Jun 24 2010, 21:47:49) 
-%[GCC 4.2.1 (Apple Inc. build 5646)] on darwin
-%Type "help", "copyright", "credits" or "license" for more information.
-%>>> 
-%\end{verbatim}
-%\afterverb
-%%
+
+O {\tt >>>} prompt é a forma do interpretador Python perguntar o que você deseja:
+``O que você quer que eu faça agora ?'' Python está pronto para ter uma conversação
+com você. Tudo o que você deve conhecer é como falar a linguagem Python.
 %The {\tt >>>} prompt is the Python interpreter's way of asking you, ``What
 %do you want me to do next?''  Python is ready to have a conversation with
 %you.  All you have to know is how to speak the Python language.
 %
+
+Digamos, por exemplo, que você não conhece nem mesmo as mais simples palavras
+ou sentenças da linguagem Python. Você pode querer usar a linha padrão que os
+astronautas usam quando eles estão em uma terra distante do planeta e tentam falar
+com os habitantes do planeta:
 %Let's say for example that you did not know even the simplest Python language
 %words or sentences. You might want to use the standard line that astronauts 
 %use when they land on a faraway planet and try to speak with the inhabitants
 %of the planet:
 %
+
+\beforeverb
+\begin{verbatim}
+>>> Eu venho em paz, por favor me leve para o seu líder
+  File "<stdin>", line 1
+    Eu venho em paz, por favor me leve para o seu líder
+         ^
+SyntaxError: invalid syntax
+>>> 
+\end{verbatim}
+\afterverb
 %\beforeverb
 %\begin{verbatim}
 %>>> I come in peace, please take me to your leader
@@ -465,13 +596,28 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Isto não deu muito certo. A menos que você pense algo rapidamente,
+os habitantes do planeta provavelmente irão apunhalá-lo com uma lança,
+colocando-o em um espeto, assando-o no fogo, e comê-lo no jantar.
 %This is not going so well.  Unless you think of something quickly,
 %the inhabitants of the planet are likely to stab you with their spears, 
 %put you on a spit, roast you over a fire, and eat you for dinner.
 %
+
+A sorte é que você trouxe uma cópia deste livro em sua viagem, e caiu
+exatamente nesta página, tente novamente:
 %Luckily you brought a copy of this book on your travels, and you thumb to
 %this very page and try again:
 %
+
+\beforeverb
+\begin{verbatim}
+>>> print 'Ola Mundo!'
+Ola Mundo!
+\end{verbatim}
+\afterverb
+
 %\beforeverb
 %\begin{verbatim}
 %>>> print 'Hello world!'
@@ -479,9 +625,30 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Isso parece bem melhor, então você tenta se comunicar um pouco 
+mais:
 %This is looking much better, so you try to communicate some
 %more:
 %
+
+\beforeverb
+\begin{verbatim}
+>>> print 'Voce deve ser um Deus lendario que veio do ceu'
+Voce deve ser um Deus lendario que veio do ceu
+>>> print 'Nos estivemos esperando voce por um longo tempo'
+Nos estivemos esperando voce por um longo tempo
+>>> print 'Nossa lenda nos conta que voce seria muito apetitoso com mostarda'
+Nossa lenda nos conta que voce seria muito apetitoso com mostarda
+>>> print 'Nos teremos uma festa hoje a noite a menos que voce diga
+  File "<stdin>", line 1
+    print 'Nos teremos uma festa hoje a noite a menos que voce diga
+                                                                  ^
+SyntaxError: EOL while scanning string literal
+>>> 
+\end{verbatim}
+\afterverb
+
 %\beforeverb
 %\begin{verbatim}
 %>>> print 'You must be the legendary god that comes from the sky'
@@ -499,16 +666,33 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+A conversa foi bem por um momento, até que você cometeu o 
+pequeno erro no uso da linguagem e o Python trouxe a lança
+de volta.
 %The conversation was going so well for a while and then you
 %made the tiniest mistake using the Python language and Python 
 %brought the spears back out.
 %
+
+Até o momento, você deve ter percebido que o Python
+é incrivelmente complexo e poderoso e muito exigente em relação
+à sintaxe que você utiliza para se comunicar com ele, Python {\em não}
+é inteligente. Você está na verdade tendo uma conversa com você mesmo,
+mas usando uma sintaxe apropriada.
 %At this point, you should also realize that while Python 
 %is amazingly complex and powerful and very picky about 
 %the syntax you use to communicate with it, Python is {\em 
 %not} intelligent.  You are really just having a conversation
 %with yourself, but using proper syntax.
 %
+
+De certa forma, quando você usa um programa escrito por alguém,
+a conversa ocorre entre você e os programadores, neste caso o Python 
+atuou como um intermediário. Python é uma forma para que os criadores de
+programas se expressem sobre como uma conversa deve proceder. E em poucos
+capítulos, você será um dos programadores usando Python para conversar com 
+os usuários de seus programas.
 %In a sense, when you use a program written by someone else
 %the conversation is between you and those other
 %programmers with Python acting as an intermediary.  Python
@@ -517,11 +701,34 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %in just a few more chapters, you will be one of those
 %programmers using Python to talk to the users of your program.
 %
+
+Antes de sairmos da nossa primeira conversa com o interpretador
+do Python, você deve conhecer o modo correto de dizer ``ate-logo''
+quando interagir com os habitantes do Planeta Python.
 %Before we leave our first conversation with the Python 
 %interpreter, you should probably know the proper way
 %to say ``good-bye'' when interacting with the inhabitants
 %of Planet Python:
 %
+
+\beforeverb
+\begin{verbatim}
+>>> ate-logo
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'ate' is not defined
+
+>>> se voce nao se importa, eu preciso ir embora
+  File "<stdin>", line 1
+    se voce nao se importa, eu preciso ir embora
+          ^
+SyntaxError: invalid syntax
+
+>>> quit()
+\end{verbatim}
+\afterverb
+%
+
 %\beforeverb
 %\begin{verbatim}
 %>>> good-bye
@@ -539,20 +746,41 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Você pode perceber que o erro é diferente nas duas primeiras
+tentativas incorretas. No primeiro erro, por tratar-se de uma
+palavra simples, o Python não pode encontrar nenhuma função ou
+variável com este nome. No segundo erro, existe um erro de sintaxe,
+não sendo reconhecida a frase como válida.
 %You will notice that the error is different for the first two
 %incorrect attempts.   The second error is different because 
 %{\bf if} is a reserved word and Python saw the reserved word
 %and thought we were trying to say something but got the syntax
 %of the sentence wrong.
 %
+
+O jeito correto de se dizer ``ate-logo'' para o Python é
+digitar {\bf quit()} no prompt do interpretador interativo.
+É provável que você tenha perdido certo tempo tentado fazer isso,
+ter um livro em mãos irá tornar as coisas mais fáceis e 
+pode ser bastante útil. 
 %The proper way to say ``good-bye'' to Python is to enter 
 %{\bf quit()} at the interactive chevron {\tt >>>} prompt.
 %It would have probably taken you quite a while to guess that 
 %one, so having a book handy probably will turn out 
 %to be helpful.
 %
+
+\section{Terminologia: interpretador e compilador}
 %\section{Terminology: interpreter and compiler}
 %
+
+Python é uma linguagem {\bf alto nível} cujo objetivo é ser
+relativamente fácil para humanos ler e escrever e para computadores
+ler e processar. Outras linguagens alto nível incluem Java, C++,
+PHP, Ruby, Basic, Perl, JavaScript, e muito mais. O atual hardware
+dentro da Unidade Central de Processamento (CPU) não é capaz de entender
+nenhum destes comando em alto nível.
 %Python is a {\bf high-level} language intended to be relatively
 %straightforward for humans to read and write and for computers
 %to read and process.  Other high-level languages include Java, C++,
@@ -560,10 +788,22 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %inside the Central Processing Unit (CPU) does not understand any
 %of these high-level languages.
 %
+
+A CPU entende a linguagem que chamamos de {\bf linguagem de máquina}. Linguagem
+de máquina é muit simples e francamente cansativa de se escrever porque ela é
+representada em zeros e uns:
 %The CPU understands a language we call {\bf machine language}.  Machine
 %language is very simple and frankly very tiresome to write because it 
 %is represented all in zeros and ones:
 %
+
+\beforeverb
+\begin{verbatim}
+01010001110100100101010000001111
+11100110000011101010010101101101
+...
+\end{verbatim}
+\afterverb
 %\beforeverb
 %\begin{verbatim}
 %01010001110100100101010000001111
@@ -572,6 +812,14 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Linguagem de máquina parece simples olhando-se de um modo superficial, 
+dado que são apenas zeros e uns, mas sua sintaxe é muito mais complexa
+e mais distante que o Python. Poucos programadores escrevem linguagem de
+máquina. Invés disso, nós usamos vários tradutores para permitir que os 
+programadores escrevam linguagem de máquina em linguagens de alto nível 
+como o Python ou o JavaScript e estes tradutores convertem os programas
+para linguagem de máquina para execução pela CPU. 
 %Machine language seems quite simple on the surface, given that there 
 %are only zeros and ones, but its syntax is even more complex
 %and far more intricate than Python.  So very few programmers ever write
@@ -580,26 +828,60 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %and these translators convert the programs to machine language for actual
 %execution by the CPU.
 %
+
+Visto que linguagem de máquina é vinculada ao hardware do computador,
+linguagem de máquina não é {\bf portável} entre diferentes tipos de hardware.
+Programas que foram escritos em linguagens de alto nível podem mover-se
+entre diferentes computadores usando um interpretador diferente em cada máquina
+ou então recompilando o código para criar uma versão de linguagem de máquina do
+programa para a nova máquina.
 %Since machine language is tied to the computer hardware, machine language
 %is not {\bf portable} across different types of hardware.  Programs written in 
 %high-level languages can be moved between different computers by using a 
 %different interpreter on the new machine or recompiling the code to create
 %a machine language version of the program for the new machine.
 %
+
+Os tradutores das linguagens de programação se enquadram em duas 
+características gerais: 
+(1) interpretadores e (2) compiladores
 %These programming language translators fall into two general categories:
 %(1) interpreters and (2) compilers.
 %
+
+Um {\bf interpretador} lê o código fonte de um programa da forma como foi escrito 
+pelo programador, analisa, e interpreta as instruções em tempo de 
+execução. Python é um interpretador e quando ele está rodando Python no modo 
+interativo, nós podemos digitar uma linha de Python (uma sentença) e o Python 
+processa imediatamente e está ponto para receber outra linha de Python.
 %An {\bf interpreter} reads the source code of the program as written by the
 %programmer, parses the source code, and interprets the instructions on the fly.
 %Python is an interpreter and when we are running Python interactively, 
 %we can type a line of Python (a sentence) and Python processes it immediately
 %and is ready for us to type another line of Python.   
 %
+
+Algumas das linhas de Python diz a ele que você quer armazenar algum valor
+para resgatar depois. Nós precisamos dar um nome para um valor de forma que possa
+ser armazenado e resgatado através deste nome simbólico. Nós usamos o termo
+{\bf variável} para se referir aos apelidos que nós demos ao dado que foi armazenado.
 %Some of the lines of Python tell Python that you want it to remember some 
 %value for later.   We need to pick a name for that value to be remembered and
 %we can use that symbolic name to retrieve the value later.  We use the 
 %term {\bf variable} to refer to the labels we use to refer to this stored data.
 %
+
+\beforeverb
+\begin{verbatim}
+>>> x = 6
+>>> print x
+6
+>>> y = x * 7
+>>> print y
+42
+>>> 
+\end{verbatim}
+\afterverb
 %\beforeverb
 %\begin{verbatim}
 %>>> x = 6
@@ -612,31 +894,68 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Neste exemplo, nós pedimos ao Python para armazenar o valor seis e usar um apelido {\bf x}
+assim nós podemos resgatar o valor mais tarde. Nós verificamos que o Python realmente
+lembrou dos valores quando usamos a função {\bf print}. Então nós perguntamos ao Python
+para resgatar {\bf x} e multiplicar por sete a armazenar de novo em uma variável {\bf y}.
+Então nós pedimos ao Python para imprimir o valor corrente em {\bf y}.
 %In this example, we ask Python to remember the value six and use the label {\bf x}
 %so we can retrieve the value later.   We verify that Python has actually remembered
 %the value using {\bf print}. Then we ask Python to retrieve {\bf x} and multiply
 %it by seven and put the newly computed value in {\bf y}.  Then we ask Python to print out
 %the value currently in {\bf y}.
 %
+
+Mesmo que nós digitemos estes comandos em uma única linha de Python por vez, o Python
+está processando elas em sequência, mantendo a ordem, de forma que as
+instruções seguintes consigam recuperar os dados criados pelas anteriores. Nós escrevemos
+nosso primeiro parágrafo simples com quatro sentenças com uma ordem lógica e com um
+significado.
 %Even though we are typing these commands into Python one line at a time, Python
 %is treating them as an ordered sequence of statements with later statements able
 %to retrieve data created in earlier statements.   We are writing our first 
 %simple paragraph with four sentences in a logical and meaningful order.
 %
+
+É da natureza de um {\bf interpretador} ser capaz de ter uma conversa interativa, como 
+foi mostrado acima. Um {\bf compilador} precisa ter em mãos o programa completo em um arquivo,
+e então ele roda um processo para traduzir um código fonte em alto nível para uma linguagem
+de máquina e então o compilador coloca o resultado deste processo em um outro arquivo
+para posterior execução.
 %It is the nature of an {\bf interpreter} to be able to have an interactive conversation
 %as shown above.  A {\bf compiler} needs to be handed the entire program in a file, and then 
 %it runs a process to translate the high-level source code into machine language
 %and then the compiler puts the resulting machine language into a file for later
 %execution.
 %
+
+Se você está em um sistema Windows, frequentemente este programa executável em código
+de máquina tem o sufixo ``.exe'' ou ``.dll'', o qual é chamado de ``executável'' ou 
+``biblioteca de link dinâmico'', respectivamente. Em Linux e Macintosh, não há um sufixo
+que marca um arquivo unicamente como executável.
 %If you have a Windows system, often these executable machine language programs have a
 %suffix of ``.exe'' or ``.dll'' which stand for ``executable'' and ``dynamic link
 %library'' respectively.  In Linux and Macintosh, there is no suffix that uniquely marks
 %a file as executable.
 %
+
+Se você abrir um arquivo executável em um editor de texto, verá algo completamente
+doido e ilegível.
 %If you were to open an executable file in a text editor, it would look 
 %completely crazy and be unreadable:
 %
+
+\beforeverb
+\begin{verbatim}
+^?ELF^A^A^A^@^@^@^@^@^@^@^@^@^B^@^C^@^A^@^@^@\xa0\x82
+^D^H4^@^@^@\x90^]^@^@^@^@^@^@4^@ ^@^G^@(^@$^@!^@^F^@
+^@^@4^@^@^@4\x80^D^H4\x80^D^H\xe0^@^@^@\xe0^@^@^@^E
+^@^@^@^D^@^@^@^C^@^@^@^T^A^@^@^T\x81^D^H^T\x81^D^H^S
+^@^@^@^S^@^@^@^D^@^@^@^A^@^@^@^A\^D^HQVhT\x83^D^H\xe8
+....
+\end{verbatim}
+\afterverb
 %\beforeverb
 %\begin{verbatim}
 %^?ELF^A^A^A^@^@^@^@^@^@^@^@^@^B^@^C^@^A^@^@^@\xa0\x82
@@ -648,15 +967,33 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Não é nada fácil ler ou escrever código de máquina, assim é bom que tenhamos
+{\bf interpretadores} e {\bf compiladores} que nos permitam escrever em linguagens
+de alto nível assim como o Python ou o C.
 %It is not easy to read or write machine language, so it is nice that we have
 %{\bf interpreters} and {\bf compilers} that allow us to write in high-level
 %languages like Python or C.
 %
+
+Agora neste ponto em nossa discussão de compiladores e interpretadores, você deve
+estar com algumas dúvidas sobre o funcionamento do interpretador Python. Em que 
+linguagem é escrito ? É escrito em uma linguagem compilada ? Quando nós
+digitamos ``python'', o que exatamente acontece ?
 %Now at this point in our discussion of compilers and interpreters, you should 
 %be wondering a bit about the Python interpreter itself.  What language is 
 %it written in?  Is it written in a compiled language?  When we type
 %``python'', what exactly is happening?
 %
+
+O interpretador Python é escrito em uma linguagem de alto nível, chamada ``C''.
+Você pode dar uma olhada no código fonte atual do interpretador através
+do endereço \url{www.python.org} e trabalhar como você quiser com o código fonte.
+Então Python é um programa compilado em uma linguagem de máquina.
+Quando você instalou Python em seu computador (ou o fornecedor instalou),
+você copiou um código de máquina do programa Python traduzido para o seu sistema.
+Em Windows, o código de máquina executável para o Python encontra-se em um
+arquivo com um nome a seguir: 
 %The Python interpreter is written in a high-level language called ``C''.  
 %You can look at the actual source code for the Python interpreter by
 %going to \url{www.python.org} and working your way to their source code.
@@ -666,32 +1003,69 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %system.   In Windows, the executable machine code for Python itself is likely
 %in a file with a name like:
 %
+
+\beforeverb
+\begin{verbatim}
+C:\Python27\python.exe
+\end{verbatim}
+\afterverb
 %\beforeverb
 %\begin{verbatim}
 %C:\Python27\python.exe
 %\end{verbatim}
 %\afterverb
 %%
+
+Isto é mais do que você realmente precisa conhecer para ser um programador Python, mas
+às vezes, isto ajuda a entender questões que intrigam justamente no início.
 %That is more than you really need to know to be a Python programmer, but
 %sometimes it pays to answer those little nagging questions right at 
 %the beginning.
 %
+
+\section{Escrevendo um programa}
 %\section{Writing a program}
 %
+
+Digitar comandos em um Interpretador Python é uma boa maneira de experimentar
+as características da linguagem, mas isto não é recomendado para resolver 
+problemas mais complexos.
 %Typing commands into the Python interpreter is a great way to experiment 
 %with Python's features, but it is not recommended for solving more complex problems.
 %
+
+Quando nós queremos escrever um programa,
+usamos um editor de texto para escrever as instruções Python em um arquivo,
+o qual chamamos de {\bf script}. Por convenção,
+scripts Python tem nomes que terminam com {\tt .py}.
 %When we want to write a program, 
 %we use a text editor to write the Python instructions into a file,
 %which is called a {\bf script}.  By
 %convention, Python scripts have names that end with {\tt .py}.
 %
+
+\index{script}
 %\index{script}
 %
+
+Para executar o script, você tem que dizer ao interpretador do Python
+o nome do arquivo. Em uma janela de comandos Unix ou Windows, você digita
+{\tt python hello.py} como a seguir:
 %To execute the script, you have to tell the Python interpreter 
 %the name of the file.  In a Unix or Windows command window, 
 %you would type {\tt python hello.py} as follows:
 %
+
+\beforeverb
+\begin{verbatim}
+csev$ cat hello.py
+print 'Ola Mundo!'
+csev$ python hello.py
+Ola Mundo!
+csev$
+\end{verbatim}
+\afterverb
+
 %\beforeverb
 %\begin{verbatim}
 %csev$ cat hello.py
@@ -702,30 +1076,62 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+O ``csev\$'' é o prompt do sistema operacional, e o ``cat hello.py'' é
+para nos mostrar que o arquivo ``hello.py'' tem uma linha de programa Python para
+imprimir uma string.
 %The ``csev\$'' is the operating system prompt, and the ``cat hello.py'' is 
 %showing us that the file ``hello.py'' has a one-line Python program to print
 %a string.
 %
+
+Nós chamamos o interpretador Python e pedimos a ele para ler o código fonte do
+arquivo ``hello.py'' ao invés dele nos perguntar quais são as próximas linhas
+de modo interativo.
 %We call the Python interpreter and tell it to read its source code from
 %the file ``hello.py'' instead of prompting us for lines of Python code
 %interactively.
 %
+
+Você notará que não é preciso ter o {\bf quit()} no fim do programa Python
+no arquivo. Quando o Python está lendo o seu código fonte de um arquivo,
+ele sabe que deve parar quando chegar ao fim do arquivo.  
 %You will notice that there was no need to have {\bf quit()} at the end of
 %the Python program in the file.   When Python is reading your source code
 %from a file, it knows to stop when it reaches the end of the file.
 %
+
+\section{O que é um programa ?}
 %\section{What is a program?}
 %
+
+A definição de um {\bf programa} em sua forma mais básica é uma sequência
+de comandos Python que foram criados para fazer algo.
+Mesmo o nosso simples script {\bf hello.py} é um programa. É um programa
+de uma linha e não é particularmente útil, mas na estrita definição, é
+um programa Python.
 %The definition of a {\bf program} at its most basic is a sequence
 %of Python statements that have been crafted to do something.
 %Even our simple {\bf hello.py} script is a program.  It is a one-line
 %program and is not particularly useful, but in the strictest definition,
 %it is a Python program.
 %
+
+Pode ser mais fácil entender o que é um programa, imaginando qual problema ele
+foi construído para resolver, e então olhar para o programa que resolve um
+problema.
 %It might be easiest to understand what a program is by thinking about a problem 
 %that a program might be built to solve, and then looking at a program
 %that would solve that problem.
 %
+
+Vamos dizer que você está fazendo uma pesquisa de computação social em posts 
+do Facebook e está interessado nas palavras mais frequentes em uma série de posts.
+Você não pode imprimir o stream de posts do Facebook e debruçar-se sobre o texto
+procurando pela palavra mais comum, mas pode levar um longo tempo e ser muito
+propenso a erros. Você pode ser inteligente para escrever um programa Python para
+tratar disso rapidamente a com acurácia, então você pode passar seu final de semana
+fazendo algo divertido.
 %Lets say you are doing Social Computing research on Facebook posts and 
 %you are interested in the most frequently used word in a series of posts.
 %You could print out the stream of Facebook posts and pore over the text
@@ -734,9 +1140,19 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %task quickly and accurately so you can spend the weekend doing something 
 %fun.
 %
+
+Por exemplo, olhe para o seguinte texto sobre o palhaço e o carro. Olhe para o 
+texto e imagine qual é a palavra mais comum e quantas vezes ela aparece: 
 %For example, look at the following text about a clown and a car.  Look at the 
 %text and figure out the most common word and how many times it occurs.
 %
+
+\beforeverb
+\begin{verbatim}
+O palhaço correu atrás do carro e o carro correu para a tenda
+e a tenda caiu em cima do palhaço e do carro
+\end{verbatim}
+\afterverb
 %\beforeverb
 %\begin{verbatim}
 %the clown ran after the car and the car ran into the tent 
@@ -744,15 +1160,47 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Então imagine que você está fazendo esta tarefa olhando para milhões de linhas
+de texto. Francamente será mais rápido para você aprender Python e escrever um
+programa Python para contar as palavras do que você manualmente escanear as 
+palavras.
 %Then imagine that you are doing this task looking at millions of lines of 
 %text.  Frankly it would be quicker for you to learn Python and write a 
 %Python program to count the words than it would be to manually 
 %scan the words.
 %
+
+A notícia ainda melhor é que eu já fiz para você um simples programa para
+encontrar a palavra mais comum em um arquivo texto. Eu escrevi, testei e agora
+eu estou dando isto para que você use e economize algum tempo. 
 %The even better news is that I already came up with a simple program to 
 %find the most common word in a text file.  I wrote it,
 %tested it, and now I am giving it to you to use so you can save some time.
 %
+
+\beforeverb
+\begin{verbatim}
+name = raw_input('Enter file:')
+handle = open(name, 'r')
+text = handle.read()
+words = text.split()
+counts = dict()
+
+for word in words:
+   counts[word] = counts.get(word,0) + 1
+
+bigcount = None
+bigword = None
+for word,count in counts.items():
+    if bigcount is None or count > bigcount:
+        bigword = word
+        bigcount = count
+
+print bigword, bigcount
+\end{verbatim}
+\afterverb
+
 %\beforeverb
 %\begin{verbatim}
 %name = raw_input('Enter file:')
@@ -775,6 +1223,13 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Você nem precisa conhecer Python para usar este programa. Você precisará chegar até o
+capítulo 10 deste livro para entender completamente as impressionantes técnicas Python
+que foram utilizadas para fazer o programa. Você é o usuário final, você simplesmente usa
+o programa e admira-se com a inteligência e em como ela poupou seus esforços manuais.
+Você simplesmente digitou o código em um arquivo chamado {\bf words.py} e executou ou então
+fez o download do código fonte no site \url{http://www.pythonlearn.com/code/} e executou.
 %You don't even need to know Python to use this program.  You will need to get through 
 %Chapter 10 of this book to fully understand the awesome Python techniques that were
 %used to make the program.  You are the end user, you simply use the program and marvel
@@ -783,50 +1238,99 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %into a file called {\bf words.py} and run it or you download the source 
 %code from \url{http://www.pythonlearn.com/code/} and run it.
 %
+
+\index{programa}
 %\index{program}
+
+Este é um bom exemplo de como o Python e sua linguagem podem atuar como um intermediário
+entre você (o usuário final) e eu (o programador). Python é uma forma para trocarmos úteis
+sequências de instruções (i.e., programas) em uma linguagem comum que pode ser usada por 
+qualquer que instalar Python em seu computador. Então nenhum de nós está conversando {\em com o Python}
+mas sim nos comunicando uns com os outros {\em através} de Python.
 %This is a good example of how Python and the Python language are acting as an intermediary
 %between you (the end user) and me (the programmer).  Python is a way for us to exchange useful
 %instruction sequences (i.e., programs) in a common language that can be used by anyone who 
 %installs Python on their computer.  So neither of us are talking {\em to Python},
 %instead we are communicating with each other {\em through} Python.
 %
+
+\section{A construção de blocos de programas}
 %\section{The building blocks of programs}
 %
+
+Em poucos capítulos, nós iremos aprender mais sobre o vocabulário, estrutura das sentenças,
+dos parágrafos e da história do Python. Nós iremos aprender sobre as capacidades poderosas 
+do Python e como compor estas capacidades juntas para criar programas úteis.
 %In the next few chapters, we will learn more about the vocabulary, sentence structure,
 %paragraph structure, and story structure of Python.  We will learn about the powerful
 %capabilities of Python and how to compose those capabilities together to create useful
 %programs.
 %
+
+Há alguns padrões conceituais de baixo nível que nós usamos para construir programas. Estas
+construções não são apenas para programas Python, elas são parte de todas as linguagens de
+programação desde linguagens de baixo nível até as de alto nível.
 %There are some low-level conceptual patterns that we use to construct programs.  These
 %constructs are not just for Python programs, they are part of every programming language
 %from machine language up to the high-level languages.
 %
+
+\begin{description}
 %\begin{description}
 %
+
+\item[input:] Obter dados do ``mundo externo''. Estes dados podem ser lidos
+de um arquivo ou mesmo de algum tipo de sensor como um microfone ou um GPS.
+Em nossos primeiros programas, nosso input virá de um usuário que digita
+dados no teclado.
 %\item[input:] Get data from the ``outside world''.  This might be 
 %reading data from a file, or even some kind of sensor like 
 %a microphone or GPS.  In our initial programs, our input will come from the user
 %typing data on the keyboard.
 %
+
+\item[output:] Exibe os resultados do programa em uma tela ou armazena-os
+em um arquivo ou talvez os escreve em algum dispositivo tal como um
+alto falante para tocar música ou falar o texto.
 %\item[output:] Display the results of the program on a screen
 %or store them in a file or perhaps write them to a device like a
 %speaker to play music or speak text.
 %
+
+\item[execução sequencial:] Executa instruções uma após a outra
+respeitando a sequência encontrada no script.
 %\item[sequential execution:] Perform statements one after
 %another in the order they are encountered in the script.
 %
+
+\item[execução condicional:] Avalia certas condições e as executa
+ou pula a sequência de instruções.
 %\item[conditional execution:] Check for certain conditions and
 %then execute or skip a sequence of statements.
 %
+
+\item[execução repetitiva:] Executa algumas instruções repetitivamente,
+geralmente com alguma variação.
 %\item[repeated execution:] Perform some set of statements 
 %repeatedly, usually with
 %some variation.
 %
+
+\item[reúso:] Escrever um conjunto de instruções uma única vez, dar um 
+nome a elas e reusar estas instruções em várias partes de um programa.
 %\item[reuse:] Write a set of instructions once and give them a name
 %and then reuse those instructions as needed throughout your program.
 %
+
+\end{description}
 %\end{description}
 %
+
+Parece simples demais para ser verdade, e naturalmente que isto nunca
+é tão simples. É como dizer que caminhar é simplesmente ``colocar
+um pé na frente do outro''. A ``arte'' de escrever um programa é
+compor e costurar estes elementos básicos muitas vezes para produzir
+algo que seja útil aos usuários.
 %It sounds almost too simple to be true, and of course it is never
 %so simple.  It is like saying that walking is simply
 %``putting one foot in front of the other''.  The ``art'' 
@@ -834,16 +1338,31 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %basic elements together many times over to produce something
 %that is useful to its users.
 %
+
+O programa de contar palavras acima usa todos estes padrões exceto um.
 %The word counting program above directly uses all of 
 %these patterns except for one.
 %
+
+\section{O que pode dar errado ?}
 %\section{What could possibly go wrong?}
 %
+
+Como vimos em nossa última conversa com o Python, devemos nos comunicar
+de modo preciso quando escrevemos código Python. O mínimo desvio ou erro
+fará com que o Python pare de executar o seu programa. 
 %As we saw in our earliest conversations with Python, we must
 %communicate very precisely when we write Python code.  The smallest
 %deviation or mistake will cause Python to give up looking at your
 %program.
 %
+
+Programadores iniciantes mutas vezes tomam o fato de que o Python não deixa
+espaço para erros, como prova de que ele é malvado e cruel.
+Enquanto o Python parece gostar de todo mundo, ele os conhece pessoalmente e
+guarda um ressentimento contra eles. Devido a este ressentimento, o Python
+leva avalia nossos programas perfeitamente escritos e os rejeita como ``incorretos''
+apenas para nos atormentar.
 %Beginning programmers often take the fact that Python leaves no
 %room for errors as evidence that Python is mean, hateful, and cruel.
 %While Python seems to like everyone else, Python knows them 
@@ -851,6 +1370,33 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %Python takes our perfectly written programs and rejects them as 
 %``unfit'' just to torment us.
 %
+
+\beforeverb
+\begin{verbatim}
+>>> primt 'Ola mundo!'
+  File "<stdin>", line 1
+    primt 'Ola mundo!'
+                       ^
+SyntaxError: invalid syntax
+>>> primt 'Ola mundo'
+  File "<stdin>", line 1
+    primt 'Ola mundo'
+                      ^
+SyntaxError: invalid syntax
+>>> Eu te odeio Python!
+  File "<stdin>", line 1
+    Eu te odeio Python!
+         ^
+SyntaxError: invalid syntax
+>>> se você vier aqui fora, vou te dar uma lição
+  File "<stdin>", line 1
+    se você vier aqui fora, vou te dar uma lição
+              ^
+SyntaxError: invalid syntax
+>>> 
+\end{verbatim}
+\afterverb
+
 %\beforeverb
 %\begin{verbatim}
 %>>> primt 'Hello world!'
@@ -877,12 +1423,25 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %\end{verbatim}
 %\afterverb
 %%
+
+Não se ganha muita coisa discutindo com o Python. Ele é somente uma ferramenta.
+Ele não tem emoções e também não fica feliz e pronto para te servir quando você 
+precisa dele. Suas mensagens de erro parecem ásperas, mas elas apenas tentam nos 
+ajudar. Ele recebeu o seu comando e simplesmente não conseguiu entender
+o que você digitou.
 %There is little to be gained by arguing with Python.  It is just a tool.
 %It has no emotions and it is happy and ready to serve you whenever you
 %need it.  Its error messages sound harsh, but they are just Python's
 %call for help.  It has looked at what you typed, and it simply cannot
 %understand what you have entered.
 %
+
+Python se parece muito com um cachorro, te ama incondicionalmente, consegue 
+entender apenas algumas poucas palavras, olha para você com um olhar doce na
+face ({\tt >>>}), e fica esperando você dizer algo que ele entenda.
+Quando o Python diz ``SyntaxError: invalid syntax'', está simplesmente
+abanando o rabo e dizendo, ``Parece que você disse algo que eu não consegui 
+entender, por favor, continue conversando comigo ({\tt >>>}).''
 %Python is much more like a dog, loving you unconditionally, having a few
 %key words that it understands, looking you with a sweet look on its
 %face ({\tt >>>}), and waiting for you to say something it understands.
@@ -890,11 +1449,25 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %its tail and saying, ``You seemed to say something but I just don't
 %understand what you meant, but please keep talking to me ({\tt >>>}).''
 %
+
+Conforme seu programa vai se tornando mais sofisticado, você encontrará três
+tipos genéricos de erro:
 %As your programs become increasingly sophisticated, you will encounter three 
 %general types of errors:
 %
+
+\begin{description}
 %\begin{description}
 %
+
+\item[Erros de Sintaxe:] Estes são os primeiros erros que você cometerá e os mais
+fáceis de se consertar. Um erro de sintaxe significa que você violou as ``regras gramaticais''
+do Python. Python dá o seu melhor para apontar a linha correta e o caractere que o
+confundiu. A única parte complicada dos erros de sintaxe é que às vezes os erros
+que precisam de conserto na verdade ocorrem um pouco antes de onde o Python {\em indica}
+e isso confunde um pouco. Desta forma, a linha e  caractere que o Python indica
+no erro de sintaxe pode ser que seja apenas um ponto de início e precisa da sua 
+investigação. 
 %\item[Syntax errors:] These are the first errors you will make and the easiest
 %to fix.  A syntax error means that you have violated the ``grammar'' rules of Python.
 %Python does its best to point right at the line and character where 
@@ -903,11 +1476,29 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %{\em noticed} it was confused.  So the line and character that Python indicates in 
 %a syntax error may just be a starting point for your investigation.
 %
+
+\item[Erros de Lógica:] Um erro de lógica é quando o seu programa tem uma boa sintaxe mas há
+um erro na ordem das instruções ou às vezes um erro em como uma instrução se relaciona com
+as demais. Um bom exemplo de erro de lógica pode ser, ``tome um gole de sua garrafa de água, coloque-a
+na mochila, caminhe para a biblioteca, e depois coloque a tampa de volta na garrafa.''
 %\item[Logic errors:] A logic error is when your program has good syntax but there is a mistake 
 %in the order of the statements or perhaps a mistake in how the statements relate to one another.
 %A good example of a logic error might be, ``take a drink from your water bottle, put it 
 %in your backpack, walk to the library, and then put the top back on the bottle.''
 %
+
+\item[Erros de Semântica:] Um erro de semântica é quando a descricao dos passos estão
+sintaticamente corretos, na ordem certa, mas há existe um erro no programa. O programa
+está perfeitamente correto, mas ele não faz o que você {\em deseja} que ele faça. Um
+exemplo simples poderia ser quando você instrui uma pessoa a chegar até um restaurante
+e diz, ``quando você cruzar a estação de gás, vire à esquerda e ande por um quilômetro e o
+restaurante estará no prédio vermelho à sua esquerda.'' Seu amigo está muito atrasado
+e liga para você para dizer que está em uma fazenda, passando atrás de um celeiro, sem o sinal
+da existência de um restaurante. Então você diz ``você virou à esquerda ou à direita na
+estação de gás ?'' e ele diz: ``Eu segui suas instruções perfeitamente, as escrevi em um papel,
+e dizia para virar à esquerda e andar por um quilômetro até a estação de gás.'' Então
+você diz: ``Eu sinto muito, embora minhas instruções estivessem sintaticamente corretas,
+elas infelizmente tinham um pequeno erro semântico indetectável.''
 %\item[Semantic errors:] A semantic error is when your description of the steps to take 
 %is syntactically perfect and in the right order, but there is simply a mistake in 
 %the program.  The program is perfectly correct but it does not do what
@@ -922,13 +1513,28 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %``I am very sorry, because while my instructions were syntactically correct, they 
 %sadly contained a small but undetected semantic error.''. 
 %
+
+\end{description}
 %\end{description}
 %
+
+Novamente em todos os três tipos de erros, o Python está se esforçando para 
+fazer tudo aquilo que você pediu.
 %Again in all three types of errors, Python is merely trying its hardest to 
 %do exactly what you have asked.
 %
+
+\section{A jornada do aprendizado}
 %\section{The learning journey}
 %
+
+Enquanto você progride para o restante do livro, não tenha medo se os conceitos
+não parecem se encaixar tão bem em um primeiro momento. Quando você aprender a falar,
+verá que os problemas que você enfrentou valeram a pena e não se lembrará mais das 
+dificuldades. Estará tudo certo se você levar seis meses para se mover de um simples
+vocabulário até simples sentenças e levar mais 5-6 anos para mover-se de sentenças a
+parágrafos, e uns anos mais para estar habilitado a escrever uma interessante e curta 
+estória com suas próprias mãos.
 %As you progress through the rest of the book, don't be afraid if the concepts 
 %don't seem to fit together well the first time.  When you were learning to speak, 
 %it was not a problem  for your first few years that you just made cute gurgling noises.
@@ -936,6 +1542,22 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %simple sentences and took 5-6 more years to move from sentences to paragraphs, and a
 %few more years to be able to write an interesting complete short story on your own.
 %
+
+Nós queremos que você aprenda Python muito mais rápido, então nós ensinamos tudo ao
+mesmo tempo nos próximos capítulos.
+Mas aprender uma nova linguagem leva tempo para ser absorver e entender antes de
+se tornar natural.
+Este processo pode gerar alguma confusão conforme nós visitamos e revisitamos os 
+tópicos para tentar dar a você uma visão completa, nós definimos pequenos
+fragmentos que aos poucos irão formando a visão completa. Este livro é dividido
+em capítulos sequenciais e à medida que você avança vai aprendendo diversos assuntos,
+não se sinta preso na sequência do livro, avance capítulos e depois recue se for
+preciso, o que importa é o seu aprendizado e em como você sente que deve ser.
+Ao estudar superficialmente materiais mais avançados sem entender completamente
+os detalhes, você pode obter um melhor entendimento do ``porque?'' programar.
+Revisando materiais mais básicos e até mesmo refazendo exercícios anteriores,
+você irá perceber que aprendeu muito, até mesmo com aqueles materiais que pareciam
+impenetráveis de tão difíceis.
 %We want you to learn Python much more rapidly, so we teach it all at the same time
 %over the next few chapters.  
 %But it is like learning a new language that takes time to absorb and understand
@@ -951,11 +1573,24 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %exercises, you will realize that you actually learned a lot of material even 
 %if the material you are currently staring at seems a bit impenetrable.
 %
+
+Normalmente, quando você aprende sua primeira linguagem de programação, ocorrem
+vários momentos ``Ah Hah!''. Aqueles em que você está trabalhando arduamente
+e quando para para prestar atenção e dar um descanso percebe que está construindo
+algo maravilhoso.
 %Usually when you are learning your first programming language, there are a few
 %wonderful ``Ah Hah!'' moments where you can look up from pounding away at some rock
 %with a hammer and chisel and step away and see that you are indeed building 
 %a beautiful sculpture.
 %
+
+Se algo estiver particularmente difícil, saiba que não vale a pena ficar acordado
+a noite inteira encarando o problema. Faça uma pausa, tire um cochilo, faça um lanche,
+compartilhe o seu problema com alguém (com seu cão talvez) e então retorne ao 
+problema com a mente descansada. Eu asseguro a você que uma vez que você aprender
+os conceitos de programação neste livro, irá olhar para trás e perceber que tudo foi
+muito fácil, elegante e tão simples que tomou de você apenas um tempo para absorver
+o aprendizado.
 %If something seems particularly hard, there is usually no value in staying up all 
 %night and staring at it.   Take a break, take a nap, have a snack, explain what you 
 %are having a problem with to someone (or perhaps your dog), and then come back to it with
@@ -963,93 +1598,187 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %you will look back and see that it was all really easy and elegant and it simply 
 %took you a bit of time to absorb it.
 %
+
+\section{Glossário}
 %\section{Glossary}
 %
+
+\begin{description}
 %\begin{description}
 %
+
+\item[bug:]  Um erro em um programa.
+\index{bug}
 %\item[bug:]  An error in a program.
 %\index{bug}
 %
+
+\item[unidade central de processamento:] O coração de qualquer computador.  É ela
+que executa o software que nós escrevemos; também chamada de ``CPU'' ou de ``processador''.
+\index{unidade central de processamento}
+\index{CPU}
 %\item[central processing unit:] The heart of any computer.  It is what
 %runs the software that we write; also called ``CPU'' or ``the processor''.
 %\index{central processing unit}
 %\index{CPU}
 %
+
+\item[compilação:]  Traduzir um programa escrito em uma linguagem de alto nível
+em uma linguagem de baixo nível tudo de uma vez, em preparação para uma posterior
+execução.
+\index{compilação}
 %\item[compile:]  To translate a program written in a high-level language
 %into a low-level language all at once, in preparation for later
 %execution.
 %\index{compile}
 %
+
+\item[linguagem de alto nível:]  Uma linguagem de programação como o Python
+que é desenhada para ser fácil para humanos ler e escrever.
+\index{linguagem de alto nível}
 %\item[high-level language:]  A programming language like Python that
 %is designed to be easy for humans to read and write.
 %\index{high-level language}
 %
+
+\item[modo interativo:] Um modo de usar o interpretador Python
+digitando comandos e expressões no prompt.
+\index{modo interativo}
 %\item[interactive mode:] A way of using the Python interpreter by
 %typing commands and expressions at the prompt.
 %\index{interactive mode}
 %
+
+\item[interpretação:]  Executar um programa em uma linguagem de alto nível
+traduzindo uma linha por vez.
+\index{interpretação}
 %\item[interpret:]  To execute a program in a high-level language
 %by translating it one line at a time.
 %\index{interpret}
 %
+
+\item[linguagem de baixo nível:]  Uma linguagem de programação que é desenhada
+para que seja fácil um computador executar; também chamada ``código de máquina'' ou
+``linguagem assembly''.
+\index{linguagem de baixo nível}
 %\item[low-level language:]  A programming language that is designed
 %to be easy for a computer to execute; also called ``machine code'' or
 %``assembly language''.
 %\index{low-level language}
 %
+
+\item[código de máquina:]  A linguagem mais baixo nível que pode existir em software, é
+a linguagem que é diretamente executada pela unidade central de processamento
+(CPU).
+\index{código de máquina}
 %\item[machine code:]  The lowest-level language for software, which 
 %is the language that is directly executed by the central processing unit 
 %(CPU).
 %\index{machine code}
 %
+
+\item[memória principal:] Armazena programas e dados. A memória principal  
+perde informação quando a energia é desligada.
+\index{memória principal}
 %\item[main memory:] Stores programs and data.  Main memory loses 
 %its information when the power is turned off.
 %\index{main memory}
 %
+
+\item[parse:]  Examinar um programa e analisar a estrutura sintática.
+\index{parse}
 %\item[parse:]  To examine a program and analyze the syntactic structure.
 %\index{parse}
 %
+
+\item[portabilidade:]  Uma propriedade de um programa que roda em 
+mais de um tipo de computador.
+\index{portabilidade}
 %\item[portability:]  A property of a program that can run on more
 %than one kind of computer.
 %\index{portability}
 %
+
+\item[instrução print:]  Uma instrução que faz com que o interpretador Python
+exiba um valor na tela.
+\index{instrução print}
+\index{instrução!print}
 %\item[print statement:]  An instruction that causes the Python
 %interpreter to display a value on the screen.
 %\index{print statement}
 %\index{statement!print}
 %
+
+\item[resolução de problema:]  O processo de formular um problema, encontrar 
+a solução e expressá-la.
+\index{resolução de problema}
 %\item[problem solving:]  The process of formulating a problem, finding
 %a solution, and expressing the solution.
 %\index{problem solving}
 %
+
+\item[programa:] Um conjunto de instruções que especifica uma computação.
+\index{programa}
 %\item[program:] A set of instructions that specifies a computation.
 %\index{program}
 %
+
+\item[prompt:] Quando um programa exibe uma mensagem e aguarda o usuário 
+digitar algo para o programa.
+\index{prompt}
 %\item[prompt:] When a program displays a message and pauses for the 
 %user to type some input to the program.
 %\index{prompt}
 %
+
+\item[memória secundária:] Armazena programas e dados e retém a informação
+mesmo quando a energia é desligada.  Geralmente mais devagar 
+em relação à memória principal. Exemplos de memória secundária são
+discos rígidos e memória flash nos pendrives USB.
+\index{memória secundária}
 %\item[secondary memory:] Stores programs and data and retains its 
 %information even when the power is turned off.  Generally slower 
 %than main memory.  Examples of secondary memory include disk 
 %drives and flash memory in USB sticks.
 %\index{secondary memory}
 %
+
+\item[semântica:]  O significado de um programa.
+\index{semântica}
 %\item[semantics:]  The meaning of a program.
 %\index{semantics}
 %
+
+\item[erro semântico:] Um erro em um programa que faz algo diferente
+daquilo que o programador desejava.
+\index{erro semântico}
 %\item[semantic error:]   An error in a program that makes it do something
 %other than what the programmer intended.
 %\index{semantic error}
 %
+
+\item[código fonte:] Um programa em uma linguagem de alto nível.
+\index{código fonte}
 %\item[source code:]  A program in a high-level language.
 %\index{source code}
 %
+
+\end{description}
 %\end{description}
 %
+
+\section{Exercícios}
 %\section{Exercises}
 %
 %
+\begin{ex}
+Qual é a função da memória secundária em um computador ?
+
+a) Executar todas as computações e lógica de um programa\\
+b) Obter páginas web da internet\\
+c) Armazenar informação por um longo período -- mesmo se faltar energia\\
+d) Receber o input de um usuário
+\end{ex}
 %\begin{ex}
 %What is the function of the secondary memory in a computer?
 %
@@ -1059,14 +1788,32 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %d) Take input from the user 
 %\end{ex}
 %
+
+\begin{ex}
+O que é um programa ?
+\end{ex}
 %\begin{ex}
 %What is a program?
 %\end{ex}
+%
+
+\begin{ex}
+Qual é a diferença entre um compilador e um interpretador ?
+\end{ex}
 %
 %\begin{ex}
 %What is the difference between a compiler and an interpreter?
 %\end{ex}
 %
+
+\begin{ex}
+Qual destas opções a seguir contém ``código de máquina''?
+
+a) O interpretador Python\\
+b) O teclado\\
+c) Arquivo de código fonte Python\\
+d) Um documento do processador de texto
+\end{ex}
 %\begin{ex}
 %Which of the following contains ``machine code''?
 %
@@ -1076,6 +1823,22 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %d) A word processing document
 %\end{ex}
 %
+
+\begin{ex}
+O que está errado no código a seguir:
+
+\beforeverb
+\begin{verbatim}
+>>> primt 'Ola mundo!'
+  File "<stdin>", line 1
+    primt 'Ola mundo!'
+                       ^
+SyntaxError: invalid syntax
+>>> 
+\end{verbatim}
+\afterverb
+
+\end{ex}
 %\begin{ex}
 %What is wrong with the following code:
 %
@@ -1092,6 +1855,23 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %
 %\end{ex}
 %
+
+\begin{ex}
+Em qual lugar do computador existe uma variável ``X'' armazenada
+depois que a seguinte linha de Python finaliza ?
+
+\beforeverb
+\begin{verbatim}
+x = 123
+\end{verbatim}
+\afterverb
+%
+a) Unidade central de processamento\\
+b) Memória Principal\\
+c) Memória Secundária\\
+d) Dispositivos de Entrada\\
+e) Dispositivos de Saída
+\end{ex}
 %\begin{ex}
 %Where in the computer is a variable such as ``X'' stored 
 %after the following Python line finishes?
@@ -1109,6 +1889,23 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %e) Output Devices
 %\end{ex}
 %
+
+\begin{ex}
+O que o seguinte programa irá imprimir:
+
+\beforeverb
+\begin{verbatim}
+x = 43
+x = x + 1
+print x
+\end{verbatim}
+\afterverb
+%
+a) 43\\
+b) 44\\
+c) x + 1\\
+d) Um erro porque x = x + 1 não é matematicamente possível
+\end{ex}
 %\begin{ex}
 %What will the following program print out:
 %
@@ -1126,6 +1923,14 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %d) Error because x = x + 1 is not possible mathematically
 %\end{ex}
 %
+
+\begin{ex}
+Explique cada item a seguir usando como exemplo uma capacidade humana:
+(1) Unidade central de processamento, (2) Memória principal, (3) Memória secundária, 
+(4) Dispositivo de entrada, e
+(5) Dispositivo de saída.
+Por exemplo, ``Qual é a capacidade humana equivalente a Unidade central de processamento''? 
+\end{ex}
 %\begin{ex}
 %Explain each of the following using an example of a human capability: 
 %(1) Central processing unit, (2) Main Memory, (3) Secondary Memory, 
@@ -1134,6 +1939,10 @@ secundária, a rede ou os dispositivos de entrada e saída.
 %For example, ``What is the human equivalent to a Central Processing Unit''? 
 %\end{ex}
 %
+
+\begin{ex}
+Como se conserta um ``Erro de Sintaxe''?
+\end{ex}
 %\begin{ex}
 %How do you fix a ``Syntax Error''?
 %\end{ex}
