@@ -22,7 +22,7 @@ serem traduzidos, ao todo são 16 capítulos e mais 4 arquivos complementares.
 Responsáveis pela Tradução por Capítulo
 --------
 
-| Capítulo              | Responsável           | % Tradução | Revisor | % Revisão
+| Capítulo              | Tradutor              | % Tradução | Revisor | % Revisão
 |---|---|---|---|---
 |00-cover.tex           |  Victor Jabur         | 100 % |  ?             | ?
 |00-preface.tex         |  Victor Jabur         | 100 % |  ?             | ?
