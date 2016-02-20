@@ -23,7 +23,7 @@ Responsáveis pela Tradução por Capítulo
 --------
 
 | Capítulo  | Responsável | Status Tradução | Revisor | Status Revisão
-|---|---|
+|---|---|---|---|---
 |00-cover.tex           |  Victor Jabur         | 100 % |  ?  | ?
 |00-preface.tex         |  Victor Jabur         | 100 % |  ?  | ?
 |01-intro.tex           |  Victor Jabur         | 100 % |  ?  | ?
