@@ -42,10 +42,10 @@ Responsáveis pela Tradução por Capítulo
 |14-database.tex        |  Maykon Chagas        |   ?   |  ?             | ?
 |15-viz.tex             |  Kléber Takazawa      |   ?   |  ?             | ?
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  ?             | ?
-|AA-windows.tex         |  Não Definido         |   ?   |  ?             | ?
+|AA-windows.tex         |  ?                    |   ?   |  ?             | ?
 |AB-apple.tex           |  Rodolfo Póvoa        |   ?   |  ?             | ?
-|AC-contrib.tex         |  Não Definido         |   ?   |  ?             | ?
-|AD-copyright.tex       |  Não Definido         |   ?   |  ?             | ?
+|AC-contrib.tex         |  ?                    |   ?   |  ?             | ?
+|AD-copyright.tex       |  ?                    |   ?   |  ?             | ?
 
 
 Fluxo de Trabalho
