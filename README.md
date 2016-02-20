@@ -33,7 +33,7 @@ Responsáveis pela Tradução por Capítulo
 |05-iterations.tex      |  Emir Neto            |   ?   |  ?             | ?
 |06-strings.tex         |  Élio Capelati        |   ?   |  ?             | ?
 |07-files.tex           |  Kaio Cesar           |   ?   |  ?             | ?
-|08-lists.tex           |  Rafael Costa         |   ?   |  ?             | ?
+|08-lists.tex           |  Rafael Costa         | 70%   |  ?             | ?
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur  | 0%
 |10-tuples.tex          |  Clodonil Trigo       |   ?   |  ?             | ?
 |11-regex.tex           |  Felipe Souza         |   ?   |  ?             | ?
