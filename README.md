@@ -22,30 +22,30 @@ serem traduzidos, ao todo são 16 capítulos e mais 4 arquivos complementares.
 Responsáveis pela Tradução por Capítulo
 --------
 
-| Capítulo  | Responsável |
+| Capítulo  | Responsável | Status Tradução | Status Revisão |
 |---|---|
-|00-cover.tex           |  Victor Jabur         |
-|00-preface.tex         |  Victor Jabur         |
-|01-intro.tex           |  Victor Jabur         |
-|02-variables.tex       |  Eduardo Cândido      |
-|03-conditional.tex     |  Fernando Moreira     |
-|04-functions.tex       |  Rodrigo Bravo        |
-|05-iterations.tex      |  Emir Neto            |
-|06-strings.tex         |  Élio Capelati        |
-|07-files.tex           |  Kaio Cesar           |
-|08-lists.tex           |  Rafael Costa         |
-|09-dictionaries.tex    |  Rafael Covre         |
-|10-tuples.tex          |  Clodonil Trigo       |
-|11-regex.tex           |  Felipe Souza         |
-|12-network.tex         |  Rafael Costa         |
-|13-web.tex             |  Kaio Cesar           |
-|14-database.tex        |  Maykon Chagas        |
-|15-viz.tex             |  Kléber Takazawa      |
-|16-tasks.tex           |  Paulo Henrique Silva |
-|AA-windows.tex         |  Não Definido         |
-|AB-apple.tex           |  Rodolfo Póvoa        |
-|AC-contrib.tex         |  Não Definido         |
-|AD-copyright.tex       |  Não Definido         |
+|00-cover.tex           |  Victor Jabur         | 100 %  | ? |
+|00-preface.tex         |  Victor Jabur         | 100 %  | ? |
+|01-intro.tex           |  Victor Jabur         | 100 %  | ? |
+|02-variables.tex       |  Eduardo Cândido      | 100 %  | ? |
+|03-conditional.tex     |  Fernando Moreira     |   ?    | ? |
+|04-functions.tex       |  Rodrigo Bravo        |   ?    | ? |
+|05-iterations.tex      |  Emir Neto            |   ?    | ? |
+|06-strings.tex         |  Élio Capelati        |   ?    | ? |
+|07-files.tex           |  Kaio Cesar           |   ?    | ? |
+|08-lists.tex           |  Rafael Costa         |   ?    | ? |
+|09-dictionaries.tex    |  Rafael Covre         | 100 %  | ? |
+|10-tuples.tex          |  Clodonil Trigo       |   ?    | ? |
+|11-regex.tex           |  Felipe Souza         |   ?    | ? |
+|12-network.tex         |  Rafael Costa         |   ?    | ? |
+|13-web.tex             |  Kaio Cesar           |   ?    | ? |
+|14-database.tex        |  Maykon Chagas        |   ?    | ? |
+|15-viz.tex             |  Kléber Takazawa      |   ?    | ? |
+|16-tasks.tex           |  Paulo Henrique Silva | 100 %  | ? |
+|AA-windows.tex         |  Não Definido         |   ?    | ? |
+|AB-apple.tex           |  Rodolfo Póvoa        |   ?    | ? |
+|AC-contrib.tex         |  Não Definido         |   ?    | ? |
+|AD-copyright.tex       |  Não Definido         |   ?    | ? |
 
 
 Fluxo de Trabalho
