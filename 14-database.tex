@@ -1264,11 +1264,16 @@ relacionamento.
 \afterfig
 
 
-\section{Programming with multiple tables}
+%\section{Programming with multiple tables}
+\section{Programando com múltiplas tabelas}
 
-We will now redo the Twitter spider program using two tables, the primary
-keys, and the key references as described above.  Here is the code for 
-the new version of the program:
+%We will now redo the Twitter spider program using two tables, the primary
+%keys, and the key references as described above.  Here is the code for 
+%the new version of the program:
+
+Agora nós iremos refazer o programa de rastreio do Twitter utilizando duas
+tabelas, as chaves primárias, e as chaves de referências estão descritas
+anteriormente. Abaixo está o código da nova versão do programa:
 
 \beforeverb
 \begin{verbatim}
@@ -1353,35 +1358,54 @@ cur.close()
 \end{verbatim}
 \afterverb
 %
-This program is starting to get a bit complicated, but it illustrates
-the patterns that we need to use when we are
-using integer keys to link tables. The basic patterns are:
+%This program is starting to get a bit complicated, but it illustrates
+%the patterns that we need to use when we are
+%using integer keys to link tables. The basic patterns are:
+
+%
+Este programa está começando a ficar um pouco complicado, mas ilustra os
+padrões que precisamos para utilizar quando estamos usando chaves inteiras
+para conectar as tabelas. Os padrões básicos são:
 
 \begin{enumerate}
 
-\item Create tables with primary keys and constraints.
+%\item Create tables with primary keys and constraints.
+\item Criar tabelas com chaves primárias e restrições.
+%\item When we have a logical key for a person (i.e., account
+%name) and we need the {\tt id} value for the person,
+%depending on whether or not the person is already
+%in the {\tt People} table we either need to: 
+%(1) look up the person in the {\tt People} table and 
+%retrieve the {\tt id} value for the person 
+%or (2) add the person to the {\tt People} table and get the 
+%{\tt id} value for the newly added row.
+\item Quando temos uma chave lógica para uma pessoa (i.e., conta) e precisamos
+  do valor de {\tt id} para a pessoa, dependendo se a pessoa já está na tabela
+  {\tt People}  ou não, também precisaremos de: (1) olhar para a pessoa na
+  tabela {\tt People} e recuperar o valor de {\tt id} da pessoa, ou (2)
+  adicionar a pessoa na tabela {\tt People} e pegar o valor de {\tt id} para
+  a nova linha recém adicionada.
+  
+%\item Insert the row that captures the ``follows'' relationship.
 
-\item When we have a logical key for a person (i.e., account
-name) and we need the {\tt id} value for the person,
-depending on whether or not the person is already
-in the {\tt People} table we either need to: 
-(1) look up the person in the {\tt People} table and 
-retrieve the {\tt id} value for the person 
-or (2) add the person to the {\tt People} table and get the 
-{\tt id} value for the newly added row.
-
-\item Insert the row that captures the ``follows'' relationship.
-
+\item Inserir a linha que captura a relação com ``segue''.
+  
 \end{enumerate}
 
-We will cover each of these in turn.
+%We will cover each of these in turn.
+Vamos tratar cada um dos ítens acima, em partes.
 
-\subsection{Constraints in database tables}
+%\subsection{Constraints in database tables}
+\subsection{Restrições em uma tabela}
 
 As we design our table structures, we can tell the database system 
 that we would like it to enforce a few rules on us.   These rules
 help us from making mistakes and introducing incorrect data into 
 out tables.   When we create our tables:
+Assim como projetamos a estrutura da tabela, podemos informar ao banco de dados
+que gostaríamos de reforçar algumas regras. Estas regras nos ajudam a não
+cometer enganos e a não inserir dados incorretos nas nossas tabelas. Quando
+criamos nossas tabelas:
 
 \beforeverb
 \begin{verbatim}
@@ -1392,13 +1416,18 @@ cur.execute('''CREATE TABLE IF NOT EXISTS Follows
 \end{verbatim}
 \afterverb
 %
-We indicate that the {\tt name} column in the {\tt People} table must be
-{\tt UNIQUE}.   We also indicate that the combination of the two numbers
-in each row of the {\tt Follows} table must be unique.  These constraints
-keep us from making mistakes such as adding the same relationship more than
-once.
+%We indicate that the {\tt name} column in the {\tt People} table must be
+%{\tt UNIQUE}.   We also indicate that the combination of the two numbers
+%in each row of the {\tt Follows} table must be unique.  These constraints
+%keep us from making mistakes such as adding the same relationship more than
+%once.
+Indicamos que a coluna {\tt name} na tabela {\tt People} deve ser {\tt UNIQUE}.
+Também indicaremos que a combinação dos dois números em cada linha da tabela
+{\tt Follows} devem ser únicos. Estas restrições nos mantém longe da
+possibilidade de cometer enganos como adicionar a mesma relação mais de uma vez.
 
-We can take advantage of these constraints in the following code:
+%We can take advantage of these constraints in the following code:
+Podemos obter vantagens destas restrições conforme mostra o seguinte código:
 
 \beforeverb
 \begin{verbatim}
@@ -1407,14 +1436,21 @@ cur.execute('''INSERT OR IGNORE INTO People (name, retrieved)
 \end{verbatim}
 \afterverb
 %
-We add the {\tt OR IGNORE} clause to our {\tt INSERT} statement to indicate
-that if this particular {\tt INSERT} would cause a violation of the
-``{\tt name} must be unique'' rule, the database system is allowed to ignore the 
-{\tt INSERT}.  We are using the database constraint as a safety net
-to make sure we don't inadvertently do something incorrect.
+%We add the {\tt OR IGNORE} clause to our {\tt INSERT} statement to indicate
+%that if this particular {\tt INSERT} would cause a violation of the
+%``{\tt name} must be unique'' rule, the database system is allowed to ignore the 
+%{\tt INSERT}.  We are using the database constraint as a safety net
+%to make sure we don't inadvertently do something incorrect.
+%
+Adicionamos a condição {\tt OR IGNORE} a declaração {\tt INSERT} para indicar
+que se este {\tt INSERT} em particular pode causar uma violação para a regra
+``{\tt name} deve ser único'', assim o banco de dados tem permissão de ignorar
+o {\tt INSERT}.
 
-Similarly, the following code ensures that we don't add the 
-exact same {\tt Follows} relationship twice.
+%Similarly, the following code ensures that we don't add the 
+%exact same {\tt Follows} relationship twice.
+De forma similar, o seguinte código garante que não adicionemos a mesma relação
+{\tt Follows} duas vezes.
 
 \beforeverb
 \begin{verbatim}
@@ -1423,36 +1459,63 @@ cur.execute('''INSERT OR IGNORE INTO Follows
 \end{verbatim}
 \afterverb
 %
-Again, we simply tell the database to ignore our attempted 
-{\tt INSERT} if it would violate the uniqueness constraint
-that we specified for the {\tt Follows} rows.
+%Again, we simply tell the database to ignore our attempted 
+%{\tt INSERT} if it would violate the uniqueness constraint
+%that we specified for the {\tt Follows} rows.
+Novamente, nós simplesmente dizemos para o banco de dados ignorar nossa
+tentativa de inserir {\tt INSERT} se isto violar a regra de exclusividade que
+especificamos para a linha {\tt Follows}.
 
-\subsection{Retrieve and/or insert a record}
+%\subsection{Retrieve and/or insert a record}
+\subsection{Restaurar e/ou inserir um registro}
 
-When we prompt the user for a Twitter account, if the account 
-exists, we must look up its {\tt id} value.  If the account
-does not yet exist in the {\tt People} table, we must insert 
-the record and get the {\tt id} value from the inserted
-row.
+%When we prompt the user for a Twitter account, if the account 
+%exists, we must look up its {\tt id} value.  If the account
+%does not yet exist in the {\tt People} table, we must insert 
+%the record and get the {\tt id} value from the inserted
+%row.
 
-This is a very common pattern and is done twice in the program above.
-This code shows how we look up the {\tt id} for a 
-friend's account when we have extracted a \verb"screen_name"
-from a {\tt user} node in the retrieved Twitter JSON.
+Quando solicitamos ao usuário uma conta do Twitter, se a conta existir,
+precisamos verificar o valor do {\tt id}. Se a conta não existir ainda
+na tabela {\tt People}, devemos inserir o registro e pegar o valor do
+{\tt id} da linha inserida.
 
-Since over time it will be increasingly likely that the account
-will already be in the database, we first check to see if the
-{\tt People} record exists using a {\tt SELECT} statement.
+%This is a very common pattern and is done twice in the program above.
+%This code shows how we look up the {\tt id} for a 
+%friend's account when we have extracted a \verb"screen_name"
+%from a {\tt user} node in the retrieved Twitter JSON.
 
-If all goes well\footnote{In general, when a sentence starts 
-with ``if all goes well'' you will find that the code needs
-to use try/except.} inside the {\tt try} section, we retrieve the
-record using {\tt fetchone()} and then retrieve the
-first (and only) element of the returned tuple and store it in 
-\verb"friend_id".
+Isto é um padrão muito comum e é feito duas vezes no programa acima. Este
+código mostra como verificamos o {\tt id} da conta de um amigo, quando
+extraímos um \verb"screen_name" de um nó de {\tt user} recuperado do JSON
+do Twitter.
 
-If the {\tt SELECT} fails, the {\tt fetchone()[0]} code will fail
-and control will transfer into the {\tt except} section.
+%Since over time it will be increasingly likely that the account
+%will already be in the database, we first check to see if the
+%{\tt People} record exists using a {\tt SELECT} statement.
+
+Ao longo do tempo será cada vez mais provável que a conta já esteja registrada
+no banco de dados, então primeiro checamos para ver se o registro existe em
+{\tt People} utilizando uma declaração de {\tt SELECT}.
+
+%If all goes well\footnote{In general, when a sentence starts 
+%with ``if all goes well'' you will find that the code needs
+%to use try/except.} inside the {\tt try} section, we retrieve the
+%record using {\tt fetchone()} and then retrieve the
+%first (and only) element of the returned tuple and store it in 
+%\verb"friend_id".
+
+Se tudo estiver certo\footnote{Em geral, quando uma sentença inicia com ``se
+  tudo estiver certo'' você verá que o código precisa utilizar a condição
+  {\it try/except}.} dentro da seção {\tt try}, recuperamos o registro usando
+{\tt fetchone()} e depois recuperar o primeiro (e somente o primeiro) elemento
+da tupla que retornou e a armazenamos em \verb"friend_id".
+
+%If the {\tt SELECT} fails, the {\tt fetchone()[0]} code will fail
+%and control will transfer into the {\tt except} section.
+
+Se o {\tt SELECT} falhar, o código de {\tt fetchone()[0]} falhará e o controle
+irá mudar para a seção {\tt except}.
 
 \beforeverb
 \begin{verbatim}
@@ -1474,24 +1537,41 @@ and control will transfer into the {\tt except} section.
 \end{verbatim}
 \afterverb
 %
-If we end up in the {\tt except} code, it simply means that the row
-was not found, so we must insert the row.  We use {\tt INSERT OR 
-IGNORE} just to avoid errors and then call {\tt commit()} to 
-force the database to really be updated.  After the write is done, we can 
-check the {\tt cur.rowcount} to see how many rows were affected.  Since
-we are attempting to insert a single row, if the number of 
-affected rows is something other than 1, it is an error.  
+%If we end up in the {\tt except} code, it simply means that the row
+%was not found, so we must insert the row.  We use {\tt INSERT OR 
+%IGNORE} just to avoid errors and then call {\tt commit()} to 
+%force the database to really be updated.  After the write is done, we can 
+%check the {\tt cur.rowcount} to see how many rows were affected.  Since
+%we are attempting to insert a single row, if the number of 
+%affected rows is something other than 1, it is an error.  
 
-If the {\tt INSERT} is successful, we can look at {\tt cur.lastrowid} 
-to find out what value the database assigned to the {\tt id} column in 
-our newly created row.
+Se terminar no código do {\tt except}, isto significa que aquela linha não foi
+encontrada, então devemos inserí-la na linha. Usamos o {\tt INSERT OR IGNORE}
+somente para evitar erros e depois chamamos {\tt commit()} para forçar que a
+base de dados seja atualizada. Depois que a escrita esteja completa, nós
+podemos checar, com {\tt cur.rowcount}, para ver quantas linhas foram afetadas.
+Uma vez que estamos tentando inserir uma simples linha, se o número de linhas
+afetadas é alguma coisa diferente de 1, isto é um erro.
 
-\subsection{Storing the friend relationship}
+%If the {\tt INSERT} is successful, we can look at {\tt cur.lastrowid} 
+%to find out what value the database assigned to the {\tt id} column in 
+%our newly created row.
 
-Once we know the key value for both the Twitter user
-and the friend in the JSON, it is a simple matter to insert
-the two numbers into the {\tt Follows} table
-with the following code:
+Se o {\tt INSERT} for executado com sucesso, nós podemos verificar, através do
+{\tt cur.lastrowid} para descobrir qual valor o banco de dados associou na
+coluna {\tt id} na nossa nova linha.
+
+%\subsection{Storing the friend relationship}
+\subsection{Armazenando a conexão do amigo}
+
+%Once we know the key value for both the Twitter user
+%and the friend in the JSON, it is a simple matter to insert
+%the two numbers into the {\tt Follows} table
+%with the following code:
+
+Uma vez que sabemos o valor da chave para o usuário do Twitter e o amigo
+extraído do JSON, simplesmente inserimos os dois números dentro da tabela
+{\tt Follows} com o seguinte código:
 
 \beforeverb
 \begin{verbatim}
@@ -1500,11 +1580,16 @@ cur.execute('INSERT OR IGNORE INTO Follows (from_id, to_id) VALUES (?, ?)',
 \end{verbatim}
 \afterverb
 %
-Notice that we let the database take care of keeping us from ``double-inserting''
-a relationship by creating the table with a uniqueness constraint and then
-adding {\tt OR IGNORE} to our {\tt INSERT} statement.
+%Notice that we let the database take care of keeping us from ``double-inserting''
+%a relationship by creating the table with a uniqueness constraint and then
+%adding {\tt OR IGNORE} to our {\tt INSERT} statement.
+%
+Note que deixamos o banco de dados cuidar para nós de realizar a
+``inserção-dupla'' da conexão criando a tabela com a restrição única e depois
+adicionando {\tt OR IGNORE} a nossa condição de {\tt INSERT}.
 
-Here is a sample execution of this program:
+%Here is a sample execution of this program:
+Esta é um exemplo de execução deste programa:
 
 \beforeverb
 \begin{verbatim}
@@ -1523,12 +1608,20 @@ Enter a Twitter account, or quit: quit
 \end{verbatim}
 \afterverb
 %
-We started with the {\tt drchuck} account and then let the program
-automatically pick the next two accounts to retrieve and add to 
-our database.
+%We started with the {\tt drchuck} account and then let the program
+%automatically pick the next two accounts to retrieve and add to 
+%our database.
 
-The following is the first few rows in the {\tt People} 
-and {\tt Follows} tables after this run is completed:
+%
+Nós iniciamos com a conta {\tt drchuck} e depois deixamos o programa pegar
+automaticamente as próximas duas contas para recuperar e adicionar a nossa
+base de dados.
+
+%The following is the first few rows in the {\tt People} 
+%and {\tt Follows} tables after this run is completed:
+
+Abaixo estão as primeiras linhas das tabelas {\tt People} e {\tt Follows}
+depois que esta execução é finalizada:
 
 \beforeverb
 \begin{verbatim}
@@ -1549,19 +1642,30 @@ Follows:
 \end{verbatim}
 \afterverb
 %
-You can see the {\tt id}, {\tt name}, and {\tt visited} fields in the 
-{\tt People} table and you see the numbers of both ends of 
-the relationship in the {\tt Follows} table.   
-In the {\tt People} table, we can see that the first three people
-have been visited and their data has been retrieved.
-The data in the {\tt Follows} table indicates that
-{\tt drchuck} (user 1) is a friend to all of the people shown in the first
-five rows.  This makes sense because
-the first data we retrieved and stored was the Twitter friends of
-{\tt drchuck}.  If you were to print more rows from the {\tt Follows} table,
-you would see the friends of users 2 and 3 as well.
+%You can see the {\tt id}, {\tt name}, and {\tt visited} fields in the 
+%{\tt People} table and you see the numbers of both ends of 
+%the relationship in the {\tt Follows} table.   
+%In the {\tt People} table, we can see that the first three people
+%have been visited and their data has been retrieved.
+%The data in the {\tt Follows} table indicates that
+%{\tt drchuck} (user 1) is a friend to all of the people shown in the first
+%five rows.  This makes sense because
+%the first data we retrieved and stored was the Twitter friends of
+%{\tt drchuck}.  If you were to print more rows from the {\tt Follows} table,
+%you would see the friends of users 2 and 3 as well.
+
+%
+Você também pode ver os campos {\tt id}. {\tt name} e {\tt visited} na tabela
+{\tt People} e os números dos finais das conexões na tabela {\tt Follows}. Na
+tabela {\tt People}, podemos ver que as primeiras três pessoas foram visitadas
+e seus dados foram recuperados. Os dados na tabela {\tt Follows} indica que
+{\tt drchuck} (usuário 1) é amigo de todas as pessoas mostradas nas primeiras
+cincos linhas. Isto mostra que o primeiro dado que recuperamos e armazenamos
+foram dos amigos do {\tt drchuck}. Se você mostrou mais linhas da tabela
+{\tt Follows}, você poderá ver os amigos dos usuários 2 e 3.
 
 \section{Three kinds of keys}
+\section{Três tipos de chaves}
 
 Now that we have started building a data model putting our
 data into multiple linked tables and linking the rows in those
@@ -1766,19 +1870,32 @@ before you attempt to access the database from Python to avoid
 the problem of your Python code failing because the database is
 locked.
 
-\section{Glossary}
+%\section{Glossary}
+\section{Glossário}
 
-\begin{description}
+%\begin{description}
+\begin{descrição}
 
-\item[attribute:] One of the values within a tuple.  More commonly
-called a ``column'' or ``field''.
-\index{attribute}
+%\item[attribute:] One of the values within a tuple.  More commonly
+%called a ``column'' or ``field''.
+%\index{attribute}
 
-\item[constraint:] 
-When we tell the database to enforce a rule on a field or a row
-in a table.  A common constraint is to insist that there can be no
-duplicate values in a particular field (i.e., all the values must be unique).
-\index{constraint}
+\item[atributo:] Um dos valores dentro de uma tupla. Comumente chamado de
+  ``coluna'' ou ``campo''.
+  \index{atributo}
+  
+%\item[constraint:] 
+%When we tell the database to enforce a rule on a field or a row
+%in a table.  A common constraint is to insist that there can be no
+%duplicate values in a particular field (i.e., all the values must be unique).
+  %\index{constraint}
+  
+\item[restrição:] Quando ordenamos a um banco de dados para reforçar uma regra
+em um campo ou em uma linha na tabela. Uma restrição comum é insistir que não
+pode haver valore duplicados em um campo em particular (i.e., todos os
+valores tem que ser únicos).
+\index{restrição}
+
 
 \item[cursor:] A cursor allows you to execute SQL commands in a database
 and retrieve data from the database.  A cursor is similar to 
@@ -1824,4 +1941,4 @@ of attributes.  More typically called ``row''.
 \index{tuple}
 
 \end{description}
-
+\end{decrição}
