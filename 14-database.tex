@@ -1264,11 +1264,16 @@ relacionamento.
 \afterfig
 
 
-\section{Programming with multiple tables}
+%\section{Programming with multiple tables}
+\section{Programando com múltiplas tabelas}
 
-We will now redo the Twitter spider program using two tables, the primary
-keys, and the key references as described above.  Here is the code for 
-the new version of the program:
+%We will now redo the Twitter spider program using two tables, the primary
+%keys, and the key references as described above.  Here is the code for 
+%the new version of the program:
+
+Agora nós iremos refazer o programa de rastreio do Twitter utilizando duas
+tabelas, as chaves primárias, e as chaves de referências estão descritas
+anteriormente. Abaixo está o código da nova versão do programa:
 
 \beforeverb
 \begin{verbatim}
@@ -1353,35 +1358,54 @@ cur.close()
 \end{verbatim}
 \afterverb
 %
-This program is starting to get a bit complicated, but it illustrates
-the patterns that we need to use when we are
-using integer keys to link tables. The basic patterns are:
+%This program is starting to get a bit complicated, but it illustrates
+%the patterns that we need to use when we are
+%using integer keys to link tables. The basic patterns are:
+
+%
+Este programa está começando a ficar um pouco complicado, mas ilustra os
+padrões que precisamos para utilizar quando estamos usando chaves inteiras
+para conectar as tabelas. Os padrões básicos são:
 
 \begin{enumerate}
 
-\item Create tables with primary keys and constraints.
+%\item Create tables with primary keys and constraints.
+\item Criar tabelas com chaves primárias e restrições.
+%\item When we have a logical key for a person (i.e., account
+%name) and we need the {\tt id} value for the person,
+%depending on whether or not the person is already
+%in the {\tt People} table we either need to: 
+%(1) look up the person in the {\tt People} table and 
+%retrieve the {\tt id} value for the person 
+%or (2) add the person to the {\tt People} table and get the 
+%{\tt id} value for the newly added row.
+\item Quando temos uma chave lógica para uma pessoa (i.e., conta) e precisamos
+  do valor de {\tt id} para a pessoa, dependendo se a pessoa já está na tabela
+  {\tt People}  ou não, também precisaremos de: (1) olhar para a pessoa na
+  tabela {\tt People} e recuperar o valor de {\tt id} da pessoa, ou (2)
+  adicionar a pessoa na tabela {\tt People} e pegar o valor de {\tt id} para
+  a nova linha recém adicionada.
+  
+%\item Insert the row that captures the ``follows'' relationship.
 
-\item When we have a logical key for a person (i.e., account
-name) and we need the {\tt id} value for the person,
-depending on whether or not the person is already
-in the {\tt People} table we either need to: 
-(1) look up the person in the {\tt People} table and 
-retrieve the {\tt id} value for the person 
-or (2) add the person to the {\tt People} table and get the 
-{\tt id} value for the newly added row.
-
-\item Insert the row that captures the ``follows'' relationship.
-
+\item Inserir a linha que captura a relação com ``segue''.
+  
 \end{enumerate}
 
-We will cover each of these in turn.
+%We will cover each of these in turn.
+Vamos tratar cada um dos ítens acima, em partes.
 
-\subsection{Constraints in database tables}
+%\subsection{Constraints in database tables}
+\subsection{Restrições em uma tabela}
 
 As we design our table structures, we can tell the database system 
 that we would like it to enforce a few rules on us.   These rules
 help us from making mistakes and introducing incorrect data into 
 out tables.   When we create our tables:
+Assim como projetamos a estrutura da tabela, podemos informar ao banco de dados
+que gostaríamos de reforçar algumas regras. Estas regras nos ajudam a não
+cometer enganos e a não inserir dados incorretos nas nossas tabelas. Quando
+criamos nossas tabelas:
 
 \beforeverb
 \begin{verbatim}
@@ -1392,13 +1416,18 @@ cur.execute('''CREATE TABLE IF NOT EXISTS Follows
 \end{verbatim}
 \afterverb
 %
-We indicate that the {\tt name} column in the {\tt People} table must be
-{\tt UNIQUE}.   We also indicate that the combination of the two numbers
-in each row of the {\tt Follows} table must be unique.  These constraints
-keep us from making mistakes such as adding the same relationship more than
-once.
+%We indicate that the {\tt name} column in the {\tt People} table must be
+%{\tt UNIQUE}.   We also indicate that the combination of the two numbers
+%in each row of the {\tt Follows} table must be unique.  These constraints
+%keep us from making mistakes such as adding the same relationship more than
+%once.
+Indicamos que a coluna {\tt name} na tabela {\tt People} deve ser {\tt UNIQUE}.
+Também indicaremos que a combinação dos dois números em cada linha da tabela
+{\tt Follows} devem ser únicos. Estas restrições nos mantém longe da
+possibilidade de cometer enganos como adicionar a mesma relação mais de uma vez.
 
-We can take advantage of these constraints in the following code:
+%We can take advantage of these constraints in the following code:
+Podemos obter vantagens destas restrições conforme mostra o seguinte código:
 
 \beforeverb
 \begin{verbatim}
@@ -1407,14 +1436,21 @@ cur.execute('''INSERT OR IGNORE INTO People (name, retrieved)
 \end{verbatim}
 \afterverb
 %
-We add the {\tt OR IGNORE} clause to our {\tt INSERT} statement to indicate
-that if this particular {\tt INSERT} would cause a violation of the
-``{\tt name} must be unique'' rule, the database system is allowed to ignore the 
-{\tt INSERT}.  We are using the database constraint as a safety net
-to make sure we don't inadvertently do something incorrect.
+%We add the {\tt OR IGNORE} clause to our {\tt INSERT} statement to indicate
+%that if this particular {\tt INSERT} would cause a violation of the
+%``{\tt name} must be unique'' rule, the database system is allowed to ignore the 
+%{\tt INSERT}.  We are using the database constraint as a safety net
+%to make sure we don't inadvertently do something incorrect.
+%
+Adicionamos a condição {\tt OR IGNORE} a declaração {\tt INSERT} para indicar
+que se este {\tt INSERT} em particular pode causar uma violação para a regra
+``{\tt name} deve ser único'', assim o banco de dados tem permissão de ignorar
+o {\tt INSERT}.
 
-Similarly, the following code ensures that we don't add the 
-exact same {\tt Follows} relationship twice.
+%Similarly, the following code ensures that we don't add the 
+%exact same {\tt Follows} relationship twice.
+De forma similar, o seguinte código garante que não adicionemos a mesma relação
+{\tt Follows} duas vezes.
 
 \beforeverb
 \begin{verbatim}
@@ -1423,36 +1459,63 @@ cur.execute('''INSERT OR IGNORE INTO Follows
 \end{verbatim}
 \afterverb
 %
-Again, we simply tell the database to ignore our attempted 
-{\tt INSERT} if it would violate the uniqueness constraint
-that we specified for the {\tt Follows} rows.
+%Again, we simply tell the database to ignore our attempted 
+%{\tt INSERT} if it would violate the uniqueness constraint
+%that we specified for the {\tt Follows} rows.
+Novamente, nós simplesmente dizemos para o banco de dados ignorar nossa
+tentativa de inserir {\tt INSERT} se isto violar a regra de exclusividade que
+especificamos para a linha {\tt Follows}.
 
-\subsection{Retrieve and/or insert a record}
+%\subsection{Retrieve and/or insert a record}
+\subsection{Restaurar e/ou inserir um registro}
 
-When we prompt the user for a Twitter account, if the account 
-exists, we must look up its {\tt id} value.  If the account
-does not yet exist in the {\tt People} table, we must insert 
-the record and get the {\tt id} value from the inserted
-row.
+%When we prompt the user for a Twitter account, if the account 
+%exists, we must look up its {\tt id} value.  If the account
+%does not yet exist in the {\tt People} table, we must insert 
+%the record and get the {\tt id} value from the inserted
+%row.
 
-This is a very common pattern and is done twice in the program above.
-This code shows how we look up the {\tt id} for a 
-friend's account when we have extracted a \verb"screen_name"
-from a {\tt user} node in the retrieved Twitter JSON.
+Quando solicitamos ao usuário uma conta do Twitter, se a conta existir,
+precisamos verificar o valor do {\tt id}. Se a conta não existir ainda
+na tabela {\tt People}, devemos inserir o registro e pegar o valor do
+{\tt id} da linha inserida.
 
-Since over time it will be increasingly likely that the account
-will already be in the database, we first check to see if the
-{\tt People} record exists using a {\tt SELECT} statement.
+%This is a very common pattern and is done twice in the program above.
+%This code shows how we look up the {\tt id} for a 
+%friend's account when we have extracted a \verb"screen_name"
+%from a {\tt user} node in the retrieved Twitter JSON.
 
-If all goes well\footnote{In general, when a sentence starts 
-with ``if all goes well'' you will find that the code needs
-to use try/except.} inside the {\tt try} section, we retrieve the
-record using {\tt fetchone()} and then retrieve the
-first (and only) element of the returned tuple and store it in 
-\verb"friend_id".
+Isto é um padrão muito comum e é feito duas vezes no programa acima. Este
+código mostra como verificamos o {\tt id} da conta de um amigo, quando
+extraímos um \verb"screen_name" de um nó de {\tt user} recuperado do JSON
+do Twitter.
 
-If the {\tt SELECT} fails, the {\tt fetchone()[0]} code will fail
-and control will transfer into the {\tt except} section.
+%Since over time it will be increasingly likely that the account
+%will already be in the database, we first check to see if the
+%{\tt People} record exists using a {\tt SELECT} statement.
+
+Ao longo do tempo será cada vez mais provável que a conta já esteja registrada
+no banco de dados, então primeiro checamos para ver se o registro existe em
+{\tt People} utilizando uma declaração de {\tt SELECT}.
+
+%If all goes well\footnote{In general, when a sentence starts 
+%with ``if all goes well'' you will find that the code needs
+%to use try/except.} inside the {\tt try} section, we retrieve the
+%record using {\tt fetchone()} and then retrieve the
+%first (and only) element of the returned tuple and store it in 
+%\verb"friend_id".
+
+Se tudo estiver certo\footnote{Em geral, quando uma sentença inicia com ``se
+  tudo estiver certo'' você verá que o código precisa utilizar a condição
+  {\it try/except}.} dentro da seção {\tt try}, recuperamos o registro usando
+{\tt fetchone()} e depois recuperar o primeiro (e somente o primeiro) elemento
+da tupla que retornou e a armazenamos em \verb"friend_id".
+
+%If the {\tt SELECT} fails, the {\tt fetchone()[0]} code will fail
+%and control will transfer into the {\tt except} section.
+
+Se o {\tt SELECT} falhar, o código de {\tt fetchone()[0]} falhará e o controle
+irá mudar para a seção {\tt except}.
 
 \beforeverb
 \begin{verbatim}
@@ -1474,24 +1537,41 @@ and control will transfer into the {\tt except} section.
 \end{verbatim}
 \afterverb
 %
-If we end up in the {\tt except} code, it simply means that the row
-was not found, so we must insert the row.  We use {\tt INSERT OR 
-IGNORE} just to avoid errors and then call {\tt commit()} to 
-force the database to really be updated.  After the write is done, we can 
-check the {\tt cur.rowcount} to see how many rows were affected.  Since
-we are attempting to insert a single row, if the number of 
-affected rows is something other than 1, it is an error.  
+%If we end up in the {\tt except} code, it simply means that the row
+%was not found, so we must insert the row.  We use {\tt INSERT OR 
+%IGNORE} just to avoid errors and then call {\tt commit()} to 
+%force the database to really be updated.  After the write is done, we can 
+%check the {\tt cur.rowcount} to see how many rows were affected.  Since
+%we are attempting to insert a single row, if the number of 
+%affected rows is something other than 1, it is an error.  
 
-If the {\tt INSERT} is successful, we can look at {\tt cur.lastrowid} 
-to find out what value the database assigned to the {\tt id} column in 
-our newly created row.
+Se terminar no código do {\tt except}, isto significa que aquela linha não foi
+encontrada, então devemos inserí-la na linha. Usamos o {\tt INSERT OR IGNORE}
+somente para evitar erros e depois chamamos {\tt commit()} para forçar que a
+base de dados seja atualizada. Depois que a escrita esteja completa, nós
+podemos checar, com {\tt cur.rowcount}, para ver quantas linhas foram afetadas.
+Uma vez que estamos tentando inserir uma simples linha, se o número de linhas
+afetadas é alguma coisa diferente de 1, isto é um erro.
 
-\subsection{Storing the friend relationship}
+%If the {\tt INSERT} is successful, we can look at {\tt cur.lastrowid} 
+%to find out what value the database assigned to the {\tt id} column in 
+%our newly created row.
 
-Once we know the key value for both the Twitter user
-and the friend in the JSON, it is a simple matter to insert
-the two numbers into the {\tt Follows} table
-with the following code:
+Se o {\tt INSERT} for executado com sucesso, nós podemos verificar, através do
+{\tt cur.lastrowid} para descobrir qual valor o banco de dados associou na
+coluna {\tt id} na nossa nova linha.
+
+%\subsection{Storing the friend relationship}
+\subsection{Armazenando a conexão do amigo}
+
+%Once we know the key value for both the Twitter user
+%and the friend in the JSON, it is a simple matter to insert
+%the two numbers into the {\tt Follows} table
+%with the following code:
+
+Uma vez que sabemos o valor da chave para o usuário do Twitter e o amigo
+extraído do JSON, simplesmente inserimos os dois números dentro da tabela
+{\tt Follows} com o seguinte código:
 
 \beforeverb
 \begin{verbatim}
@@ -1500,11 +1580,16 @@ cur.execute('INSERT OR IGNORE INTO Follows (from_id, to_id) VALUES (?, ?)',
 \end{verbatim}
 \afterverb
 %
-Notice that we let the database take care of keeping us from ``double-inserting''
-a relationship by creating the table with a uniqueness constraint and then
-adding {\tt OR IGNORE} to our {\tt INSERT} statement.
+%Notice that we let the database take care of keeping us from ``double-inserting''
+%a relationship by creating the table with a uniqueness constraint and then
+%adding {\tt OR IGNORE} to our {\tt INSERT} statement.
+%
+Note que deixamos o banco de dados cuidar para nós de realizar a
+``inserção-dupla'' da conexão criando a tabela com a restrição única e depois
+adicionando {\tt OR IGNORE} a nossa condição de {\tt INSERT}.
 
-Here is a sample execution of this program:
+%Here is a sample execution of this program:
+Esta é um exemplo de execução deste programa:
 
 \beforeverb
 \begin{verbatim}
@@ -1523,12 +1608,20 @@ Enter a Twitter account, or quit: quit
 \end{verbatim}
 \afterverb
 %
-We started with the {\tt drchuck} account and then let the program
-automatically pick the next two accounts to retrieve and add to 
-our database.
+%We started with the {\tt drchuck} account and then let the program
+%automatically pick the next two accounts to retrieve and add to 
+%our database.
 
-The following is the first few rows in the {\tt People} 
-and {\tt Follows} tables after this run is completed:
+%
+Nós iniciamos com a conta {\tt drchuck} e depois deixamos o programa pegar
+automaticamente as próximas duas contas para recuperar e adicionar a nossa
+base de dados.
+
+%The following is the first few rows in the {\tt People} 
+%and {\tt Follows} tables after this run is completed:
+
+Abaixo estão as primeiras linhas das tabelas {\tt People} e {\tt Follows}
+depois que esta execução é finalizada:
 
 \beforeverb
 \begin{verbatim}
@@ -1549,71 +1642,124 @@ Follows:
 \end{verbatim}
 \afterverb
 %
-You can see the {\tt id}, {\tt name}, and {\tt visited} fields in the 
-{\tt People} table and you see the numbers of both ends of 
-the relationship in the {\tt Follows} table.   
-In the {\tt People} table, we can see that the first three people
-have been visited and their data has been retrieved.
-The data in the {\tt Follows} table indicates that
-{\tt drchuck} (user 1) is a friend to all of the people shown in the first
-five rows.  This makes sense because
-the first data we retrieved and stored was the Twitter friends of
-{\tt drchuck}.  If you were to print more rows from the {\tt Follows} table,
-you would see the friends of users 2 and 3 as well.
+%You can see the {\tt id}, {\tt name}, and {\tt visited} fields in the 
+%{\tt People} table and you see the numbers of both ends of 
+%the relationship in the {\tt Follows} table.   
+%In the {\tt People} table, we can see that the first three people
+%have been visited and their data has been retrieved.
+%The data in the {\tt Follows} table indicates that
+%{\tt drchuck} (user 1) is a friend to all of the people shown in the first
+%five rows.  This makes sense because
+%the first data we retrieved and stored was the Twitter friends of
+%{\tt drchuck}.  If you were to print more rows from the {\tt Follows} table,
+%you would see the friends of users 2 and 3 as well.
 
-\section{Three kinds of keys}
+%
+Você também pode ver os campos {\tt id}. {\tt name} e {\tt visited} na tabela
+{\tt People} e os números dos finais das conexões na tabela {\tt Follows}. Na
+tabela {\tt People}, podemos ver que as primeiras três pessoas foram visitadas
+e seus dados foram recuperados. Os dados na tabela {\tt Follows} indica que
+{\tt drchuck} (usuário 1) é amigo de todas as pessoas mostradas nas primeiras
+cincos linhas. Isto mostra que o primeiro dado que recuperamos e armazenamos
+foram dos amigos do {\tt drchuck}. Se você mostrou mais linhas da tabela
+{\tt Follows}, você poderá ver os amigos dos usuários 2 e 3.
 
-Now that we have started building a data model putting our
-data into multiple linked tables and linking the rows in those
-tables using {\bf keys}, we need to look at some terminology 
-around keys.  There are generally three kinds of keys used 
-in a database model.
+%\section{Three kinds of keys}
+\section{Três tipos de chaves}
+
+%Now that we have started building a data model putting our
+%data into multiple linked tables and linking the rows in those
+%tables using {\bf keys}, we need to look at some terminology 
+%around keys.  There are generally three kinds of keys used 
+%in a database model.
+
+Agora que iniciamos a construção de um modelo de dados colocando nossos dados
+dentro de múltiplas tabelas e linhas conectadas nestas tabelas utilizando
+{\bf chaves}, precisamos olhar para algumas terminologias sobre as chaves.
+Existem genericamentes três tipos de chaves que são utilizadas em um banco de
+dados.
 
 \begin{itemize}
 
-\item A {\bf logical key} is a key that the ``real world'' might use
-to look up a row.   In our example data model, the {\tt name}
-field is a logical key.  It is the screen name for the user 
-and we indeed look up a user's row several times in the program
-using the {\tt name} field.  You will often find that it makes
-sense to add a {\tt UNIQUE} constraint to a logical key.  Since the 
-logical key is how we look up a row from the outside world, it makes
-little sense to allow multiple rows with the same value in the table.
+%\item A {\bf logical key} is a key that the ``real world'' might use
+%to look up a row.   In our example data model, the {\tt name}
+%field is a logical key.  It is the screen name for the user 
+%and we indeed look up a user's row several times in the program
+%using the {\tt name} field.  You will often find that it makes
+%sense to add a {\tt UNIQUE} constraint to a logical key.  Since the 
+%logical key is how we look up a row from the outside world, it makes
+%little sense to allow multiple rows with the same value in the table.
 
-\item A {\bf primary key} is usually a number that is assigned
-automatically by the database.  It generally has no meaning outside
-the program and is only used to link rows from different tables
-together.  When we want to look up a row in a table, usually 
-searching for the row using the primary key is the fastest 
-way to find the row.  Since primary keys are integer numbers, they 
-take up very little storage and can be compared or sorted very quickly.
-In our data model, the {\tt id} field is an example of a primary key.
+\item Um {\bf chave lógica} é uma chave que o ``mundo real'' pode usar para
+  checar uma linha. Na nossa modelagem, o campo {\tt name} é uma chave lógica.
+  Ele é o nome que usamos para o usuário e nós na verdade para uma linha de
+  usuário diversas vezes no nosso programa usando o campo {\tt name}. Você
+  perceberá que faz sentido adicionar a restrição de {\tt UNIQUE} para uma
+  chave lógica. Uma vez que é através de chaves lógicas que consultamos uma
+  linha do mundo exterior, faz um pouco de sentido permitir que múltiplas
+  linhas tenham o mesmo valor em uma tabela.
+  
+%\item A {\bf primary key} is usually a number that is assigned
+%automatically by the database.  It generally has no meaning outside
+%the program and is only used to link rows from different tables
+%together.  When we want to look up a row in a table, usually 
+%searching for the row using the primary key is the fastest 
+%way to find the row.  Since primary keys are integer numbers, they 
+%take up very little storage and can be compared or sorted very quickly.
+%In our data model, the {\tt id} field is an example of a primary key.
 
-\item A {\bf foreign key} is usually a number that points to the primary key
-of an associated row in a different table.  An example of a foreign
-key in our data model is the \verb"from_id".  
+\item Um {\bf chave primária} é usualmente um número que é associado
+  automaticamente por um banco de dados. Geralmente não terá significado fora
+  do programa e só é utilizada para conectar as linhas de diferentes tabelas.
+  Quando queremos verificar uma linha em uma tabela, normalmente buscamos pela
+  linha utilizando a chave primária, é a forma mais rápida de encontrar uma
+  linha. Uma vez que chaves primárias são números inteiros, eles ocupam pouco
+  espaço e podem ser comparados ou ordenados rapidamente. No nosso modelo, o
+  campo {\tt id} é um exemplo de chave primária.
+  
+%\item A {\bf foreign key} is usually a number that points to the primary key
+%of an associated row in a different table.  An example of a foreign
+%key in our data model is the \verb"from_id".  
 
+\item Uma {\bf chave estrangeira} é normalmente um número que aponta para a
+  chave primária associada a uma linha em outra tabela. Um exemplo de chave
+  estrangeira no nosso modelo é o campo \verb"from_id".
 \end{itemize}
 
-We are using a
-naming convention of always calling the primary key field name
-{\tt id} and appending the suffix \verb"_id" to any field name
-that is a foreign key.
+%We are using a
+%naming convention of always calling the primary key field name
+%{\tt id} and appending the suffix \verb"_id" to any field name
+%that is a foreign key.
 
+Nós estamos utilizando uma convenção de sempre chamar uma chave primária de
+um campo {\tt id} e adicionando o sufixo \verb"_id" para qualquer campo que
+seja uma chave estrangeira.
 
-\section{Using JOIN to retrieve data}
+%\section{Using JOIN to retrieve data}
+\section{Utilizando o JOIN para recuperar informações}
 
-Now that we have followed the rules of database normalization
-and have data separated into two tables, linked together using
-primary and foreign keys, we need to be able to build a 
-{\tt SELECT} that reassembles the data across the tables.
+%Now that we have followed the rules of database normalization
+%and have data separated into two tables, linked together using
+%primary and foreign keys, we need to be able to build a 
+%{\tt SELECT} that reassembles the data across the tables.
 
-SQL uses the {\tt JOIN} clause to reconnect these tables.  
-In the {\tt JOIN} clause you specify the fields that are used 
-to reconnect the rows between the tables.
+Agora que seguimos as regras de normalização de bancos de dados e temos os
+dados separados em duas tabelas, associadas através de chaves primárias e
+chaves estrangeiras, precisamos ser capazes de construir uma chamada de
+{\tt SELECT} que reagrupa os dados em toda as tabelas.
 
-The following is an example of a {\tt SELECT} with a 
-{\tt JOIN} clause:
+%SQL uses the {\tt JOIN} clause to reconnect these tables.  
+%In the {\tt JOIN} clause you specify the fields that are used 
+%to reconnect the rows between the tables.
+
+SQL utiliza a cláusula {\tt JOIN} para reconectar estas tabelas. Na cláusula
+{\tt JOIN} você especifica o campo que serão utilizados para reconectar as
+linhas entre as tabelas.
+
+%The following is an example of a {\tt SELECT} with a 
+%{\tt JOIN} clause:
+
+Abaixo, um exemplo de um {\tt SELECT} com um {\tt JOIN}:
 
 \beforeverb
 \begin{verbatim}
@@ -1629,19 +1775,35 @@ from {\tt Follows} and append the row from {\tt People} where the
 field \verb"from_id" in {\tt Follows} is the same the {\tt id} value
 in the {\tt People} table.
 
+%
+O {\tt JOIN} indica que o cmapo que utilizamos são selecionados cruzando ambas
+as tabelas {\tt Follows} e {\tt People}. A cláusula {\tt ON} indica como as
+duas tabelas devem ser unidas: Junta as linhas da tabela {\tt Follows} às da
+tabela {\tt People} onde o campo \verb"from_id" em {\tt Follows} tem o mesmo
+valor do campo {\tt id} na tabela {\tt People}.
+
 \beforefig
 \centerline{\includegraphics[height=2.50in]{figs2/join.eps}}
 \afterfig
 
-The result of the JOIN is to create extra-long ``metarows'' which have both 
-the fields from {\tt People} and the matching fields from {\tt Follows}.
-Where there is more than one match between the {\tt id} field from {\tt People}
-and the \verb"from_id" from {\tt People}, then JOIN creates a metarow 
-for \emph{each} of the matching pairs of rows, duplicating data as needed.
+%The result of the JOIN is to create extra-long ``metarows'' which have both 
+%the fields from {\tt People} and the matching fields from {\tt Follows}.
+%Where there is more than one match between the {\tt id} field from {\tt People}
+%and the \verb"from_id" from {\tt People}, then JOIN creates a metarow 
+%for \emph{each} of the matching pairs of rows, duplicating data as needed.
 
-The following code demonstrates the data that we will have in the 
-database after the multi-table Twitter spider program (above) has
-been run several times.
+O resultado do {\tt JOIN} cria uma super ``metalinha'' que tem os dois campos
+da tabela {\tt People} que casam com os campos da tabela {\tt Follows}. Onde
+existir mais de uma ocorrência entre o campo {\tt id} e o \verb"from_id" da
+tabela {\tt People}, então o {\tt JOIN} cria uma ``metalinha'' para \emph{cada}
+par de linhas que correspondem, duplicando os dados conforme for necessário.
+
+%The following code demonstrates the data that we will have in the 
+%database after the multi-table Twitter spider program (above) has
+%been run several times.
+
+O seguinte código demonstra o dado que nós teremos no banco de dados após o
+executar o programa coletor de dados (acima) diversas vezes.
 
 \beforeverb
 \begin{verbatim}
@@ -1679,11 +1841,17 @@ cur.close()
 \end{verbatim}
 \afterverb
 %
-In this program, we first dump out the {\tt People}
-and {\tt Follows} and then dump out a subset of the
-data in the tables joined together.
+%In this program, we first dump out the {\tt People}
+%and {\tt Follows} and then dump out a subset of the
+%data in the tables joined together.
 
-Here is the output of the program:
+%
+Neste programa, primeiro descarregamos a tabela {\tt People} e {\tt Follows} e
+depois descarregamos um subconjunto de dados das tabelas juntos.
+
+%Here is the output of the program:
+
+Aqui temos a saída do programa:
 
 \beforeverb
 \begin{verbatim}
@@ -1712,116 +1880,228 @@ Connections for id=2:
 \end{verbatim}
 \afterverb
 %
-You see the columns from the {\tt People} and {\tt Follows} tables and the last
-set of rows is the result of the {\tt SELECT} with the {\tt JOIN} clause.
+%You see the columns from the {\tt People} and {\tt Follows} tables and the last
+%set of rows is the result of the {\tt SELECT} with the {\tt JOIN} clause.
 
-In the last select, we are looking for accounts that are friends of 
-``opencontent'' (i.e., {\tt People.id=2}).
+%
+Você vê as colunas das tabelas {\tt People} e {\tt Follows} e por último
+conjunto de linhas é o resultado do {\tt SELECT} com o {\tt JOIN}.
 
-In each of the ``metarows'' in the last select, the first two columns are
-from the {\tt Follows}
-table followed by columns three through five from the {\tt People} table.  You can also
-see that the second column (\verb"Follows.to_id") matches the third column
-({\tt People.id}) in each of the joined-up ``metarows''.
+%In the last select, we are looking for accounts that are friends of 
+%``opencontent'' (i.e., {\tt People.id=2}).
 
-\section{Summary}
+No último {\tt SELECT}, nós estamos procurando por contas que tem amigos de
+``conteúdo aberto'' (i.e., {\tt People.id=2}).
 
-This chapter has covered a lot of ground to give you an overview of the basics
-of using a database in Python.   It is more complicated to write the code to use 
-a database to store data than Python dictionaries or flat files so there is 
-little reason to use a database unless your application truly needs the capabilities
-of a database.  The situations where a database can be quite useful are: 
-(1) when your application needs to make small many random updates within a large data set,
-(2) when your data is so large it cannot fit in a dictionary and you need to 
-look up information repeatedly, or (3) when you have a long-running process that you
-want to be able to stop and restart and retain the data from one run to the next.
+%In each of the ``metarows'' in the last select, the first two columns are
+%from the {\tt Follows}
+%table followed by columns three through five from the {\tt People} table.  You can also
+%see that the second column (\verb"Follows.to_id") matches the third column
+%({\tt People.id}) in each of the joined-up ``metarows''.
 
-You can build a simple database with a single table to suit many application 
-needs, but most problems will require several tables and links/relationships
-between rows in different tables.   When you start making links between 
-tables, it is important to do some thoughtful design and follow the 
-rules of database normalization to make the best use of the database's
-capabilities.  Since the primary motivation for using a database
-is that you have a large amount of data to deal with, it is important
-to model your data efficiently so your programs run as fast as possible.
 
-\section{Debugging}
+Em cada uma das ``meta-linhas'' da última seleção, as primeiras duas colunas
+são da tabela {\tt Follows} seguidas pelas colunas três até cinco da tabela
+{\tt People}. Você também pode ver que a segunda coluna (\verb"Follows.to_id")
+relaciona a terceira coluna ({\tt People.id}) em cada uma das ``meta-linha''
+que foram juntas.
 
-One common pattern when you are developing a Python program to connect to
-an SQLite database will be to run a Python program and check the
-results using the SQLite Database Browser.  The browser allows you 
-to quickly check to see if your program is working properly.
+%\section{Summary}
+\section{Sumário}
 
-You must be careful because SQLite takes care to keep two programs
-from changing the same data at the same time.   For example, if
-you open a database in the browser and make a change to the database
-and have not yet pressed the ``save'' button in the browser, the 
-browser ``locks'' the database file and keeps any other program
-from accessing the file.  In particular, your Python program
-will not be able to access the file if it is locked.
+%This chapter has covered a lot of ground to give you an overview of the basics
+%of using a database in Python.   It is more complicated to write the code to use 
+%a database to store data than Python dictionaries or flat files so there is 
+%little reason to use a database unless your application truly needs the capabilities
+%of a database.  The situations where a database can be quite useful are: 
+%(1) when your application needs to make small many random updates within a large data set,
+%(2) when your data is so large it cannot fit in a dictionary and you need to 
+%look up information repeatedly, or (3) when you have a long-running process that you
+%want to be able to stop and restart and retain the data from one run to the next.
 
-So a solution is to make sure to either close the database browser 
-or use the {\bf File} menu to close the database in the browser
-before you attempt to access the database from Python to avoid
-the problem of your Python code failing because the database is
-locked.
+Este capítulo cobriu os fundamentos para o uso, básico, de banco de dados no
+Python. É muito mais complicado escrever código para usar um banco de dados
+para armazenar informações do que dicionários ou arquivos com Python, então
+se existe poucas razões para utilizar um banco de dados, a menos que sua
+aplicação realmente precise das capacidades de um banco de dados. As situações
+onde um banco de dados podem ser muito úteis são: (1) quando sua aplicação
+precisa realizar pequenas atualizações com um conjunto grande de dados, (2)
+quando seus dados são tão grandes que não podem ser armazenados em um
+dicionário e você precisa acessar estas informações repetidas vezes, ou (3)
+quando você tem um processo de execução demorada e você quer ser capaz de
+parar e recomeçar e manter os dados entre as pesquisas.
 
-\section{Glossary}
+%You can build a simple database with a single table to suit many application 
+%needs, but most problems will require several tables and links/relationships
+%between rows in different tables.   When you start making links between 
+%tables, it is important to do some thoughtful design and follow the 
+%rules of database normalization to make the best use of the database's
+%capabilities.  Since the primary motivation for using a database
+%is that you have a large amount of data to deal with, it is important
+%to model your data efficiently so your programs run as fast as possible.
 
-\begin{description}
+Você pode construir um banco de dados simples com uma única tabela para
+atender muitas aplicações, mas a maiorias dos problemas vão necessitar de
+várias tabelas e conexões/relações entre as linhas em diferentes tabelas.
+Quando você começar a fazer relações entre as tabelas, é importante fazer
+algum planejamento e seguir as regras de normatização de banco de dados
+para fazer um melhor uso das capacidades dos bancos de dados. Uma vez que a
+principal motivação para utilizar um banco de dados é que você tem um grande
+conjunto de dados para tratar, é importante modelar os dados eficientemente,
+assim seus programas poderão rodas tão rápido quanto for possível.
 
-\item[attribute:] One of the values within a tuple.  More commonly
-called a ``column'' or ``field''.
-\index{attribute}
+%\section{Debugging}
+\section{Depuração}
+%One common pattern when you are developing a Python program to connect to
+%an SQLite database will be to run a Python program and check the
+%results using the SQLite Database Browser.  The browser allows you 
+%to quickly check to see if your program is working properly.
 
-\item[constraint:] 
-When we tell the database to enforce a rule on a field or a row
-in a table.  A common constraint is to insist that there can be no
-duplicate values in a particular field (i.e., all the values must be unique).
-\index{constraint}
+É comum quando você está desenvolvendo um programa em Python para se conectar
+em um banco de dados SQLite, é executar um programa para checar os resultados
+utilizando o Navegador SQLite. O navegador permitirá que rapidamente verifique
+se o seu programa está funcionando corretamente.
 
-\item[cursor:] A cursor allows you to execute SQL commands in a database
-and retrieve data from the database.  A cursor is similar to 
-a socket or file handle for network connections and files, respectively.
-\index{cursor}
+%You must be careful because SQLite takes care to keep two programs
+%from changing the same data at the same time.   For example, if
+%you open a database in the browser and make a change to the database
+%and have not yet pressed the ``save'' button in the browser, the 
+%browser ``locks'' the database file and keeps any other program
+%from accessing the file.  In particular, your Python program
+%will not be able to access the file if it is locked.
 
-\item[database browser:] 
-A piece of software that allows you to directly connect to a database 
-and manipulate the database directly without writing a program.
-\index{database browser}
+Você deve ter cuidado, porque o SQLite cuida para que dois programas não
+façam modificações nos dados ao mesmo tempo. Por exemplo, se você abrir
+um banco de dados no navegador e faz alterações no banco de dados, enquanto
+não pressionar o botão ``salvar'', o navegador ``trava'' o arquivo do banco
+de dados e impede qualquer outro programa de acessar o arquivo. Desta forma
+seu programa em Python não conseguirá acessar o arquivo se ele estiver travado.
 
-\item[foreign key:] A numeric key that points to the primary key of 
-a row in another table.  Foreign keys establish relationships between rows
-stored in different tables.
-\index{foreign key}
+%So a solution is to make sure to either close the database browser 
+%or use the {\bf File} menu to close the database in the browser
+%before you attempt to access the database from Python to avoid
+%the problem of your Python code failing because the database is
+%locked.
 
-\item[index:] Additional data that the database software maintains as rows
-and inserts into a table to make lookups very fast.
-\index{index}
+Então, uma solução é garantir que fechou o navegador ou utilizar o menu
+{\bf Arquivo} para fechar o banco de dados no navegador antes de tentar
+acessar o banco de dados através do Python, evitando problemas no seu código
+porque o banco de dados está travado.
 
-\item[logical key:] A key that the ``outside world'' uses to look up a particular
-row.  For example in a table of user accounts, a person's email address
-might be a good candidate as the logical key for the user's data. 
-\index{logical key}
+%\section{Glossary}
+\section{Glossário}
 
-\item[normalization:] Designing a data model so that no data
-is replicated.  We store each item of data at one place in the database
-and reference it elsewhere using a foreign key.
-\index{normalization}
-\index{database normalization}
+%\begin{description}
+\begin{descrição}
 
-\item[primary key:] A numeric key assigned to each row that is used to 
-refer to one row in a table from another table.  Often the database
-is configured to automatically assign primary keys as rows are inserted.
-\index{primary key}
+%\item[attribute:] One of the values within a tuple.  More commonly
+%called a ``column'' or ``field''.
+%\index{attribute}
 
-\item[relation:] An area within a database that contains tuples and 
-attributes.  More typically called a ``table''.
-\index{relation}
+\item[atributo:] Um dos valores dentro de uma tupla. Comumente chamado de
+  ``coluna'' ou ``campo''.
+  \index{atributo}
+  
+%\item[constraint:] 
+%When we tell the database to enforce a rule on a field or a row
+%in a table.  A common constraint is to insist that there can be no
+%duplicate values in a particular field (i.e., all the values must be unique).
+  %\index{constraint}
+  
+\item[restrição:] Quando ordenamos a um banco de dados para reforçar uma regra
+em um campo ou em uma linha na tabela. Uma restrição comum é insistir que não
+pode haver valore duplicados em um campo em particular (i.e., todos os
+valores tem que ser únicos).
+\index{restrição}
 
-\item[tuple:] A single entry in a database table that is a set 
-of attributes.  More typically called ``row''.
-\index{tuple}
 
-\end{description}
+%\item[cursor:] A cursor allows you to execute SQL commands in a database
+%and retrieve data from the database.  A cursor is similar to 
+%a socket or file handle for network connections and files, respectively.
+%\index{cursor}
 
+\item[cursor:] Um cursor permite execução de um comando SQL em um banco de
+  dados e recuperar informações de um banco de dados. Um cursor é similar a
+  um {\it socket} ou identificador de arquivos para uma conexão de rede e
+  arquivos, respectivamente.
+  \index{cursor}
+  
+%\item[database browser:] 
+%A piece of software that allows you to directly connect to a database 
+%and manipulate the database directly without writing a program.
+%\index{database browser}
+
+\item[navegador de banco de dados:] um conjunto de {\it software} que permite
+  se conectar diretamente a um banco de dados e manipulá-lo diretamente, sem
+  escrever um programa.
+  \index{navegador de banco de dados}
+  
+%\item[foreign key:] A numeric key that points to the primary key of 
+%a row in another table.  Foreign keys establish relationships between rows
+%stored in different tables.
+%\index{foreign key}
+
+\item[chave estrangeira:] Uma chave numérica que aponta para uma chave primária
+  de uma linha em outra tabela. Chaves estrangeiras estabelecem relações entre
+  linhas armazenadas em diferentes tabelas.
+  \index{chave estrangeira}
+  
+%\item[index:] Additional data that the database software maintains as rows
+%and inserts into a table to make lookups very fast.
+%\index{index}
+
+\item[índice:] Dados adicionais que um banco de dados mantém, como linhas e
+  inserções dentro de uma tabela para realizar consultas mais rápido.
+  \index{índice}
+  
+%\item[logical key:] A key that the ``outside world'' uses to look up a particular
+%row.  For example in a table of user accounts, a person's email address
+%might be a good candidate as the logical key for the user's data. 
+%\index{logical key}
+
+\item[chave lógica:] Uma chave que o ``mundo externo'' utiliza para consultar
+  uma linha em particular. Por exemplo em uma tabela de contas de usuários, o
+  email de uma pessoa pode ser um bom candidato a chave lógica para a
+  informação de usuário.
+  \index{chave lógica}
+  
+%\item[normalization:] Designing a data model so that no data
+%is replicated.  We store each item of data at one place in the database
+%and reference it elsewhere using a foreign key.
+%\index{normalization}
+%\index{database normalization}
+
+\item[normatização:] Projetar um modelo de dados para que nenhum dado seja
+  replicado. Armazenamos cada item de dados em um lugar no banco de dados
+  e referenciamos isso em qualquer lugar utilizando chave estrangeira.
+  \index{normatização}
+  \index{normatização de banco de dados}
+  
+%\item[primary key:] A numeric key assigned to each row that is used to 
+%refer to one row in a table from another table.  Often the database
+%is configured to automatically assign primary keys as rows are inserted.
+%\index{primary key}
+
+\item[chave primária:] Uma chave numérica associada a cada linha que é usada
+  para referenciar uma linha em uma tabela de outra tabela. Normalmente o
+  banco de dados é configurado para automaticamente associar chaves primárias
+  assim que linhas são inseridas.
+  \index{chave primária}
+  
+%\item[relation:] An area within a database that contains tuples and 
+%attributes.  More typically called a ``table''.
+%\index{relation}
+
+\item[relação:] Uma área dentro do banco de dados que contém tuplas e
+  atributos. Tipicamente chamada de ``tabela''.
+  \index{relação}
+  
+%\item[tuple:] A single entry in a database table that is a set 
+%of attributes.  More typically called ``row''.
+%\index{tuple}
+
+\item[tupla:] Uma entrada em um banco de dados que é um conjunto de atributos.
+  Tipicamente chamado de ``linha''.
+  \index{tupla}
+%\end{description}
+\end{decrição}
