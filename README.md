@@ -28,7 +28,7 @@ Responsáveis pela Tradução por Capítulo
 |00-preface.tex         |  Victor Jabur         | 100 % |  ?              | ?
 |01-intro.tex           |  Victor Jabur         | 100 % |  Rafael Covre   | ?
 |02-variables.tex       |  Eduardo Cândido      | 100 % |  ?              | ?
-|03-conditional.tex     |  Fernando Moreira     | 100 % |  ?              | ?
+|03-conditional.tex     |  Fernando Moreira     | 20 % |  ?              | ?
 |04-functions.tex       |  ?                    |   ?   |  ?              | ?
 |05-iterations.tex      |  Emir Neto            |   ?   |  ?              | ?
 |06-strings.tex         |  Élio Capelati        |   ?   |  ?              | ?
