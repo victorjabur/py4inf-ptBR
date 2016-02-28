@@ -27,7 +27,7 @@ Responsáveis pela Tradução por Capítulo
 |00-cover.tex           |  Victor Jabur         | 100 % |  ?              | ?
 |00-preface.tex         |  Victor Jabur         | 100 % |  ?              | ?
 |01-intro.tex           |  Victor Jabur         | 100 % |  Rafael Covre   | ?
-|02-variables.tex       |  Eduardo Cândido      | 100 % |  ?              | ?
+|02-variables.tex       |  Eduardo Cândido      | 100 % |  Maykon Chagas  | ?
 |03-conditional.tex     |  Fernando Moreira     | 100 % |  ?              | ?
 |04-functions.tex       |  ?                    |   ?   |  ?              | ?
 |05-iterations.tex      |  Emir Neto            |   ?   |  ?              | ?
@@ -39,7 +39,7 @@ Responsáveis pela Tradução por Capítulo
 |11-regex.tex           |  Felipe Souza         |   ?   |  ?              | ?
 |12-network.tex         |  Rafael Costa         |   ?   |  ?              | ?
 |13-web.tex             |  Kaio Cesar           |   ?   |  ?              | ?
-|14-database.tex        |  Maykon Chagas        |   ?   |  ?              | ?
+|14-database.tex        |  Maykon Chagas        | 100 % |  ?              | ?
 |15-viz.tex             |  Kléber Takazawa      |   ?   |  ?              | ?
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  ?              | ?
 |AA-windows.tex         |  ?                    |   ?   |  ?              | ?
