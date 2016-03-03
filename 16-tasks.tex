@@ -1,0 +1,672 @@
+% The contents of this file is 
+% Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
+
+\chapter{Automação de tarefas comuns no seu computador}
+
+Temos lido dados de arquivos, redes, serviços e banco de dados.
+Python também pode navegar através de todas as pastas e diretórios 
+no seu computador e ler os arquivos também.
+
+Neste capítulo, nós iremos escrever programas que analisam por através do seu computador e executam alguma operações em cada arquivo. Arquivos são organizados nos diretórios (também chamado de pastas).
+
+Scripts Python simples podem fazer o trabalho de tarefas simples que deve ser feito para
+centenas ou milhares de arquivos espalhados por uma árvore de diretórios ou todo o seu computador
+Para navegar através de todos os diretórios e arquivos em uma árvore nós utilizamos 
+{\tt os.walk} e um laço de repetição {\tt for}. Isto é similar em como {\tt open} nos permite escrever um laço de repetição para ler o contúdo de um arquivo, {\tt socket} nos permiteescrever um laço de repetição para ler o conteúdo de umaconexão e {\tt urllib} nospermite abrir um documento web e navegar por meio de um laço de repetição no seu conteúdo. 
+
+\section{Nomes e caminhos de arquivos}
+
+\label{paths}
+
+\index{file name}
+\index{path}
+\index{directory}
+\index{folder}
+
+{\it Todo programa em execução tem um "diretório atual" que é o diretório padrão para a maioria das operações. Por exemplo, quando você abre um arquivo para ler, Python procura por ele no diretório atual.}
+
+\index{os module}
+\index{module!os}
+
+O módulo {\tt os} disponibiliza funções para trabalhar com arquivos e diretórios ({\tt os} do inglês "operating system" que significa sistema operacional).  
+{\tt os.getcwd} retorna o nome do diretório atual:
+
+\index{getcwd function}
+\index{function!getcwd}
+
+\begin{verbatim}
+>>> import os
+>>> cwd = os.getcwd()
+>>> print cwd
+/Users/csev
+\end{verbatim}
+
+%
+{\tt cwd} significa  {\bf diretório atual de trabalho}. O resultado neste exemplo é 
+{\tt /Users/csev}, que é o diretório home do usuário chamado {\tt csev}.
+
+\index{working directory}
+\index{directory!working}
+
+Uma sequência de caracteres como {\tt cwd} que identifica um arquivo é chamado de path.
+Um {\bf relative path} inicia do diretório atual;
+Um {\bf absolute path} inicia do diretório raiz no sistema de arquivo.
+
+
+
+\index{relative path}
+\index{path!relative}
+\index{absolute path}
+\index{path!absolute}
+
+Os caminhos que temos visto até agora são nomes de arquivos simples, por isso são relativo ao diretório atual. Para encontrar o caminho absoluto para um arquivo, você pode usar {\tt os.path.abspath}:
+
+\begin{verbatim}
+>>> os.path.abspath('memo.txt')
+'/Users/csev/memo.txt'
+\end{verbatim}
+
+%
+{\tt os.path.exists} verifica se um determinado arquivo existe:
+
+\index{exists function}
+\index{function!exists}
+
+\begin{verbatim}
+>>> os.path.exists('memo.txt')
+True
+\end{verbatim}
+%
+Se existir, {\tt os.path.isdir} verifica se é um diretório:
+
+\begin{verbatim}
+>>> os.path.isdir('memo.txt')
+False
+>>> os.path.isdir('music')
+True
+\end{verbatim}
+
+%
+Similar, {\tt os.path.isfile} verifica se é um arquivo.
+
+{\tt os.listdir} retorna uma lista com os arquivos (e outros diretórios) do diretório dado:
+
+\begin{verbatim}
+>>> os.listdir(cwd)
+['music', 'photos', 'memo.txt']
+\end{verbatim}
+%
+
+\section{Exemplo: Limpando um diretório de foto}
+
+Há algum tempo atrás, desenvolvi um pequeno software tipo Flickr que recebe fotos do meu celular e armazena essas fotos no meu servidor. E escrevi isto antes do Flickr existir e continuo usando por que eu quero manter copias das minhas imagens originais para sempre. 
+
+Eu também gostaria de enviar uma simples descrição numa mensagem MMS ou como um título de uma mensagem de email. Eu armazenei essas mensagens em uma arquivo de texto no mesmo diretório do arquivo da imagem. Eu vim com uma estrutura de diretorios baseada no mês, ano, dia e hora que a foto foi tirada, abaixo um exemplo de nomenclatura para uma foto e sua descrição:
+
+\begin{verbatim}
+./2006/03/24-03-06_2018002.jpg
+./2006/03/24-03-06_2018002.txt
+\end{verbatim}
+%
+
+Após sete anos, eu tenho muitas fotos e legendas. Ao longo dos anos como eu troquei de celular, algumas vezes, meu código para extrair a legenda para uma menssagem quebrou e adicionou um bando de dados inuteis no meu servidor ao invés de legenda.
+
+
+Eu queria passar por estes arquivos e descobrir qual dos arquivos de texto foram realmente legendas e quais eram lixo e, em seguida, apagar os arquivos que são lixo. A primeira coisa a fazer era conseguir um simples inventário dos arquivos de texto que eu tinha em uma das subpastas usando o seguinte programa:
+
+\begin{verbatim}
+import os
+count = 0
+for (dirname, dirs, files) in os.walk('.'):
+   for filename in files:
+       if filename.endswith('.txt') :
+           count = count + 1
+print 'Files:', count
+
+python txtcount.py
+Files: 1917
+\end{verbatim}
+%
+
+A chave que torna possivel pouco codigo é a biblioteca {\tt os.walk} em Python. Quando nós chamamos
+{\tt os.walk} e inicializamos uma diretório, ele "anda" através de todos os diretórios e subdiretórios recursivamente.
+O caractere ""."" indica para iniciar no diretório corrente e navegar para baixo.
+
+Assim que encontra cada diretório, temos três valores em uma tupla no corpo do laço de repetição {\tt for}.
+O primeiro valor é o diretório corrente o segundo é a lista de sub-diretórios e o treceito valor é a lista de arquivos no diretório corrente.
+
+Nós não temos que procutar explicitamente dentro de cada diretório por que nó podemos contar com {\tt os.walk} para visitar eventualmente todas as pastas mas, nós queremos procurar em cada arquivo, então, escrevemos um simples laço de repetição {\tt for} para examinar cada um dos arquivos no diretório corrente. Vamos verificar se cada arquivo termina com ".txt" e depois contar o número de arquivos através de toda a árvore de diretórios que terminam com o sufixo ".txt".
+
+Uma vez que nós temos uma noção da quantidade de arquivos terminados com ".txt", a proxima coisa a fazer é tentar determinar  automaticamente no Python quais arquivos são maus e quais são bons. Para isto, escreveremos um programa simples para imprimir os arquivos e seus tamanhos.
+
+\begin{verbatim}
+import os
+from os.path import join
+for (dirname, dirs, files) in os.walk('.'):
+   for filename in files:
+       if filename.endswith('.txt') :
+           thefile = os.path.join(dirname,filename)
+           print os.path.getsize(thefile), thefile
+\end{verbatim}
+%
+
+Agora, em vez de apenas contar os arquivos, criamos um nome de arquivo concatenando o nome do diretório com
+o nome do arquivo dentro do diretório usando {\tt os.path.join}.
+
+É importante usar o {\tt os.path.join} para concatenar a sequência de caracteres por que no Windows usamos a
+barra invertida para construir os caminhos de arquivos e no Linux ou Apple nós usamos a barra (\verb"/") para construir o 
+caminho do arquivo.
+
+O {\tt os.path.join} conhece essas diferenças e sabe qual sistema esta rodando dessa forma, faz a concatenação mais adequada considerando o sistema. Então, o mesmo código em Python roda tando no Windows quanto em sistemas tipo Unix.
+
+Uma vez que temos o nome completo do arquivo com o caminho do diretório, nós usamos o utilitário {\tt os.path.getsize} para pegar
+e imprimir o tamanho, produzindo a seguinte saída.  
+
+\begin{verbatim}
+python txtsize.py
+...
+18 ./2006/03/24-03-06_2303002.txt
+22 ./2006/03/25-03-06_1340001.txt
+22 ./2006/03/25-03-06_2034001.txt
+...
+2565 ./2005/09/28-09-05_1043004.txt
+2565 ./2005/09/28-09-05_1141002.txt
+...
+2578 ./2006/03/27-03-06_1618001.txt
+2578 ./2006/03/28-03-06_2109001.txt
+2578 ./2006/03/29-03-06_1355001.txt
+...
+\end{verbatim}
+
+Analisando a saída, nós percebemos que alguns arquivos são bem pequenos e muitos dos arquivos são bem grande e com o mesmo tamanho (2578 e 2565)
+Quando 
+
+%
+
+Quando observamos alguns desses arquivos maiores manualmente, parece que os grandes arquivos não são nada mais que HTML genérico idênticos que vinham de e-mails enviados para meu sistema a partir do meu próprio telefone:
+
+\begin{verbatim}
+<html>
+        <head>
+                <title>T-Mobile</title>
+...
+\end{verbatim}
+
+%
+Passando através do arquivo parece que não há boas informações desses arquivos para que possamos provavelmente eliminá-los. Mas antes de excluir os arquivos, vamos escrever um programa para procurar por arquivos que são mais do que uma linha de tempo e mostrar o conteúdo do arquivo. 
+
+Não vamos nos incomodar mostrando os arquivos que são exatamente 2578 ou 2565 caracteres pois sabemos que estes não têm informações úteis. Assim podemos escrever o seguinte programa:
+
+\begin{verbatim}
+import os
+from os.path import join
+for (dirname, dirs, files) in os.walk('.'):
+   for filename in files:
+       if filename.endswith('.txt') :
+           thefile = os.path.join(dirname,filename)
+           size = os.path.getsize(thefile)
+           if size == 2578 or size == 2565:
+               continue
+           fhand = open(thefile,'r')
+           lines = list()
+           for line in fhand:
+               lines.append(line)
+           fhand.close()
+           if len(lines) > 1:
+                print len(lines), thefile
+                print lines[:4]
+\end{verbatim}
+
+%
+Nós usamos um {\tt continue} para ignorar arquivos com dois "Maus tamanhos ", então, abrimos o resto dos arquivos e lemos as linhas do arquivo em uma lista Python, se o arquivo tiver mais que uma linha nós imprimimos a quantidade de linhas e as primeiras três linhas do arquivo.
+
+Parece que filtrando esses dois tamanhos de arquivo ruins, e supondo
+que todos os arquivos de uma linha estão corretos, nós temos abaixo alguns dados bastante limpos:
+
+\begin{verbatim}
+python txtcheck.py 
+3 ./2004/03/22-03-04_2015.txt
+['Little horse rider\r\n', '\r\n', '\r']
+2 ./2004/11/30-11-04_1834001.txt
+['Testing 123.\n', '\n']
+3 ./2007/09/15-09-07_074202_03.txt
+['\r\n', '\r\n', 'Sent from my iPhone\r\n']
+3 ./2007/09/19-09-07_124857_01.txt
+['\r\n', '\r\n', 'Sent from my iPhone\r\n']
+3 ./2007/09/20-09-07_115617_01.txt
+...
+\end{verbatim}
+%
+
+Mas existe um ou mais padrões chatos de arquivo:
+duas linhas brancas seguidas por uma linha que diz "Sent from my iPhone" que tem escorregado em meus dados.
+Então, fizemos a seguinte mudança no programa para lidar com esses arquivos, bem.
+
+\begin{verbatim}
+           lines = list()
+           for line in fhand:
+               lines.append(line)
+           if len(lines) == 3 and lines[2].startswith('Sent from my iPhone'):
+               continue
+           if len(lines) > 1:
+                print len(lines), thefile
+                print lines[:4]
+\end{verbatim}
+
+%
+
+Nós simplesmente verificamos se nós temos um arquivo com três linhas, e se a terceira linha inicia com o texto específico 
+nós a pulas. Agora quando nós rodamos o programa, nós somente vemos apenas quatro restantes
+arquivos de multi-linha e todos esses arquivos parecem bastante razoável:
+
+------------------------------------------------------------------------------------------------------------
+
+\begin{verbatim}
+python txtcheck2.py 
+3 ./2004/03/22-03-04_2015.txt
+['Little horse rider\r\n', '\r\n', '\r']
+2 ./2004/11/30-11-04_1834001.txt
+['Testing 123.\n', '\n']
+2 ./2006/03/17-03-06_1806001.txt
+['On the road again...\r\n', '\r\n']
+2 ./2006/03/24-03-06_1740001.txt
+['On the road again...\r\n', '\r\n']
+\end{verbatim}
+
+%
+
+Se você olhar para o padrão global deste programa, nós refinamos sucessivamente como aceitamos ou rejeitamos arquivos e uma vez encontrado um padrão que tenha "bad" nós usamos {\tt continue} para ignorar os maus arquivos para que pudéssemos refinar nosso código para encontrar mais padrões que eram ruim.
+
+Agora estamos nos preparando para excluir os arquivos, nós vamos inverter a lógica e ao invés de imprimirmos os bons arquivos
+vamos imprimir os maus arquivos que estamos prestes a excluir.
+
+\begin{verbatim}
+import os
+from os.path import join
+for (dirname, dirs, files) in os.walk('.'):
+   for filename in files:
+       if filename.endswith('.txt') :
+           thefile = os.path.join(dirname,filename)
+           size = os.path.getsize(thefile)
+           if size == 2578 or size == 2565:
+               print 'T-Mobile:',thefile
+               continue
+           fhand = open(thefile,'r')
+           lines = list()
+           for line in fhand:
+               lines.append(line)
+           fhand.close()
+           if len(lines) == 3 and lines[2].startswith('Sent from my iPhone'):
+               print 'iPhone:', thefile
+               continue
+\end{verbatim}
+%
+Podemos ver agora uma lista de possiveis arquivos os quais queremos apagar e por quê esses arquivos estão
+para exclusão
+
+We can now see a list of candidate files that we are about
+Podemos ver agora uma lista de possiveis arquivos os quais queremos apagar e por quê esses arquivos estão
+para exclusão.
+O Programa produz a seguinte saída:
+
+\begin{verbatim}
+python txtcheck3.py
+to delete and why these files are up for deleting.
+The program produces the following output:
+
+\begin{verbatim}
+python txtcheck3.py
+...
+T-Mobile: ./2006/05/31-05-06_1540001.txt
+T-Mobile: ./2006/05/31-05-06_1648001.txt
+iPhone: ./2007/09/15-09-07_074202_03.txt
+iPhone: ./2007/09/15-09-07_144641_01.txt
+iPhone: ./2007/09/19-09-07_124857_01.txt
+...
+\end{verbatim}
+
+%
+Podemos verificar pontualmente esses arquivos para certificar que nao iremos inserir um bug em nosso programa
+ou talvez a nossa logica nao pegou arquivos que nao queriamos
+
+Uma vez satisfeitos que esta é lista de arquvos que queremos excluir, fazemos a seguinte mudança no programa.
+
+\begin{verbatim}
+           if size == 2578 or size == 2565:
+               print 'T-Mobile:',thefile
+               os.remove(thefile)
+               continue
+...
+           if len(lines) == 3 and lines[2].startswith('Sent from my iPhone'):
+               print 'iPhone:', thefile
+               os.remove(thefile)
+               continue
+\end{verbatim}
+%
+
+Nesta versão do programa, iremos fazer ambos, imprimir o arquivo e remover os arquivos ruins com {\tt os.remove}
+
+\begin{verbatim}
+python txtdelete.py 
+T-Mobile: ./2005/01/02-01-05_1356001.txt
+T-Mobile: ./2005/01/02-01-05_1858001.txt
+...
+\end{verbatim}
+%
+Apenas por diversão, rodamos o programa uma segunda vez e o programa não vai produzir nehuma saída desde que os arquivos ruins
+não existam.
+
+
+Se rodar novamente {\tt txtcount.py} podemos ver que removemos 899 arquivos ruins:
+
+\begin{verbatim}
+python txtcount.py 
+Files: 1018
+\end{verbatim}
+
+%
+
+Nesta seção, temos seguido uma sequencia onde usamos Python primeiro para navegar através dos diretórios e arquivos
+procurando padrões. Usamos Python devagar para ajudar a determinar como fariamos para limpar nosso diretorio.
+Uma vez descoberto quais arquivos são bons e quais não são,nós usamos o Python para excluir os arquivos e executar a limpeza.
+
+O problema pode ser necessário para resolver pode ser bastante simples 
+e pode depender somente procurar pelos nomes dos arquivos,
+ou talvez você precise ler todos os arquivos. alguma vezesvocê irá precisar ler todos os arquivos e fazer uma 
+mudança para alguns dos arquivos.
+Todos estes são bastante simples uma vez que você entender como {\ tt os.walk}
+e os outros utilitários {\ tt OS} podem ser usados.
+
+\section{Argumentos de linha de comando}
+
+\index{Argumentos}
+
+Nos capitulos anteriores tivemos uma série de programas que solicitavam
+por um nome de arquivo usando \verb"raw_input" e então, ler os dados 
+de um arquivo e processar os dados como segue:
+
+\begin{verbatim}
+name = raw_input('Enter file:')
+handle = open(name, 'r')
+text = handle.read()
+...
+\end{verbatim}
+
+%
+
+Nós podemos simplificar este programa um pouco pegando p nome do arquivo
+de um comando de linha qiando iniciar o Python. Até agora 
+nós simplesmente executamos nossos programas em Python e respondemos a
+solicitação como segue:
+
+\begin{verbatim}
+python words.py
+Enter file: mbox-short.txt
+...
+\end{verbatim}
+
+%
+
+Nós podemos lugar adicional sequencia de carcteres após o arquivo Pyhton e acessar aqueles 
+{\bf command-line arguments} em nosso programa Python. 
+Aqui é um simples programa que demonstra leitura de arqumentos a partir de uma linha de comando.
+
+\begin{verbatim}
+import sys
+print 'Count:', len(sys.argv)
+print 'Type:', type(sys.argv)
+for arg in sys.argv:
+   print 'Argument:', arg
+\end{verbatim}
+
+%
+
+Os conteúdos de {\tt sys.argv} são uma lista de sequencia de caracteres on aprmeira sequencia 
+é o nome do programa Python e as outras sequencias são argumentos no comenado de linha aós o arquivo Python.
+
+O seguinte mostra nosso programa lendo uma série de argumentos de linha de comando de uma linha de comando:
+
+\begin{verbatim}
+python argtest.py hello there
+Count: 3
+Type: <type 'list'>
+Argument: argtest.py
+Argument: hello
+Argument: there
+\end{verbatim}
+%
+
+Há três argumentos são passados em nosso programa como uma lista de três elementos. 
+O primeiro elemento da lista é o nome do arquivo (artest.py) e os outros são
+os dois argumentos de linha de comando após o nome do arquivo.
+
+Nós podemos reescrever nosso programa para ler o arquivo pegando o nome do arquivo
+do argumento de linha de comando como segue:
+
+\begin{verbatim}
+import sys
+
+name = sys.argv[1]
+handle = open(name, 'r')
+text = handle.read()
+print name, 'is', len(text), 'bytes'
+\end{verbatim}
+
+%
+Nós égamos o segundo arqgumento da linha de comando com o nome do arquivo (pulando o nome do programa na entrada  {\tt [0]}).
+Nósabrimos o arquivo e lemos o conteudo como segue:
+
+\begin{verbatim}
+python argfile.py mbox-short.txt
+mbox-short.txt is 94626 bytes
+\end{verbatim}
+
+%
+Usando argumento de linha de comando como entrada podemos tornar isto facil para reutilizar no seu priograna Python,
+especialment quando você somente precisa para entrada uma ou duas sequencias de caracteres.
+
+\section{Pipes}
+
+\index{shell}
+\index{pipe}
+
+A maioria dos sistemas operacionais oferecem uma interface de linha de comando,
+conhecido também com {\bf shell}. Shells normalmente normalmente disponibilizam comandos para
+navegar entre arquivos do sistemas e lançar aplicativos. Por exemplo, no Unix, você pode mudar de diretório
+com {\tt cd}, mostrar na tela o conteudo de um diretório com {\tt ls} e lançar um web browser digitando (por exemplo)
+{\tt firefox}.
+
+\index{ls (Unix command)}
+\index{Unix command!ls}
+
+Qualquer programa que consiga lançar a partir do shell também pode ser
+lançado à partir do Python usando um {\bf pipe}. Um pipe é um objeto
+que representa um processo em execução.
+
+
+Por exemplo, o comando Unix\footnote{Ao usar pipes para interagir com comando do sistema operacional como  {\tt ls},
+isso é importante para você saber quais sistemas operacionais você esta usando e somente comandos pipeque
+são suportados élo seu sistema operacional }
+{\tt ls -l} normalmente mostrar o conteudo do diretório atual(no formato longo). 
+Você pode lançar {\tt ls} com {\tt os.open}:
+
+\index{popen function}
+\index{function!popen}
+
+\begin{verbatim}
+>>> cmd = 'ls -l'
+>>> fp = os.popen(cmd)
+\end{verbatim}
+
+%
+
+Um argumento é uma sequencia de caracteres que contem um comando shell. O
+valor de retorno  é um poneiro para um arquivo que se comporta exatamente como um arquivo
+aberto.Você pode ler a saída do {\ tt ls} um processo
+linha de cada vez com {\ tt readline} ou obter a coisa toda de
+uma vez com {\ tt ler}:
+
+\index{readline method}
+\index{method!readline}
+\index{read method}
+\index{method!read}
+
+\begin{verbatim}
+>>> res = fp.read()
+\end{verbatim}
+
+%
+When you are done, you close the pipe like a file:
+
+\index{close method}
+\index{method!close}
+
+\begin{verbatim}
+>>> stat = fp.close()
+>>> print stat
+None
+\end{verbatim}
+
+%
+O valor de retorno é a situação final do processo {\tt ls};
+{\tt None} significa que ele terminou normalmente (sem erros).
+
+\section{Glossário}
+
+\begin{description}
+
+\item[absolute path:] Uma seqüência de caracteres que descreve onde um arquivo ou
+diretório é armazenado que começa no `` topo da árvore de diretórios ''
+de modo que ele pode ser usado para acessar o arquivo ou diretório, independentemente
+do diretório de trabalho atual.
+\index{path!absolute}
+
+\item [checksum:] Ver também {\bf hashing}. O termo ``checksum''
+vem da necessidade de verificar se os dados foi como foi ilegível
+enviada através de uma rede ou gravados em um meio de backup e, em seguida,
+leia novamente. Quando os dados são gravados ou enviados, o sistema de envio
+calcula uma soma de verificação e também envia a soma de verificação. Quando o
+os dados são lidos ou recebidos, o sistema de recepção re-computa
+a soma de verificação com base nos dados recebidos e compara-o com o
+recebido de soma de verificação. Das somas de verificação não corresponderem, devemos
+assumir que os dados foi ilegível, uma vez que foi transferido.
+\index {checksum}
+
+\item[command-line argument:] Parametros na linha de comando após o nome do arquivo Python.
+
+\item[current working directory:] O diretório atual que você
+esta "em". Você pode mudar seu diretório de trabalho usando o
+comando {\tt cd} na maioria dos sistemas em suas interfaces de linha de comando.
+Quando você abre um arquivo em Python usando apenas o nome do arquivo sem caminho
+informações, o arquivo deve estar no diretório de trabalho atual
+onde está a executar o programa.
+
+\index{directory!current}
+\index{directory!working}
+\index{directory!cwd}
+
+\item[hashing:] Leitura através de um potencialmente grande quantidade de dados
+e produzir uma soma de verificação original para os dados. As melhores funções hash
+produzem muito poucos "colisões" onde você pode dar dois diferentes
+fluxos de dados para a função hash e receber de volta o mesmo hash.
+MD5, SHA1 e SHA256 são exemplos de funções hash mais usadas.
+\index{hashing}
+
+\item[pipe:] Um pipe é uma conexão com um programa em execução. usando
+um pipe, você pode escrever um programa para enviar os dados para outro programa
+ou receber dados a partir desse programa. Um pipe é semelhante a um
+{\bf socket} aceitar que um pipe só pode ser usado para
+conectar os programas em execução no mesmo computador (ou seja, não
+através de uma rede).
+\index {pipe}
+
+\item[relative path:] Uma sequência de caracteres que descreve onde um arquivo ou
+diretório é armazenado em relação ao trabalho atual diretório.
+\index{path!relative}
+
+\item[shell:] Uma interface de linha de comando para um sistema operacional.
+Também chamado em alguns sistemas operacionais de "programa terminal"
+Nesta interface você escreve um comando com para metros na linha e pressiona "enter" 
+para executar o comando.
+\index{shell}
+
+\item[walk:] um termo que usamos para descrever  a noção de visitando
+a entrada de arvorede diretóroio, sub-diretorios, sub-sub-diretórios,
+até que tenhamso visitado todos os diretórios. 
+Nós chamamos isto  de "Caminhando na árvore de diretório"
+\index{walk}
+
+\end{description}
+
+\section{Exercícios}
+
+%\begin{ex}
+
+\label{checksum}
+
+\index{MP3}
+
+Numa grande coleção de arquivos MP3 pode existir mais de uma 
+cópia de um mesmo som, armazenado em diferentes diretórios ou com 
+diferentes nomes de arquivo. O objetivo deste exercicio é 
+procurar por essas duplicatas.
+
+\begin{enumerate}
+
+\item Escreva um programa que caminhe no diretório e todos esses
+subdiretórios para todos arquivoscom o sufixo (like {\tt .mp3})
+e listar par de arquvios com o mesmo tamanho.
+Dica: Use um dicionário onde a chave do dicionário é o tamanho
+do arquivo do {\tt os.path.getsize} e o valor no
+dicionário é o nome do caminho concatenado com o nome do arquivo.
+Como você encontrar cada arquivo, verifique se você já tem um
+arquivo que tem o mesmo tamanho do arquivo atual. Se assim for, você tem um
+duplicar o tamanho do arquivo, então imprimir o tamanho do arquivo e os dois nomes de arquivo
+(um a partir do hash e outro arquivo que você está olhando).
+
+\index{duplicate}
+\index{MD5 algorithm}
+\index{algorithm!MD5}
+\index{checksum}
+
+\item Adaptar o programa anterior para procurar arquivos que
+com conteúdo duplicado usando um hash ou o algoritmo {\bf checksum}. Por exemplo,
+MD5 (Message-Digest algorithm 5) leva um longo arbitrariamente-
+`` mensagem '' e retorna um 128-bit ``checksum''. a probabilidade
+é muito pequena que dois arquivos com diferentes conteúdos
+retornem o mesmo checksum.
+
+\end{enumerate}
+
+Você pode ler sobre MD5 em wikipedia.org/wiki/Md5 . O
+seguinte trecho de código abre um arquivo, o lê, e computa
+seu checksum.
+
+\begin{verbatim}
+import hashlib 
+...
+           fhand = open(thefile,'r')
+           data = fhand.read()
+           fhand.close()
+           checksum = hashlib.md5(data).hexdigest()
+\end{verbatim}
+%
+
+Você deve criar um dicionário onde a soma de verificação é a chave
+e o nome do arquivo é o valor. Quando você calcular o checksum
+e já está no dicionário como uma chave, você tem dois arquivos com
+conteúdo duplicado, então imprimir o arquivo no dicionário
+e o arquivo que você acabou de ler. Aqui está um exemplo de saída
+a partir de uma corrida em uma pasta de arquivos de imagem:
+
+\begin{verbatim}
+./2004/11/15-11-04_0923001.jpg ./2004/11/15-11-04_1016001.jpg
+./2005/06/28-06-05_1500001.jpg ./2005/06/28-06-05_1502001.jpg
+./2006/08/11-08-06_205948_01.jpg ./2006/08/12-08-06_155318_02.jpg
+\end{verbatim}
+%
+Aparentemente eu às vezes enviou a mesma foto mais de uma vez
+ou fez uma cópia de uma foto de vez em quando sem excluir
+o original.
+
+\end{document}
