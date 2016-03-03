@@ -771,9 +771,9 @@ pode ser bastante útil.
 %\section{Terminology: interpreter and compiler}
 %
 
-Python é uma linguagem {\bf alto nível} cujo objetivo é ser
-relativamente fácil para humanos ler e escrever e para computadores
-ler e processar. Outras linguagens alto nível incluem Java, C++,
+Python é uma linguagem de {\bf alto nível} cujo objetivo é ser
+relativamente fácil para humanos lerem e escreverem e para computadores
+lerem e processarem. Outras linguagens de alto nível incluem Java, C++,
 PHP, Ruby, Basic, Perl, JavaScript, e muito mais. O atual hardware
 dentro da Unidade Central de Processamento (CPU) não é capaz de entender
 nenhum destes comando em alto nível.
@@ -786,7 +786,7 @@ nenhum destes comando em alto nível.
 %
 
 A CPU entende a linguagem que chamamos de {\bf linguagem de máquina}. Linguagem
-de máquina é muit simples e francamente cansativa de se escrever porque ela é
+de máquina é muito simples e francamente cansativa de se escrever porque ela é
 representada em zeros e uns:
 %The CPU understands a language we call {\bf machine language}.  Machine
 %language is very simple and frankly very tiresome to write because it
@@ -811,11 +811,10 @@ representada em zeros e uns:
 
 Linguagem de máquina parece simples olhando-se de um modo superficial,
 dado que são apenas zeros e uns, mas sua sintaxe é muito mais complexa
-e mais distante que o Python. Poucos programadores escrevem linguagem de
-máquina. Invés disso, nós usamos vários tradutores para permitir que os
-programadores escrevam linguagem de máquina em linguagens de alto nível
-como o Python ou o JavaScript e estes tradutores convertem os programas
-para linguagem de máquina para execução pela CPU.
+e mais intrincada que o Python. Poucos programadores escrevem em linguagem de
+máquina. Ao invés disso, nós usamos vários tradutores para permitir que os
+programadores escrevam em linguagem de máquina a partir de linguagens de alto nível como o Python ou o JavaScript. Essas linguagens convertem os programas
+para linguagem de máquina que, desse modo, são executados pela CPU.
 %Machine language seems quite simple on the surface, given that there
 %are only zeros and ones, but its syntax is even more complex
 %and far more intricate than Python.  So very few programmers ever write
@@ -848,8 +847,8 @@ características gerais:
 Um {\bf interpretador} lê o código fonte de um programa da forma como foi escrito
 pelo programador, analisa, e interpreta as instruções em tempo de
 execução. Python é um interpretador e quando ele está rodando Python no modo
-interativo, nós podemos digitar uma linha de Python (uma sentença) e o Python
-processa imediatamente e está ponto para receber outra linha de Python.
+interativo, nós podemos digitar uma linha de Python (uma sentença) e o Python a
+processa imediatamente e está pronto para receber outra linha de Python.
 %An {\bf interpreter} reads the source code of the program as written by the
 %programmer, parses the source code, and interprets the instructions on the fly.
 %Python is an interpreter and when we are running Python interactively,
@@ -891,11 +890,10 @@ ser armazenado e resgatado através deste nome simbólico. Nós usamos o termo
 %\afterverb
 %%
 
-Neste exemplo, nós pedimos ao Python para armazenar o valor seis e usar um apelido {\bf x}
-assim nós podemos resgatar o valor mais tarde. Nós verificamos que o Python realmente
+Neste exemplo, nós pedimos ao Python para armazenar o valor seis e usar um apelido {\bf x}, de modo a nós podermos resgatar o valor mais tarde. Nós verificamos que o Python realmente
 lembrou dos valores quando usamos a função {\bf print}. Então nós perguntamos ao Python
-para resgatar {\bf x} e multiplicar por sete a armazenar de novo em uma variável {\bf y}.
-Então nós pedimos ao Python para imprimir o valor corrente em {\bf y}.
+para resgatar {\bf x}, multiplicá-lo por sete e armazenar de novo em uma variável {\bf y}.
+Então nós pedimos ao Python para exibir o valor corrente em {\bf y}.
 %In this example, we ask Python to remember the value six and use the label {\bf x}
 %so we can retrieve the value later.   We verify that Python has actually remembered
 %the value using {\bf print}. Then we ask Python to retrieve {\bf x} and multiply
@@ -915,9 +913,8 @@ significado.
 %
 
 É da natureza de um {\bf interpretador} ser capaz de ter uma conversa interativa, como
-foi mostrado acima. Um {\bf compilador} precisa ter em mãos o programa completo em um arquivo,
-e então ele roda um processo para traduzir um código fonte em alto nível para uma linguagem
-de máquina e então o compilador coloca o resultado deste processo em um outro arquivo
+foi mostrado acima. Um {\bf compilador} precisa ter em mãos o programa completo em um arquivo, então ele roda um processo para traduzir um código fonte em alto nível para uma linguagem
+de máquina e, em seguida, o compilador coloca o resultado deste processo em um outro arquivo
 para posterior execução.
 %It is the nature of an {\bf interpreter} to be able to have an interactive conversation
 %as shown above.  A {\bf compiler} needs to be handed the entire program in a file, and then
@@ -927,9 +924,9 @@ para posterior execução.
 %
 
 Se você está em um sistema Windows, frequentemente este programa executável em código
-de máquina tem o sufixo ``.exe'' ou ``.dll'', o qual é chamado de ``executável'' ou
+de máquina tem o sufixo ``.exe'' ou ``.dll'', os quais são chamados de ``executável'' ou
 ``biblioteca de link dinâmico'', respectivamente. Em Linux e Macintosh, não há um sufixo
-que marca um arquivo unicamente como executável.
+que marca unicamente um arquivo como executável.
 %If you have a Windows system, often these executable machine language programs have a
 %suffix of ``.exe'' or ``.dll'' which stand for ``executable'' and ``dynamic link
 %library'' respectively.  In Linux and Macintosh, there is no suffix that uniquely marks
@@ -974,16 +971,16 @@ de alto nível assim como o Python ou o C.
 
 Agora neste ponto em nossa discussão de compiladores e interpretadores, você deve
 estar com algumas dúvidas sobre o funcionamento do interpretador Python. Em que
-linguagem é escrito ? É escrito em uma linguagem compilada ? Quando nós
-digitamos ``python'', o que exatamente acontece ?
+linguagem é escrito? É escrito em uma linguagem compilada? Quando nós
+digitamos ``python'', o que exatamente acontece?
 %Now at this point in our discussion of compilers and interpreters, you should
 %be wondering a bit about the Python interpreter itself.  What language is
 %it written in?  Is it written in a compiled language?  When we type
 %``python'', what exactly is happening?
 %
 
-O interpretador Python é escrito em uma linguagem de alto nível, chamada ``C''.
-Você pode dar uma olhada no código fonte atual do interpretador através
+O interpretador Python é escrito em uma linguagem de alto nível chamada ``C''.
+Você pode dar uma olhada no código fonte do interpretador através
 do endereço \url{www.python.org} e trabalhar como você quiser com o código fonte.
 Então Python é um programa compilado em uma linguagem de máquina.
 Quando você instalou Python em seu computador (ou o fornecedor instalou),
@@ -1012,13 +1009,14 @@ C:\Python27\python.exe
 %\afterverb
 %%
 
-Isto é mais do que você realmente precisa conhecer para ser um programador Python, mas
-às vezes, isto ajuda a entender questões que intrigam justamente no início.
+Isso é mais do que você realmente precisa conhecer para ser um programador Python, mas
+às vezes, isso ajuda a entender questões que intrigam justamente no início.
 %That is more than you really need to know to be a Python programmer, but
 %sometimes it pays to answer those little nagging questions right at
 %the beginning.
 %
 
+%TODO Continuar daqui
 \section{Escrevendo um programa}
 %\section{Writing a program}
 %
