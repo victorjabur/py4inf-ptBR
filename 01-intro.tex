@@ -1016,7 +1016,6 @@ Isso é mais do que você realmente precisa conhecer para ser um programador Pyt
 %the beginning.
 %
 
-%TODO Continuar daqui
 \section{Escrevendo um programa}
 %\section{Writing a program}
 %
@@ -1121,8 +1120,8 @@ problema.
 
 Vamos dizer que você está fazendo uma pesquisa de computação social em posts
 do Facebook e está interessado nas palavras mais frequentes em uma série de posts.
-Você não pode imprimir o stream de posts do Facebook e debruçar-se sobre o texto
-procurando pela palavra mais comum, mas pode levar um longo tempo e ser muito
+Você pode imprimir o stream de posts do Facebook e debruçar-se sobre o texto
+procurando pela palavra mais comum, mas pode levar um tempo longo e ser muito
 propenso a erros. Você pode ser inteligente para escrever um programa Python para
 tratar disso rapidamente a com acurácia, então você pode passar seu final de semana
 fazendo algo divertido.
@@ -1165,9 +1164,9 @@ palavras.
 %scan the words.
 %
 
-A notícia ainda melhor é que eu já fiz para você um simples programa para
+A notícia ainda melhor é que eu já fiz para você um programa simples para
 encontrar a palavra mais comum em um arquivo texto. Eu escrevi, testei e agora
-eu estou dando isto para que você use e economize algum tempo.
+eu estou dando isso para que você use e economize algum tempo.
 %The even better news is that I already came up with a simple program to
 %find the most common word in a text file.  I wrote it,
 %tested it, and now I am giving it to you to use so you can save some time.
@@ -1237,9 +1236,9 @@ fez o download do código fonte no site \url{http://www.pythonlearn.com/code/} e
 %\index{program}
 
 Este é um bom exemplo de como o Python e sua linguagem podem atuar como um intermediário
-entre você (o usuário final) e eu (o programador). Python é uma forma para trocarmos úteis
-sequências de instruções (i.e., programas) em uma linguagem comum que pode ser usada por
-qualquer que instalar Python em seu computador. Então nenhum de nós está conversando {\em com o Python}
+entre você (o usuário final) e eu (o programador). Python é uma forma para trocarmos
+sequências úteis de instruções (i.e., programas) em uma linguagem comum que pode ser usada por
+qualquer um que instalar Python em seu computador. Então nenhum de nós está conversando {\em com o Python}
 mas sim nos comunicando uns com os outros {\em através} de Python.
 %This is a good example of how Python and the Python language are acting as an intermediary
 %between you (the end user) and me (the programmer).  Python is a way for us to exchange useful
@@ -1338,7 +1337,7 @@ O programa de contar palavras acima usa todos estes padrões exceto um.
 %these patterns except for one.
 %
 
-\section{O que pode dar errado ?}
+\section{O que pode dar errado?}
 %\section{What could possibly go wrong?}
 %
 
@@ -1351,11 +1350,10 @@ fará com que o Python pare de executar o seu programa.
 %program.
 %
 
-Programadores iniciantes mutas vezes tomam o fato de que o Python não deixa
-espaço para erros, como prova de que ele é malvado e cruel.
+Programadores iniciantes muitas vezes tomam o fato de que o Python não deixa
+espaço para erros como prova de que ele é malvado e cruel.
 Enquanto o Python parece gostar de todo mundo, ele os conhece pessoalmente e
-guarda um ressentimento contra eles. Devido a este ressentimento, o Python
-leva avalia nossos programas perfeitamente escritos e os rejeita como ``incorretos''
+guarda um ressentimento contra eles. Devido a este ressentimento, o Python avalia nossos programas perfeitamente escritos e os rejeita como ``incorretos''
 apenas para nos atormentar.
 %Beginning programmers often take the fact that Python leaves no
 %room for errors as evidence that Python is mean, hateful, and cruel.
@@ -1419,8 +1417,8 @@ SyntaxError: invalid syntax
 %%
 
 Não se ganha muita coisa discutindo com o Python. Ele é somente uma ferramenta.
-Ele não tem emoções e também não fica feliz e pronto para te servir quando você
-precisa dele. Suas mensagens de erro parecem ásperas, mas elas apenas tentam nos
+Ele não tem emoções e fica feliz e pronto para te servir quando você
+precisar dele. Suas mensagens de erro parecem ásperas, mas elas apenas tentam nos
 ajudar. Ele recebeu o seu comando e simplesmente não conseguiu entender
 o que você digitou.
 %There is little to be gained by arguing with Python.  It is just a tool.
@@ -1460,7 +1458,7 @@ do Python. Python dá o seu melhor para apontar a linha correta e o caractere qu
 confundiu. A única parte complicada dos erros de sintaxe é que às vezes os erros
 que precisam de conserto na verdade ocorrem um pouco antes de onde o Python {\em indica}
 e isso confunde um pouco. Desta forma, a linha e  caractere que o Python indica
-no erro de sintaxe pode ser que seja apenas um ponto de início e precisa da sua
+no erro de sintaxe pode ser que seja apenas um ponto de início para sua
 investigação.
 %\item[Syntax errors:] These are the first errors you will make and the easiest
 %to fix.  A syntax error means that you have violated the ``grammar'' rules of Python.
@@ -1492,7 +1490,7 @@ da existência de um restaurante. Então você diz ``você virou à esquerda ou 
 estação de gás ?'' e ele diz: ``Eu segui suas instruções perfeitamente, as escrevi em um papel,
 e dizia para virar à esquerda e andar por um quilômetro até a estação de gás.'' Então
 você diz: ``Eu sinto muito, embora minhas instruções estivessem sintaticamente corretas,
-elas infelizmente tinham um pequeno erro semântico indetectável.''
+elas infelizmente tinham um pequeno erro semântico não detectado.''
 %\item[Semantic errors:] A semantic error is when your description of the steps to take
 %is syntactically perfect and in the right order, but there is simply a mistake in
 %the program.  The program is perfectly correct but it does not do what
@@ -1523,12 +1521,19 @@ fazer tudo aquilo que você pediu.
 %
 
 Enquanto você progride para o restante do livro, não tenha medo se os conceitos
-não parecem se encaixar tão bem em um primeiro momento. Quando você aprender a falar,
-verá que os problemas que você enfrentou valeram a pena e não se lembrará mais das
-dificuldades. Estará tudo certo se você levar seis meses para se mover de um simples
-vocabulário até simples sentenças e levar mais 5-6 anos para mover-se de sentenças a
-parágrafos, e uns anos mais para estar habilitado a escrever uma interessante e curta
-estória com suas próprias mãos.
+não parecem se encaixar tão bem em um primeiro momento. Quando você aprendeu a falar, não era um problema que em seus primeiros anos você fizesse sons fofos e desajeitados. Foi tudo certo se levou seis meses para se mover de um
+vocabulário simples até sentenças simples e levou mais 5-6 anos para se mover de sentenças a
+parágrafos, e uns anos mais para estar habilitado a escrever uma
+estória curta e interessante com suas próprias mãos.
+
+% Enquanto você progride para o restante do livro, não tenha medo se os conceitos
+% não parecem se encaixar tão bem em um primeiro momento. Quando você aprender a falar,
+% verá que os problemas que você enfrentou valeram a pena e não se lembrará mais das
+% dificuldades. Estará tudo certo se você levar seis meses para se mover de um
+% vocabulário simples até sentenças simples e levar mais 5-6 anos para mover-se de sentenças a
+% parágrafos, e uns anos mais para estar habilitado a escrever uma interessante e curta
+% estória com suas próprias mãos.
+
 %As you progress through the rest of the book, don't be afraid if the concepts
 %don't seem to fit together well the first time.  When you were learning to speak,
 %it was not a problem  for your first few years that you just made cute gurgling noises.
@@ -1581,7 +1586,7 @@ algo maravilhoso.
 Se algo estiver particularmente difícil, saiba que não vale a pena ficar acordado
 a noite inteira encarando o problema. Faça uma pausa, tire um cochilo, faça um lanche,
 compartilhe o seu problema com alguém (com seu cão talvez) e então retorne ao
-problema com a mente descansada. Eu asseguro a você que uma vez que você aprender
+problema com a mente descansada. Eu asseguro a você que uma vez que você aprenda
 os conceitos de programação neste livro, irá olhar para trás e perceber que tudo foi
 muito fácil, elegante e tão simples que tomou de você apenas um tempo para absorver
 o aprendizado.
@@ -1617,10 +1622,10 @@ que executa o software que nós escrevemos; também chamada de ``CPU'' ou de ``p
 %\index{CPU}
 %
 
-\item[compilação:]  Traduzir um programa escrito em uma linguagem de alto nível
+\item[compilar:]  Traduzir um programa escrito em uma linguagem de alto nível
 em uma linguagem de baixo nível tudo de uma vez, em preparação para uma posterior
 execução.
-\index{compilação}
+\index{compilar}
 %\item[compile:]  To translate a program written in a high-level language
 %into a low-level language all at once, in preparation for later
 %execution.
@@ -1643,9 +1648,9 @@ digitando comandos e expressões no prompt.
 %\index{interactive mode}
 %
 
-\item[interpretação:]  Executar um programa em uma linguagem de alto nível
+\item[interpretar:]  Executar um programa em uma linguagem de alto nível
 traduzindo uma linha por vez.
-\index{interpretação}
+\index{interpretar}
 %\item[interpret:]  To execute a program in a high-level language
 %by translating it one line at a time.
 %\index{interpret}
@@ -1653,7 +1658,7 @@ traduzindo uma linha por vez.
 
 \item[linguagem de baixo nível:]  Uma linguagem de programação que é desenhada
 para que seja fácil um computador executar; também chamada ``código de máquina'' ou
-``linguagem assembly''.
+``linguagem de montagem''.
 \index{linguagem de baixo nível}
 %\item[low-level language:]  A programming language that is designed
 %to be easy for a computer to execute; also called ``machine code'' or
@@ -1704,7 +1709,7 @@ exiba um valor na tela.
 %
 
 \item[resolução de problema:]  O processo de formular um problema, encontrar
-a solução e expressá-la.
+a solução e a expressar.
 \index{resolução de problema}
 %\item[problem solving:]  The process of formulating a problem, finding
 %a solution, and expressing the solution.
@@ -1725,7 +1730,7 @@ digitar algo para o programa.
 %\index{prompt}
 %
 
-\item[memória secundária:] Armazena programas e dados e retém a informação
+\item[memória secundária:] Armazena programas e dados, retendo a informação
 mesmo quando a energia é desligada.  Geralmente mais devagar
 em relação à memória principal. Exemplos de memória secundária são
 discos rígidos e memória flash nos pendrives USB.
@@ -1766,7 +1771,7 @@ daquilo que o programador desejava.
 %
 %
 \begin{ex}
-Qual é a função da memória secundária em um computador ?
+Qual é a função da memória secundária em um computador?
 
 a) Executar todas as computações e lógica de um programa\\
 b) Obter páginas web da internet\\
@@ -1784,7 +1789,7 @@ d) Receber o input de um usuário
 %
 
 \begin{ex}
-O que é um programa ?
+O que é um programa?
 \end{ex}
 %\begin{ex}
 %What is a program?
@@ -1792,7 +1797,7 @@ O que é um programa ?
 %
 
 \begin{ex}
-Qual é a diferença entre um compilador e um interpretador ?
+Qual é a diferença entre um compilador e um interpretador?
 \end{ex}
 %
 %\begin{ex}
@@ -1801,7 +1806,7 @@ Qual é a diferença entre um compilador e um interpretador ?
 %
 
 \begin{ex}
-Qual destas opções a seguir contém ``código de máquina''?
+Qual das opções a seguir contêm ``código de máquina''?
 
 a) O interpretador Python\\
 b) O teclado\\
@@ -1852,7 +1857,7 @@ SyntaxError: invalid syntax
 
 \begin{ex}
 Em qual lugar do computador existe uma variável ``X'' armazenada
-depois que a seguinte linha de Python finaliza ?
+depois que a seguinte linha de Python finaliza?
 
 \beforeverb
 \begin{verbatim}
