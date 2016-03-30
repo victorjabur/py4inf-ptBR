@@ -29,7 +29,7 @@ Responsáveis pela Tradução por Capítulo
 |01-intro.tex           |  Victor Jabur         | 100 % |  Rafael Covre   | 100%
 |02-variables.tex       |  Eduardo Cândido      | 100 % |  ?              | ?
 |03-conditional.tex     |  Fernando Moreira     | 100 % |  ?              | ?
-|04-functions.tex       |  ?                    |   ?   |  ?              | ?
+|04-functions.tex       |  Sandro Gazoni        |  0 %  |  ?              | ?
 |05-iterations.tex      |  Emir Neto            |   ?   |  ?              | ?
 |06-strings.tex         |  Élio Capelati        |   ?   |  ?              | ?
 |07-files.tex           |  Kaio Cesar           | 70 %  |  ?              | ?
@@ -37,10 +37,10 @@ Responsáveis pela Tradução por Capítulo
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100%
 |10-tuples.tex          |  Clodonil Trigo       | 60 %  |  ?              | ?
 |11-regex.tex           |  Felipe Souza         |   ?   |  ?              | ?
-|12-network.tex         |  Rafael Costa         |   ?   |  ?              | ?
+|12-network.tex         |  ?                    |   ?   |  ?              | ?
 |13-web.tex             |  Kaio Cesar           |   ?   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        |   ?   |  ?              | ?
-|15-viz.tex             |  Kléber Takazawa      |   ?   |  ?              | ?
+|15-viz.tex             |  Victor Jabur         |  0 %  |  ?              | ?
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  ?              | ?
 |AA-windows.tex         |  Victor Jabur         | 100 % |  ?              | ?
 |AB-apple.tex           |  ?                    |   ?   |  ?              | ?
