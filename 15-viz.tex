@@ -444,37 +444,52 @@ que ele representa.
 %drag any node and you can also double-click on a node to find the URL
 %that is represented by the node.
 
-Se você rodar novamente
+Se você rodar novamente algum script, lembre-se de rodar também o 
+{\bf spjson.py} e pressionar o botão de refresh no browser para ler
+os novos dados do arquivo {\bf spider.json}.
 %If you rerun the other utilities, rerun {\bf spjson.py} and
 %press refresh in the browser to get the new data from {\bf spider.json}.
 
-\section{Visualizing mail data}
+\section{Visualizando dados de e-mail}
+%\section{Visualizing mail data}
 
-Up to this point in the book, you have become quite familiar with our 
-{\bf mbox-short.txt} and {\bf mbox.txt} data files.   Now it is time to take
-our analysis of email data to the next level.  
+Até este ponto do livro, esperamos que você já se familiarizado com os 
+nossos arquivos de dados, {\bf mbox-short.txt} e {\bf mbox.txt}. Agora
+é hora de levar a nossa análise de e-mails para um próximo nível.
+%Up to this point in the book, you have become quite familiar with our 
+%{\bf mbox-short.txt} and {\bf mbox.txt} data files.   Now it is time to take
+%our analysis of email data to the next level.  
 
-In the real world, sometimes you have to pull down mail data from servers.
-That might take quite some time and the data might be inconsistent, 
-error-filled, and need a lot of cleanup or adjustment.  In this section, we
-work with an application that is the most complex so far and pull down nearly a 
-gigabyte of data and visualize it.
+No mundo real, às vezes você tem que puxar dados de e-mails dos servidores.
+Isto pode levar um bom tempo e talvez o dado seja inconsistente, com erros
+de preenchimento, e precisem de muitas limpezas e ajustes. Nesta seção, nós
+trabalharemos com uma aplicação que é muito complexa e baixa aproximadamente
+um gigabyte de dados e faz a leitura.
+%In the real world, sometimes you have to pull down mail data from servers.
+%That might take quite some time and the data might be inconsistent, 
+%error-filled, and need a lot of cleanup or adjustment.  In this section, we
+%work with an application that is the most complex so far and pull down nearly a 
+%gigabyte of data and visualize it.
 
 \beforefig
 \centerline{\includegraphics[height=2.50in]{figs2/wordcloud.eps}}
 \afterfig
 
-You can download this application from:
+Você pode fazer o download desta aplicação em:
+%You can download this application from:
 
 \url{www.py4inf.com/code/gmane.zip}
 
-We will be using data from a free email list archiving service called 
-\url{www.gmane.org}.  This service is very popular with open source
-projects because it provides a nice searchable archive of their 
-email activity.  They also have a very liberal policy regarding accessing 
-their data through their API.  They have no rate limits, but ask that you 
-don't overload their service and take only the data you need.  You can read
-gmane's terms and conditions at this page:
+Nós utilizaremos dados de um serviço de arquivamento de listas de e-mails
+gratuita chamado \url{www.gmane.org}. Este serviço é muito popular em projetos
+open source porque
+%We will be using data from a free email list archiving service called 
+%\url{www.gmane.org}.  This service is very popular with open source
+%projects because it provides a nice searchable archive of their 
+%email activity.  They also have a very liberal policy regarding accessing 
+%their data through their API.  They have no rate limits, but ask that you 
+%don't overload their service and take only the data you need.  You can read
+%gmane's terms and conditions at this page:
 
 \url{http://gmane.org/export.php}
 
