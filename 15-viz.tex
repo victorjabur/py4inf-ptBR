@@ -482,7 +482,11 @@ Você pode fazer o download desta aplicação em:
 
 Nós utilizaremos dados de um serviço de arquivamento de listas de e-mails
 gratuita chamado \url{www.gmane.org}. Este serviço é muito popular em projetos
-open source porque
+open source porque disponibiliza uma vasta coleção pesquisável de arquivos sobre
+a atividade de email deles. Eles também tem uma política liberal em relação
+ao acesso de seus dados através de sua API. Não tem taxas de limites, mas pedem
+para que você não sobrecarregue os seus serviços e pegue apenas os dados
+que você precise. Você pode ler os termos e condições do gname nesta página:
 %We will be using data from a free email list archiving service called 
 %\url{www.gmane.org}.  This service is very popular with open source
 %projects because it provides a nice searchable archive of their 
@@ -493,35 +497,61 @@ open source porque
 
 \url{http://gmane.org/export.php}
 
-{\em It is very important that you make use of the gmane.org data
-responsibly by adding delays to your access of their services and spreading
-long-running jobs over a longer period of time.  Do not abuse this free service
-and ruin it for the rest of us.}
+{\em É muito importante que você faça uso dos dados do gname.org com
+responsabilidade adicionando delays no acesso ao serviço deles e 
+espalhando tarefas de longa duração em um longo período de tempo.
+Não abuse deste serviço gratuito, arruinando-o para o resto de nós.}
+%{\em It is very important that you make use of the gmane.org data
+%responsibly by adding delays to your access of their services and spreading
+%long-running jobs over a longer period of time.  Do not abuse this free service
+%and ruin it for the rest of us.}
 
-When the Sakai email data was spidered using this software, it produced nearly 
-a Gigabyte of data and took a number of runs on several days.
-The file {\bf README.txt} in the above ZIP may have instructions as to how
-you can download a pre-spidered copy of the {\bf content.sqlite} file for 
-a majority of the Sakai email corpus so you don't have to spider for 
-five days just to run the programs.  If you download the pre-spidered
-content, you should still run the spidering process to catch up with 
-more recent messages.
+Quando os dados de email do Sakai foram vasculhados usando este software, 
+produziu aproximadamente um Gigabyte de dados e executou muitas vezes 
+durante vários dias.
+O arquivo {\bf README.txt} no arquivo ZIP acima, pode ter instruções sobre
+como você pode fazer download de uma cópia preparada previamente através do
+arquivo {\bf content.sqlite} para a maioria dos corpos dos emails Sakai, assim
+você não precisa coletar os dados por cinco dias apenas para rodar seus programas.
+Se você baixar conteúdos pré preparados, você ainda pode rodar o processo de coleta
+para pegar mensagens mais recentes.
+%When the Sakai email data was spidered using this software, it produced nearly 
+%a Gigabyte of data and took a number of runs on several days.
+%The file {\bf README.txt} in the above ZIP may have instructions as to how
+%you can download a pre-spidered copy of the {\bf content.sqlite} file for 
+%a majority of the Sakai email corpus so you don't have to spider for 
+%five days just to run the programs.  If you download the pre-spidered
+%content, you should still run the spidering process to catch up with 
+%more recent messages.
 
-The first step is to spider the gmane repository.  The base URL 
-is hard-coded in the {\bf gmane.py} and is hard-coded to the Sakai
-developer list.  You can spider another repository by changing that
-base url.   Make sure to delete the {\bf content.sqlite} file if you 
-switch the base url.  
+O primeiro passo é fazer uma coleta no repositório gname. A URL base
+está fixa dentro do arquivo {\bf gmane.py} e está apontando para a lista
+de desenvolvedores do Sakai. Você pode coletar outro repositório apenas
+mudando a url base. Certifique-se de deletar o arquivo {\bf content.sqlite}
+se você trocar a url base.
+%The first step is to spider the gmane repository.  The base URL 
+%is hard-coded in the {\bf gmane.py} and is hard-coded to the Sakai
+%developer list.  You can spider another repository by changing that
+%base url.   Make sure to delete the {\bf content.sqlite} file if you 
+%switch the base url.  
 
-The {\bf gmane.py} file operates as a responsible caching spider in 
-that it runs slowly and retrieves one mail message per second so 
-as to avoid getting throttled by gmane.   It stores all of
-its data in a database and can be interrupted and restarted 
-as often as needed.   It may take many hours to pull all the data
-down.  So you may need to restart several times.
+O arquivo {\bf gmane.py} funciona como um cache spider responsável,
+executando lentamente e retornando uma mensagem de e-mail por segundo,
+não sendo bloqueado desta forma pelo site gname. Ele armazena todos os
+seus dados em um banco de dados e pode ser interrompido e reiniciado
+quantas vezes forem necessárias. Pode levar muitas horas para baixar
+todos os dados. Você pode precisar reiniciar muitas vezes.
+%The {\bf gmane.py} file operates as a responsible caching spider in 
+%that it runs slowly and retrieves one mail message per second so 
+%as to avoid getting throttled by gmane.   It stores all of
+%its data in a database and can be interrupted and restarted 
+%as often as needed.   It may take many hours to pull all the data
+%down.  So you may need to restart several times.
 
-Here is a run of {\bf gmane.py} retrieving the last five messages of the
-Sakai developer list:
+Aqui está uma execução do {\bf gmane.py} retornando as últimas cinco 
+mensagens da lista de desenvolvedores do Sakai:
+%Here is a run of {\bf gmane.py} retrieving the last five messages of the
+%Sakai developer list:
 
 \beforeverb
 \begin{verbatim}
@@ -542,39 +572,68 @@ Does not start with From
 \end{verbatim}
 \afterverb
 %
-The program scans {\bf content.sqlite} from one up to the first message number not
-already spidered and starts spidering at that message.  It continues spidering
-until it has spidered the desired number of messages or it reaches a page
-that does not appear to be a properly formatted message.
 
-Sometimes \url{gmane.org} is missing a message.  Perhaps administrators can delete messages
-or perhaps they get lost.   If your spider stops, and it seems it has hit
-a missing message, go into the SQLite Manager and add a row with the missing id leaving
-all the other fields blank and restart {\bf gmane.py}.   This will unstick the 
-spidering process and allow it to continue.  These empty messages will be ignored in the next
-phase of the process.
+O programa escaneia o {\bf content.sqlite} e inicia a execução a partir da primeira
+mensagem que ainda não foi processada. Ele continua coletando até chegar ao número
+desejado de mensagens ou atingir uma página que possuir uma mensagem fora do padrão.
+%The program scans {\bf content.sqlite} from one up to the first message number not
+%already spidered and starts spidering at that message.  It continues spidering
+%until it has spidered the desired number of messages or it reaches a page
+%that does not appear to be a properly formatted message.
 
-One nice thing is that once you have spidered all of the messages and have them in 
-{\bf content.sqlite}, you can run {\bf gmane.py} again to get new messages as 
-they are sent to the list.  
+Às vezes o \url{gmane.org} perde alguma mensagem. Seja pelos administradores que deletaram
+uma mensagem ou então perdeu-se mesmo. Se seu programa para, e parece que ele perdeu alguma 
+mensagem, vá para o administrador SQLite e adicione uma linha com o id que está faltando,
+deixando todos os outros campos em branco e reinicie o {\bf gmane.py}. Isto irá liberar o 
+seu programa para continuar a execução. Estas mensagens vazias serão ignoradas na próxima 
+fase do processo.
+%Sometimes \url{gmane.org} is missing a message.  Perhaps administrators can delete messages
+%or perhaps they get lost.   If your spider stops, and it seems it has hit
+%a missing message, go into the SQLite Manager and add a row with the missing id leaving
+%all the other fields blank and restart {\bf gmane.py}.   This will unstick the 
+%spidering process and allow it to continue.  These empty messages will be ignored in the next
+%phase of the process.
 
-The {\bf content.sqlite} data is pretty raw, with an inefficient data model, 
-and not compressed.
-This is intentional as it allows you to look at {\bf content.sqlite}
-in the SQLite Manager to debug problems with the spidering process.
-It would be a bad idea to run any queries against this database, as they 
-would be quite slow.
+Uma coisa legal é que uma vez que você coletou todas as mensagens e tem elas dentro do
+{\bf content.sqlite}, você pode rodar o {\bf gmane.py} novamente para pegar as últimas 
+mensagens novas enviadas para a lista.
+%One nice thing is that once you have spidered all of the messages and have them in 
+%{\bf content.sqlite}, you can run {\bf gmane.py} again to get new messages as 
+%they are sent to the list.  
 
-The second process is to run the program {\bf gmodel.py}.  This program reads the raw 
-data from {\bf content.sqlite} and produces a cleaned-up and well-modeled version of the 
-data in the file {\bf index.sqlite}.  This file will be much smaller (often 10X
-smaller) than {\bf content.sqlite} because it also compresses the header and body text.
+O dados do {\bf content.sqlite} são um pouco cru, com um modelo de dados ineficiente
+e não comprimido.
+Isto é intencional pois permite a você olhar o conteúdo do {\bf content.sqlite}
+no SQLite Manager para debugar problemas que ocorreram no processo de coleta.
+Seria uma má idéia rodar qualquer tipo de consulta neste banco de dados, pois
+poderia demorar.  
+%The {\bf content.sqlite} data is pretty raw, with an inefficient data model, 
+%and not compressed.
+%This is intentional as it allows you to look at {\bf content.sqlite}
+%in the SQLite Manager to debug problems with the spidering process.
+%It would be a bad idea to run any queries against this database, as they 
+%would be quite slow.
 
-Each time {\bf gmodel.py} runs it deletes and rebuilds {\bf index.sqlite}, allowing
-you to adjust its parameters and edit the mapping tables in {\bf content.sqlite} to tweak the 
-data cleaning process. This is a sample run of {\bf gmodel.py}.  It prints a line out each time
-250 mail messages are processed so you can see some progress happening, as this program may
-run for a while processing nearly a Gigabyte of mail data.
+O segundo processo é rodar o programa {\bf gmodel.py}. Este programa lê os dados crus do
+{\bf content.sqlite} e produz uma versão bem modelada dos dados no arquivo {\bf index.sqlite}.
+Este arquivo será muito menor (quase 10 vezes menor) do que o {\bf index.sqlite}, porque 
+comprime o corpo e o cabeçalho do texto.
+%The second process is to run the program {\bf gmodel.py}.  This program reads the raw 
+%data from {\bf content.sqlite} and produces a cleaned-up and well-modeled version of the 
+%data in the file {\bf index.sqlite}.  This file will be much smaller (often 10X
+%smaller) than {\bf content.sqlite} because it also compresses the header and body text.
+
+Cada vez que o {\bf gmodel.py} roda, ele deleta e refaz o arquivo {\bf index.sqlite},
+permitindo a você ajustar os parâmetros e editar as tabelas de mapeamento no {\bf content.sqlite}
+para ajustar o processo de limpeza dos dados. Esta é uma amostra da execução do {\bf gmodel.py}.
+Ele imprime uma linha por vez, 250 mensagens de email são processadas, assim você pode ver
+algum progresso acontecendo, como este programa pode rodar por um longo tempo, é muito
+fácil conseguir um arquivo de e-mail de um Gigabyte de dados.
+%Each time {\bf gmodel.py} runs it deletes and rebuilds {\bf index.sqlite}, allowing
+%you to adjust its parameters and edit the mapping tables in {\bf content.sqlite} to tweak the 
+%data cleaning process. This is a sample run of {\bf gmodel.py}.  It prints a line out each time
+%250 mail messages are processed so you can see some progress happening, as this program may
+%run for a while processing nearly a Gigabyte of mail data.
 
 \beforeverb
 \begin{verbatim}
@@ -588,12 +647,18 @@ Loaded allsenders 1588 and mapping 28 dns mapping 1
 \afterverb
 %
 
-The {\bf gmodel.py} program handles a number of data cleaning tasks.
+O programa {\bf gmodel.py} trata um número de tarefas de limpeza de dados.
+%The {\bf gmodel.py} program handles a number of data cleaning tasks.
 
-Domain names are truncated to two levels for .com, .org, .edu, and .net.
-Other domain names are truncated to three levels.  So si.umich.edu becomes
-umich.edu and caret.cam.ac.uk becomes cam.ac.uk.   Email addresses are also
-forced to lower case, and some of the @gmane.org address like the following
+Nomes de domínios são truncados para dois níveis para .com, .org, .edu, e .net. 
+Outros nomes de domínios são truncados para três níveis. Assim si.umich.edu
+se transforma em umich.edu e caret.cam.ac.uk se transforma em cam.ac.uk.
+Endereços de email também são forçados para minúsculo, seguem alguns endereços
+do @gmane.org, por exemplo:
+%Domain names are truncated to two levels for .com, .org, .edu, and .net.
+%Other domain names are truncated to three levels.  So si.umich.edu becomes
+%umich.edu and caret.cam.ac.uk becomes cam.ac.uk.   Email addresses are also
+%forced to lower case, and some of the @gmane.org address like the following
 
 \beforeverb
 \begin{verbatim}
@@ -601,13 +666,20 @@ forced to lower case, and some of the @gmane.org address like the following
 \end{verbatim}
 \afterverb
 %
-are converted to the real address whenever there is a matching real email
-address elsewhere in the message corpus.
 
-In the {\bf content.sqlite} database there are two tables that allow
-you to map both domain names and individual email addresses that change over 
-the lifetime of the email list.  For example, Steve Githens used the following
-email addresses as he changed jobs over the life of the Sakai developer list:
+são convertidos para endereços reais a qualquer hora que ocorrer um encontro
+real de endereço de email em qualquer lugar no corpo da mensagem. 
+%are converted to the real address whenever there is a matching real email
+%address elsewhere in the message corpus.
+
+No banco de dados {\bf content.sqlite}, há duas tabelas que permitem a você
+mapear ambos os nomes de domínio e os endereços de email individuais que mudam
+ao longo do tempo da lista. Por exemplo, Steve Githens usou os seguintes endereços 
+de e-mail conforme foi mudando de emprego na lista de desenvolvedores Sakai:
+%In the {\bf content.sqlite} database there are two tables that allow
+%you to map both domain names and individual email addresses that change over 
+%the lifetime of the email list.  For example, Steve Githens used the following
+%email addresses as he changed jobs over the life of the Sakai developer list:
 
 \beforeverb
 \begin{verbatim}
@@ -617,8 +689,11 @@ swgithen@mtu.edu
 \end{verbatim}
 \afterverb
 %
-We can add two entries to the Mapping table in {\bf content.sqlite} so 
-{\bf gmodel.py} will map all three to one address:
+
+Nós podemos adicionar duas entradas na tabela de mapeamento em {\bf content.sqlite},
+assim o {\bf gmodel.py} irá mapear todos os três para um único endereço: 
+%We can add two entries to the Mapping table in {\bf content.sqlite} so 
+%{\bf gmodel.py} will map all three to one address:
 
 \beforeverb
 \begin{verbatim}
@@ -627,8 +702,12 @@ sgithens@cam.ac.uk -> swgithen@mtu.edu
 \end{verbatim}
 \afterverb
 %
-You can also make similar entries in the DNSMapping table if there are multiple
-DNS names you want mapped to a single DNS.  The following mapping was added to the Sakai data:
+
+Você pode criar entradas similares na tabela de mapeamento DNS se possuir múltiplos
+nomes DNS mapeados para um DNS simples. O seguinte mapeamento foi adicionado para os 
+dados Sakai: 
+%You can also make similar entries in the DNSMapping table if there are multiple
+%DNS names you want mapped to a single DNS.  The following mapping was added to the Sakai data:
 
 \beforeverb
 \begin{verbatim}
@@ -636,15 +715,23 @@ iupui.edu -> indiana.edu
 \end{verbatim}
 \afterverb
 %
-so all the accounts from the various Indiana University campuses are tracked together.
 
-You can rerun the {\bf gmodel.py} over and over as you look at the data, and add mappings
-to make the data cleaner and cleaner.   When you are done, you will have a nicely
-indexed version of the email in {\bf index.sqlite}.   This is the file to use to do data
-analysis.   With this file, data analysis will be really quick.
+assim todas as contas de vários campus da Universidade de Indiana são atreladas juntas.
+%so all the accounts from the various Indiana University campuses are tracked together.
 
-The first, simplest data analysis is to determine "who sent the most mail?" and "which 
-organization sent the most mail"?  This is done using {\bf gbasic.py}:
+Você pode reexecutar o {\bf gmodel.py} de novo e de novo conforme olhar para os dados e 
+adicionar mapeamentos para tornar os dados mais limpos. Quando você acabar, você terá uma
+agradável versão indexada dos emails em {\bf index.sqlite}. Este é o arquivo para se fazer
+análise dos dados. Com este arquivo, a análise dos dados será muito rápida. 
+%You can rerun the {\bf gmodel.py} over and over as you look at the data, and add mappings
+%to make the data cleaner and cleaner.   When you are done, you will have a nicely
+%indexed version of the email in {\bf index.sqlite}.   This is the file to use to do data
+%analysis.   With this file, data analysis will be really quick.
+
+A primeira, análise simples dos dados é para determinar "quem enviou mais emails?" e 
+"qual organização enviou mais emails?" Isto é feito usando o {\bf gbasic.py}:  
+%The first, simplest data analysis is to determine "who sent the most mail?" and "which 
+%organization sent the most mail"?  This is done using {\bf gbasic.py}:
 
 \beforeverb
 \begin{verbatim}
@@ -667,16 +754,25 @@ unicon.net 2055
 \end{verbatim}
 \afterverb
 %
-Note how much more quickly {\bf gbasic.py} runs compared to {\bf gmane.py}
-or even {\bf gmodel.py}. They are all working on the same data, but 
-{\bf gbasic.py} is using the compressed and normalized data in 
-{\bf index.sqlite}.  If you have a lot of data to manage, a multistep
-process like the one in this application may take a little longer to develop,
-but will save you a lot of time when you really start to explore
-and visualize your data.
 
-You can produce a simple visualization of the word frequency in the subject lines
-in the file {\bf gword.py}:
+Observe quão mais rápido o {\bf gbasic.py} executa quando comparado ao {\bf gmane.py}
+ou até mesmo ao {\bf gmodel.py}. Eles todos trabalham no mesmo dado, mas o {\bf gbasic.py}
+está usando dados normalizados e comprimidos em {\bf index.sqlite}. Se você tiver
+muitos dados para gerenciar, um processo multi passos assim como estes nesta aplicação
+podem levar mais tempo para serem desenvolvidos, mas irão economizar muito tempo
+quando você começar a explorar e visualizar os seus dados.
+%Note how much more quickly {\bf gbasic.py} runs compared to {\bf gmane.py}
+%or even {\bf gmodel.py}. They are all working on the same data, but 
+%{\bf gbasic.py} is using the compressed and normalized data in 
+%{\bf index.sqlite}.  If you have a lot of data to manage, a multistep
+%process like the one in this application may take a little longer to develop,
+%but will save you a lot of time when you really start to explore
+%and visualize your data.
+
+Você pode produzir uma simples visualização da frequência das palavras nas
+linhas do arquivo {\bf gword.py}: 
+%You can produce a simple visualization of the word frequency in the subject lines
+%in the file {\bf gword.py}:
 
 \beforeverb
 \begin{verbatim}
@@ -686,12 +782,17 @@ Output written to gword.js
 \afterverb
 %
 
-This produces the file {\bf gword.js} which you can visualize using
-{\bf gword.htm} to produce a word cloud similar to the one at the beginning 
-of this section.
+Isto produz o arquivo {\bf gword.js}, o qual você pode visualizar usando
+o {\bf gword.htm} para produzir uma nuvem de palavras similares àquelas
+no início desta seção.
+%This produces the file {\bf gword.js} which you can visualize using
+%{\bf gword.htm} to produce a word cloud similar to the one at the beginning 
+%of this section.
 
-A second visualization is produced  by {\bf gline.py}.  It computes email 
-participation by organizations over time.
+Uma segunda visualização foi produzida pelo {\bf gline.py}. Ele computa a 
+participação das organizações por email ao longo do tempo. 
+%A second visualization is produced  by {\bf gline.py}.  It computes email 
+%participation by organizations over time.
 
 \beforeverb
 \begin{verbatim}
@@ -704,11 +805,15 @@ Output written to gline.js
 \end{verbatim}
 \afterverb
 %
-Its output is written to {\bf gline.js} which is visualized using {\bf gline.htm}.
+
+Sua saída é escrita para {\bf gline.js}, o qual é visualizada usando {\bf gline.htm}.
+%Its output is written to {\bf gline.js} which is visualized using {\bf gline.htm}.
 
 \beforefig
 \centerline{\includegraphics[height=2.50in]{figs2/mailorg.eps}}
 \afterfig
 
-This is a relatively complex and sophisticated application and 
-has features to do some real data retrieval, cleaning, and visualization.
+Esta é uma aplicação relativamente complexa e sofisticada e têm características
+para fazer uma coleta real de dados, limpeza e visualização. 
+%This is a relatively complex and sophisticated application and 
+%has features to do some real data retrieval, cleaning, and visualization.

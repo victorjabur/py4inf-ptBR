@@ -37,7 +37,7 @@ Responsáveis pela Tradução por Capítulo
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100%
 |10-tuples.tex          |  Clodonil Trigo       | 60 %  |  ?              | ?
 |11-regex.tex           |  Felipe Souza         |   ?   |  ?              | ?
-|12-network.tex         |  ?                    |   ?   |  ?              | ?
+|12-network.tex         |  Camilo Alessandro    |   ?   |  ?              | ?
 |13-web.tex             |  Kaio Cesar           |   ?   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        |   ?   |  ?              | ?
 |15-viz.tex             |  Victor Jabur         |  0 %  |  ?              | ?
