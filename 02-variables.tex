@@ -5,9 +5,14 @@
 %\chapter{Variables, expressions, and statements}
 \section{Valores e tipos}
 %\section{Values and types}
-\index{value}
-\index{type}
+
+\index{valor}
+\index{tipo}
 \index{string}
+
+%\index{value}
+%\index{type}
+%\index{string}
 
 Um {\bf valor} é uma das coisas básicas com a qual um programa trabalha, 
 como uma letra ou um número. Os valores que vimos até agora são
@@ -29,7 +34,8 @@ porque elas aparecem entre aspas.
 %You (and the interpreter) can identify
 %strings because they are enclosed in quotation marks.
 
-\index{quotation mark}
+\index{string entre aspas}
+%\index{quotation mark}
 
 A instrução {\tt print} também funciona com inteiros. Nós usamos o 
 comando {\tt python} para iniciar o interpretador.
@@ -69,13 +75,20 @@ chamado {\bf ponto flutuante}.
 %because these numbers are represented in a
 %format called {\bf floating point}.
 
-\index{type}
-\index{string type}
-\index{type!str}
-\index{int type}
-\index{type!int}
-\index{float type}
-\index{type!float}
+\index{tipo}
+\index{o tipo string}
+\index{tipo!str}
+\index{tipo int}
+\index{tipo!int}
+\index{tipo float}
+\index{tipo!float}
+%\index{type}
+%\index{string type}
+%\index{type!str}
+%\index{int type}
+%\index{type!int}
+%\index{float type}
+%\index{type!float}
 
 \beforeverb
 \begin{verbatim}
@@ -91,7 +104,8 @@ strings.
 %They look like numbers, but they are in quotation marks like
 %strings.
 
-\index{quotation mark}
+\index{string entre aspas}
+%\index{quotation mark}
 
 \beforeverb
 \begin{verbatim}
@@ -128,9 +142,12 @@ imprimi com espaços entre eles.
 %  1,000,000} as a comma-separated sequence of integers, which it
 %prints with spaces between.
 
-\index{semantic error}
-\index{error!semantic}
-\index{error message}
+\index{erro semântico}
+\index{erro!semântico}
+\index{mensagem de erro}
+%\index{semantic error}
+%\index{error!semantic}
+%\index{error message}
 
 Este é o primeiro exemplo que vemos de um erro semântico: o código 
 executa sem produzir uma mensagem de erro, mas ele não faz a 
@@ -142,9 +159,12 @@ coisa ``certa''.
 \section{Variáveis}
 %\section{Variables}
 
-\index{variable}
-\index{assignment statement}
-\index{statement!assignment}
+\index{variável}
+\index{instrução de atribuição}
+\index{instrução!atribuição}
+%\index{variable}
+%\index{assignment statement}
+%\index{statement!assignment}
 
 Uma das mais poderosas características de uma linguagem de programação é a 
 capacidade de manipular {\bf variáveis). Uma variável é um nome 
@@ -207,7 +227,8 @@ O tipo de uma variável é o tipo do valor ao qual ela se refere.
 \section{Nomes de variáveis e palavras reservadas}
 %\section{Variable names and keywords}
 
-\index{keyword}
+\index{palavra chave}
+%\index{keyword}
 
 Programadores geralmente escolhem nomes, que tenham algum significado, 
 para suas variáveis e documentam para qual finalidade a 
@@ -239,7 +260,8 @@ uma biblioteca de código para outros usarem.
 %we generally avoid doing this unless we are writing library 
 %code for others to use.
 
-\index{underscore character}
+\index{caractere underscore}
+%\index{underscore character}
 
 Se você der a uma variável um nome inválido, você receberá um erro de sintaxe.
 %If you give a variable an illegal name, you get a syntax error:
@@ -270,7 +292,8 @@ e elas não podem ser usadas como nomes de variáveis.
 %and they cannot be used as variable names.
 
 
-\index{keyword}
+\index{palavra chave}
+%\index{keyword}
 
 Python reserva 31 Palavras Reservadas \footnote{Em Python 3.0, {\tt exec} não é 
 mais uma palavra reservada, mas {\tt nonlocal} é.} para seu uso:
@@ -307,9 +330,12 @@ e atribuição (=).
 %execute.  We have seen two kinds of statements: print
 %and assignment.
 
-\index{statement}
-\index{interactive mode}
-\index{script mode}
+\index{instrução}
+\index{modo interativo}
+\index{modo script}
+%\index{statement}
+%\index{interactive mode}
+%\index{script mode}
 
 Quando você digita uma instrução no modo interativo, o interpretador 
 a executa e mostra o resultado, se houver um.
@@ -352,10 +378,14 @@ A instrução de atribuição não produz saída.
 \section{Operadores e operandos}
 %\section{Operators and operands}
 
-\index{operator, arithmetic}
-\index{arithmetic operator}
-\index{operand}
-\index{expression}
+\index{operador, aritmético}
+\index{operador aritmético}
+\index{operando}
+\index{expressão}
+%\index{operator, arithmetic}
+%\index{arithmetic operator}
+%\index{operand}
+%\index{expression}
 
 {\bf Operadores) são símbolos especiais que representam cálculos como 
 adição e multiplicação. Os valores aos quais os operadores são aplicados 
@@ -408,6 +438,11 @@ Em Python 3.0, o novo operador
 \index{floating-point division}
 \index{division!floor}
 \index{division!floating-point}
+%\index{Python 3.0}
+%\index{floor division}
+%\index{floating-point division}
+%\index{division!floor}
+%\index{division!floating-point}
 
 Quando ambos os operandos são integers, o resultado é, também,
 um integer; floor division corta a parte fracionária,
@@ -440,8 +475,10 @@ uma variável, então o que segue são todas expressões válidas
 %a variable, so the following are all legal expressions
 %(assuming that the variable {\tt x} has been assigned a value):
 
-\index{expression}
-\index{evaluate}
+\index{expressão}
+\index{avaliar}
+%\index{expression}
+%\index{evaluate}
 
 \beforeverb
 \begin{verbatim}
@@ -492,9 +529,12 @@ x + 1
 \section{Ordem das operações}
 %\section{Order of operations}
 
-\index{order of operations}
-\index{rules of precedence}
+\index{ordem das operações}
+\index{regras de precedência}
 \index{PEMDAS}
+%\index{order of operations}
+%\index{rules of precedence}
+%\index{PEMDAS}
 
 Quando mais de um operador aparece em uma expressão, a ordem de 
 avaliação depende das {\bf regras de precedência}. Para 
@@ -506,7 +546,8 @@ O Acrônimo {\bf PEMDAS} é uma modo útil para lembrar as regras:
 %The acronym {\bf PEMDAS} is a useful way to
 %remember the rules:
 
-\index{parentheses!overriding precedence}
+\index{parênteses!precedência de sobrecarga}
+%\index{parentheses!overriding precedence}
 
 \begin{itemize}
 
@@ -555,8 +596,10 @@ de que os cálculos serão realizados na ordem que você deseja.
 \section{O operador Módulo}
 %\section{Modulus operator}
 
-\index{modulus operator}
-\index{operator!modulus}
+\index{operadr módulo}
+\index{operador!módulo}
+%\index{modulus operator}
+%\index{operator!modulus}
 
 O {\bf operador módulo) funciona em integers e fornece o resto da divisão,
 quando o primeiro operando é dividido pelo segundo. No Python, o 
@@ -589,7 +632,8 @@ exemplo, você pode checar se um núnero é divisível por outro---se
 %example, you can check whether one number is divisible by another---if
 %{\tt x \% y} is zero, then {\tt x} is divisible by {\tt y}.
 
-\index{divisibility}
+\index{divisibilidade}
+%\index{divisibility}
 
 Você pode, também, testar se um número é dvisível por outro. 
 Por exemplo, {\tt x \% 10} nos mostra se o número x é
@@ -603,8 +647,10 @@ nos mostra se x é divisível por 100.
 %\section{String operations}
 \section{Operações com Strings}
 
-\index{string!operation}
-\index{operator!string}
+\index{string!operação}
+\index{operador!string}
+%\index{string!operation}
+%\index{operator!string}
 
 O operador {\tt +} funciona com strings, mas ele 
 não é uma adição no sentido matemático. Ao invés disto, ele realiza 
@@ -615,7 +661,8 @@ vinculando-as de ponta-a-ponta. Por exemplo:
 %{\bf concatenation}, which means joining the strings by
 %linking them end to end.  For example:
 
-\index{concatenation}
+\index{concatenação}
+%\index{concatenation}
 
 \beforeverb
 \begin{verbatim}
@@ -637,7 +684,8 @@ A saída deste programa é {\tt 100150}.
 %\section{Asking the user for input}
 \section{Solicitando dados de entrada para o usuário}
 
-\index{keyboard input}
+\index{entrada pelo teclado}
+%\index{keyboard input}
 
 Algumas vezes gostaríamos de solicitar, do usuário, o valor para uma variável
 por meio do teclado.
@@ -657,8 +705,11 @@ retorna o que o usuário digitou, como uma string.
 %returns what the user typed as a string.
 
 \index{Python 3.0}
-\index{raw\_input function}
-\index{function!raw\_input}
+\index{função raw\_input}
+\index{função!raw\_input}
+%\index{Python 3.0}
+%\index{raw\_input function}
+%\index{function!raw\_input}
 
 \beforeverb
 \begin{verbatim}
@@ -680,6 +731,7 @@ para a entrada de dados:
 %for input:
 
 \index{prompt}
+%\index{prompt}
 
 \beforeverb
 \begin{verbatim}
@@ -700,7 +752,8 @@ abaixo da mensagem.
 %which is a special character that causes a line break.
 %That's why the user's input appears below the prompt.
 
-\index{newline}
+\index{nova linha}
+%\index{newline}
 
 Se você espera que o usuário digite um integer, você pode tentar converter 
 o valor retornado para {\tt int} usando a função {\tt int()}: 
@@ -741,12 +794,15 @@ Nós veremos como tratar este tipo de erro mais tarde.
 %We will see how to handle this kind of error later.
 
 \index{ValueError}
-\index{exception!ValueError}
+\index{exceção!ValueError}
+%\index{ValueError}
+%\index{exception!ValueError}
 
 \section{Comentários}
 %\section{Comments}
 
-\index{comment}
+\index{comentário}
+%\index{comment}
 
 Como os programas ficam maiores e mais complicados, eles ficam mais difíceis 
 de serem lidos. Linguagens formais são densas, e muitas vezes é difícil 
@@ -822,7 +878,8 @@ ponderar.
 \section{Escolhendo nomes de variáveis mnemônicos}
 %\section{Choosing mnemonic variable names}
 
-\index{mnemonic}
+\index{mnemônico}
+%\index{mnemonic}
 
 Contanto que você siga as regras simples de nomenclatura de variáveis, e evite 
 Palavras Reservadas, você tem muitas escolhas quando você nomeia suas variáveis. 
@@ -978,7 +1035,8 @@ Depois de um tempo você começará a ler o Python e rapidamente determinar o qu
 %\section{Debugging}
 \section{Debugando}
 
-\index{debugging}
+\index{debugando}
+%\index{debugging}
 
 Neste ponto, o erro de sintaxe que você está mais propenso a cometer é 
 um nome de variável ilegal, como {\tt class} e {\tt yield}, que 
@@ -989,8 +1047,10 @@ caracteres não permitidos.
 %are keywords, or \verb"odd~job" and \verb"US$", which contain
 %illegal characters.
  
-\index{syntax error}
-\index{error!syntax}
+\index{erro de sintaxe}
+\index{erro!sintaxe}
+%\index{syntax error}
+%\index{error!syntax}
 
 Se você colocar um espaço em um nome de variável, o Python interpreta que são dois 
 operandos sem um operador: 
@@ -1012,11 +1072,16 @@ As mensagens mais comuns são {\tt SyntaxError: invalid syntax} and
 %The most common messages are {\tt SyntaxError: invalid syntax} and
 %{\tt SyntaxError: invalid token}, neither of which is very informative.
 
-\index{error message}
-\index{use before def}
-\index{exception}
-\index{runtime error}
-\index{error!runtime}
+\index{mensagem de erro}
+\index{usar depois de definir}
+\index{exceção}
+\index{erro em tempo de execução}
+\index{erro!tempo de execução}
+%\index{error message}
+%\index{use before def}
+%\index{exception}
+%\index{runtime error}
+%\index{error!runtime}
 
 O erro de execução que você está mais propenso a a cometer é ``use 
 before def;'', isto é, tentando usar uma variável antes de atribuir 
@@ -1038,9 +1103,12 @@ não é o mesmo que {\tt latex}.
 %Variables names are case sensitive, so {\tt LaTeX} is not the
 %same as {\tt latex}.
 
-\index{case-sensitivity, variable names}
-\index{semantic error}
-\index{error!semantic}
+\index{sensitividade de case, nomes de variáveis}
+\index{erro semântico}
+\index{erro!semântico}
+%\index{case-sensitivity, variable names}
+%\index{semantic error}
+%\index{error!semantic}
 
 Neste ponto, a causa mais provável de um erro de semântica é 
 a ordem das operações. Por exemplo, para calcular $\frac{1}{2 \pi}$,
@@ -1064,7 +1132,8 @@ receberia uma mensagem de erro; você apenas receberia uma resposta errada.
 %to know what you meant to write, so in this case you don't
 %get an error message; you just get the wrong answer.
 
-\index{order of operations}
+\index{ordem das operações}
+%\index{order of operations}
 
 \section{Glossário}
 %\section{Glossary}
@@ -1073,11 +1142,13 @@ receberia uma mensagem de erro; você apenas receberia uma resposta errada.
 
 \item[atribuição:] Uma instrução que atribui um valor a uma variável.
 %\item[assignment:]  A statement that assigns a value to a variable.
-\index{assignment}
+\index{atribuição}
+%\index{assignment}
 
 concatenar: Para juntar dois operandos ponta-a-ponta.
 %\item[concatenate:]  To join two operands end to end.
-\index{concatenation}
+\index{concatenação}
+%\index{concatenation}
 
 \item[Comentário]: Informação em um programa que é destinado a outros 
 programadores (ou qualquer pessoa lendo o código fonte) e não tem qualquer
@@ -1085,7 +1156,8 @@ efeito sobre a execução do programa.
 %\item[comment:]  Information in a program that is meant for other
 %programmers (or anyone reading the source code) and has no effect on the
 %execution of the program.
-\index{comment}
+\index{comentário}
+%\index{comment}
 
 \item[Avaliar:] Para simplificar uma expressão realizando as operações, 
 a fim de se obter um único valor.
@@ -1096,19 +1168,22 @@ a fim de se obter um único valor.
 valor de resultado único.
 %\item[expression:]  A combination of variables, operators, and values that
 %represents a single result value.
-\index{expression}
+\index{expressão}
+%\index{expression}
 
 \item[Ponto Flutuante:] Um tipo que representa números com partes 
 fracionárias.
 %\item[floating point:] A type that represents numbers with fractional
 %parts.
-\index{floating-point}
+\index{ponto flutuante}
+%\index{floating-point}
 
 \item[Floor Division:] A operação que divide dois números e corta 
 a parte fracionária.
 %\item[floor division:] The operation that divides two numbers and chops off
 %the fractional part.
 \index{floor division}
+%\index{floor division}
 
 \item[Integer:] Um tipo que representa números inteiros.
 %\item[integer:] A type that represents whole numbers.
@@ -1120,13 +1195,15 @@ nomes de variáveis.
 %\item[keyword:]  A reserved word that is used by the compiler to parse a
 %program; you cannot use keywords like {\tt if}, {\tt  def}, and {\tt while} as
 %variable names.
-\index{keyword}
+\index{palavra chave}
+%\index{keyword}
 
 \item[Mnemônico:] Um auxiliar de memória. Nós, muitas vezes, damos nomes mnemônicos a variáveis 
 para nos ajudar lembrar o que está armazenado na mesma.
 %\item[mnemonic:] A memory aid. We often give variables mnemonic names
 %to help us remember what is stored in the variable.
-\index{mnemonic}
+\index{mnemônico}
+%\index{mnemonic}
 
 \item[Operador módulo:] Um operador, denotado pelo sinal de porcentagem 
 ({\tt \%}), que funciona em inteiros e produz o restante quando um 
@@ -1134,35 +1211,43 @@ número é dividido por outro.
 %\item[modulus operator:]  An operator, denoted with a percent sign
 %({\tt \%}), that works on integers and yields the remainder when one
 %number is divided by another.
-\index{modulus operator}
-\index{operator!modulus}
+\index{operador módulo}
+\index{operador!módulo}
+%\index{modulus operator}
+%\index{operator!modulus}
 
 \item[Operando:] Um dos valores sobre os quais um operador opera.
 %\item[operand:]  One of the values on which an operator operates.
-\index{operand}
+\index{operando}
+%\index{operand}
 
 \item[Operador:] Um símbolo especial que representa uma cálculo simples, 
 como adição, multiplicação ou concatenação de strings.
 %\item[operator:]  A special symbol that represents a simple computation like
 %addition, multiplication, or string concatenation.
-\index{operator}
+\index{operador}
+%\index{operator}
 
 \item[Regras de precedência:] O conjunto de regras que regem a ordem na qual as
 expressões, envolvendo múltiplos operadores e operandos, são avaliadas.
 %\item[rules of precedence:]  The set of rules governing the order in which
 %expressions involving multiple operators and operands are evaluated.
-\index{rules of precedence}
-\index{precedence}
+\index{regras de precedência}
+\index{precedência}
+%\index{rules of precedence}
+%\index{precedence}
 
 \item[Instrução:] Uma seção de código que representa um comando ou ação. Até 
 o momento, as instruções que temos visto são instruções de atribuição e impressão.
 %\item[statement:]  A section of code that represents a command or action.  So
 %far, the statements we have seen are assignments and print statements.
-\index{statement}
+\index{instrução}
+%\index{statement}
 
 \item[String:] Um tipo que representa sequências de caracteres.
 %\item[string:] A type that represents sequences of characters.
 \index{string}
+%\index{string}
 
 \item[Tipo:] Uma categoria de valores. Os tipos que vimos até o momento 
 são inteiros (tipo {\tt int}), números de ponto flutuante (tipo {\tt float}) 
@@ -1170,17 +1255,20 @@ e strings (tipo {\tt str}).
 %\item[type:] A category of values.  The types we have seen so far
 %are integers (type {\tt int}), floating-point numbers (type {\tt
 %float}), and strings (type {\tt str}).
-\index{type}
+\index{tipo}
+%\index{type}
 
 \item[value:] Uma das unidades básicas de dados, como um número ou string,
 que um programa manipula.
 %\item[value:]  One of the basic units of data, like a number or string, 
 %that a program manipulates.
-\index{value}
+\index{valor}
+%\index{value}
 
 \item[variable:] Um nome que se refere a um valor.
 %\item[variable:]  A name that refers to a value.
-\index{variable}
+\index{variável}
+%\index{variable}
 
 \end{description}
 
