@@ -16,7 +16,7 @@
 
 Um {\bf valor} é uma das coisas básicas com a qual um programa trabalha, 
 como uma letra ou um número. Os valores que vimos até agora são
-são {\tt 1}, {\tt 2}, and \verb"'Olá, Mundo!'"
+são {\tt 1}, {\tt 2}, and \verb"'Ola, Mundo!'"
 %A {\bf value} is one of the basic things a program works with,
 %like a letter or a
 %number.  The values we have seen so far
@@ -24,7 +24,7 @@ são {\tt 1}, {\tt 2}, and \verb"'Olá, Mundo!'"
 %\verb"'Hello, World!'"
 
 Estes valores pertencem a diferentes {\bf tipos}:
-{\tt 2} é um inteiro, e \verb"'Olá, Mundo!'" é uma {\bf string},
+{\tt 2} é um inteiro, e \verb"'Ola, Mundo!'" é uma {\bf string},
 assim chamada por conter uma ``cadeia'' de letras.
 Você (e o interpretador) podem identificar strings 
 porque elas aparecem entre aspas.
@@ -56,7 +56,7 @@ Se você não tem certeza que tipo tem um valor, o interpretador pode te dizer.
 
 \beforeverb
 \begin{verbatim}
->>> type('Hello, World!')
+>>> type('Ola, Mundo!')
 <type 'str'>
 >>> type(17)
 <type 'int'>
@@ -167,20 +167,20 @@ coisa ``certa''.
 %\index{statement!assignment}
 
 Uma das mais poderosas características de uma linguagem de programação é a 
-capacidade de manipular {\bf variáveis). Uma variável é um nome 
+capacidade de manipular {\bf variáveis}. Uma variável é um nome 
 que se refere a um valor.
 %One of the most powerful features of a programming language is the
 %ability to manipulate {\bf variables}.  A variable is a name that
 %refers to a value.
 
-Um {\bf comando de atribuição) cria novas variáveis e dá 
+Um {\bf comando de atribuição} cria novas variáveis e dá 
 valores a elas:
 %An {\bf assignment statement} creates new variables and gives
 %them values:
 
 \beforeverb
 \begin{verbatim}
->>> message = 'And now for something completely different'
+>>> message = 'E agora algo completamente diferente'
 >>> n = 17
 >>> pi = 3.1415926535897931
 \end{verbatim}
@@ -189,7 +189,7 @@ valores a elas:
 
 Este exemplo faz três atribuições. O primeiro atribui uma string 
 a uma nova variável chamada {\tt message}; 
-o segundo atribui o integer {\tt 17) à variável {\tt n); o terceiro 
+o segundo atribui o integer {\tt 17} à variável {\tt n}; o terceiro 
 atribui valor (aproximado) de $\pi$ à variável {\tt pi}.
 %This example makes three assignments.  The first assigns a string
 %to a new variable named {\tt message};
@@ -248,10 +248,10 @@ com uma letra minúscula (você verá o porquê, mais tarde).
 
 O caractere sublinhado (\verb"_") pode aparecer no nome.
 Ele é frequentemente usado em nomes com múltiplas palavras, como 
-\verb"my_name" ou \verb"airspeed_of_unladen_swallow".
+\verb"my_name" ou \verb"airvelocidade_of_unladen_swallow".
 %The underscore character (\verb"_") can appear in a name.
 %It is often used in names with multiple words, such as
-%\verb"my_name" or \verb"airspeed_of_unladen_swallow".
+%\verb"my_name" or \verb"airvelocidade_of_unladen_swallow".
 
 Nomes de variáveis podem começar como caracter sublinhado, mas
 nós, geralmente, evitamos isto, a menos que estejamos escrevendo 
@@ -268,20 +268,20 @@ Se você der a uma variável um nome inválido, você receberá um erro de sinta
 
 \beforeverb
 \begin{verbatim}
->>> 76trombones = 'big parade'
+>>> 76trombones = 'grande desfile'
 SyntaxError: invalid syntax
 >>> more@ = 1000000
 SyntaxError: invalid syntax
->>> class = 'Advanced Theoretical Zymurgy'
+>>> class = 'Avancada Teoria Zymurgy'
 SyntaxError: invalid syntax
 \end{verbatim}
 \afterverb
 %
 
-{\tt 76trombones) é inválida porquê ela começa com um número.
-{\tt more@) é inválida porquê ela contém um caractere inválido, {\tt @). 
-Mas o quê há de errado com {\tt class)?
-Acontece que a palavra {\tt class) é uma Palavra Reservada do Python {\bf keywords}.
+{\tt 76trombones} é inválida porquê ela começa com um número.
+{\tt more@} é inválida porquê ela contém um caractere inválido, {\tt @}. 
+Mas o quê há de errado com {\tt class}?
+Acontece que a palavra {\tt class} é uma Palavra Reservada do Python {\bf keywords}.
 O interpretador usa as Palavras Reservadas para reconhecer a estrutura do programa,
 e elas não podem ser usadas como nomes de variáveis.
 %{\tt 76trombones} is illegal because it begins with a number.
@@ -387,7 +387,7 @@ A instrução de atribuição não produz saída.
 %\index{operand}
 %\index{expression}
 
-{\bf Operadores) são símbolos especiais que representam cálculos como 
+{\bf Operadores} são símbolos especiais que representam cálculos como 
 adição e multiplicação. Os valores aos quais os operadores são aplicados 
 são chamados de {\bf operandos}.
 %{\bf Operators} are special symbols that represent computations like
@@ -403,7 +403,7 @@ e exponenciação, como no exemplo a seguir:
 
 \beforeverb
 \begin{verbatim}
-20+32   hour-1   hour*60+minute   minute/60   5**2   (5+9)*(15-7)
+20+32   hora-1   hora*60+minuto   minuto/60   5**2   (5+9)*(15-7)
 \end{verbatim}
 \afterverb
 %
@@ -413,17 +413,17 @@ O operador de divisão pode não fazer o que você espera:
 
 \beforeverb
 \begin{verbatim}
->>> minute = 59
->>> minute/60
+>>> minuto = 59
+>>> minuto/60
 0
 \end{verbatim}
 \afterverb
 %
 
-O valor de {\tt minute) é 59, e na aritmética convencional 59 
+O valor de {\tt minuto} é 59, e na aritmética convencional 59 
 dividido por 60 é 0.98333, não 0. A razão para esta discrepância é 
 o fato de que o Python realiza um {\bf floor division}\footnote{Em Python 3.0,
-o resuldado desta divisão é do tipo {\tt float}.  
+o resultado desta divisão é do tipo {\tt float}.  
 Em Python 3.0, o novo operador 
 {\tt //} realiza uma divisão to tipo integer.}
 %The value of {\tt minute} is 59, and in conventional arithmetic 59
@@ -458,7 +458,7 @@ uma divisão de ponto flutuante, e o resultado é um {\tt float}:
 
 \beforeverb
 \begin{verbatim}
->>> minute/60.0
+>>> minuto/60.0
 0.98333333333333328
 \end{verbatim}
 \afterverb
@@ -466,10 +466,10 @@ uma divisão de ponto flutuante, e o resultado é um {\tt float}:
 \section{Expressões}
 %\section{Expressions}
 
-Uma {\bf expressão) é uma combinação de valores, variáveis e operadores. 
+Uma {\bf expressão} é uma combinação de valores, variáveis e operadores. 
 Um valor, por si só, é considerado uma expressão, e portanto,
 uma variável, então o que segue são todas expressões válidas 
-(assumindo que a variável {\tt x) tenha recebido um valor):
+(assumindo que a variável {\tt x} tenha recebido um valor):
 %An {\bf expression} is a combination of values, variables, and operators.
 %A value all by itself is considered an expression, and so is
 %a variable, so the following are all legal expressions
@@ -601,7 +601,7 @@ de que os cálculos serão realizados na ordem que você deseja.
 %\index{modulus operator}
 %\index{operator!modulus}
 
-O {\bf operador módulo) funciona em integers e fornece o resto da divisão,
+O {\bf operador módulo} funciona em integers e fornece o resto da divisão,
 quando o primeiro operando é dividido pelo segundo. No Python, o 
 operador módulo é um sinal de percentual (\verb"%"). A sintaxe é a mesma 
 dos outros operadores:
@@ -612,11 +612,11 @@ dos outros operadores:
 
 \beforeverb
 \begin{verbatim}
->>> quotient = 7 / 3
->>> print quotient
+>>> quociente = 7 / 3
+>>> print quociente
 2
->>> remainder = 7 % 3
->>> print remainder
+>>> resto = 7 % 3
+>>> print resto
 1
 \end{verbatim}
 \afterverb
@@ -666,13 +666,13 @@ vinculando-as de ponta-a-ponta. Por exemplo:
 
 \beforeverb
 \begin{verbatim}
->>> first = 10
->>> second = 15
->>> print first+second
+>>> primeiro = 10
+>>> segundo = 15
+>>> print primeiro + segundo
 25
->>> first = '100'
->>> second = '150'
->>> print first + second
+>>> primeiro = '100'
+>>> segundo = '150'
+>>> print primeiro + segundo
 100150
 \end{verbatim}
 \afterverb
@@ -693,7 +693,7 @@ Python fornece uma função interna chamada \verb"raw_input" que recebe
 dados de entrada a partir do teclado\footnote{Em Python 3.0, esta função é chamada de 
 {\tt input}.}. Quando esta função é chamada, o programa para e 
 espera para que o usuário digite algo. Quando o usuário pressiona o 
-{\sf Return) ou {\sf Enter), o programa continua e a função \verb"raw_input"
+{\sf Return} ou {\sf Enter}, o programa continua e a função \verb"raw_input"
 retorna o que o usuário digitou, como uma string.
 %Sometimes we would like to take the value for a variable from the user
 %via their keyboard.
@@ -713,10 +713,10 @@ retorna o que o usuário digitou, como uma string.
 
 \beforeverb
 \begin{verbatim}
->>> input = raw_input()
-Some silly stuff
->>> print input
-Some silly stuff
+>>> entrada = raw_input()
+Alguma coisa boba
+>>> print entrada
+Alguma coisa boba
 \end{verbatim}
 \afterverb
 %
@@ -735,10 +735,10 @@ para a entrada de dados:
 
 \beforeverb
 \begin{verbatim}
->>> name = raw_input('What is your name?\n')
-What is your name?
+>>> nome = raw_input('Qual é o seu nome?\n')
+Qual é o seu nome?
 Chuck
->>> print name
+>>> print nome
 Chuck
 \end{verbatim}
 \afterverb
@@ -762,13 +762,13 @@ o valor retornado para {\tt int} usando a função {\tt int()}:
 
 \beforeverb
 \begin{verbatim}
->>> prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
->>> speed = raw_input(prompt)
-What...is the airspeed velocity of an unladen swallow?
+>>> pergunta = 'Qual é ... a velocidade de uma andorinha sem carga?\n'
+>>> velocidade = raw_input(pergunta)
+Qual é ... a velocidade de uma andorinha sem carga?
 17
->>> int(speed)
+>>> int(velocidade)
 17
->>> int(speed) + 5
+>>> int(velocidade) + 5
 22
 \end{verbatim}
 \afterverb
@@ -781,10 +781,10 @@ você recebe um erro:
 
 \beforeverb
 \begin{verbatim}
->>> speed = raw_input(prompt)
-What...is the airspeed velocity of an unladen swallow?
-What do you mean, an African or a European swallow?
->>> int(speed)
+>>> velocidade = raw_input(pergunta)
+Qual é ... a velocidade de uma andorinha sem carga?
+Que tipo de andorinha, uma Africana ou uma Européia?
+>>> int(velocidade)
 ValueError: invalid literal for int()
 \end{verbatim}
 \afterverb
@@ -813,15 +813,15 @@ olhar para um pedaço de código e descobrir o que ele está fazendo, ou porquê
 
 Por esta razão, é uma boa ideia adicionar notas em seus programas para explicar,
 em linguagem natural, o que o programa está fazendo. Estas notas são chamadas 
-de {\bf comentários), e, em Python, elas começam com o símbolo \verb"#":
+de {\bf comentários}, e, em Python, elas começam com o símbolo \verb"#":
 %For this reason, it is a good idea to add notes to your programs to explain
 %in natural language what the program is doing.  These notes are called
 %{\bf comments}, and in Python they start with the \verb"#" symbol:
 
 \beforeverb
 \begin{verbatim}
-# compute the percentage of the hour that has elapsed
-percentage = (minute * 100) / 60
+# computa a porcentagem de hora que se passou
+porcentagem = (minuto * 100) / 60
 \end{verbatim}
 \afterverb
 %
@@ -833,7 +833,7 @@ o comentário no final da linha:
 
 \beforeverb
 \begin{verbatim}
-percentage = (minute * 100) / 60     # percentage of an hour
+porcentagem = (minuto * 100) / 60     # porcentagem de uma hora
 \end{verbatim}
 \afterverb
 %
@@ -855,7 +855,7 @@ Este comentário é redundante e inútil dentro do código:
 
 \beforeverb
 \begin{verbatim}
-v = 5     # assign 5 to v
+v = 5     # atribui o valor 5 para a variável v
 \end{verbatim}
 \afterverb
 
@@ -864,7 +864,7 @@ Este comentário contem informações úteis que não estão no código.
 
 \beforeverb
 \begin{verbatim}
-v = 5     # velocity in meters/second. 
+v = 5     # velocidade em metros por segundo
 \end{verbatim}
 \afterverb
 
@@ -901,10 +901,10 @@ b = 12.50
 c = a * b
 print c
 
-hours = 35.0
-rate = 12.50
-pay = hours * rate
-print pay
+horas = 35.0
+taxa = 12.50
+pagamento = horas * taxa
+print pagamento
 
 x1q3z9ahd = 35.0
 x1q3z9afd = 12.50
@@ -960,12 +960,12 @@ Nós vamos falar sobre loops em breve, mas por agora apenas tente imaginar como 
 
 \beforeverb
 \begin{verbatim}
-for word in words:
-    print word
+for palavra in palavras:
+    print palavra
 \end{verbatim}
 \afterverb
 %
-O que esta acontecendo aqui? Qual das palavras (for, word, in, etc.) são palavras reservadas 
+O que esta acontecendo aqui? Qual das palavras (for, palavra, in, etc.) são palavras reservadas 
 e quais são apenas nomes de variáveis? O Python entende em um nível fundamental 
 a noção de palavras? Programadores iniciantes têm 
 dificuldade para separar quais partes 
@@ -985,16 +985,16 @@ O código a seguir é equivalente ao código acima:
 
 \beforeverb
 \begin{verbatim}
-for slice in pizza:
-    print slice
+for pedaco in pizza:
+    print pedaco
 \end{verbatim}
 \afterverb
 %
 É mais fácil para o programador iniciante olhar para este código e saber quais 
 partes são palavras reservadas definidas pelo Python e quais partes são, simplesmente, nomes de 
 variáveis escolhidos pelo programador. É bastante claro que o Python não tem nenhuma compreensão 
-fundamental de pizza e slices e o fato de que uma pizza é constituída por um conjunto 
-de um ou mais slices.
+fundamental de pizza e pedaços e o fato de que uma pizza é constituída por um conjunto 
+de um ou mais pedaços.
 %It is easier for the beginning programmer to look at this code and know which 
 %parts are reserved words defined by Python and which parts are simply variable
 %names chosen by the programmer.  It is pretty clear that Python has no fundamental
@@ -1002,7 +1002,7 @@ de um ou mais slices.
 %of one or more slices.
 
 Mas se o nosso programa é verdadeiramente sobre a leitura de dados e a procura de palavras nos dados, 
-{\tt pizza} e {\tt slice} são nomes de variáveis não muito mnemônicos. Escolhê-los 
+{\tt pizza} e {\tt pedaco} são nomes de variáveis não muito mnemônicos. Escolhê-los 
 como nomes de variável, distorce o significado do programa.
 %But if our program is truly about reading data and looking for words in the data,
 %{\tt pizza} and {\tt slice} are very un-mnemonic variable names.  Choosing them 
@@ -1010,8 +1010,8 @@ como nomes de variável, distorce o significado do programa.
 %
 Depois de um período muito curto de tempo, você vai conhecer as palavras reservadas mais comuns,
 então vai começar a ver as palavras reservadas saltando para você:
-{\tt {\bf for} word {\bf in} words{\bf :}\\
-\verb"    "{\bf print} word }
+{\tt {\bf for} palavra {\bf in} palavras{\bf :}\\
+\verb"    "{\bf print} palavra }
 %After a pretty short period of time, you will know the most common reserved words
 %and you will start to see the reserved words jumping out at you:
 %
@@ -1040,7 +1040,7 @@ Depois de um tempo você começará a ler o Python e rapidamente determinar o qu
 
 Neste ponto, o erro de sintaxe que você está mais propenso a cometer é 
 um nome de variável ilegal, como {\tt class} e {\tt yield}, que 
-são palavras reservadas ou \verb"odd~job" e \verb"US$", que contêm 
+são palavras reservadas ou \verb"emprego~estranho" e \verb"RS$", que contêm 
 caracteres não permitidos. 
 %At this point, the syntax error you are most likely to make is
 %an illegal variable name, like {\tt class} and {\tt yield}, which
@@ -1059,7 +1059,7 @@ operandos sem um operador:
 
 \beforeverb
 \begin{verbatim}
->>> bad name = 5
+>>> nome ruim = 5
 SyntaxError: invalid syntax
 \end{verbatim}
 \afterverb
@@ -1093,8 +1093,8 @@ um valor. Isso pode acontecer se você digitar um nome de variável errado:
 \beforeverb
 \begin{verbatim}
 >>> principal = 327.68
->>> interest = principle * rate
-NameError: name 'principle' is not defined
+>>> interesse = principal * taxa
+NameError: name 'taxa' is not defined
 \end{verbatim}
 \afterverb
 %
@@ -1258,14 +1258,14 @@ e strings (tipo {\tt str}).
 \index{tipo}
 %\index{type}
 
-\item[value:] Uma das unidades básicas de dados, como um número ou string,
+\item[valor:] Uma das unidades básicas de dados, como um número ou string,
 que um programa manipula.
 %\item[value:]  One of the basic units of data, like a number or string, 
 %that a program manipulates.
 \index{valor}
 %\index{value}
 
-\item[variable:] Um nome que se refere a um valor.
+\item[variável:] Um nome que se refere a um valor.
 %\item[variable:]  A name that refers to a value.
 \index{variável}
 %\index{variable}
@@ -1282,8 +1282,8 @@ em seguida, saudá-lo.
 %and then welcomes them.
 
 \begin{verbatim}
-Enter your name: Chuck
-Hello Chuck
+Digite o seu nome: Chuck
+Ola Chuck
 \end{verbatim}
 
 \end{ex}
@@ -1294,9 +1294,9 @@ Hello Chuck
 Escreva um programa para solicitar ao usuário por, horas e taxa por hora, e então, calcular 
 salário bruto.
 \begin{verbatim}
-Enter Hours: 35
-Enter Rate: 2.75
-Pay: 96.25
+Digite as horas: 35
+Digite a taxa: 2.75
+Pagamento: 96.25
 \end{verbatim}
 \end{ex}
 %
@@ -1313,8 +1313,8 @@ Suponha que nós executamos as seguintes instruções de atribuição:
 %Assume that we execute the following assignment statements:
 
 \begin{verbatim}
-width = 17
-height = 12.0
+comprimento = 17
+altura = 12.0
 \end{verbatim}
 
 Para cada uma das seguintes expressões, escrever o valor da 
@@ -1324,11 +1324,11 @@ expressão e o tipo (do valor da expressão).
 
 \begin{enumerate}
 
-\item {\tt width/2}
+\item {\tt comprimento/2}
 
-\item {\tt width/2.0}
+\item {\tt comprimento/2.0}
 
-\item {\tt height/3}
+\item {\tt altura/3}
 
 \item {\tt 1 + 2 * 5}
 
