@@ -41,7 +41,7 @@ Responsáveis pela Tradução por Capítulo
 |13-web.tex             |  Kaio Cesar           |   ?   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        |   ?   |  ?              | ?
 |15-viz.tex             |  Victor Jabur         | 100 % |  ?              | ?
-|16-tasks.tex           |  Paulo Henrique Silva | 100 % |  ?              | ?
+|16-tasks.tex           |  Paulo Henrique Silva | 100 % |  Victor Jabur   | 100 %
 |AA-windows.tex         |  Victor Jabur         | 100 % |  ?              | ?
 |AB-apple.tex           |  ?                    |   ?   |  ?              | ?
 |AC-contrib.tex         |  ?                    |   ?   |  ?              | ?
