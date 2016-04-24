@@ -52,8 +52,8 @@ nome de uma função padrão da linguagem, esse termo não pode ser usado como n
 
 \beforeverb
 \begin{verbatim}
->>> eng2sp = dict()
->>> print eng2sp
+>>> eng2ptbr = dict()
+>>> print eng2ptbr
 {}
 \end{verbatim}
 \afterverb
@@ -71,23 +71,23 @@ Colchetes podem ser utilizados para adicionar itens ao dicionário:
 
 \beforeverb
 \begin{verbatim}
->>> eng2sp['one'] = 'uno'
+>>> eng2ptbr['one'] = 'um'
 \end{verbatim}
 \afterverb
 %
 
 Esta linha cria um item que mapeia da chave {\tt 'one'}
-para o valor \verb"'uno'". Se exibirmos o dicionário novamente, veremos
+para o valor \verb"'um'". Se exibirmos o dicionário novamente, veremos
 um par chave-valor com o caractere dois-pontos entre a chave e o valor:
 % This line creates an item that maps from the key
-% {\tt 'one'} to the value \verb"'uno'".  If we print the
+% {\tt 'one'} to the value \verb"'um'".  If we print the
 % dictionary again, we see a key-value pair with a colon
 % between the key and value:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp
-{'one': 'uno'}
+>>> print eng2ptbr
+{'one': 'um'}
 \end{verbatim}
 \afterverb
 %
@@ -99,18 +99,18 @@ pode-se criar um novo dicionário com três itens:
 
 \beforeverb
 \begin{verbatim}
->>> eng2sp = {'one': 'uno', 'two': 'dos', 'three': 'tres'}
+>>> eng2ptbr = {'one': 'um', 'two': 'dois', 'three': 'tres'}
 \end{verbatim}
 \afterverb
 %
 
-Mas se exibirmos {\tt eng2sp}, podemos nos surpreender:
-% But if you print {\tt eng2sp}, you might be surprised:
+Mas se exibirmos {\tt eng2ptbr}, podemos nos surpreender:
+% But if you print {\tt eng2ptbr}, you might be surprised:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp
-{'one': 'uno', 'three': 'tres', 'two': 'dos'}
+>>> print eng2ptbr
+{'one': 'um', 'three': 'tres', 'two': 'dois'}
 \end{verbatim}
 \afterverb
 %
@@ -133,14 +133,14 @@ se buscar os valores correspondentes:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp['two']
-'dos'
+>>> print eng2ptbr['two']
+'dois'
 \end{verbatim}
 \afterverb
 %
 
-A ordem dos itens não importa, já que a chave {\tt 'two'} sempre é mapeada ao valor \verb"'dos'".
-% The key {\tt 'two'} always maps to the value \verb"'dos'" so the order
+A ordem dos itens não importa, já que a chave {\tt 'two'} sempre é mapeada ao valor \verb"'dois'".
+% The key {\tt 'two'} always maps to the value \verb"'dois'" so the order
 % of the items doesn't matter.
 
 Se a chave não está no dicionário, uma exceção é levantada:
@@ -152,7 +152,7 @@ Se a chave não está no dicionário, uma exceção é levantada:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp['four']
+>>> print eng2ptbr['four']
 KeyError: 'four'
 \end{verbatim}
 \afterverb
@@ -170,7 +170,7 @@ o número de pares chave-valor:
 
 \beforeverb
 \begin{verbatim}
->>> len(eng2sp)
+>>> len(eng2ptbr)
 3
 \end{verbatim}
 \afterverb
@@ -192,9 +192,9 @@ a presença de um valor).
 
 \beforeverb
 \begin{verbatim}
->>> 'one' in eng2sp
+>>> 'one' in eng2ptbr
 True
->>> 'uno' in eng2sp
+>>> 'um' in eng2ptbr
 False
 \end{verbatim}
 \afterverb
@@ -213,8 +213,8 @@ modo, o operador {\tt in} pode ser usado:
 
 \beforeverb
 \begin{verbatim}
->>> vals = eng2sp.values()
->>> 'uno' in vals
+>>> vals = eng2ptbr.values()
+>>> 'um' in vals
 True
 \end{verbatim}
 \afterverb
@@ -459,11 +459,11 @@ A combinação dos laços aninhados garante que contaremos todas as palavra de t
 
 \beforeverb
 \begin{verbatim}
-fname = raw_input('Enter the file name: ')
+fname = raw_input('Digite o nome do arquivo: ')
 try:
     fhand = open(fname)
 except:
-    print 'File cannot be opened:', fname
+    print 'Arquivo nao pode ser aberto:', fname
     exit()
 
 counts = dict()
@@ -489,7 +489,7 @@ Quando rodamos o programa, vemos o resultado bruto das contagens de modo não so
 \beforeverb
 \begin{verbatim}
 python count1.py
-Enter the file name: romeo.txt
+Digite o nome do arquivo: romeo.txt
 {'and': 3, 'envious': 1, 'already': 1, 'fair': 1,
 'is': 3, 'through': 1, 'pale': 1, 'yonder': 1,
 'what': 1, 'sun': 2, 'Who': 1, 'But': 1, 'moon': 1,
@@ -687,11 +687,11 @@ Faremos a seguinte modificação em nosso programa:
 \begin{verbatim}
 import string                                          # New Code
 
-fname = raw_input('Enter the file name: ')
+fname = raw_input('Digite o nome do arquivo: ')
 try:
     fhand = open(fname)
 except:
-    print 'File cannot be opened:', fname
+    print 'Arquivo nao pode ser aberto:', fname
     exit()
 
 counts = dict()
@@ -745,7 +745,7 @@ A seguir esté um versão abreviada da saída:
 
 \beforeverb
 \begin{verbatim}
-Enter the file name: romeo-full.txt
+Digite o nome do arquivo: romeo-full.txt
 {'swearst': 1, 'all': 6, 'afeard': 1, 'leave': 2, 'these': 2,
 'kinsmen': 2, 'what': 11, 'thinkst': 1, 'love': 24, 'cloak': 1,
 a': 24, 'orchard': 2, 'light': 5, 'lovers': 2, 'romeo': 40,
