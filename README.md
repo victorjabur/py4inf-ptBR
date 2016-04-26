@@ -39,7 +39,7 @@ Responsáveis pela Tradução por Capítulo
 |11-regex.tex           |  Felipe Souza         |   ?   |  ?              | ?
 |12-network.tex         |  Camilo Alessandro    |   ?   |  ?              | ?
 |13-web.tex             |  Kaio Cesar           |   ?   |  ?              | ?
-|14-database.tex        |  Maykon Chagas        |   ?   |  ?              | ?
+|14-database.tex        |  Maykon Chagas        | 100 % |  ?              | ?
 |15-viz.tex             |  Victor Jabur         | 100 % |  ?              | ?
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  Victor Jabur   | 100 %
 |AA-windows.tex         |  Victor Jabur         | 100 % |  ?              | ?

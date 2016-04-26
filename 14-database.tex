@@ -1,8 +1,8 @@
-G% The contents of this file is 
+% The contents of this file is 
 % Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
 
 %\chapter{Using databases and Structured Query Language (SQL)}
-\chapter{Banco de Datos e Structured Query Language (SQL)}
+\chapter{Banco de Dados e Structured Query Language (SQL)}
 
 %\section{What is a database?}
 \section{O que é um banco de dados?}
@@ -95,7 +95,7 @@ tabela, linha e coluna são referências formais para {\bf relação},
 Usaremos os termos menos formais neste capítulo.
 
 %\section{SQLite manager Firefox add-on}
-\section{Plugin do Firefox de Gerencia SQLite}
+\section{Plugin do Firefox de Gerenciamento do SQLite}
 %While this chapter will focus on using Python to work with data 
 %in SQLite database files, many operations can be done more
 %conveniently using a Firefox add-on called the {\bf SQLite
@@ -125,17 +125,17 @@ executar consultas SQL nos dados da base de dados.
 %will be most conveniently done in Python.
 
 De certa forma, o gerenciador de banco de dados é similar a um editor de texto
-quando utilizado arquivos de texto. Quando você quer fazer uma ou mais
+quando trabalha com arquivos de texto. Quando você quer fazer uma ou mais
 operações com um arquivo de texto, você pode simplesmente abrir o arquivo em
-um editor de texto e fazer as alterações que desejar. Quando você tem que fazer
-muitas alterações para fazer, normalmente você pode escrever um programa em
-Python simples para executar esta tarefa. Você encontrará os mesmos padrões
+um editor de texto e fazer as alterações que desejar. Quando você tem
+muitas alterações para fazer, normalmente você pode escrever um simples programa em 
+Python para executar esta tarefa. Você encontrará os mesmos padrões
 quando for trabalhar com banco de dados. Você fará operações em um gerenciador
 de banco de dados e as operações mais complexas serão mais convenientes se
 forem feitas com Python.
 
 %\section{Creating a database table}
-\section{Criado uma tabela em um banco de dados}
+\section{Criando uma tabela em um banco de dados}
 
 %Databases require more defined structure than Python lists 
 %or dictionaries\footnote{SQLite actually does allow some 
@@ -144,7 +144,7 @@ forem feitas com Python.
 %so the concepts apply equally to other database systems 
 %such as MySQL.}.
 
-Bancos de dados precisam de estruturas mais bem definidas do quê listas ou
+Bancos de dados precisam de estruturas mais bem definidas do que listas ou
 dicionários em Python\footnote{Atualmente o SQLite permite uma maior
   flexibilidade em relação aos tipos de dados que são armazenados em uma
   coluna, mas vamos manter os tipos de dados restritos neste capítulo, assim
@@ -187,7 +187,7 @@ de dados contém um grande número de informações.
 %database is as follows:
 
 O seguinte código cria um arquivo de banco de dados com uma tabela, chamada
-{\tt Tracks} e com duas colunas:
+{\tt Tracks}, contendo duas colunas:
 
 \index{sqlite3 module}
 \index{module!sqlite3}
@@ -232,7 +232,7 @@ Python está sendo executado.
 %{\tt cursor()} is very similar conceptually to calling
 %{\tt open()} when dealing with text files.
 
-Um {\bf cursos} é como um identificador de arquivo que podemos utilizar para
+Um {\bf cursor} é como um identificador de arquivo que podemos utilizar para
 realizar operações sobre as informações armazenadas em um banco de dados. Ao
 chamar a função {\tt cursor()}, conceitualmente, é similar ao chamar a função
 {\tt open()} quando estamos trabalhando com arquivos de texto.
@@ -245,7 +245,7 @@ chamar a função {\tt cursor()}, conceitualmente, é similar ao chamar a funç�
 %commands on the contents of the database using the {\tt execute()}
 %method.
 
-Uma vez que temos o cursos, podemos começar a executar comandos no conteúdo
+Uma vez que temos o cursor, podemos começar a executar comandos no conteúdo
 armazenado no banco de dados utilizando o método {\tt execute()}.
 
 %Database commands are expressed in a special language that has 
@@ -311,7 +311,7 @@ cur.execute('CREATE TABLE Tracks (title TEXT, plays INTEGER)')
 %
 Agora que criamos a tabela {\tt Tracks}, podemos inserir algum dado dentro
 dela utilizando a operação SQL {\tt INSERT}. Novamente, estamos
-estabelecendo uma conexão com o banco de dados e obtendo o {\tt cursos}.
+estabelecendo uma conexão com o banco de dados e obtendo o {\tt cursor}.
 E então executamos o comando SQL utilizando o cursor.
 
 %The SQL {\tt INSERT} command indicates which table we are using 
@@ -358,8 +358,8 @@ cur.close()
 %First we {\tt INSERT} two rows into our table and use {\tt commit()} 
 %to force the data to be written to the database file.
 
-Primeiro nós adicionamos com {\tt INSERT} duas linha na nossa tabela e
-usamos {\tt commit()} para forçar a escrita da informação no arquivo do banco
+Primeiro nós adicionamos com {\tt INSERT} duas linhas na nossa tabela e
+usaremos {\tt commit()} para forçar a escrita da informação no arquivo do banco
 de dados.
 
 \beforefig
@@ -381,7 +381,7 @@ de dados.
 Depois usamos o comando {\tt SELECT} para buscar a linha que acabamos de
 inserir na tabela. Com o comando {\tt SELECT}, indicamos que coluna gostaríamos
 {\tt (title, plays)} e de qual tabela queremos buscar a informação. Depois
-de confirmar a executação do comando {\tt SELECT}, o cursor pode ser utilizado
+de confirmar a execução do comando {\tt SELECT}, o cursor pode ser utilizado
 como repetição através de um comando {\tt for}. Por questões de eficiência, o
 cursor não lê toda a informação da base de dados quando executamos o comando
 {\tt SELECT}. Ao invés disto, a informação é lida sob demanda enquanto
@@ -408,7 +408,7 @@ Tracks:
 
 A iteração do {\tt for} encontrou duas linhas, e cada linha é uma tupla em
 Python com o primeiro valor como {\tt title} e o segundo como o número de
-{\tt plays}. Não se preocupe com o fato de a {\it strings} são mostrados com
+{\tt plays}. Não se preocupe com o fato de que {\it strings} são mostrados com
 o caractere {\tt u'} no começo. Isto é uma indicação que a {\it string} estão
 em {\bf Unicode}, o que indica que são capazes de armazenar um conjunto de
 caractere não-Latin.
@@ -575,7 +575,7 @@ UPDATE Tracks SET plays = 16 WHERE title = 'My Way'
 %
 A condição {\tt UPDATE} especifica uma tabela e depois uma lista de campos e
 valores que serão alterados após o comando {\tt SET}, e utilizando uma condição
-{\tt WHERE}, opctional, é possível selecionar as linhas que serão atualizadas.
+{\tt WHERE}, opcional, é possível selecionar as linhas que serão atualizadas.
 Uma condição {\tt UPDATE} irá mudar todas as linhas que casam com a condição
 {\tt WHERE}. Se a condição {\tt WHERE} não for especificada, o {\tt UPDATE}
 será aplicado em todas as linhas da tabela.
@@ -583,7 +583,7 @@ será aplicado em todas as linhas da tabela.
 %These four basic SQL commands (INSERT, SELECT, UPDATE, and DELETE) allow 
 %the four basic operations needed to create and maintain data.
 
-Os quatros comandos básicos de SQL (INSERT, SELECT, UPDTE e DELETE) permitem
+Os quatro comandos básicos de SQL (INSERT, SELECT, UPDTE e DELETE) permitem
 as quatro operações básicas necessárias para criação e manutenção das
 informações em um banco de dados.
 
@@ -596,9 +596,9 @@ informações em um banco de dados.
 %want to pull too much data or run the program for too long and
 %end up having your Twitter access shut off.}
 
-Nesta seção criaremos um programa simples para rastreamento que navegará
+Nesta seção, criaremos um programa simples para rastreamento que navegará
 através de contas de usuários do Twitter e construirá um banco de dados
-destas referentes as estes usuários.
+referentes a estes usuários.
 \emph{Nota: Tenha muito cuidado ao executar este programa. Você não irá querer
   extrair muitas informações ou executar o programa por muito tempo e acabar
   tendo sua conta do Twitter bloqueada.}
@@ -616,7 +616,6 @@ informações que você já tenha recuperado até agora. Não quer sempre reinic
 a recuperação dos dados desde o começo, então armazenamos as informações tão
 logo seja recuperada, assim o programa poderá reiniciar a busca do ponto onde
 parou.
-
 
 %We will start by retrieving one person's Twitter friends and their
 %statuses, looping through the list of friends, and adding each 
@@ -658,7 +657,7 @@ popular, podemos parar e recomeçar nosso programa quantas vezes quisermos.
 
 % TODO: Adicionar a referência do código para o lugar certo.
 Este programa é um pouco complexo. É baseado em um exercício apresentado
-anteriormente neste livro, que utiliza a API do Twitter
+anteriormente neste livro, que utiliza a API do Twitter.
 
 %Here is the source code for our Twitter spidering application:
 
@@ -734,8 +733,8 @@ cur.close()
 %
 Nossa base de dados está armazenada no arquivo {\tt spider.sqlite3} e possui
 uma tabela chamada {\tt Twitter}. Cada linha na tabela {\tt Twitter} tem uma
-coluna para o nome da conta, se recuperamos os amigos desta conta, e quantas
-vezes esta conta foi ``seguido''.
+coluna para o nome da conta, se já recuperamos os amigos desta conta, e quantas
+vezes esta conta foi ``seguida''.
 
 %In the main loop of the program, we prompt the user for a Twitter
 %account name or ``quit'' to exit the program.  
@@ -745,10 +744,10 @@ vezes esta conta foi ``seguido''.
 %not already in the database.  If the friend is already in the list, 
 %we add 1 to the {\tt friends} field in the row in the database.
 
-Na repetição principal do programa, perguntamos ao usuário uma conta de Twitter
+Na repetição principal do programa, pedimos ao usuário uma conta de Twitter
 ou ``quit'' para sair do programa. Se o usuário informar um usuário do Twitter,
 o programa começa a recuperar a lista de amigos e os status para aquele
-usuário e adiciona cada amigo na base de dados se não possuir. Se o amigo já
+usuário e adiciona cada amigo na base de dados, se ainda não existir. Se o amigo já
 está na lista, nós adicionamos ``1'' no campo {\tt friends} da base de dados.
 
 
@@ -824,7 +823,7 @@ da variável {\tt count}.
 %a two-element tuple that holds the values to be substituted into the SQL
 %in place of the question marks.
 
-Se a busca for bem sucedida, utilizamos a declação {\tt UPDATE} com a clausula 
+Se a busca for bem sucedida, utilizamos a declação {\tt UPDATE} com a cláusula 
 {\tt WHERE} para adicionar 1 na coluna {\tt friends} para a linha que
 corresponde com a conta do amigo. Note que existem dois espaços reservados
 (i.e., pontos de interrogações) no SQL, e o segundo parâmetro para o
@@ -838,7 +837,7 @@ lugar dos pontos de interrogações.
 %retrieved the \verb"screen_name" and set the friend count to zero.
 
 Se o bloco {\tt try} falhar, é provavelmente por que nenhum resultado
-corresponde a clausula em {\tt WHERE name = ?} do SELECT. Então no block
+corresponde a cláusula em {\tt WHERE name = ?} do SELECT. Então no block
 {\tt except}, utilizamos a declaração {\tt INSERT} para adicionar o
 \verb"screen_name" do amigo a tabela com a indicação que ainda não rastreamos
 o \verb"screen_name" e setamos o contador de amigos com 0 (zero).
@@ -895,7 +894,6 @@ cur.close()
 %columns of all of the rows in the table {\tt Twitter}, then 
 %loops through the rows and prints out each row.
 
-%
 Este programa abre o banco de dados e seleciona todas as colunas de todas as
 linhas na tabela {\tt Twitter}, depois itera em cada linha e imprime o valor
 dentro de cada uma.
@@ -922,7 +920,6 @@ Se executarmos este programa depois da primeira execução do nosso rastreador
 %have not retrieved the data for that \verb"screen_name", and 
 %everyone in the database has one friend.
 
-%
 Veremos uma linha para cada \verb"screen_name", que não tenhamos recuperado
 o dado daquele \verb"screen_name", e todos tem um amigo.
 
@@ -935,9 +932,8 @@ o dado daquele \verb"screen_name", e todos tem um amigo.
 Agora nosso banco de dados reflete quais amigos estão relacionados com a nossa
 primeira conta do Twitter ({\bf drchuck}) utilizada para rastreamento. Podemos
 executar o programa novamente e mandar rastrear a próxima conta
-``não processada'' e recuperar os amigos, simplemente pressionando {\tt enter}
+``não processada'' e recuperar os amigos, simplesmente pressionando {\tt enter}
 ao invés de informar uma conta do Twitter, conforme o exemplo a seguir:
-
 
 \beforeverb
 \begin{verbatim}
@@ -976,7 +972,6 @@ Twitter), o seguinte código é executado:
 %a try/except block to either extract a \verb"screen_name" from the retrieved
 %data or put out an error message and loop back up.
 
-%
 Utilizamos a declaração SQL {\tt SELECT} para recuperar o nome do primeiro
 ({\tt LIMIT 1}) usuário que ainda tem seu ``recuperamos este usuário'' com o
 valor setado em zero. Também utilizamos o padrão {\tt fetchone()[0]} dentro de
@@ -1043,6 +1038,8 @@ programa de {\it dumping}, ele nos mostrará a seguinte saída:
 %Since we now have retrieved the friends of three people
 %({\tt drchuck}, {\tt opencontent}, and {\tt lhawthorn}) our table has 55 rows 
 %of friends to retrieve.
+
+KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
 
 Podemos ver que gravamos de forma apropriada que visitamos os usuários
 {\tt lhawthorn} e {\tt opencontent}. E que as contas {\tt cnxorg} e
