@@ -18,14 +18,14 @@
 % \index{index}
 
 
-Um {\bf dicionário} é como uma lista, porém mais abrangente.  Em uma lista,
+Um {\bf dicionário} é como uma lista, porém mais abrangente. Em uma lista,
 os índices devem ser valores inteiros; em um dicionário,
 os índices podem ser de qualquer tipo (praticamente).
 % A {\bf dictionary} is like a list, but more general.  In a list,
 % the index positions have to be integers; in a dictionary,
 % the indices can be (almost) any type.
 
-Pode-se considerar um dicionário como um mapeamente entre um conjunto de
+Pode-se considerar um dicionário como um mapeamento entre um conjunto de
 índices (chamados de {\bf chaves}) e um conjunto de valores. Cada chave é
 mapeada a um valor. A associação entre uma chave e um valor é chamada de
 {\bf par chave-valor} ou também como um {\bf item}.
@@ -35,12 +35,12 @@ mapeada a um valor. A associação entre uma chave e um valor é chamada de
 %   key-value pair} or sometimes an {\bf item}.
 
 Como exemplo, construiremos um dicionário que mapeia palavras inglesas para
-palavras em espanhol, portanto chaves e valores s~ao strings.
+palavras em espanhol, portanto chaves e valores são strings.
 % As an example, we'll build a dictionary that maps from English
 % to Spanish words, so the keys and the values are all strings.
 
-A função {\tt dict} cria um dicionário sem itens. Pelo fato de {\tt dict} ser o
-nome de uma função embutida, esse termo deve ser evitado como nome de variável.
+A função {\tt dict} cria um novo dicionário sem itens. Pelo fato de {\tt dict} ser o
+nome de uma função padrão da linguagem, esse termo não pode ser usado como nome de variável.
 % The function {\tt dict} creates a new dictionary with no items.
 % Because {\tt dict} is the name of a built-in function, you
 % should avoid using it as a variable name.
@@ -52,8 +52,8 @@ nome de uma função embutida, esse termo deve ser evitado como nome de variáve
 
 \beforeverb
 \begin{verbatim}
->>> eng2sp = dict()
->>> print eng2sp
+>>> eng2ptbr = dict()
+>>> print eng2ptbr
 {}
 \end{verbatim}
 \afterverb
@@ -64,9 +64,6 @@ Colchetes podem ser utilizados para adicionar itens ao dicionário:
 % The curly brackets, \verb"{}", represent an empty dictionary.
 % To add items to the dictionary, you can use square brackets:
 
-% OBSERVAÇÂO: Essa tradução foi a que pensei ser a mais clara para esses
-% termos para leitores da língua portuguesa, embora não seja exatamente o que o
-% autor quis dizer.
 \index{caractere chave}
 % \index{squiggly bracket}
 \index{caractere!chave}
@@ -74,23 +71,23 @@ Colchetes podem ser utilizados para adicionar itens ao dicionário:
 
 \beforeverb
 \begin{verbatim}
->>> eng2sp['one'] = 'uno'
+>>> eng2ptbr['one'] = 'um'
 \end{verbatim}
 \afterverb
 %
 
 Esta linha cria um item que mapeia da chave {\tt 'one'}
-para o valor \verb"'uno'". Se exibirmos o dicionário novamente, veremos
+para o valor \verb"'um'". Se exibirmos o dicionário novamente, veremos
 um par chave-valor com o caractere dois-pontos entre a chave e o valor:
 % This line creates an item that maps from the key
-% {\tt 'one'} to the value \verb"'uno'".  If we print the
+% {\tt 'one'} to the value \verb"'um'".  If we print the
 % dictionary again, we see a key-value pair with a colon
 % between the key and value:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp
-{'one': 'uno'}
+>>> print eng2ptbr
+{'one': 'um'}
 \end{verbatim}
 \afterverb
 %
@@ -102,18 +99,18 @@ pode-se criar um novo dicionário com três itens:
 
 \beforeverb
 \begin{verbatim}
->>> eng2sp = {'one': 'uno', 'two': 'dos', 'three': 'tres'}
+>>> eng2ptbr = {'one': 'um', 'two': 'dois', 'three': 'tres'}
 \end{verbatim}
 \afterverb
 %
 
-Mas se exibirmos {\tt eng2sp}, podemos nos surpreender:
-% But if you print {\tt eng2sp}, you might be surprised:
+Mas se exibirmos {\tt eng2ptbr}, podemos nos surpreender:
+% But if you print {\tt eng2ptbr}, you might be surprised:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp
-{'one': 'uno', 'three': 'tres', 'two': 'dos'}
+>>> print eng2ptbr
+{'one': 'um', 'three': 'tres', 'two': 'dois'}
 \end{verbatim}
 \afterverb
 %
@@ -136,14 +133,14 @@ se buscar os valores correspondentes:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp['two']
-'dos'
+>>> print eng2ptbr['two']
+'dois'
 \end{verbatim}
 \afterverb
 %
 
-A ordem dos itens não importa, já que a chave {\tt 'two'} sempre é mapeada ao valor \verb"'dos'".
-% The key {\tt 'two'} always maps to the value \verb"'dos'" so the order
+A ordem dos itens não importa, já que a chave {\tt 'two'} sempre é mapeada ao valor \verb"'dois'".
+% The key {\tt 'two'} always maps to the value \verb"'dois'" so the order
 % of the items doesn't matter.
 
 Se a chave não está no dicionário, uma exceção é levantada:
@@ -155,7 +152,7 @@ Se a chave não está no dicionário, uma exceção é levantada:
 
 \beforeverb
 \begin{verbatim}
->>> print eng2sp['four']
+>>> print eng2ptbr['four']
 KeyError: 'four'
 \end{verbatim}
 \afterverb
@@ -173,7 +170,7 @@ o número de pares chave-valor:
 
 \beforeverb
 \begin{verbatim}
->>> len(eng2sp)
+>>> len(eng2ptbr)
 3
 \end{verbatim}
 \afterverb
@@ -195,9 +192,9 @@ a presença de um valor).
 
 \beforeverb
 \begin{verbatim}
->>> 'one' in eng2sp
+>>> 'one' in eng2ptbr
 True
->>> 'uno' in eng2sp
+>>> 'um' in eng2ptbr
 False
 \end{verbatim}
 \afterverb
@@ -216,8 +213,8 @@ modo, o operador {\tt in} pode ser usado:
 
 \beforeverb
 \begin{verbatim}
->>> vals = eng2sp.values()
->>> 'uno' in vals
+>>> vals = eng2ptbr.values()
+>>> 'um' in vals
 True
 \end{verbatim}
 \afterverb
@@ -333,7 +330,7 @@ De fato está sendo construído um {\bf histograma}, que é um termo estatístic
 \index{travessia}
 % \index{traversal}
 
-O laço {\tt for} travessa a string. Em cada iteração, se o caractere {\tt c} não está no dicionário, cria-se um novo item com chave {\tt c} e valor inicial 1 (já que essa letra foi encontrada um vez). Se {\tt c} já está no dicionário, o valor {\tt d[c]} é incrementado.
+O laço {\tt for} caminha por toda a string. Em cada iteração, se o caractere {\tt c} não está no dicionário, cria-se um novo item com chave {\tt c} e valor inicial 1 (já que essa letra foi encontrada um vez). Se {\tt c} já está no dicionário, o valor {\tt d[c]} é incrementado.
 % The {\tt for} loop traverses
 % the string.  Each time through the loop, if the character {\tt c} is
 % not in the dictionary, we create a new item with key {\tt c} and the
@@ -410,14 +407,14 @@ O uso do método {\tt get} para simplificar esse laço de contagem é um ``idiom
 \section{Dicionários e arquivos}
 %\section{Dictionaries and files}
 
-Um dos usos comuns de dicionários é para a contagem da ocorrência de palavras em arquivos de texto.
+Um dos usos comuns de dicionários é na contagem da ocorrência de palavras em arquivos de texto.
 Comecemos com um arquivo muito simples contendo palavras extraídas de \emph{Romeu e Julieta}.
 % One of the common uses of a dictionary is to count the occurrence
 % of words in a file with some written text.
 % Let's start with a very simple file of
 % words taken from the text of \emph{Romeo and Juliet}.
 
-Para os primeiros exemplo usaremos uma versão mais curta e simplificada do texto sem pontuações. Em seguida, trabalharemos com o texto da cena com as pontuações incluídas.
+Para os primeiros exemplos, usaremos uma versão mais curta e simplificada do texto, sem pontuações. Em seguida, trabalharemos com o texto da cena com as pontuações incluídas.
 % For the first set of examples, we will use a shortened and simplified version
 % of the text with no punctuation.  Later we will work with the text of the
 % scene with punctuation included.
@@ -462,11 +459,11 @@ A combinação dos laços aninhados garante que contaremos todas as palavra de t
 
 \beforeverb
 \begin{verbatim}
-fname = raw_input('Enter the file name: ')
+fname = raw_input('Digite o nome do arquivo: ')
 try:
     fhand = open(fname)
 except:
-    print 'File cannot be opened:', fname
+    print 'Arquivo nao pode ser aberto:', fname
     exit()
 
 counts = dict()
@@ -492,7 +489,7 @@ Quando rodamos o programa, vemos o resultado bruto das contagens de modo não so
 \beforeverb
 \begin{verbatim}
 python count1.py
-Enter the file name: romeo.txt
+Digite o nome do arquivo: romeo.txt
 {'and': 3, 'envious': 1, 'already': 1, 'fair': 1,
 'is': 3, 'through': 1, 'pale': 1, 'yonder': 1,
 'what': 1, 'sun': 2, 'Who': 1, 'But': 1, 'moon': 1,
@@ -516,7 +513,7 @@ Enter the file name: romeo.txt
 \index{travessia}
 % \index{traversal}
 
-Se um dicionário for usado como a sequência em um blobo {\tt for}, esse iterará sobre as chaves do dicionário. Este laço exibe cada chave e o valor correspondente:
+Se um dicionário for usado como a sequência em um bloco {\tt for}, esse iterará sobre as chaves do dicionário. Este laço exibe cada chave e o valor correspondente:
 % If you use a dictionary as the sequence
 % in a {\tt for} statement, it traverses
 % the keys of the dictionary.  This loop
@@ -541,12 +538,12 @@ annie 42
 \end{verbatim}
 \afterverb
 %
-Mais uma vez, as chaves não se apresentam em nenhuma ordem em particular.
+Mais uma vez, as chaves não respeitam nenhum tipo de ordenamento.
 % Again, the keys are in no particular order.
 
 \index{estilo}
 % \index{idiom}
-Podemos usar este padrão para implementar os diferentes estilos de laço que foram descritos anteriormente. Por exemplo, se quisessemos encontrar todas as entradas em um dicionário com valor acima de dez, poderíamos escrever o seguinte código:
+Podemos usar este padrão para implementar os diferentes estilos de laço que foram descritos anteriormente. Por exemplo, se quiséssemos encontrar todas as entradas em um dicionário com valor acima de dez, poderíamos escrever o seguinte código:
 % We can use this pattern to implement the various loop idioms
 % that we have described earlier.  For example if we wanted
 % to find all the entries in a dictionary with a value
@@ -584,6 +581,7 @@ Vemos apenas as entradas com valor acima de dez.
 % \index{keys method}
 \index{método!keys}
 % \index{method!keys}
+
 Para exibir as chaves em ordem alfabética, deve-se gerar uma lista das chaves do dicionário por meio do método {\tt keys}, disponível em objetos dicionário, e então ordenar essa lista. Em seguida, itera-se pela lista ordenada, procurando cada chave e exibindo os pares chave-valor de modo ordenado, como em:
 % If you want to print the keys in alphabetical order, you first
 % make a list of the keys in the dictionary using the
@@ -648,7 +646,7 @@ Uma vez que a função do Python {\tt split} procura por espaços e trata palavr
 % words ``soft!'' and ``soft'' as \emph{different} words and create
 % a separate dictionary entry for each word.
 
-Além disso, como o arquivos possui letras capitalizadas as palavras ``who'' e ``Who'' seriam tratadas como diferentes e teriam contagens diferentes.
+Além disso, como o arquivos possui letras capitalizadas, as palavras ``who'' e ``Who'' seriam tratadas como diferentes e teriam contagens diferentes.
 % Also since the file has capitalization, we would treat
 % ``who'' and ``Who'' as different words with different
 % counts.
@@ -689,11 +687,11 @@ Faremos a seguinte modificação em nosso programa:
 \begin{verbatim}
 import string                                          # New Code
 
-fname = raw_input('Enter the file name: ')
+fname = raw_input('Digite o nome do arquivo: ')
 try:
     fhand = open(fname)
 except:
-    print 'File cannot be opened:', fname
+    print 'Arquivo nao pode ser aberto:', fname
     exit()
 
 counts = dict()
@@ -731,9 +729,9 @@ print a.translate(string.maketrans(' ',' '), string.punctuation)
 % \end{verbatim}
 % \afterverb
 %
-Parte de aprender a ``Arte do Python'' ou ``Pensar pythonicamente'' está em em
-perceber que Python gerealmente tem capacidades embutidas para analisar muitos
-dados de problemas comuns. No decorrrer do tempo, vê-se exemplos de código e
+Parte de aprender a ``Arte do Python'' ou ``Pensar pythonicamente'' está em
+perceber que Python geralmente tem capacidades embutidas para analisar muitos
+dados de problemas comuns. No decorrer do tempo, vê-se exemplos de código e
 documentação suficientes para se saber onde procurar para ver se alguém já escreveu alguma coisa que faça seu trabalho mais fácil.
 % Part of learning the ``Art of Python'' or ``Thinking Pythonically''
 % is realizing that Python
@@ -747,7 +745,7 @@ A seguir esté um versão abreviada da saída:
 
 \beforeverb
 \begin{verbatim}
-Enter the file name: romeo-full.txt
+Digite o nome do arquivo: romeo-full.txt
 {'swearst': 1, 'all': 6, 'afeard': 1, 'leave': 2, 'these': 2,
 'kinsmen': 2, 'what': 11, 'thinkst': 1, 'love': 24, 'cloak': 1,
 a': 24, 'orchard': 2, 'light': 5, 'lovers': 2, 'romeo': 40,
@@ -756,7 +754,7 @@ a': 24, 'orchard': 2, 'light': 5, 'lovers': 2, 'romeo': 40,
 \end{verbatim}
 \afterverb
 %
-Buscar informações nessa sáida ainda é dificultoso e podemos usar Python para nos fornecer exatamente o que estamos procurando; contudo, para tanto, precisamos aprender sobre as {\bf tuplas} do Python. Retornaremos a esse exemplo uma vez que aprendermos sobre tuplas.
+Buscar informações nessa saída ainda é difícil e podemos usar Python para nos fornecer exatamente o que estamos procurando; contudo, para tanto, precisamos aprender sobre as {\bf tuplas} do Python. Retornaremos a esse exemplo uma vez que aprendermos sobre tuplas.
 % Looking through this output is still unwieldy and we can use
 % Python to give us exactly what we are looking for, but to do
 % so, we need to learn about Python {\bf tuples}.  We
@@ -767,7 +765,7 @@ Buscar informações nessa sáida ainda é dificultoso e podemos usar Python par
 \index{depuração}
 % \index{debugging}
 
-Conforme se trabalha com conjnto de dados maiores, pode ser difícil de depurá-los por exibição e checagem à mão. Eis algumas sugestões para depuração de conjuntos de dados grandes:
+Conforme se trabalha com conjuntos de dados maiores, pode ser difícil de depurá-los por exibição e checagem à mão. Eis algumas sugestões para depuração de conjuntos de dados grandes:
 % As you work with bigger datasets it can become unwieldy to
 % debug by printing and checking data by hand.  Here are some
 % suggestions for debugging large datasets:
@@ -775,7 +773,7 @@ Conforme se trabalha com conjnto de dados maiores, pode ser difícil de depurá-
 \begin{description}
 
 \item[Reduza a entrada:] Se possível, reduza o tamanho do conjunto de dados.
-Por exemplo se o programa lê um arquivo de texto, comece com apenas 10 linhas,
+Por exemplo, se o programa lê um arquivo de texto, comece com apenas 10 linhas,
 ou com o menor exemplo que pode ser construído. Pode-se ainda editar os próprios arquivos, ou (melhor) modificar o programa de tal modo a ler apenas as {\tt n} linhas.
 % \item[Scale down the input:] If possible, reduce the size of the
 % dataset.  For example if the program reads a text file, start with
@@ -783,12 +781,12 @@ ou com o menor exemplo que pode ser construído. Pode-se ainda editar os própri
 % You can either edit the files themselves, or (better) modify the
 % program so it reads only the first {\tt n} lines.
 
-Se houver um erro, pode-se reduzir {\tt n} até o menor valor que manifesta o erro, e, então, aumentá-lo gradualmente conforme se encontra e corrige os erros.
+Se houver um erro, pode-se reduzir {\tt n} até o menor valor que manifesta o erro, e, então, aumentá-lo gradualmente conforme se encontra e se corrige os erros.
 % If there is an error, you can reduce {\tt n} to the smallest
 % value that manifests the error, and then increase it gradually
 % as you find and correct errors.
 
-\item[Verificar summários and tipos:] Ao invés de exibir e verificar o conjunto de dados por completo, considerar exibir sumarizações dos dados: por exemplo, o número de itens em um dicionário ou o total de uma lista de números.
+\item[Verificar sumários e tipos:] Ao invés de exibir e verificar o conjunto de dados por completo, considera-se exibir sumarizações dos dados: por exemplo, o número de itens em um dicionário ou o total de uma lista de números.
 % \item[Check summaries and types:] Instead of printing and checking the
 % entire dataset, consider printing summaries of the data: for example,
 % the number of items in a dictionary or the total of a list of numbers.
@@ -854,7 +852,7 @@ Novamente, tempo gasto construindo arcabouços pode reduzir o tempo gasto com de
 \index{dicionário}
 % \index{dictionary}
 
-\item[função de hash:] A função usada por uma tabela de hash para calcular a posição de um chave.
+\item[função de hash:] A função usada por uma tabela de hash para calcular a posição de uma chave.
 % \item[hash function:] A function used by a hashtable to compute the
 % location for a key.
 \index{função de hash}
@@ -870,7 +868,7 @@ Novamente, tempo gasto construindo arcabouços pode reduzir o tempo gasto com de
 \index{implementação}
 % \index{implementation}
 
-\item[item:] Outro nome para um par chave-valor..
+\item[item:] Outro nome para um par chave-valor.
 % \item[item:] Another name for a key-value pair.
 \index{item!dicionário}
 % \index{item!dictionary}
@@ -890,7 +888,7 @@ Novamente, tempo gasto construindo arcabouços pode reduzir o tempo gasto com de
 \index{par chave-valor}
 % \index{key-value pair}
 
-\item[tabela de hash:] O algorítmo usado para implementar os dicionários de Python.
+\item[tabela de hash:] O algoritmo usado para implementar os dicionários de Python.
 % \item[hashtable:] The algorithm used to implement Python
 % dictionaries.
 \index{tabela de hash}
@@ -969,7 +967,7 @@ Insira código no programa acima para descobrir quem tem mais mensagens no arqui
 % Add code to the above program to figure out who has the
 % most messages in the file.
 
-Após todos os dados terem sido lidos e o dicionário criado, percorra o dicionário usando um laço de máximo (veja Sessão~\ref{maximumloop}) para encontrar quem tem mais mensagens e exiba quantas mensagens a essa pessoa tem.
+Após todos os dados terem sido lidos e o dicionário criado, percorra o dicionário usando um laço de máximo (veja Sessão~\ref{maximumloop}) para encontrar quem tem mais mensagens e exiba quantas mensagens existem para essa pessoa.
 % After all the data has been read and the dictionary has been
 % created, look through the dictionary using a maximum loop
 %  (see Section~\ref{maximumloop})

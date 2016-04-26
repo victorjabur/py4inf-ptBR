@@ -1,0 +1,1349 @@
+% LaTeX source for ``Python for Informatics: Exploring Information''
+% Copyright (c)  2010-  Charles R. Severance, All Rights Reserved
+
+\chapter{Variáveis, expressões e instruções}
+%\chapter{Variables, expressions, and statements}
+\section{Valores e tipos}
+%\section{Values and types}
+
+\index{valor}
+\index{tipo}
+\index{string}
+
+%\index{value}
+%\index{type}
+%\index{string}
+
+Um {\bf valor} é uma das coisas básicas com a qual um programa trabalha, 
+como uma letra ou um número. Os valores que vimos até agora são
+são {\tt 1}, {\tt 2}, and \verb"'Ola, Mundo!'"
+%A {\bf value} is one of the basic things a program works with,
+%like a letter or a
+%number.  The values we have seen so far
+%are {\tt 1}, {\tt 2}, and
+%\verb"'Hello, World!'"
+
+Estes valores pertencem a diferentes {\bf tipos}:
+{\tt 2} é um inteiro, e \verb"'Ola, Mundo!'" é uma {\bf string},
+assim chamada por conter uma ``cadeia'' de letras.
+Você (e o interpretador) podem identificar strings 
+porque elas aparecem entre aspas.
+%These values belong to different {\bf types}:
+%{\tt 2} is an integer, and \verb"'Hello, World!'" is a {\bf string},
+%so called because it contains a ``string'' of letters.
+%You (and the interpreter) can identify
+%strings because they are enclosed in quotation marks.
+
+\index{string entre aspas}
+%\index{quotation mark}
+
+A instrução {\tt print} também funciona com inteiros. Nós usamos o 
+comando {\tt python} para iniciar o interpretador.
+%The {\tt print} statement also works for integers.  We use the 
+%{\tt python} command to start the interpreter.
+
+\beforeverb
+\begin{verbatim}
+python
+>>> print 4
+4
+\end{verbatim}
+\afterverb
+%
+
+Se você não tem certeza que tipo tem um valor, o interpretador pode te dizer.
+%If you are not sure what type a value has, the interpreter can tell you.
+
+\beforeverb
+\begin{verbatim}
+>>> type('Ola, Mundo!')
+<type 'str'>
+>>> type(17)
+<type 'int'>
+\end{verbatim}
+\afterverb
+% 
+
+Não surpreendentemente, strings pertencem ao tipo {\tt str} e 
+inteiros pertencem ao tipo {\tt int}. Menos, obviamente, números 
+com ponto decimal pertencem a um tipo chamado {\tt float},
+uma vez que estes números são representados em um formato 
+chamado {\bf ponto flutuante}.
+%Not surprisingly, strings belong to the type {\tt str} and
+%integers belong to the type {\tt int}.  Less obviously, numbers
+%with a decimal point belong to a type called {\tt float},
+%because these numbers are represented in a
+%format called {\bf floating point}.
+
+\index{tipo}
+\index{o tipo string}
+\index{tipo!str}
+\index{tipo int}
+\index{tipo!int}
+\index{tipo float}
+\index{tipo!float}
+%\index{type}
+%\index{string type}
+%\index{type!str}
+%\index{int type}
+%\index{type!int}
+%\index{float type}
+%\index{type!float}
+
+\beforeverb
+\begin{verbatim}
+>>> type(3.2)
+<type 'float'>
+\end{verbatim}
+\afterverb
+
+E quanto a valores como \verb"'17'" e \verb"'3.2'"?
+Eles se parecem com números, mas eles são, quando entre aspas, 
+strings.
+%What about values like \verb"'17'" and \verb"'3.2'"?
+%They look like numbers, but they are in quotation marks like
+%strings.
+
+\index{string entre aspas}
+%\index{quotation mark}
+
+\beforeverb
+\begin{verbatim}
+>>> type('17')
+<type 'str'>
+>>> type('3.2')
+<type 'str'>
+\end{verbatim}
+\afterverb
+%
+
+Eles são strings.
+%They're strings.
+
+Quando você digita um número inteiro grande, você pode ficar tentado a utilizar vírgulas 
+entre os grupos de três dígitos, como em {\tt 1,000,000}. Este não é um 
+número válido em Python, no entanto ele é válido:
+%When you type a large integer, you might be tempted to use commas
+%between groups of three digits, as in {\tt 1,000,000}.  This is not a
+%legal integer in Python, but it is legal:
+
+\beforeverb
+\begin{verbatim}
+>>> print 1,000,000
+1 0 0
+\end{verbatim}
+\afterverb
+%
+
+Bem, de toda forma, isto não é o que nós esperávamos!  Python interpreta {\tt
+  1,000,000} como  uma sequência de integers separados por vírgulas, o qual 
+imprimi com espaços entre eles.
+%Well, that's not what we expected at all!  Python interprets {\tt
+%  1,000,000} as a comma-separated sequence of integers, which it
+%prints with spaces between.
+
+\index{erro semântico}
+\index{erro!semântico}
+\index{mensagem de erro}
+%\index{semantic error}
+%\index{error!semantic}
+%\index{error message}
+
+Este é o primeiro exemplo que vemos de um erro semântico: o código 
+executa sem produzir uma mensagem de erro, mas ele não faz a 
+coisa ``certa''.
+%This is the first example we have seen of a semantic error: the code
+%runs without producing an error message, but it doesn't do the
+%``right'' thing.
+
+\section{Variáveis}
+%\section{Variables}
+
+\index{variável}
+\index{instrução de atribuição}
+\index{instrução!atribuição}
+%\index{variable}
+%\index{assignment statement}
+%\index{statement!assignment}
+
+Uma das mais poderosas características de uma linguagem de programação é a 
+capacidade de manipular {\bf variáveis}. Uma variável é um nome 
+que se refere a um valor.
+%One of the most powerful features of a programming language is the
+%ability to manipulate {\bf variables}.  A variable is a name that
+%refers to a value.
+
+Um {\bf comando de atribuição} cria novas variáveis e dá 
+valores a elas:
+%An {\bf assignment statement} creates new variables and gives
+%them values:
+
+\beforeverb
+\begin{verbatim}
+>>> message = 'E agora algo completamente diferente'
+>>> n = 17
+>>> pi = 3.1415926535897931
+\end{verbatim}
+\afterverb
+%
+
+Este exemplo faz três atribuições. O primeiro atribui uma string 
+a uma nova variável chamada {\tt message}; 
+o segundo atribui o integer {\tt 17} à variável {\tt n}; o terceiro 
+atribui valor (aproximado) de $\pi$ à variável {\tt pi}.
+%This example makes three assignments.  The first assigns a string
+%to a new variable named {\tt message};
+%the second assigns the integer {\tt 17} to {\tt n}; the third
+%assigns the (approximate) value of $\pi$ to {\tt pi}.
+
+%To display the value of a variable, you can use a print statement:
+Para mostrar o valor de uma variável, você pode usar o comando print.
+
+\beforeverb
+\begin{verbatim}
+>>> print n
+17
+>>> print pi
+3.14159265359
+\end{verbatim}
+\afterverb
+%
+
+O tipo de uma variável é o tipo do valor ao qual ela se refere.
+%The type of a variable is the type of the value it refers to.
+
+\beforeverb
+\begin{verbatim}
+>>> type(message)
+<type 'str'>
+>>> type(n)
+<type 'int'>
+>>> type(pi)
+<type 'float'>
+\end{verbatim}
+\afterverb
+%
+
+\section{Nomes de variáveis e palavras reservadas}
+%\section{Variable names and keywords}
+
+\index{palavra chave}
+%\index{keyword}
+
+Programadores geralmente escolhem nomes, que tenham algum significado, 
+para suas variáveis e documentam para qual finalidade a 
+variável será utilizada.
+%Programmers generally choose names for their variables that
+%are meaningful and document what the variable is used for.
+
+Nomes de variáveis podem ser arbitrariamente longos. Eles podem conter 
+tanto letras quanto números, porém eles não podem começar com um número.
+É válido usar letras maiúsculas, porém é uma boa prática começar o nome de uma variável 
+com uma letra minúscula (você verá o porquê, mais tarde).
+%Variable names can be arbitrarily long.  They can contain
+%both letters and numbers, but they cannot start with a number.
+%It is legal to use uppercase letters, but it is a good idea
+%to begin variable names with a lowercase letter (you'll
+%see why later).
+
+O caractere sublinhado (\verb"_") pode aparecer no nome.
+Ele é frequentemente usado em nomes com múltiplas palavras, como 
+\verb"my_name" ou \verb"airvelocidade_of_unladen_swallow".
+%The underscore character (\verb"_") can appear in a name.
+%It is often used in names with multiple words, such as
+%\verb"my_name" or \verb"airvelocidade_of_unladen_swallow".
+
+Nomes de variáveis podem começar como caracter sublinhado, mas
+nós, geralmente, evitamos isto, a menos que estejamos escrevendo 
+uma biblioteca de código para outros usarem.
+%Variable names can start with an underscore character, but
+%we generally avoid doing this unless we are writing library 
+%code for others to use.
+
+\index{caractere underscore}
+%\index{underscore character}
+
+Se você der a uma variável um nome inválido, você receberá um erro de sintaxe.
+%If you give a variable an illegal name, you get a syntax error:
+
+\beforeverb
+\begin{verbatim}
+>>> 76trombones = 'grande desfile'
+SyntaxError: invalid syntax
+>>> more@ = 1000000
+SyntaxError: invalid syntax
+>>> class = 'Avancada Teoria Zymurgy'
+SyntaxError: invalid syntax
+\end{verbatim}
+\afterverb
+%
+
+{\tt 76trombones} é inválida porquê ela começa com um número.
+{\tt more@} é inválida porquê ela contém um caractere inválido, {\tt @}. 
+Mas o quê há de errado com {\tt class}?
+Acontece que a palavra {\tt class} é uma Palavra Reservada do Python {\bf keywords}.
+O interpretador usa as Palavras Reservadas para reconhecer a estrutura do programa,
+e elas não podem ser usadas como nomes de variáveis.
+%{\tt 76trombones} is illegal because it begins with a number.
+%{\tt more@} is illegal because it contains an illegal character, {\tt
+%@}.  But what's wrong with {\tt class}?
+%It turns out that {\tt class} is one of Python's {\bf keywords}.  The
+%interpreter uses keywords to recognize the structure of the program,
+%and they cannot be used as variable names.
+
+
+\index{palavra chave}
+%\index{keyword}
+
+Python reserva 31 Palavras Reservadas \footnote{Em Python 3.0, {\tt exec} não é 
+mais uma palavra reservada, mas {\tt nonlocal} é.} para seu uso:
+%Python reserves 31 keywords\footnote{In Python 3.0, {\tt exec} is no
+%longer a keyword, but {\tt nonlocal} is.} for its use:
+
+\beforeverb
+\begin{verbatim}
+and       del       from      not       while    
+as        elif      global    or        with     
+assert    else      if        pass      yield    
+break     except    import    print              
+class     exec      in        raise              
+continue  finally   is        return             
+def       for       lambda    try
+\end{verbatim}
+\afterverb
+%
+
+Você pode querer manter esta lista ao alcance das mãos. Se o interpretador reclamar
+sobre um de seus nomes de variável e você não souber o porquê, verifique se ela
+se encontra nesta lista.
+%You might want to keep this list handy.  If the interpreter complains
+%about one of your variable names and you don't know why, see if it
+%is on this list.
+
+\section{Instruções}
+%\section{Statements}
+
+Uma {\bf instrução} é uma unidade de código que o interpretador Python 
+pode executar. Nós vimos dois tipos de instruções: impressão (print) 
+e atribuição (=).
+%A {\bf statement} is a unit of code that the Python interpreter can
+%execute.  We have seen two kinds of statements: print
+%and assignment.
+
+\index{instrução}
+\index{modo interativo}
+\index{modo script}
+%\index{statement}
+%\index{interactive mode}
+%\index{script mode}
+
+Quando você digita uma instrução no modo interativo, o interpretador 
+a executa e mostra o resultado, se houver um.
+%When you type a statement in interactive mode, the interpreter
+%executes it and displays the result, if there is one.
+
+Um script geralmente contém uma sequência de instruções. Se houver 
+mais de uma instrução, os resultados aparecem um de cada vez 
+conforme as instruções são executadas.
+%A script usually contains a sequence of statements.  If there
+%is more than one statement, the results appear one at a time
+%as the statements execute.
+
+Por exemplo, o script
+%For example, the script
+
+\beforeverb
+\begin{verbatim}
+print 1
+x = 2
+print x
+\end{verbatim}
+\afterverb
+%
+
+Produz a saída:
+%produces the output
+
+\beforeverb
+\begin{verbatim}
+1
+2
+\end{verbatim}
+\afterverb
+%
+
+A instrução de atribuição não produz saída.
+%The assignment statement produces no output.
+
+\section{Operadores e operandos}
+%\section{Operators and operands}
+
+\index{operador, aritmético}
+\index{operador aritmético}
+\index{operando}
+\index{expressão}
+%\index{operator, arithmetic}
+%\index{arithmetic operator}
+%\index{operand}
+%\index{expression}
+
+{\bf Operadores} são símbolos especiais que representam cálculos como 
+adição e multiplicação. Os valores aos quais os operadores são aplicados 
+são chamados de {\bf operandos}.
+%{\bf Operators} are special symbols that represent computations like
+%addition and multiplication.  The values the operator is applied to
+%are called {\bf operands}.
+
+Os operadores {\tt +}, {\tt -}, {\tt *}, {\tt /}, e {\tt **} 
+realizam, adição, subtração, mumltiplicação, divisão 
+e exponenciação, como no exemplo a seguir:
+%The operators {\tt +}, {\tt -}, {\tt *}, {\tt /}, and {\tt **}
+%perform addition, subtraction, multiplication, division, and
+%exponentiation, as in the following examples:
+
+\beforeverb
+\begin{verbatim}
+20+32   hora-1   hora*60+minuto   minuto/60   5**2   (5+9)*(15-7)
+\end{verbatim}
+\afterverb
+%
+
+O operador de divisão pode não fazer o que você espera: 
+%The division operator might not do what you expect:
+
+\beforeverb
+\begin{verbatim}
+>>> minuto = 59
+>>> minuto/60
+0
+\end{verbatim}
+\afterverb
+%
+
+O valor de {\tt minuto} é 59, e na aritmética convencional 59 
+dividido por 60 é 0.98333, não 0. A razão para esta discrepância é 
+o fato de que o Python realiza um {\bf floor division}\footnote{Em Python 3.0,
+o resultado desta divisão é do tipo {\tt float}.  
+Em Python 3.0, o novo operador 
+{\tt //} realiza uma divisão to tipo integer.}
+%The value of {\tt minute} is 59, and in conventional arithmetic 59
+%divided by 60 is 0.98333, not 0.  The reason for the discrepancy is
+%that Python is performing {\bf floor division}\footnote{In Python 3.0,
+%the result of this division is a {\tt float}.  
+%In Python 3.0, the new operator
+%{\tt //} performs integer division.}.
+
+\index{Python 3.0}
+\index{floor division}
+\index{floating-point division}
+\index{division!floor}
+\index{division!floating-point}
+%\index{Python 3.0}
+%\index{floor division}
+%\index{floating-point division}
+%\index{division!floor}
+%\index{division!floating-point}
+
+Quando ambos os operandos são integers, o resultado é, também,
+um integer; floor division corta a parte fracionária,
+portanto, neste exemplo o resultado foi arredondado para zero.
+%When both of the operands are integers, the result is also an
+%integer; floor division chops off the fractional
+%part, so in this example it truncates the answer to zero.
+
+Se um dos operandos é um número do tipo ponto flutuante, Python realiza 
+uma divisão de ponto flutuante, e o resultado é um {\tt float}:
+%If either of the operands is a floating-point number, Python performs
+%floating-point division, and the result is a {\tt float}:
+
+\beforeverb
+\begin{verbatim}
+>>> minuto/60.0
+0.98333333333333328
+\end{verbatim}
+\afterverb
+
+\section{Expressões}
+%\section{Expressions}
+
+Uma {\bf expressão} é uma combinação de valores, variáveis e operadores. 
+Um valor, por si só, é considerado uma expressão, e portanto,
+uma variável, então o que segue são todas expressões válidas 
+(assumindo que a variável {\tt x} tenha recebido um valor):
+%An {\bf expression} is a combination of values, variables, and operators.
+%A value all by itself is considered an expression, and so is
+%a variable, so the following are all legal expressions
+%(assuming that the variable {\tt x} has been assigned a value):
+
+\index{expressão}
+\index{avaliar}
+%\index{expression}
+%\index{evaluate}
+
+\beforeverb
+\begin{verbatim}
+17
+x
+x + 17
+\end{verbatim}
+\afterverb
+%
+
+Se você digita uma expressão no modo interativo, o interpretador
+a {\bf avalia} e mostra o resultado:
+%If you type an expression in interactive mode, the interpreter
+%{\bf evaluates} it and displays the result:
+
+\beforeverb
+\begin{verbatim}
+>>> 1 + 1
+2
+\end{verbatim}
+\afterverb
+%
+
+Mas em um script, uma expressão por si só não 
+faz nada! Isto é uma fonte comum 
+de confusão para iniciantes.
+%But in a script, an expression all by itself doesn't
+%do anything!  This is a common
+%source of confusion for beginners.
+
+%                                                                                                       
+\begin{ex}
+%Type the following statements in the Python interpreter to see
+%what they do:
+Digite a seguinte declaraçao no interpretador do Python para ver 
+o que ele faz:
+\beforeverb
+\begin{verbatim}
+5
+x = 5
+x + 1
+\end{verbatim}
+\afterverb
+%
+\end{ex}
+
+
+\section{Ordem das operações}
+%\section{Order of operations}
+
+\index{ordem das operações}
+\index{regras de precedência}
+\index{PEMDAS}
+%\index{order of operations}
+%\index{rules of precedence}
+%\index{PEMDAS}
+
+Quando mais de um operador aparece em uma expressão, a ordem de 
+avaliação depende das {\bf regras de precedência}. Para 
+operadores matemáticos. Python segue a convenção matemática.
+O Acrônimo {\bf PEMDAS} é uma modo útil para lembrar as regras:
+%When more than one operator appears in an expression, the order of
+%evaluation depends on the {\bf rules of precedence}.  For
+%mathematical operators, Python follows mathematical convention.
+%The acronym {\bf PEMDAS} is a useful way to
+%remember the rules:
+
+\index{parênteses!precedência de sobrecarga}
+%\index{parentheses!overriding precedence}
+
+\begin{itemize}
+
+\item {\bf P}arenteses têm a mais alta precedência e pode ser usado 
+para forçar que uma expressão seja calculada na ordem que você deseja. Como as 
+expressões entre parênteses são avalidas primeiro, {\tt 2 * (3-1)} é 4, 
+e {\tt (1+1)**(5-2)} é 8. Você também pode usar parênteses para tornar uma 
+expressão mais fácil de ser lida, como em {\tt (minute * 100) / 60}, mesmo 
+que isto não mude o resultado.
+%\item {\bf P}arentheses have the highest precedence and can be used 
+%to force an expression to evaluate in the order you want. Since
+%expressions in parentheses are evaluated first, {\tt 2 * (3-1)} is 4,
+%and {\tt (1+1)**(5-2)} is 8. You can also use parentheses to make an
+%expression easier to read, as in {\tt (minute * 100) / 60}, even
+%if it doesn't change the result.
+
+\item {\bf E}xponenciação é a próxima precedência mais alta,
+{\tt então 2**1+1} é 3, não 4, e {\tt 3*1**3} é 3, não 27.
+%\item {\bf E}xponentiation has the next highest precedence, so
+%{\tt 2**1+1} is 3, not 4, and {\tt 3*1**3} is 3, not 27.
+
+\item {\bf M}ultiplicação e {\bf D}ivisão têm a mesma precedência,
+a qual é mais alta que {\bf A}dição e {\bf S}ubtração, que também 
+têm a mesma precedência entre si. Então {\tt 2*3-1} é 5, não 4, e 
+{\tt6+4/2} é 8, não 5.
+%\item {\bf M}ultiplication and {\bf D}ivision have the same precedence,
+%which is higher than {\bf A}ddition and {\bf S}ubtraction, which also
+%have the same precedence.  So {\tt 2*3-1} is 5, not 4, and
+%{\tt 6+4/2} is 8, not 5.
+
+
+\item Operadores com a mesma precedência são avaliados da esquerda para 
+direita. Portanto na expressão {\tt 5-3-1} é 1, não 3 pois o 
+{\tt 5-3} acontence primeiro e então o {\tt 1} é subtraído de {\tt 2}.
+%\item Operators with the same precedence are evaluated from left to 
+%right.  So the expression {\tt 5-3-1} is 1, not 3, because the
+%{\tt 5-3} happens first and then {\tt 1} is subtracted from {\tt 2}.
+
+\end{itemize}
+
+Na dúvida, sempre utilize parênteses em suas expressões para ter certeza 
+de que os cálculos serão realizados na ordem que você deseja.
+%When in doubt, always put parentheses in your expressions to make sure
+%the computations are performed in the order you intend.
+
+\section{O operador Módulo}
+%\section{Modulus operator}
+
+\index{operadr módulo}
+\index{operador!módulo}
+%\index{modulus operator}
+%\index{operator!modulus}
+
+O {\bf operador módulo} funciona em integers e fornece o resto da divisão,
+quando o primeiro operando é dividido pelo segundo. No Python, o 
+operador módulo é um sinal de percentual (\verb"%"). A sintaxe é a mesma 
+dos outros operadores:
+%The {\bf modulus operator} works on integers and yields the remainder
+%when the first operand is divided by the second.  In Python, the
+%modulus operator is a percent sign (\verb"%").  The syntax is the same
+%as for other operators:
+
+\beforeverb
+\begin{verbatim}
+>>> quociente = 7 / 3
+>>> print quociente
+2
+>>> resto = 7 % 3
+>>> print resto
+1
+\end{verbatim}
+\afterverb
+%
+
+Portanto, 7 dividido por 3 é igual a 2, com resto 1.
+%So 7 divided by 3 is 2 with 1 left over.
+
+O operador módulo apresenta-se surpreendentemente útil. Por 
+exemplo, você pode checar se um núnero é divisível por outro---se 
+{\tt x \% y} é zero, então {\tt x} é divivisível por {\tt y}.
+%The modulus operator turns out to be surprisingly useful.  For
+%example, you can check whether one number is divisible by another---if
+%{\tt x \% y} is zero, then {\tt x} is divisible by {\tt y}.
+
+\index{divisibilidade}
+%\index{divisibility}
+
+Você pode, também, testar se um número é dvisível por outro. 
+Por exemplo, {\tt x \% 10} nos mostra se o número x é
+divísível por 10. Similarmente, {\tt x \% 100}
+nos mostra se x é divisível por 100.
+%You can also extract the right-most digit
+%or digits from a number.  For example, {\tt x \% 10} yields the
+%right-most digit of {\tt x} (in base 10).  Similarly, {\tt x \% 100}
+%yields the last two digits.
+
+%\section{String operations}
+\section{Operações com Strings}
+
+\index{string!operação}
+\index{operador!string}
+%\index{string!operation}
+%\index{operator!string}
+
+O operador {\tt +} funciona com strings, mas ele 
+não é uma adição no sentido matemático. Ao invés disto, ele realiza 
+{\bf concatenação}, que significa juntar as strings,
+vinculando-as de ponta-a-ponta. Por exemplo:
+%The {\tt +} operator works with strings, but it
+%is not addition in the mathematical sense. Instead it performs
+%{\bf concatenation}, which means joining the strings by
+%linking them end to end.  For example:
+
+\index{concatenação}
+%\index{concatenation}
+
+\beforeverb
+\begin{verbatim}
+>>> primeiro = 10
+>>> segundo = 15
+>>> print primeiro + segundo
+25
+>>> primeiro = '100'
+>>> segundo = '150'
+>>> print primeiro + segundo
+100150
+\end{verbatim}
+\afterverb
+%
+
+A saída deste programa é {\tt 100150}.
+%The output of this program is {\tt 100150}.š
+
+%\section{Asking the user for input}
+\section{Solicitando dados de entrada para o usuário}
+
+\index{entrada pelo teclado}
+%\index{keyboard input}
+
+Algumas vezes gostaríamos de solicitar, do usuário, o valor para uma variável
+por meio do teclado.
+Python fornece uma função interna chamada \verb"raw_input" que recebe
+dados de entrada a partir do teclado\footnote{Em Python 3.0, esta função é chamada de 
+{\tt input}.}. Quando esta função é chamada, o programa para e 
+espera para que o usuário digite algo. Quando o usuário pressiona o 
+{\sf Return} ou {\sf Enter}, o programa continua e a função \verb"raw_input"
+retorna o que o usuário digitou, como uma string.
+%Sometimes we would like to take the value for a variable from the user
+%via their keyboard.
+%Python provides a built-in function called \verb"raw_input" that gets
+%input from the keyboard\footnote{In Python 3.0, this function is named
+%  {\tt input}.}.  When this function is called, the program stops and
+%waits for the user to type something.  When the user presses {\sf
+%  Return} or {\sf Enter}, the program resumes and \verb"raw_input"
+%returns what the user typed as a string.
+
+\index{Python 3.0}
+\index{função raw\_input}
+\index{função!raw\_input}
+%\index{Python 3.0}
+%\index{raw\_input function}
+%\index{function!raw\_input}
+
+\beforeverb
+\begin{verbatim}
+>>> entrada = raw_input()
+Alguma coisa boba
+>>> print entrada
+Alguma coisa boba
+\end{verbatim}
+\afterverb
+%
+
+Antes de receber os dados de entrada do usuário, é uma boa idéia imprimir uma 
+mensagem, dizendo ao usuário que o dado deve ser informado. Você pode passar uma string 
+para a função \verb"raw_input" para ser mostrada para o usuário antes da parada 
+para a entrada de dados:
+%Before getting input from the user, it is a good idea to print a
+%prompt telling the user what to input.  You can pass a string
+%to \verb"raw_input" to be displayed to the user before pausing
+%for input:
+
+\index{prompt}
+%\index{prompt}
+
+\beforeverb
+\begin{verbatim}
+>>> nome = raw_input('Qual é o seu nome?\n')
+Qual é o seu nome?
+Chuck
+>>> print nome
+Chuck
+\end{verbatim}
+\afterverb
+%
+
+A sequência \verb"\n" no final da mensagem representa uma {\bf nova linha},
+que é um caractere especial que causa a quebra de linha. 
+É por este motivo que os dados de entrada informados pelo usuário aparecem 
+abaixo da mensagem.
+%The sequence \verb"\n" at the end of the prompt represents a {\bf newline},
+%which is a special character that causes a line break.
+%That's why the user's input appears below the prompt.
+
+\index{nova linha}
+%\index{newline}
+
+Se você espera que o usuário digite um integer, você pode tentar converter 
+o valor retornado para {\tt int} usando a função {\tt int()}: 
+%If you expect the user to type an integer, you can try to convert
+%the return value to {\tt int} using the {\tt int()} function:
+
+\beforeverb
+\begin{verbatim}
+>>> pergunta = 'Qual é ... a velocidade de uma andorinha sem carga?\n'
+>>> velocidade = raw_input(pergunta)
+Qual é ... a velocidade de uma andorinha sem carga?
+17
+>>> int(velocidade)
+17
+>>> int(velocidade) + 5
+22
+\end{verbatim}
+\afterverb
+%
+
+Porém, se o usuário digita algo diferente de um conjunto de números, 
+você recebe um erro:
+%But if the user types something other than a string of digits,
+%you get an error:
+
+\beforeverb
+\begin{verbatim}
+>>> velocidade = raw_input(pergunta)
+Qual é ... a velocidade de uma andorinha sem carga?
+Que tipo de andorinha, uma Africana ou uma Européia?
+>>> int(velocidade)
+ValueError: invalid literal for int()
+\end{verbatim}
+\afterverb
+%
+
+Nós veremos como tratar este tipo de erro mais tarde.
+%We will see how to handle this kind of error later.
+
+\index{ValueError}
+\index{exceção!ValueError}
+%\index{ValueError}
+%\index{exception!ValueError}
+
+\section{Comentários}
+%\section{Comments}
+
+\index{comentário}
+%\index{comment}
+
+Como os programas ficam maiores e mais complicados, eles ficam mais difíceis 
+de serem lidos. Linguagens formais são densas, e muitas vezes é difícil 
+olhar para um pedaço de código e descobrir o que ele está fazendo, ou porquê.
+%As programs get bigger and more complicated, they get more difficult
+%to read.  Formal languages are dense, and it is often difficult to
+%look at a piece of code and figure out what it is doing, or why.
+
+Por esta razão, é uma boa ideia adicionar notas em seus programas para explicar,
+em linguagem natural, o que o programa está fazendo. Estas notas são chamadas 
+de {\bf comentários}, e, em Python, elas começam com o símbolo \verb"#":
+%For this reason, it is a good idea to add notes to your programs to explain
+%in natural language what the program is doing.  These notes are called
+%{\bf comments}, and in Python they start with the \verb"#" symbol:
+
+\beforeverb
+\begin{verbatim}
+# computa a porcentagem de hora que se passou
+porcentagem = (minuto * 100) / 60
+\end{verbatim}
+\afterverb
+%
+
+Neste caso, o comentário aparece sozinho em uma linha. Você pode, também, colocar
+o comentário no final da linha:
+%In this case, the comment appears on a line by itself.  You can also put
+%comments at the end of a line:
+
+\beforeverb
+\begin{verbatim}
+porcentagem = (minuto * 100) / 60     # porcentagem de uma hora
+\end{verbatim}
+\afterverb
+%
+
+Todos os caracteres depois do {\tt \#}, até o fim da linha são ignorados---eles 
+não têm efeito sobre o programa.
+%Everything from the {\tt \#} to the end of the line is ignored---it
+%has no effect on the program.
+%
+Comentários são mais úteis quando documentam características não obvias 
+do código. É razoável assumir que o leitor pode descobrir 
+\emph{o que} o código faz; é muito mais útil explicar o \emph{porquê}.  
+%Comments are most useful when they document non-obvious features of
+%the code.  It is reasonable to assume that the reader can figure out
+%\emph{what} the code does; it is much more useful to explain \emph{why}.
+
+Este comentário é redundante e inútil dentro do código:
+%This comment is redundant with the code and useless:
+
+\beforeverb
+\begin{verbatim}
+v = 5     # atribui o valor 5 para a variável v
+\end{verbatim}
+\afterverb
+
+Este comentário contem informações úteis que não estão no código.
+%This comment contains useful information that is not in the code:
+
+\beforeverb
+\begin{verbatim}
+v = 5     # velocidade em metros por segundo
+\end{verbatim}
+\afterverb
+
+Bons nomes de variáveis podem reduzir a necessidade de comentários, porém, 
+nomes longos podem tornar expressões complexas difíceis de serem lidas, então devemos
+ponderar. 
+%Good variable names can reduce the need for comments, but
+%long names can make complex expressions hard to read, so there is
+%a trade-off.
+ 
+\section{Escolhendo nomes de variáveis mnemônicos}
+%\section{Choosing mnemonic variable names}
+
+\index{mnemônico}
+%\index{mnemonic}
+
+Contanto que você siga as regras simples de nomenclatura de variáveis, e evite 
+Palavras Reservadas, você tem muitas escolhas quando você nomeia suas variáveis. 
+No início, esta escolha pode ser confusa, tanto quando você lê um 
+programa, quanto quando você escreve seus próprios programas. Por exemplo, os 
+três programas a seguir são idênticos em termos do que realizam, 
+mas muito diferente quando você os lê e tenta compreendê-los.
+%As long as you follow the simple rules of variable naming, and avoid
+%reserved words, you have a lot of choice when you name your variables.
+%In the beginning, this choice can be confusing both when you read a 
+%program and when you write your own programs.  For example, the
+%following three programs are identical in terms of what they accomplish,
+%but very different when you read them and try to understand them.
+
+\beforeverb
+\begin{verbatim}
+a = 35.0
+b = 12.50
+c = a * b
+print c
+
+horas = 35.0
+taxa = 12.50
+pagamento = horas * taxa
+print pagamento
+
+x1q3z9ahd = 35.0
+x1q3z9afd = 12.50
+x1q3p9afd = x1q3z9ahd * x1q3z9afd
+print x1q3p9afd
+\end{verbatim}
+\afterverb
+%
+
+O interpretador Python vê todos os três programas \emph{exatamente como o 
+mesmo}, mas os seres humanos veem e entendem esses programas de forma bastante 
+diferente, entenderão mais rapidamente a {\bf intenção} do segundo programa, porque o 
+programador escolheu nomes de variáveis que refletem a sua intenção
+sobre os dados que serão armazenados em cada variável.
+%The Python interpreter sees all three of these programs as \emph{exactly the 
+%same} but humans see and understand these programs quite differently.  
+%Humans will most quickly understand the {\bf intent} 
+%of the second program because the 
+%programmer has chosen variable names that reflect their intent
+%regarding what data will be stored in each variable.
+
+Nós chamamos esses nomes de variáveis sabiamente escolhidos de ``nomes de 
+variáveis mnemônicos''. A palavra \emph{mnemônico}\footnote{veja 
+\url{http://en.wikipedia.org/wiki/Mnemonic} para uma descrição completa da 
+palavra ``mnemônico''.} significa ``auxiliar de memória''. 
+Nós escolhemos os nomes de variáveis mnemônicos para nos ajudar a lembrar o motivo 
+pelo qual criamos a variável, em primeiro lugar.
+%We call these wisely chosen variable names ``mnemonic variable names''.  The
+%word \emph{mnemonic}\footnote{See 
+%\url{http://en.wikipedia.org/wiki/Mnemonic}
+%for an extended description of the word ``mnemonic''.} 
+%means ``memory aid''.
+%We choose mnemonic variable names to help us remember why we created the variable
+%in the first place.
+
+Isso tudo soa muito bem, e é uma boa ideia usar nomes de variável mnemônicos, 
+eles podem atrapalhar a capacidade de análise e 
+entendimento do código de um programador iniciante. Isto acontece porque os programadores iniciantes 
+ainda não memorizaram as palavras reservadas (existem apenas 31 delas) e, por vezes, 
+variáveis que têm nomes muito descritivos podem parecer 
+parte da linguagem e não apenas nomes de variáveis bem escolhidas.
+%While this all sounds great, and it is a very good idea to use mnemonic variable
+%names, mnemonic variable names can get in the way of a beginning programmer's 
+%ability to parse and understand code.  This is because beginning programmers 
+%have not yet memorized the reserved words (there are only 31 of them) and sometimes
+%variables with names that are too descriptive start to look like 
+%part of the language and not just well-chosen variable names.
+
+Dê uma olhada rápida no seguinte exemplo de código Python que percorre alguns dados. 
+Nós vamos falar sobre loops em breve, mas por agora apenas tente imaginar como isto funciona:
+%Take a quick look at the following Python sample code which loops through some data. 
+%We will cover loops soon, but for now try to just puzzle through what this means:   
+
+\beforeverb
+\begin{verbatim}
+for palavra in palavras:
+    print palavra
+\end{verbatim}
+\afterverb
+%
+O que esta acontecendo aqui? Qual das palavras (for, palavra, in, etc.) são palavras reservadas 
+e quais são apenas nomes de variáveis? O Python entende em um nível fundamental 
+a noção de palavras? Programadores iniciantes têm 
+dificuldade para separar quais partes 
+do código \emph{devem} ser o mesmo que este exemplo e que partes do código são simplesmente 
+as escolhas feitas pelo programador.
+%
+O código a seguir é equivalente ao código acima:
+%What is happening here?  Which of the tokens (for, word, in, etc.) are reserved words
+%and which are just variable names?  Does Python understand at a fundamental level 
+%the notion of words?  Beginning programmers have 
+%trouble separating what parts of the
+%code \emph{must} be the same as this example and what parts of the code are simply
+%choices made by the programmer.
+%
+%The following code is equivalent to the above code:
+
+
+\beforeverb
+\begin{verbatim}
+for pedaco in pizza:
+    print pedaco
+\end{verbatim}
+\afterverb
+%
+É mais fácil para o programador iniciante olhar para este código e saber quais 
+partes são palavras reservadas definidas pelo Python e quais partes são, simplesmente, nomes de 
+variáveis escolhidos pelo programador. É bastante claro que o Python não tem nenhuma compreensão 
+fundamental de pizza e pedaços e o fato de que uma pizza é constituída por um conjunto 
+de um ou mais pedaços.
+%It is easier for the beginning programmer to look at this code and know which 
+%parts are reserved words defined by Python and which parts are simply variable
+%names chosen by the programmer.  It is pretty clear that Python has no fundamental
+%understanding of pizza and slices and the fact that a pizza consists of a set
+%of one or more slices.
+
+Mas se o nosso programa é verdadeiramente sobre a leitura de dados e a procura de palavras nos dados, 
+{\tt pizza} e {\tt pedaco} são nomes de variáveis não muito mnemônicos. Escolhê-los 
+como nomes de variável, distorce o significado do programa.
+%But if our program is truly about reading data and looking for words in the data,
+%{\tt pizza} and {\tt slice} are very un-mnemonic variable names.  Choosing them 
+%as variable names distracts from the meaning of the program.
+%
+Depois de um período muito curto de tempo, você vai conhecer as palavras reservadas mais comuns,
+então vai começar a ver as palavras reservadas saltando para você:
+{\tt {\bf for} palavra {\bf in} palavras{\bf :}\\
+\verb"    "{\bf print} palavra }
+%After a pretty short period of time, you will know the most common reserved words
+%and you will start to see the reserved words jumping out at you:
+%
+
+As partes do código que são definidas pelo Python ({\tt for}, {\tt in}, {\tt print}, and {\tt :}) estão em negrito 
+e as variáveis escolhidas pelo programador ({\tt word} and {\tt words}) não estão em negrito. 
+Muitos editores de textos compreendem a sintaxe do Python 
+e vão colorir palavras reservadas de forma diferente para dar a você pistas e manter 
+suas variáveis e palavras reservadas separadas. 
+Depois de um tempo você começará a ler o Python e rapidamente determinar o que 
+é uma variável e o que é uma palavra reservada.
+%The parts of the code that are defined by 
+%Python ({\tt for}, {\tt in}, {\tt print}, and {\tt :}) are in bold
+%and the programmer-chosen variables ({\tt word} and {\tt words}) are not in bold.  
+%Many text editors are aware of Python
+%syntax and will color reserved words differently to give you clues to keep 
+%your variables and reserved words separate.
+%After a while you will begin to read Python and quickly determine what
+%is a variable and what is a reserved word.
+
+%\section{Debugging}
+\section{Debugando}
+
+\index{debugando}
+%\index{debugging}
+
+Neste ponto, o erro de sintaxe que você está mais propenso a cometer é 
+um nome de variável ilegal, como {\tt class} e {\tt yield}, que 
+são palavras reservadas ou \verb"emprego~estranho" e \verb"RS$", que contêm 
+caracteres não permitidos. 
+%At this point, the syntax error you are most likely to make is
+%an illegal variable name, like {\tt class} and {\tt yield}, which
+%are keywords, or \verb"odd~job" and \verb"US$", which contain
+%illegal characters.
+ 
+\index{erro de sintaxe}
+\index{erro!sintaxe}
+%\index{syntax error}
+%\index{error!syntax}
+
+Se você colocar um espaço em um nome de variável, o Python interpreta que são dois 
+operandos sem um operador: 
+%If you put a space in a variable name, Python thinks it is two
+%operands without an operator:
+
+\beforeverb
+\begin{verbatim}
+>>> nome ruim = 5
+SyntaxError: invalid syntax
+\end{verbatim}
+\afterverb
+%
+
+Para erros de sintaxe, as mensagens de erro não ajudam muito. 
+As mensagens mais comuns são {\tt SyntaxError: invalid syntax} and
+{\tt SyntaxError: invalid token}, nenhuma das quais é muito informativa.
+%For syntax errors, the error messages don't help much.
+%The most common messages are {\tt SyntaxError: invalid syntax} and
+%{\tt SyntaxError: invalid token}, neither of which is very informative.
+
+\index{mensagem de erro}
+\index{usar depois de definir}
+\index{exceção}
+\index{erro em tempo de execução}
+\index{erro!tempo de execução}
+%\index{error message}
+%\index{use before def}
+%\index{exception}
+%\index{runtime error}
+%\index{error!runtime}
+
+O erro de execução que você está mais propenso a a cometer é ``use 
+before def;'', isto é, tentando usar uma variável antes de atribuir 
+um valor. Isso pode acontecer se você digitar um nome de variável errado:
+%The runtime error you are most likely to make is a ``use before
+%def;'' that is, trying to use a variable before you have assigned
+%a value.  This can happen if you spell a variable name wrong:
+
+\beforeverb
+\begin{verbatim}
+>>> principal = 327.68
+>>> interesse = principal * taxa
+NameError: name 'taxa' is not defined
+\end{verbatim}
+\afterverb
+%
+Nomes de variáveis são sensíveis a maiúsculo e minúsculo, desta forma, {\tt LaTeX} 
+não é o mesmo que {\tt latex}.
+%Variables names are case sensitive, so {\tt LaTeX} is not the
+%same as {\tt latex}.
+
+\index{sensitividade de case, nomes de variáveis}
+\index{erro semântico}
+\index{erro!semântico}
+%\index{case-sensitivity, variable names}
+%\index{semantic error}
+%\index{error!semantic}
+
+Neste ponto, a causa mais provável de um erro de semântica é 
+a ordem das operações. Por exemplo, para calcular $\frac{1}{2 \pi}$,
+você pode ser tentado a escrever
+%At this point, the most likely cause of a semantic error is
+%the order of operations.  For example, to evaluate $\frac{1}{2 \pi}$,
+%you might be tempted to write
+
+\beforeverb
+\begin{verbatim}
+>>> 1.0 / 2.0 * pi
+\end{verbatim}
+\afterverb
+%
+Mas a divisão acontece primeiro, então você iria ficar com $\pi / 2$, que 
+não é a mesma coisa! Não há nenhuma maneira de o Python 
+saber o que você quis escrever, então, neste caso você não 
+receberia uma mensagem de erro; você apenas receberia uma resposta errada.
+%But the division happens first, so you would get $\pi / 2$, which
+%is not the same thing!  There is no way for Python
+%to know what you meant to write, so in this case you don't
+%get an error message; you just get the wrong answer.
+
+\index{ordem das operações}
+%\index{order of operations}
+
+\section{Glossário}
+%\section{Glossary}
+
+\begin{description}
+
+\item[atribuição:] Uma instrução que atribui um valor a uma variável.
+%\item[assignment:]  A statement that assigns a value to a variable.
+\index{atribuição}
+%\index{assignment}
+
+concatenar: Para juntar dois operandos ponta-a-ponta.
+%\item[concatenate:]  To join two operands end to end.
+\index{concatenação}
+%\index{concatenation}
+
+\item[Comentário]: Informação em um programa que é destinado a outros 
+programadores (ou qualquer pessoa lendo o código fonte) e não tem qualquer
+efeito sobre a execução do programa.
+%\item[comment:]  Information in a program that is meant for other
+%programmers (or anyone reading the source code) and has no effect on the
+%execution of the program.
+\index{comentário}
+%\index{comment}
+
+\item[Avaliar:] Para simplificar uma expressão realizando as operações, 
+a fim de se obter um único valor.
+%\item[evaluate:]  To simplify an expression by performing the operations
+%in order to yield a single value.
+
+\item[Expressão:] Uma combinação de variáveis, operadores e valores que representa um
+valor de resultado único.
+%\item[expression:]  A combination of variables, operators, and values that
+%represents a single result value.
+\index{expressão}
+%\index{expression}
+
+\item[Ponto Flutuante:] Um tipo que representa números com partes 
+fracionárias.
+%\item[floating point:] A type that represents numbers with fractional
+%parts.
+\index{ponto flutuante}
+%\index{floating-point}
+
+\item[Floor Division:] A operação que divide dois números e corta 
+a parte fracionária.
+%\item[floor division:] The operation that divides two numbers and chops off
+%the fractional part.
+\index{floor division}
+%\index{floor division}
+
+\item[Integer:] Um tipo que representa números inteiros.
+%\item[integer:] A type that represents whole numbers.
+\index{integer}
+
+\item[Palavra Reservada:] Uma palavra reservada usada pelo compilador para analisar um 
+programa; você não pode usar palavras reservadas como {\tt if}, {\tt  def}, e {\tt while} como 
+nomes de variáveis.
+%\item[keyword:]  A reserved word that is used by the compiler to parse a
+%program; you cannot use keywords like {\tt if}, {\tt  def}, and {\tt while} as
+%variable names.
+\index{palavra chave}
+%\index{keyword}
+
+\item[Mnemônico:] Um auxiliar de memória. Nós, muitas vezes, damos nomes mnemônicos a variáveis 
+para nos ajudar lembrar o que está armazenado na mesma.
+%\item[mnemonic:] A memory aid. We often give variables mnemonic names
+%to help us remember what is stored in the variable.
+\index{mnemônico}
+%\index{mnemonic}
+
+\item[Operador módulo:] Um operador, denotado pelo sinal de porcentagem 
+({\tt \%}), que funciona em inteiros e produz o restante quando um 
+número é dividido por outro.
+%\item[modulus operator:]  An operator, denoted with a percent sign
+%({\tt \%}), that works on integers and yields the remainder when one
+%number is divided by another.
+\index{operador módulo}
+\index{operador!módulo}
+%\index{modulus operator}
+%\index{operator!modulus}
+
+\item[Operando:] Um dos valores sobre os quais um operador opera.
+%\item[operand:]  One of the values on which an operator operates.
+\index{operando}
+%\index{operand}
+
+\item[Operador:] Um símbolo especial que representa uma cálculo simples, 
+como adição, multiplicação ou concatenação de strings.
+%\item[operator:]  A special symbol that represents a simple computation like
+%addition, multiplication, or string concatenation.
+\index{operador}
+%\index{operator}
+
+\item[Regras de precedência:] O conjunto de regras que regem a ordem na qual as
+expressões, envolvendo múltiplos operadores e operandos, são avaliadas.
+%\item[rules of precedence:]  The set of rules governing the order in which
+%expressions involving multiple operators and operands are evaluated.
+\index{regras de precedência}
+\index{precedência}
+%\index{rules of precedence}
+%\index{precedence}
+
+\item[Instrução:] Uma seção de código que representa um comando ou ação. Até 
+o momento, as instruções que temos visto são instruções de atribuição e impressão.
+%\item[statement:]  A section of code that represents a command or action.  So
+%far, the statements we have seen are assignments and print statements.
+\index{instrução}
+%\index{statement}
+
+\item[String:] Um tipo que representa sequências de caracteres.
+%\item[string:] A type that represents sequences of characters.
+\index{string}
+%\index{string}
+
+\item[Tipo:] Uma categoria de valores. Os tipos que vimos até o momento 
+são inteiros (tipo {\tt int}), números de ponto flutuante (tipo {\tt float}) 
+e strings (tipo {\tt str}).
+%\item[type:] A category of values.  The types we have seen so far
+%are integers (type {\tt int}), floating-point numbers (type {\tt
+%float}), and strings (type {\tt str}).
+\index{tipo}
+%\index{type}
+
+\item[valor:] Uma das unidades básicas de dados, como um número ou string,
+que um programa manipula.
+%\item[value:]  One of the basic units of data, like a number or string, 
+%that a program manipulates.
+\index{valor}
+%\index{value}
+
+\item[variável:] Um nome que se refere a um valor.
+%\item[variable:]  A name that refers to a value.
+\index{variável}
+%\index{variable}
+
+\end{description}
+
+%\section{Exercises}
+\section{Exercícios}
+
+\begin{ex}
+Escreva um programa que utiliza \verb"raw_input" para solicitar a um usuário o nome dele,
+em seguida, saudá-lo.
+%Write a program that uses  \verb"raw_input" to prompt a user for their name 
+%and then welcomes them.
+
+\begin{verbatim}
+Digite o seu nome: Chuck
+Ola Chuck
+\end{verbatim}
+
+\end{ex}
+
+\begin{ex}
+%Write a program to prompt the user for hours and rate per hour to compute
+%gross pay.
+Escreva um programa para solicitar ao usuário por, horas e taxa por hora, e então, calcular 
+salário bruto.
+\begin{verbatim}
+Digite as horas: 35
+Digite a taxa: 2.75
+Pagamento: 96.25
+\end{verbatim}
+\end{ex}
+%
+Não estamos preocupados em fazer com que o nosso pagamento tenha exatamente dois dígitos depois 
+da vírgula, por enquanto. Se você quiser, pode brincar com a função {\tt round} do Python para 
+adequadamente arredondar o pagamento resultante com duas casas decimais.
+%We won't worry about making sure our pay has exactly two digits after
+%the decimal place for now.  If you want, you can play with the 
+%built-in Python {\tt round} function to properly round the resulting pay
+%to two decimal places.
+
+\begin{ex}
+Suponha que nós executamos as seguintes instruções de atribuição:
+%Assume that we execute the following assignment statements:
+
+\begin{verbatim}
+comprimento = 17
+altura = 12.0
+\end{verbatim}
+
+Para cada uma das seguintes expressões, escrever o valor da 
+expressão e o tipo (do valor da expressão).
+%For each of the following expressions, write the value of the
+%expression and the type (of the value of the expression).
+
+\begin{enumerate}
+
+\item {\tt comprimento/2}
+
+\item {\tt comprimento/2.0}
+
+\item {\tt altura/3}
+
+\item {\tt 1 + 2 * 5}
+
+\end{enumerate}
+
+Utilize o interpretador do Python para conferir suas respostas.
+%Use the Python interpreter to check your answers.
+\end{ex}
+
+\begin{ex}
+Escreva um programa que pede ao usuário por uma temperatura Celsius, 
+converter a temperatura para Fahrenheit e imprimir a temperatura 
+convertida.
+%Write a program which prompts the user for a Celsius temperature,
+%convert the temperature to Fahrenheit, and print out the converted
+%temperature.
+
+\end{ex}

@@ -1,0 +1,216 @@
+  O conteúdo deste arquivo é
+  Copyright (c) 2009-  Charles R. Severance, Todos os direitos reservados
+% The contents of this file is 
+% Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
+
+\chapter{Programando Python no Windows}
+%\chapter{Python Programming on Windows}
+%
+
+Neste apêndice, nós demonstraremos os passos para você
+conseguir rodar Python no Windows. Existem muitos jeitos
+de se fazer e a idéia aqui é escolher um modo que simplifique
+o processo.
+%In this appendix, we walk through a series of steps
+%so you can run Python on Windows. There are many different 
+%approaches you can take, and this is just one
+%approach to keep things simple.
+%
+
+Primeiro, você precisa instalar um editor de programas.
+Você pode não querer usar o Notepad ou o editor Microsoft
+Word para editar programas Python. Programas devem ser arquivos
+texto simples, então você precisará de um bom editor de arquivos
+texto.
+%First, you need to install a programmer editor.  You
+%do not want to use Notepad or Microsoft Word to edit
+%Python programs.  Programs must be in "flat-text" files
+%and so you need an editor that is good at
+%editing text files.
+%
+
+Nosso editor recomendado para Windows é o NotePad++, que pode
+ser instalado a partir daqui:
+%Our recommended editor for Windows is NotePad++ which
+%can be downloaded and installed from:
+%
+
+\url{https://notepad-plus-plus.org/}
+%\url{https://notepad-plus-plus.org/}
+
+Faça o download da versão mais recente do Python 2 a partir
+ do site oficial \url{www.python.org}
+%Then download a recent version of Python 2 from the
+%\url{www.python.org} web site.
+
+\url{https://www.python.org/downloads/}
+%\url{https://www.python.org/downloads/}
+
+Uma vez que você instalou o Python, você deve ter uma nova
+pasta em seu computador, tal como {\tt C:{\textbackslash}Python27}.
+%Once you have installed Python, you should have a new
+%folder on your computer like {\tt C:{\textbackslash}Python27}.
+%
+
+Para criar um programa Python, execute o NotePad++ a partir do
+seu menu iniciar e salve o arquivo com o sufixo ``.py''. Para
+este exercício, coloque uma pasta na sua Área de Trabalho chamada
+{\tt py4inf}. É melhor utilizar nomes de pasta curtos e não ter 
+nenhum tipo de espaço, acento ou caractere especial, seja na pasta
+ou no nome do arquivo.
+%To create a Python program, run NotePad++ from the Start Menu
+%and save the file with a suffix of ``.py''.  For this
+%exercise, put a folder on your Desktop named 
+%{\tt py4inf}.  It is best to keep your folder names short
+%and not to have any spaces in your folder or file name.
+%
+
+Vamos fazer o nosso primeiro programa Python:
+%Let's make our first Python program be:
+%
+
+\beforeverb
+\begin{verbatim}
+print 'Hello Chuck'
+\end{verbatim}
+\afterverb
+
+%\beforeverb
+%\begin{verbatim}
+%print 'Hello Chuck'
+%\end{verbatim}
+%\afterverb
+
+Com exceção que você deve trocar para o seu nome. Salve o arquivo
+em: {\tt Desktop{\textbackslash}py4inf{\textbackslash}prog1.py}.
+%Except that you should change it to be your name.  Save the file
+%into {\tt Desktop{\textbackslash}py4inf{\textbackslash}prog1.py}.
+%
+
+Então abra a janela de linha de comando. Isto varia de acordo com
+a versão do Windows que você utiliza:
+%Then open a command-line window.  Different versions of Windows
+%do this differently:
+%
+
+\begin{itemize}
+\item Windows Vista e Windows 7: Pressione {\bf Iniciar}
+e então na janela de pesquisa que se abre, digite a palavra
+{\tt command} e pressione enter.
+%\begin{itemize}
+%\item Windows Vista and Windows 7: Press {\bf Start}
+%and then in the command search window enter the word
+%{\tt command} and press enter.
+%
+
+\item Windows XP: Pressione {\bf Iniciar}, e {\bf Executar}, e 
+então digite {\tt cmd} na caixa de diálogo e pressione {\bf OK}.
+\end{itemize}
+%\item Windows XP: Press {\bf Start}, then {\bf Run}, and 
+%then enter {\tt cmd} in the dialog box and press {\bf OK}.
+%\end{itemize}
+
+Você verá uma janela de texto com um prompt que te mostrará
+em qual pasta você se encontra.
+%You will find yourself in a text window with a prompt that
+%tells you what folder you are currently ``in''.  
+
+Windows Vista and Windows-7: {\tt C:{\textbackslash}Users{\textbackslash}csev}\\
+Windows XP: {\tt C:{\textbackslash}Documents and Settings{\textbackslash}csev}
+%Windows Vista and Windows-7: {\tt C:{\textbackslash}Users{\textbackslash}csev}\\
+%Windows XP: {\tt C:{\textbackslash}Documents and Settings{\textbackslash}csev}
+
+Este é o seu ``diretório do usuário''. Agora nós precisamos
+caminhar para a pasta onde você salvou o seu programa Python
+utilizando os seguintes comandos:
+%This is your ``home directory''.  Now we need to move into 
+%the folder where you have saved your Python program using
+%the following commands:
+%
+
+\beforeverb
+\begin{verbatim}
+C:\Users\csev\> cd Desktop
+C:\Users\csev\Desktop> cd py4inf
+\end{verbatim}
+\afterverb
+%\beforeverb
+%\begin{verbatim}
+%C:\Users\csev\> cd Desktop
+%C:\Users\csev\Desktop> cd py4inf
+%\end{verbatim}
+%\afterverb
+
+Então digite
+%Then type 
+%
+
+\beforeverb
+\begin{verbatim}
+C:\Users\csev\Desktop\py4inf> dir 
+\end{verbatim}
+\afterverb
+%\beforeverb
+%\begin{verbatim}
+%C:\Users\csev\Desktop\py4inf> dir 
+%\end{verbatim}
+%\afterverb
+
+para listar os seus arquivos. Você verá o {\tt prog1.py} quando
+você digitar o comando {\tt dir}.
+%to list your files.  You should see the {\tt prog1.py} when 
+%you type the {\tt dir} command.
+%
+
+Para executar o seu programa, simplesmente digite o nome do seu
+arquivo no prompt de comando e pressione enter.
+%To run your program, simply type the name of your file at the 
+%command prompt and press enter.
+
+\beforeverb
+\begin{verbatim}
+C:\Users\csev\Desktop\py4inf> prog1.py
+Hello Chuck
+C:\Users\csev\Desktop\py4inf> 
+\end{verbatim}
+\afterverb
+%\beforeverb
+%\begin{verbatim}
+%C:\Users\csev\Desktop\py4inf> prog1.py
+%Hello Chuck
+%C:\Users\csev\Desktop\py4inf> 
+%\end{verbatim}
+%\afterverb
+
+Você pode editar o arquivo no NotePad++, salvar, e então voltar para
+a linha de comando e executar o seu programa de novo apenas digitando
+o nome do arquivo na linha de comando.
+%You can edit the file in NotePad++, save it, and then switch back
+%to the command line and execute the program again by typing
+%the file name again at the command-line prompt.
+%
+
+Se você estiver confuso na janela de comando, apenas feche e abra
+uma nova.
+%If you get confused in the command-line window, just close it
+%and open a new one.
+%
+
+Dica: Você pode pressionar a ``seta para cima'' na linha de comando
+para rolar e executar o último comando executado anteriormente.
+%Hint: You can also press the ``up arrow'' at the command line to 
+%scroll back and run a previously entered command again.
+%
+
+Você também deve olhar nas preferências do NotePad++ e configurar
+para expandir os caracteres tab para serem quatro espaços. Isto irá
+te ajudar bastante e não enfrentar erros de identação.
+%You should also look in the preferences for NotePad++ and set it 
+%to expand tab characters to be four spaces.  This will save you lots
+%of effort looking for indentation errors.
+%
+
+Você pode encontrar maiores informações sobre editar e executar
+programas Python em \url{www.py4inf.com}.
+%You can also find further information on editing and running 
+%Python programs at \url{www.py4inf.com}.
