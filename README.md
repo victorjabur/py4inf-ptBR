@@ -30,8 +30,8 @@ Responsáveis pela Tradução por Capítulo
 |02-variables.tex       |  Eduardo Cândido      | 100 % |  Victor Jabur   | 100 %
 |03-conditional.tex     |  Fernando Moreira     | 100 % |  Victor Jabur   | 100 %
 |04-functions.tex       |  Sandro Gazoni        |  0 %  |  ?              | ?
-|05-iterations.tex      |  Emir Neto            |   ?   |  ?              | ?
-|06-strings.tex         |  Élio Capelati        |   ?   |  ?              | ?
+|05-iterations.tex      |  ?                    |   ?   |  ?              | ?
+|06-strings.tex         |  Maykon Chagas        |   ?   |  ?              | ?
 |07-files.tex           |  Kaio Cesar           | 70 %  |  ?              | ?
 |08-lists.tex           |  Rafael Costa         | 70%   |  ?              | ?
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100 %
@@ -43,9 +43,9 @@ Responsáveis pela Tradução por Capítulo
 |15-viz.tex             |  Victor Jabur         | 100 % |  ?              | ?
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  Victor Jabur   | 100 %
 |AA-windows.tex         |  Victor Jabur         | 100 % |  ?              | ?
-|AB-apple.tex           |  ?                    |   ?   |  ?              | ?
-|AC-contrib.tex         |  ?                    |   ?   |  ?              | ?
-|AD-copyright.tex       |  ?                    |   ?   |  ?              | ?
+|AB-apple.tex           |  Maykon Chagas        | 100 % |  ?              | ?
+|AC-contrib.tex         |  Maykon Chagas        | 100 % |  ?              | ?
+|AD-copyright.tex       |  Maykon Chagas        | 100 % |  ?              | ?
 
 
 Fluxo de Trabalho
