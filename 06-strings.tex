@@ -5,15 +5,23 @@
 \label{strings}
 
 
-\section{A string is a sequence}
-\index{sequence}
-\index{character}
-\index{bracket operator}
-\index{operator!bracket}
+%\section{A string is a sequence}
+\section{Uma string é uma sequência}
+%\index{sequence}
+%\index{character}
+%\index{bracket operator}
+%\index{operator!bracket}
+\index{sequência}
+\index{caractere}
+\index{operador colchete}
+\index{operador!colchete}
 
-A string is a {\bf sequence} of characters.  
-You can access the characters one at a time with the
-bracket operator:
+%A string is a {\bf sequence} of characters.  
+%You can access the characters one at a time with the
+%bracket operator:
+Uma string é um {\bf sequência} de caracteres. Você pode acessar cada
+caractere, um por vez com o operador colchete, como pode ser visto no código 
+a seguir:
 
 \beforeverb
 \begin{verbatim}
@@ -22,15 +30,24 @@ bracket operator:
 \end{verbatim}
 \afterverb
 %
-\index{index}
-The second statement extracts the character at index position 1 from the 
-{\tt fruit} variable and assigns it to the {\tt letter} variable.  
+%\index{index}
+\index{indice}
+%
+%The second statement extracts the character at index position 1 from the 
+%{\tt fruit} variable and assigns it to the {\tt letter} variable.  
+%
+A segunda declaração extrai o caractere no índice de posição 1 da variável 
+{\tt fruit} e atribui a variável {\tt letter}.
 
-The expression in brackets is called an {\bf index}.  
-The index indicates which character in the sequence you
-want (hence the name).
+%The expression in brackets is called an {\bf index}.  
+%The index indicates which character in the sequence you
+%want (hence the name).
 
-But you might not get what you expect:
+A expressão entre o colchetes é chamada de {\bf índice}. O índice indica
+qual caractere na sequência você quer (daí o nome).
+
+%But you might not get what you expect:
+Mas você pode não ter o que espera:
 
 \beforeverb
 \begin{verbatim}
@@ -39,9 +56,13 @@ a
 \end{verbatim}
 \afterverb
 %
-For most people, the first letter of \verb"'banana'" is {\tt b}, not
-{\tt a}.  But in Python, the index is an offset from the
-beginning of the string, and the offset of the first letter is zero.
+%For most people, the first letter of \verb"'banana'" is {\tt b}, not
+%{\tt a}.  But in Python, the index is an offset from the
+%beginning of the string, and the offset of the first letter is zero.
+%
+Para a maioria das pessoas, a primeira palavra de \verb"'banana'" é {\tt b},
+não {\tt a}. Mas em Python, o índice é alinhado com o começo da {\it string}
+e o alinhamento da primeira letra é a partir do zero.
 
 \beforeverb
 \begin{verbatim}
@@ -51,20 +72,29 @@ b
 \end{verbatim}
 \afterverb
 %
-So {\tt b} is the 0th letter (``zero-eth'') of \verb"'banana'", {\tt a}
-is the 1th letter (``one-eth''), and {\tt n} is the 2th (``two-eth'')
-letter.
+%So {\tt b} is the 0th letter (``zero-eth'') of \verb"'banana'", {\tt a}
+%is the 1th letter (``one-eth''), and {\tt n} is the 2th (``two-eth'')
+%letter.
+%
+Então {\tt b} é a letra 0 (``posição zero'') de \verb"'banana'", {\tt a} é
+letra 1 (``posição um''), e {\tt n} é letra 2 (``posição 2'') e assim por
+diante até o fim da palavra.
 
 \beforefig
 \centerline{\includegraphics[height=0.50in]{figs2/string.eps}}
 \afterfig
 
-\index{index!starting at zero}
-\index{zero, index starting at}
+$%\index{index!starting at zero}
+\index{índice!iniciando no zero}
+%\index{zero, index starting at}
+\index{zero, índice do começo}
 
 You can use any expression, including variables and operators, as an
 index, but the value of the index has to be an integer.  Otherwise you
 get:
+
+Você pode utilizar qualquer expressão, variável e operador, como um índice,
+mas o valor do índice tem que ser um inteiro. Caso contrário você terá:
 
 \index{index}
 \index{exception!TypeError}
@@ -78,13 +108,18 @@ TypeError: string indices must be integers
 \afterverb
 %
 
-\section{Getting the length of a string using {\tt len}}
+%\section{Getting the length of a string using {\tt len}}
+\section{Obtendo o tamanho de uma {\it string} usando {\tt len}}
 
-\index{len function}
-\index{function!len}
+%\index{len function}
+$%\index{function!len}
+\index{função len}
+\index{função!len}
 
-{\tt len} is a built-in function that returns the number of characters
-in a string:
+{%\tt len} is a built-in function that returns the number of characters
+%in a string:
+A função {\tt len} nativa do Python, que retorna o número de caracteres de
+uma {\it string}:
 
 \beforeverb
 \begin{verbatim}
@@ -94,10 +129,15 @@ in a string:
 \end{verbatim}
 \afterverb
 %
-To get the last letter of a string, you might be tempted to try something
-like this:
+%To get the last letter of a string, you might be tempted to try something
+%like this:
+%
+Para obter a última letra da {\it string}, você pode tentar fazer algo como
+isto:
 
-\index{exception!IndexError}
+%\index{exception!IndexError}
+%\index{IndexError}
+\index{excessão!IndexError}
 \index{IndexError}
 
 \beforeverb
@@ -108,10 +148,15 @@ IndexError: string index out of range
 \end{verbatim}
 \afterverb
 %
-The reason for the {\tt IndexError} is that there is no letter in {\tt
-'banana'} with the index 6.  Since we started counting at zero, the
-six letters are numbered 0 to 5.  To get the last character, you have
-to subtract 1 from {\tt length}:
+%The reason for the {\tt IndexError} is that there is no letter in {\tt
+%'banana'} with the index 6.  Since we started counting at zero, the
+%six letters are numbered 0 to 5.  To get the last character, you have
+%to subtract 1 from {\tt length}:
+%
+A razão para o {\tt IndexError} é que não existe letra em banana no índice 6.
+Uma vez que começamos a contar a partir do zero, a seis letras são numeradas
+de 0 até 5. Para mostrar o último carcatere, você tem que subtrair 1 do 
+tamanho ({\tt length}):
 
 \beforeverb
 \begin{verbatim}
@@ -121,17 +166,22 @@ a
 \end{verbatim}
 \afterverb
 %
-Alternatively, you can use negative indices, which count backward from
-the end of the string.  The expression {\tt fruit[-1]} yields the last
-letter, {\tt fruit[-2]} yields the second to last, and so on.
+%Alternatively, you can use negative indices, which count backward from
+%the end of the string.  The expression {\tt fruit[-1]} yields the last
+%letter, {\tt fruit[-2]} yields the second to last, and so on.
+%
+Como alternativa, é possível utilizar índices negativos, que contam a string
+de trás pra frente. A expressão {\tt fruit[-1]} mostra a última letra, 
+{\tt fruit[-2]} mostra a segunda a partir do final, e assim por diante.
 
-\index{index!negative}
-\index{negative index}
+%\index{index!negative}
+%\index{negative index}
+\index{índice!negativo}
+\index{índice negativo}
 
-
-\section{Traversal through a string with a loop}
+%\section{Traversal through a string with a loop}
 \label{for}
-
+\section{Percorrendo uma {\it string} com um {\it loop}
 \index{traversal}
 \index{loop!traversal}
 \index{for loop}
@@ -139,11 +189,16 @@ letter, {\tt fruit[-2]} yields the second to last, and so on.
 \index{statement!for}
 \index{traversal}
 
-A lot of computations involve processing a string one character at a
-time.  Often they start at the beginning, select each character in
-turn, do something to it, and continue until the end.  This pattern of
-processing is called a {\bf traversal}.  One way to write a traversal
-is with a {\tt while} loop:
+%A lot of computations involve processing a string one character at a
+%time.  Often they start at the beginning, select each character in
+%turn, do something to it, and continue until the end.  This pattern of
+%processing is called a {\bf traversal}.  One way to write a traversal
+%is with a {\tt while} loop:
+Processar uma string, um caractere por vez, envolve uma série de computação.
+Normalmente eles começam no começo da palavra, selecionam um caractere por
+vez, fazem alguma coisa com ele, e continuam até o final. Este padrão de
+processamento é chamado de {\bf percorrer}. Uma forma de percorrer uma 
+{\it string}, por exemplo, é através de um loop com {\tt while}:
 
 \beforeverb
 \begin{verbatim}
@@ -155,20 +210,30 @@ while index < len(fruit):
 \end{verbatim}
 \afterverb
 %
-This loop traverses the string and displays each letter on a line by
-itself.  The loop condition is {\tt index < len(fruit)}, so
-when {\tt index} is equal to the length of the string, the
-condition is false, and the body of the loop is not executed.  The
-last character accessed is the one with the index {\tt len(fruit)-1},
-which is the last character in the string.
+%This loop traverses the string and displays each letter on a line by
+%itself.  The loop condition is {\tt index < len(fruit)}, so
+%when {\tt index} is equal to the length of the string, the
+%condition is false, and the body of the loop is not executed.  The
+%last character accessed is the one with the index {\tt len(fruit)-1},
+%which is the last character in the string.
+%
+Este loop percorre a string e apresenta cada letra em uma linha própria. A
+condição do loop é {\tt índice < len(fruit)}, assim quando o {\tt índice} for
+igual ao tamanho da {\it string}, a condição se torna falsa, e o loop não é
+executado. O último caractere acessado é o caractere com o índice
+{\tt len(fruit)-1}, que é o último caractere na {\it string}}.
 
 \begin{ex}
-Write a {\tt while} loop that starts at the last character in the string
-and works its way backwards to the first character in the string, 
-printing each letter on a separate line, except backwards.
+%Write a {\tt while} loop that starts at the last character in the string
+%and works its way backwards to the first character in the string, 
+%printing each letter on a separate line, except backwards.
+Escreva um loop {\tt while} que comece no último caractere da string e volte
+de trás pra frente até o primeiro caractere da string, imprimindo cada letra
+em uma linha separada.
 \end{ex}
 
-Another way to write a traversal is with a {\tt for} loop:
+%Another way to write a traversal is with a {\tt for} loop:
+Outra forma de percorrer uma string é com um loop {\tt for}:
 
 \beforeverb
 \begin{verbatim}
@@ -177,9 +242,11 @@ for char in fruit:
 \end{verbatim}
 \afterverb
 %
-Each time through the loop, the next character in the string is assigned
-to the variable {\tt char}.  The loop continues until no characters are
-left.
+%Each time through the loop, the next character in the string is assigned
+%to the variable {\tt char}.  The loop continues until no characters are
+%left.
+Cada vez que percorrer o loop, o caractere na string é atribuido a variável 
+{\tt char}. O loop continua até que não haja mais caractere na string.
 
 
 \section{String slices}
