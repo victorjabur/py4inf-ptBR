@@ -249,17 +249,26 @@ Cada vez que percorrer o loop, o caractere na string é atribuido a variável
 {\tt char}. O loop continua até que não haja mais caractere na string.
 
 
-\section{String slices}
-\label{slice}
+%\section{String slices}
+\section{Fatiando {\it strings}}
+%\label{slice}
+\label{fatia}
 
-\index{slice operator}
-\index{operator!slice}
-\index{index!slice}
-\index{string!slice}
-\index{slice!string}
+%\index{slice operator}
+%\index{operator!slice}
+%\index{index!slice}
+%\index{string!slice}
+%\index{slice!string}
+\index{operador fatiador}
+\index{operador!fatia}
+\index{índice!fatia}
+\index{string!índice}
+\index{fatia!string}
 
-A segment of a string is called a {\bf slice}.  Selecting a slice is
-similar to selecting a character:
+%A segment of a string is called a {\bf slice}.  Selecting a slice is
+%similar to selecting a character:
+Um segmento de uma string é chamado de {\bf fatia}. Selecionando uma fatia
+é similar a selecionar um caractere:
 
 \beforeverb
 \begin{verbatim}
@@ -271,13 +280,19 @@ Python
 \end{verbatim}
 \afterverb
 %
-The operator {\tt [n:m]} returns the part of the string from the 
-``n-eth'' character to the ``m-eth'' character, including the first but
-excluding the last.  
+%The operator {\tt [n:m]} returns the part of the string from the 
+%``n-eth'' character to the ``m-eth'' character, including the first but
+%excluding the last.
+%
+O operador {\tt[n:m]} retorna a parte da string da posição ``n'' até a
+posição ``m'', incluindo o primeiro mas excluindo o último.
 
-If you omit the first index (before the colon), the slice starts at
-the beginning of the string.  If you omit the second index, the slice
-goes to the end of the string:
+%If you omit the first index (before the colon), the slice starts at
+%the beginning of the string.  If you omit the second index, the slice
+%goes to the end of the string:
+Se você omitir o primeiro índice (antes dos dois pontos), a fatia inicia no
+começo da string. Se você omitir o segundo índice, a fatia irá até o fim da
+string:
 
 \beforeverb
 \begin{verbatim}
@@ -289,10 +304,13 @@ goes to the end of the string:
 \end{verbatim}
 \afterverb
 %
-If the first index is greater than or equal to the second the result
-is an {\bf empty string}, represented by two quotation marks:
+%If the first index is greater than or equal to the second the result
+%is an {\bf empty string}, represented by two quotation marks:
+Se o primeiro índice é maior ou igual ao segundo, o resultado é uma
+{\bf string vazia}, representado entre duas aspas.
 
-\index{quotation mark}
+%\index{quotation mark}
+\index{aspa}
 
 \beforeverb
 \begin{verbatim}
@@ -302,29 +320,36 @@ is an {\bf empty string}, represented by two quotation marks:
 \end{verbatim}
 \afterverb
 %
-An empty string contains no characters and has length 0, but other
-than that, it is the same as any other string.
+%An empty string contains no characters and has length 0, but other
+%than that, it is the same as any other string.
+%
+Uma string vazia não contém caracteres e tem tamanho 0 (zero), mas diferente
+disto, isto é igual a qualquer outra string.
 
 \begin{ex}
-Given that {\tt fruit} is a string, what does
-{\tt fruit[:]} mean?
-
-\index{copy!slice}
-\index{slice!copy}
-
-
+%Given that {\tt fruit} is a string, what does
+%{\tt fruit[:]} mean?
+Dado uma string {\tt fruit}, o que significa {\tt fruit[:]}?
+%\index{copy!slice}
+%\index{slice!copy}
+\index{cópia!fatia}
+\index{fatia!copia}
 \end{ex}
 
+%\section{Strings are immutable}
+\section{Strings são imutáveis}
+%\index{mutability}
+%\index{immutability}
+%\index{string!immutable}
+\index{mutabilidade}
+\index{imutabilidade}
+\index{string!imutabilidade}
 
-\section{Strings are immutable}
-\index{mutability}
-\index{immutability}
-\index{string!immutable}
-
-It is tempting to use the {\tt []} operator on the left side of an
-assignment, with the intention of changing a character in a string.
-For example:
-
+%It is tempting to use the {\tt []} operator on the left side of an
+%assignment, with the intention of changing a character in a string.
+%For example:
+É tentador utilizar o operador {\tt []} no lado esquerdo de uma atribuição,
+com a intenção de mudar um caractere em uma string. Por exemplo:
 \index{TypeError}
 \index{exception!TypeError}
 
@@ -336,20 +361,32 @@ TypeError: object does not support item assignment
 \end{verbatim}
 \afterverb
 %
-The ``object'' in this case is the string and the ``item'' is
-the character you tried to assign.  For now, an {\bf object} is
-the same thing as a value, but we will refine that definition
-later.  An {\bf item} is one of the values in a sequence.
+%The ``object'' in this case is the string and the ``item'' is
+%the character you tried to assign.  For now, an {\bf object} is
+%the same thing as a value, but we will refine that definition
+%later.  An {\bf item} is one of the values in a sequence.
+%
+O ``objeto'' nesse caso é a string e o ``item'' é o caractere que você tentou
+atribuir. Agora, um {\bf objeto} é a mesma coisa que um valor, mas vamos
+refinar esta definição posteriormente. Um {\bf item} é um dos valores em uma
+sequência.
 
-\index{object}
-\index{item assignment}
-\index{assignment!item}
-\index{immutability}
+%\index{object}
+%\index{item assignment}
+%\index{assignment!item}
+%\index{immutability}
+\index{objeto}
+\index{ítem atribuido}
+\index{atribuição!item}
+\index{imutabilidade}
 
-The reason for the error is that
-strings are {\bf immutable}, which means you can't change an
-existing string.  The best you can do is create a new string
-that is a variation on the original:
+%The reason for the error is that
+%strings are {\bf immutable}, which means you can't change an
+%existing string.  The best you can do is create a new string
+%that is a variation on the original:
+A razão para o erro é que strings são {\bf imutáveis}, que significa que você
+não pode mudar uma string já existente. O melhor que você pode fazer é criar
+uma nova string que é uma variação da original:
 
 \beforeverb
 \begin{verbatim}
@@ -360,11 +397,15 @@ Jello, world!
 \end{verbatim}
 \afterverb
 %
-This example concatenates a new first letter onto
-a slice of {\tt greeting}.  It has no effect on
-the original string.
+%This example concatenates a new first letter onto
+%a slice of {\tt greeting}.  It has no effect on
+%the original string.
+%
+Neste exemplo concatenamos uma nova letra em uma fatia de {\tt greeting}.
+Isto não tem efeito na string original.
 
-\index{concatenation}
+%\index{concatenation}
+\index{concatenação}
 
 \section{Looping and counting}
 \label{counter}
