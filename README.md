@@ -29,9 +29,9 @@ Responsáveis pela Tradução por Capítulo
 |01-intro.tex           |  Victor Jabur         | 100 % |  Rafael Covre   | 100 %
 |02-variables.tex       |  Eduardo Cândido      | 100 % |  Victor Jabur   | 100 %
 |03-conditional.tex     |  Fernando Moreira     | 100 % |  Victor Jabur   | 100 %
-|04-functions.tex       |  Sandro Gazoni        |  0 %  |  ?              | ?
+|04-functions.tex       |  ?                    |  0 %  |  ?              | ?
 |05-iterations.tex      |  ?                    |   ?   |  ?              | ?
-|06-strings.tex         |  Maykon Chagas        |   ?   |  ?              | ?
+|06-strings.tex         |  Maykon Chagas        | 50 %  |  ?              | ?
 |07-files.tex           |  Kaio Cesar           | 70 %  |  ?              | ?
 |08-lists.tex           |  Rafael Costa         | 70%   |  ?              | ?
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100 %
