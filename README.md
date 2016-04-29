@@ -33,10 +33,10 @@ Responsáveis pela Tradução por Capítulo
 |05-iterations.tex      |  ?                    |   ?   |  ?              | ?
 |06-strings.tex         |  Maykon Chagas        | 50 %  |  ?              | ?
 |07-files.tex           |  Kaio Cesar           | 70 %  |  ?              | ?
-|08-lists.tex           |  Rafael Costa         | 70%   |  ?              | ?
+|08-lists.tex           |  Rafael Costa         | 90%   |  ?              | ?
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100 %
 |10-tuples.tex          |  Clodonil Trigo       | 60 %  |  ?              | ?
-|11-regex.tex           |  Felipe Souza         |   ?   |  ?              | ?
+|11-regex.tex           |  Felipe Souza         | 30 %  |  ?              | ?
 |12-network.tex         |  Camilo Alessandro    |   ?   |  ?              | ?
 |13-web.tex             |  Kaio Cesar           |   ?   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
