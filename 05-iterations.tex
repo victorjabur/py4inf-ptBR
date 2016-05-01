@@ -3,16 +3,25 @@
 
 \chapter{Iteration}
 \index{iteration}
+\chapter{Interação}
+\index{interação}
 
 \section{Updating variables}
+\label{update}
+\section{Atualizando variáveis}
 \label{update}
 
 \index{update}
 \index{variable!updating}
+\index{atualizar}
+\index{varivável!atualindo}
 
 A common pattern in assignment statements is an assignment statement
 that updates a variable -- 
 where the new value of the variable depends on the old.
+
+Um padrão comum nas instruções de atribuição é uma instrução de atribuição
+que atualiza uma variável -- onde o novo valor da variável depende da antiga.
 
 \beforeverb
 \begin{verbatim}
@@ -23,9 +32,16 @@ x = x+1
 This means ``get the current value of {\tt x}, add 1, and then
 update {\tt x} with the new value.''
 
+%
+Isto significa ``pega o valor atual de {\tt x}, adicione 1, e depois atualize
+{\tt x} com o novo valor.''
+
 If you try to update a variable that doesn't exist, you get an
 error, because Python evaluates the right side before it assigns
 a value to {\tt x}:
+
+Se você tentar atualizar uma variável que não existe, você receberá um erro,
+porque Python avalia o lado direito antes de atribuir um valor a {\tt x}:
 
 \beforeverb
 \begin{verbatim}
@@ -37,7 +53,11 @@ NameError: name 'x' is not defined
 Before you can update a variable, you have to {\bf initialize}
 it, usually with a simple assignment:
 
+Antes de você atualizar uma variável, é necessário {\bf inicializá-la},
+usualmente com uma simples atribuição:
+
 \index{initialization (before update)}
+\index{inicialização (antes de atualizar)}
 
 \beforeverb
 \begin{verbatim}
@@ -49,15 +69,28 @@ it, usually with a simple assignment:
 Updating a variable by adding 1 is called an {\bf increment};
 subtracting 1 is called a {\bf decrement}.
 
+%
+Atualizando uma variável, adicionando 1, é o que chamamos {\bf incremento};
+subtraindo 1 é o que chamamos de {\bf decremento}.
+
 \index{increment}
 \index{decrement}
 
+\index{incremento}
+\index{drecremento}
+
 \section{The {\tt while} statement}
+\section{A condição {\tt while}}
 
 \index{statement!while}
 \index{while loop}
 \index{loop!while}
 \index{iteration}
+
+\index{condição!while}
+\index{laço while}
+\index{laço!while}
+\index{interação}
 
 Computers are often used to automate repetitive tasks.  Repeating
 identical or similar tasks without making errors is something that
@@ -65,8 +98,17 @@ computers do well and people do poorly.
 Because iteration is so common, Python provides several
 language features to make it easier.  
 
+Computadores são normalmente utilizado para automatizar tarefas repetitivas.
+A repetição de tarefas identicas ou similares sem produzir erros é algo
+computadores fazem bem e pessoal não muito. Pelo fato de iterações serem tão
+comuns, Python disponibiliza muitas funcionalidades para tornar isto fácil.
+
 One form of iteration in Python is the {\tt while} statement.  Here is 
 a simple program that counts down from five and then says ``Blastoff!''.
+
+Uma das formas de iterações em Python é a declaração {\tt while}. Aqui está
+um programa simples que realiza uma contagem regressiva a partir de cinco e
+depois diz ``Blastoff!''.
 
 \beforeverb
 \begin{verbatim}
@@ -84,19 +126,32 @@ display the value of {\tt n} and then reduce the value of
 {\tt n} by 1.  When you get to 0, exit the {\tt while} statement and
 display the word {\tt Blastoff!}''
 
+%
+Você quase pode ler a declaração {\tt while} como se ela fosse escrita em
+Inglês. Ou seja, ``Enquanto {\tt n} for maior que 0, mostre o valor de {\tt n}
+e então subtraia o valor de {\tt n} em 1. Quando chegar ao 0, saia da
+declaração do {\tt while} e mostra a palavra {\tt Blastoff!}''.
+
 \index{flow of execution}
+\index{fluxo de execução}
 
 More formally, here is the flow of execution for a {\tt while} statement:
+Formalmente, este é o fluxo de execução de uma declaração {\tt while}:
 
 \begin{enumerate}
 
 \item Evaluate the condition, yielding {\tt True} or {\tt False}.
+\item Avalia a condição, produzindo {\tt True} ou {\tt False}.
 
 \item If the condition is false, exit the {\tt while} statement
 and continue execution at the next statement.
+\item Se a condição for falsa, sai da declaração do {\tt while} e continuar
+	a execução para a próxima declaração.
 
 \item If the condition is true, execute the
 body and then go back to step 1.
+\item Se a condição for verdadeira, executa o corpo do {\tt while} e depois
+	volta para o passo 1.
 
 \end{enumerate}
 
@@ -105,6 +160,12 @@ loops back around to the top.  We call each time we execute the body of
 the loop an {\bf iteration}.  For the above loop, we 
 would say, ``It had five iterations'', which means that the body of
 the loop was executed five times.
+
+Este tipo de fluxo é chamado de {\bf laço} ({\it loop}) devido ao terceiro
+passo que retorna para o início da declaraçã. Chamamos cada vez que executamos
+o corpo do laço de {\bf iteração}. Para o laço anterior, podemos dizer que,
+``tem cinco iterações'', que significa que o corpo do laço será executado
+cinco vezes.
 
 \index{condition}
 \index{loop}
@@ -119,7 +180,14 @@ executes and controls when the loop finishes the
 If there is no iteration variable, the loop will repeat forever, 
 resulting in an {\bf infinite loop}.  
 
+O corpo do laço deve mudar o valor de uma ou mais variáveis para que a
+condição eventualmente se torne fals e o laço termine. Podemos chamar a
+variável que muda a cada vez que o laço executa e controla quando ele irá
+terminar de {\bf variável de iteração}. Se não houver variável de iteração,
+o laço irá se repetir para sempre, resultando em um {\bf laço infinito}.
+
 \section{Infinite loops}
+\section{Laços infinitos}
 
 An endless source of amusement for 
 programmers is the observation that the directions on shampoo,
@@ -127,8 +195,14 @@ programmers is the observation that the directions on shampoo,
 there is no {\bf iteration variable} telling you how many times
 to execute the loop.
 
+Um recurso interminável de diversão para programadores é a observação do ato
+de se ensaboar, ``ensaboe, enxague e repita'', é um laço infinito porque não
+há variável de iteração dizendo quantas vezes o laço deve ser executado.
+
 \index{infinite loop}
 \index{loop!infinite}
+\index{laço infinito}
+\index{laço!infinito}
 
 In the case of {\tt countdown}, we can prove that the loop
 terminates because we know that the value of {\tt n} is finite, and we
@@ -136,17 +210,33 @@ can see that the value of {\tt n} gets smaller each time through the
 loop, so eventually we have to get to 0.  Other times a loop is obviously
 infinite because it has no iteration variable at all.
 
+No caso de {\tt contagem regressiva}, nós provamos que o laço terminou porque
+sabemos que o valor de {\tt n} é finito, e podemos ver que o valor de {\tt n}
+diminui cada vez que passa pelo laço, então eventualmente nós teremos 0. Em
+outros casos o laço é obviamente infinito porque não tem variável de iteração.
+
 \section{``Infinite loops'' and {\tt break}}
 \index{break statement}
 \index{statement!break}
+
+\section{``Laços infinitos'' e {\tt break}}
+\index{declaração break}
+\index{declaração!break}
 
 Sometimes you don't know it's time to end a loop until you get half
 way through the body.  In that case you can write an infinite loop on purpose
 and then use the {\tt break} statement to jump out of the loop.
 
+Algumas vezes você não sabe se é hora de acabar o laço até que você percorra
+metade do corpo. Neste caso você pode escrever um laço infinito de propósito
+e então usar a declaração {\tt break} para sair do laço.
+
 This loop is obviously an {\bf infinite loop} because the logical 
 expression on the
 {\tt while} statement is simply the logical constant {\tt True}:
+
+Este laço é obviamente um {\bf laço infinito} porque a expressão lógica do
+{\tt while} é a constante lógica {\tt True}
 
 \beforeverb
 \begin{verbatim}
@@ -167,14 +257,29 @@ because the logical expression at the top of the loop
 is always true by virtue of the fact that the expression is the 
 constant value {\tt True}.
 
+%
+Se você cometer o erro e executar este código, você aprenderá rapidamente como
+parar um processo Python no seu sistema ou onde está o botão de desligar do
+seu computador. Este programa executará eternamente ou até que sua bateria
+acabe por que a expressão lógica no início do laço será sempre verdadeiro
+em virtude do fato que a expressão é o valor constante {\tt True}.
+
 While this is a dysfunctional infinite loop, we can still use this pattern
 to build useful loops as long as we carefully add code to the 
 body of the loop to explicitly exit the loop using {\tt break} 
 when we have reached 
 the exit condition.
 
+Enquanto este laço é um laço infinito disfuncional, nós continuamos utilizando
+este padão para construir laços úteis desde que adicionemos código de forma
+cuidadosa no corpo do laço para explicitamente sair do laço utilizando 
+{\tt break} quando alcançarmos a condição de saída.
+
 For example, suppose you want to take input from the user until they
 type {\tt done}.  You could write:
+
+Por exemplo, suponha que você queira obter a entrar do usuário, até que ele
+digite {\tt done}. Podemos escrver:
 
 \beforeverb
 \begin{verbatim}
@@ -190,10 +295,20 @@ print 'Done!'
 The loop condition is {\tt True}, which is always true, so the
 loop runs repeatedly until it hits the break statement.
 
+%
+A condição do laço é {\tt True}, ou seja, é sempre verdade, então o laço
+executará de forma repetida até que chegue a declaração do {\tt break}.
+
 Each time through, it prompts the user with an angle bracket.
 If the user types {\tt done}, the {\tt break} statement exits
 the loop.  Otherwise the program echoes whatever the user types
 and goes back to the top of the loop.  Here's a sample run:
+
+% Não consegui achar uma boa tradução para esta linha abaixo:
+Em cada vezes, pergunta-se ao usuário com um ... Se o usuário digitar
+{\tt done}, a declaração {\tt break} sai do laço. De outra forma, o programa
+irá imprimir qualquer coisa que o usuáro digitar e retornar para o início do
+laço. Veja um exemplo:
 
 \beforeverb
 \begin{verbatim}
@@ -212,9 +327,19 @@ top) and you can express the stop condition affirmatively
 (``stop when this happens'') rather than negatively (``keep going
 until that happens.'').
 
+%
+Esta forma de escrever um laço {\tt while} é muito comum, porque você pode
+verificar a condição em qualquer lugar do laço (não somente no início) e
+pode definir explicitamente a condição de parar (``pare quando isto acontecer'')
+contrário de negativamente (``continue até que isto aconteça.'').
+
 \section{Finishing iterations with {\tt continue}}
 \index{continue statement}
 \index{statement!continue}
+
+\section{Terminando as iterações com {\tt continue}}
+\index{declaração continue}
+\index{declaração!continue}
 
 Sometimes you are in an iteration of a loop and want to finish the
 current iteration and immediately jump to the next iteration.
@@ -222,9 +347,18 @@ In that case you can use the {\tt continue}
 statement to skip to the next iteration without finishing the
 body of the loop for the current iteration.
 
+Algumas vezes você está em uma iteração de um laço e quiser acabar a iteração
+atual e pular para a próxima iteração. Neste caso você pode utilizar a
+declaração {\tt continue} para passar para a próxima iteração sem terminar o
+corpo do laço da iteração atual.
+
 Here is an example of a loop that copies its input until the user
 types ``done'', but treats lines that start with the hash character
 as lines not to be printed (kind of like Python comments).
+
+Aqui temos um exemplo de um laço que copia sua entrada até que o usuário
+digite ``done'', mas trata a linha que inicia com um caractere cerquilha
+{\tt #} como linha para não ser impressa (como um comentário em Python).
 
 \beforeverb
 \begin{verbatim}
@@ -240,6 +374,9 @@ print 'Done!'
 \afterverb
 %
 Here is a sample run of this new program with {\tt continue} added.
+
+%
+Aqui temos um exemplo deste novo programa com o uso do {\tt continue}.
 
 \beforeverb
 \begin{verbatim}
@@ -259,9 +396,18 @@ the current iteration and jumps
 back to the {\tt while} statement to start the next iteration, thus 
 skipping the {\tt print} statement.
 
+%
+Todas as linhas serão impressas excepto aquela que inicia com o sinal de
+cerquilha porque quando o {\tt continue} é executado, ele termina a iteração
+atual e pula de volta para a declaração {\tt while} para começar uma nova
+iteração, mas passando a declaração {\tt print}.
+
 \section{Definite loops using {\tt for} }
 \index{for statement}
 \index{statement!for}
+\section{Usando {\tt for} para laços}
+\index{declaração for}
+\index{declaração!for}
 
 Sometimes we want to loop through a {\bf set} of things such 
 as a list of words, the lines in a file, or a list of numbers.
@@ -273,8 +419,12 @@ whereas the {\tt for} loop is looping through a known
 set of items so it runs through as many iterations as there
 are items in the set.
 
+Algumas vezes queremos que um laço 
+
 The syntax of a {\tt for} loop is similar to the {\tt while} loop
 in that there is a {\tt for} statement and a loop body:
+
+A sintaxe do laço {\tt for} é similar ao do {\tt while} 
 
 \beforeverb
 \begin{verbatim}
@@ -292,6 +442,12 @@ of three strings and the {\tt for}
 loop goes through the list and executes the body once
 for each of the three strings in the list resulting in this output:
 
+%
+Em Python, a variável {\tt friends} é uma lista\footnote{Nós analizaremos as
+	listas em mais detalhes e um capítulo mais adiante.} de três strings e o
+laço {\tt for} passa através da lista e executa o corpo uma vez para cada uma
+das três strings na lista, resultando na saída:
+
 \beforeverb
 \begin{verbatim}
 Happy New Year: Joseph
@@ -307,11 +463,22 @@ Translating this {\tt for} loop to English is not as direct as the
 it goes like this: ``Run the statements in the body of the 
 for loop once for each friend \emph{in} the set named friends.''
 
+Traduzindo este laço {\tt for} para o Português, não é tão direto como o laço
+{\tt while}, mas se você pensar em amigos como um {\bf set}, ficar parecido
+com isto: ``Execute a declaração no corpo do laço for uma vez para cada amigo
+\emph{nos} nomes dos amigos''.
+
 Looking at the {\tt for} loop, {\bf for} and {\bf in} are reserved
 Python keywords, and {\tt friend} and {\tt friends} are variables.
 
+Olhando ao laço {\tt for}, {\bf for} e {\bf in} são palavras reservadas do
+Python, e {\tt friend} e {\tt friends} são variáveis.
+
 {\tt {\bf for} friend {\bf in} friends{\bf :}\\
 \verb"    "{\bf print} 'Happy New Year', friend }
+
+{\tt {\bf for} friend {\bf in} friends{\bf :}\\
+	\verb"   "{\bf print} 'Happy New Year', friend }
 
 In particular, {\tt friend} is the {\bf iteration variable} for 
 the for loop.  The variable {\tt friend} changes for each iteration of
@@ -319,13 +486,20 @@ the loop and controls when the {\tt for} loop completes.  The
 {\bf iteration variable} steps successively through the 
 three strings stored in the {\tt friends} variable.
 
+Em particular, {\tt friend} é a {\bf variável de iteração} do laço {\tt for}.
+A variável {\tt friend} muda para cada iteração do laço e controla quando o
+laço {\tt for} completa. A {\bf variável de iteração} passa sucessivamente
+através das três strings armazenadas na variável {\tt friends}.
+
 
 \section{Loop patterns}
+\section{Laços padrões}
 
 Often we use a {\tt for} or {\tt while} loop to go through a list of items
 or the contents of a file and we are looking for something such as
 the largest or smallest value of the data we scan through.
 
+Normalmente nós utilzamos os laços {\tt for} ou {\tt while} para passar 
 These loops are generally constructed by:
 
 \begin{itemize}
