@@ -31,21 +31,21 @@ Responsáveis pela Tradução por Capítulo
 |03-conditional.tex     |  Fernando Moreira     | 100 % |  Victor Jabur   | 100 %
 |04-functions.tex       |  ?                    |   ?   |  ?              | ?
 |05-iterations.tex      |  ?                    |   ?   |  ?              | ?
-|06-strings.tex         |  Maykon Chagas        | 50 %  |  ?              | ?
+|06-strings.tex         |  Maykon Chagas        | 80 %  |  ?              | ?
 |07-files.tex           |  Kaio Cesar           | 70 %  |  ?              | ?
 |08-lists.tex           |  Rafael Costa         | 90%   |  ?              | ?
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100 %
 |10-tuples.tex          |  Clodonil Trigo       | 60 %  |  ?              | ?
 |11-regex.tex           |  Felipe Souza         | 30 %  |  ?              | ?
 |12-network.tex         |  Camilo Alessandro    |   ?   |  ?              | ?
-|13-web.tex             |  Kaio Cesar           |   ?   |  ?              | ?
+|13-web.tex             |  ?                    |   ?   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
-|15-viz.tex             |  Victor Jabur         | 100 % |  ?              | ?
+|15-viz.tex             |  Victor Jabur         | 100 % |  Victor Jabur   | 100 %
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  Victor Jabur   | 100 %
-|AA-windows.tex         |  Victor Jabur         | 100 % |  ?              | ?
-|AB-apple.tex           |  Maykon Chagas        | 100 % |  ?              | ?
-|AC-contrib.tex         |  Maykon Chagas        | 100 % |  ?              | ?
-|AD-copyright.tex       |  Maykon Chagas        | 100 % |  ?              | ?
+|AA-windows.tex         |  Victor Jabur         | 100 % |  Victor Jabur   | 100 %
+|AB-apple.tex           |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
+|AC-contrib.tex         |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
+|AD-copyright.tex       |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
 
 
 Fluxo de Trabalho
