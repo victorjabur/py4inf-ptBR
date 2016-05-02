@@ -29,16 +29,16 @@ Responsáveis pela Tradução por Capítulo
 |01-intro.tex           |  Victor Jabur         | 100 % |  Rafael Covre   | 100 %
 |02-variables.tex       |  Eduardo Cândido      | 100 % |  Victor Jabur   | 100 %
 |03-conditional.tex     |  Fernando Moreira     | 100 % |  Victor Jabur   | 100 %
-|04-functions.tex       |  ?                    |   ?   |  ?              | ?
-|05-iterations.tex      |  ?                    |   ?   |  ?              | ?
+|04-functions.tex       |  Diego Rocha          | 0 %   |  ?              | ?
+|05-iterations.tex      |  Maykon Chagas        | 0 %   |  ?              | ?
 |06-strings.tex         |  Maykon Chagas        | 80 %  |  ?              | ?
 |07-files.tex           |  Kaio Cesar           | 70 %  |  ?              | ?
-|08-lists.tex           |  Rafael Costa         | 90%   |  ?              | ?
+|08-lists.tex           |  Rafael Costa         | 100 % |  ?              | ?
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100 %
 |10-tuples.tex          |  Clodonil Trigo       | 60 %  |  ?              | ?
 |11-regex.tex           |  Felipe Souza         | 30 %  |  ?              | ?
-|12-network.tex         |  Camilo Alessandro    |   ?   |  ?              | ?
-|13-web.tex             |  ?                    |   ?   |  ?              | ?
+|12-network.tex         |  Camilo Alessandro    | 0 %   |  ?              | ?
+|13-web.tex             |  Victor Jabur         | 0 %   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
 |15-viz.tex             |  Victor Jabur         | 100 % |  Victor Jabur   | 100 %
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  Victor Jabur   | 100 %
