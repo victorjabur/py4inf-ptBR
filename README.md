@@ -38,7 +38,7 @@ Responsáveis pela Tradução por Capítulo
 |10-tuples.tex          |  Clodonil Trigo       | 60 %  |  ?              | ?
 |11-regex.tex           |  Felipe Souza         | 30 %  |  ?              | ?
 |12-network.tex         |  Camilo Alessandro    | 0 %   |  ?              | ?
-|13-web.tex             |  Victor Jabur         | 0 %   |  ?              | ?
+|13-web.tex             |  Romulo Melo          | 0 %   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
 |15-viz.tex             |  Victor Jabur         | 100 % |  Victor Jabur   | 100 %
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  Victor Jabur   | 100 %
