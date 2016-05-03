@@ -499,27 +499,41 @@ Often we use a {\tt for} or {\tt while} loop to go through a list of items
 or the contents of a file and we are looking for something such as
 the largest or smallest value of the data we scan through.
 
-Normalmente nós utilzamos os laços {\tt for} ou {\tt while} para passar 
+Normalmente nós utilzamos os laços {\tt for} ou {\tt while} para percorrer
+uma lista de itens ou o conteúdo de um arquivo procurando por alguma coisa
+como o maior ou menor valor do dado que estamos percorrendo.
+
 These loops are generally constructed by:
+Estes laços são normalmente construidos da seguinte forma:
 
 \begin{itemize}
 
 \item Initializing one or more variables before the loop starts
+\item Inicializando uma ou mais variáveis antes de iniciar o laço
 
 \item Performing some computation on each item in the loop body, 
 possibly changing the variables in the body of the loop
+\item Realizando alguma verificação em cada item no corpo do laço,
+	possivelmente mudando as variáveis no corpo do laço
 
 \item Looking at the resulting variables when the loop completes
-
+\item Olhando o resultado das variáveis quando o laço finaliza
 \end{itemize}
 
 We will use a list of numbers to demonstrate the concepts and construction
 of these loop patterns.  
 
+Utilizamos uma lista de números para demonstrar os conceitos e os padrões
+para construção de laços.
+
 \subsection{Counting and summing loops}
+\subsection{Contanto e somando em laços}
 
 For example, to count the number of items
 in a list, we would write the following {\tt for} loop:
+
+Por exemplo, para contar o números de ítens em uma lista, podemos escrever
+o seguinte laço {\tt for}:
 
 \beforeverb
 \begin{verbatim}
@@ -535,6 +549,11 @@ then we write a {\tt for} loop to run through the list of numbers.
 Our {\bf iteration} variable is named {\tt itervar} and while we do
 not use {\tt itervar} in the loop, it does control the loop and cause
 the loop body to be executed once for each of the values in the list.
+
+%
+Nós definimos a variável {\tt count} em zero antes do laço iniciar, então
+escrevemos um laço {\tt for} para percorrer uma lista de números. Nossa
+variável de iteração é 
 
 In the body of the loop, we add 1 to the current value of {\tt count}
 for each of the values in the list.  While the loop is executing, the 

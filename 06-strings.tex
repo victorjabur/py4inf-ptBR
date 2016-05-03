@@ -155,7 +155,7 @@ IndexError: string index out of range
 %
 A razão para o {\tt IndexError} é que não existe letra em banana no índice 6.
 Uma vez que começamos a contar a partir do zero, a seis letras são numeradas
-de 0 até 5. Para mostrar o último carcatere, você tem que subtrair 1 do 
+de 0 até 5. Para mostrar o último caractere, você tem que subtrair 1 do 
 tamanho ({\tt length}):
 
 \beforeverb
@@ -413,12 +413,14 @@ Isto não tem efeito na string original.
 \label{contador}
 
 \index{counter}
+\index{contador}
+
 \index{counting and looping}
 \index{looping and counting}
 \index{looping!with strings}
 
-The following program counts the number of times the letter {\tt a}
-appears in a string:
+%The following program counts the number of times the letter {\tt a}
+%appears in a string:
 O programa a seguir conta o número de vezes que a letra {\tt a} aparece em
 uma string:
 
@@ -589,28 +591,28 @@ capitalize(...)
 \afterverb
 %
 
-While the {\tt dir} function lists the methods, and you 
-can use {\tt help} to get some simple documentation on a method, 
-a better source of documentation for string methods would be
-\url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
+%While the {\tt dir} function lists the methods, and you 
+%can use {\tt help} to get some simple documentation on a method, 
+%a better source of documentation for string methods would be
+%\url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
 
 Enquanto a função {\tt dir} lista os métodos, e você pode utilizar {\tt help}
 para obter ajuda na documentação de um método, uma melhor fonte de
 documentação para métodos de string podem ser visto através do endereço
 \url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
 
-Calling a {\bf method} is similar to calling a function---it 
-takes arguments and returns a value---but the syntax is different.
-We call a method by appending the method name to the variable name
-using the period as a delimiter.
+%Calling a {\bf method} is similar to calling a function---it 
+%takes arguments and returns a value---but the syntax is different.
+%We call a method by appending the method name to the variable name
+%using the period as a delimiter.
 
 Chamando um {\bf método} é similar a chamar uma função---recebe argumentos e
 retorna um valor---mas a sintaxe é diferente. Nós chamamos um método anexando
 o nome do método a variável utilizando um ponto como delimitador.
 
-For example, the
-method {\tt upper} takes a string and returns a new string with
-all uppercase letters:
+%For example, the
+%method {\tt upper} takes a string and returns a new string with
+%all uppercase letters:
 
 Por exemplo, o método {\tt upper} transforma uma string, retornando uma nova
 string com todas as letras em maiúsculo:
@@ -620,8 +622,8 @@ string com todas as letras em maiúsculo:
 \index{método}
 \index{string!método}
 
-Instead of the function syntax {\tt upper(word)}, it uses
-the method syntax {\tt word.upper()}.
+%Instead of the function syntax {\tt upper(word)}, it uses
+%the method syntax {\tt word.upper()}.
 Ao invés de usar a sintaxe de uma função {\tt upper(word)}, se usar a sintaxe
 de método {\tt word.upper()}.
 
@@ -637,10 +639,10 @@ BANANA
 \end{verbatim}
 \afterverb
 %
-This form of dot notation specifies the name of the method, {\tt
-upper}, and the name of the string to apply the method to, {\tt
-word}.  The empty parentheses indicate that this method takes no
-argument.
+%This form of dot notation specifies the name of the method, {\tt
+%upper}, and the name of the string to apply the method to, {\tt
+%word}.  The empty parentheses indicate that this method takes no
+%argument.
 %
 Esta forma de notação de ponto especifica o nome do método, {\tt upper}, e
 o nome da string para aplicar o método, {\tt word}. O parêntese vazio indica
@@ -649,16 +651,16 @@ que este método não recebe argumento.
 \index{parentheses!empty}
 \index{parênteses!vazio}
 
-A method call is called an {\bf invocation}; in this case, we would
-say that we are invoking {\tt upper} on the {\tt word}.
+%A method call is called an {\bf invocation}; in this case, we would
+%say that we are invoking {\tt upper} on the {\tt word}.
 Uma chamado de método é dito como uma {\bf invocação}; neste caso, podemos
 dizer que estamos invocando {\tt upper} na palavra {\tt word}.
 
 \index{invocation}
 \index{invocação}
 
-For example, there is a string method named {\tt find} that
-searches for the position of one string within another:
+%For example, there is a string method named {\tt find} that
+%searches for the position of one string within another:
 
 Por exemplo, existe um método de string chamado {\tt find} que procura pela
 posição de uma string em outra:
@@ -672,13 +674,13 @@ posição de uma string em outra:
 \end{verbatim}
 \afterverb
 %
-In this example, we invoke {\tt find} on {\tt word} and pass
-the letter we are looking for as a parameter.
+%In this example, we invoke {\tt find} on {\tt word} and pass
+%the letter we are looking for as a parameter.
 %
 Neste exemplo, nós invocamos {\tt find} na palavra {\tt word} e passamos a
 letra que estamos procurando como um parametro.
 
-The {\tt find} method can find substrings as well as characters:
+%The {\tt find} method can find substrings as well as characters:
 
 O método {\tt find} consegue  encontrar substrings assim como caracteres:
 
@@ -689,7 +691,7 @@ O método {\tt find} consegue  encontrar substrings assim como caracteres:
 \end{verbatim}
 \afterverb
 %
-It can take as a second argument the index where it should start:
+%It can take as a second argument the index where it should start:
 %
 Pode receber como segundo argumento o índice que indica onde deve começar:
 
@@ -705,8 +707,8 @@ Pode receber como segundo argumento o índice que indica onde deve começar:
 \end{verbatim}
 \afterverb
 %
-One common task is to remove white space (spaces, tabs, or newlines) from
-the beginning and end of a string using the {\tt strip} method:
+%One common task is to remove white space (spaces, tabs, or newlines) from
+%the beginning and end of a string using the {\tt strip} method:
 %
 Em tarefas comuns para remover espaços em branco (espaços, tabs ou novas
 linhas) do início e final de uma string é usado o método {\tt strip}:
@@ -719,7 +721,7 @@ linhas) do início e final de uma string é usado o método {\tt strip}:
 \end{verbatim}
 \afterverb
 %
-Some methods such as {\bf startswith} return boolean values.
+%Some methods such as {\bf startswith} return boolean values.
 %
 Alguns métodos como o {\bf startswith} retorna valores booleanos.
 
@@ -1223,8 +1225,10 @@ extraída em um número de ponto flutuante.
 
 
 \begin{ex}
-\index{string method}
-\index{method!string}
+%\index{string method}
+%\index{method!string}
+\index{métodos string}
+\index{método!string}
 
 %Read the documentation of the string methods at
 %\url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
@@ -1246,7 +1250,7 @@ particularmente úteis.
 
 A documentação utiliza uma sintaxe que pode parecer confusa. Por exemplo, no
 \verb"find(sub[, start[, end]])", os colchetes indicam que o argumento é
-opcional. Dest forma, {\tt sub} é obrigatório, mas {\tt start} é opcional, e
+opcional. Desta forma, {\tt sub} é obrigatório, mas {\tt start} é opcional, e
 se você incluir o {\tt start}, então o {\tt end} é opcional.
 \end{ex}
 
