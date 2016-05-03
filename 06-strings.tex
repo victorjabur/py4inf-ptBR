@@ -20,7 +20,7 @@
 %You can access the characters one at a time with the
 %bracket operator:
 Uma string é um {\bf sequência} de caracteres. Você pode acessar cada
-caractere, um por vez com o operador colchete, como pode ser visto no código 
+caractere, um por vez com o operador colchete, como pode ser visto no código
 a seguir:
 
 \beforeverb
@@ -36,7 +36,7 @@ a seguir:
 %The second statement extracts the character at index position 1 from the 
 %{\tt fruit} variable and assigns it to the {\tt letter} variable.  
 %
-A segunda declaração extrai o caractere no índice de posição 1 da variável 
+A segunda declaração extrai o caractere no índice de posição 1 da variável
 {\tt fruit} e atribui a variável {\tt letter}.
 
 %The expression in brackets is called an {\bf index}.  
@@ -89,14 +89,15 @@ $%\index{index!starting at zero}
 %\index{zero, index starting at}
 \index{zero, índice do começo}
 
-You can use any expression, including variables and operators, as an
-index, but the value of the index has to be an integer.  Otherwise you
-get:
+%You can use any expression, including variables and operators, as an
+%index, but the value of the index has to be an integer.  Otherwise you
+%get:
 
 Você pode utilizar qualquer expressão, variável e operador, como um índice,
 mas o valor do índice tem que ser um inteiro. Caso contrário você terá:
 
-\index{index}
+%\index{index}
+\index{índice}
 \index{exception!TypeError}
 \index{TypeError}
 
@@ -182,18 +183,23 @@ de trás pra frente. A expressão {\tt fruit[-1]} mostra a última letra,
 %\section{Traversal through a string with a loop}
 \label{for}
 \section{Percorrendo uma {\it string} com um {\it loop}
-\index{traversal}
-\index{loop!traversal}
-\index{for loop}
-\index{loop!for}
-\index{statement!for}
-\index{traversal}
+%\index{traversal}
+%\index{loop!traversal}
+%\index{for loop}
+%\index{loop!for}
+%\index{statement!for}
+\index{percorrer}
+\index{laço!percorrer}
+\index{laço for}
+\index{laço!for}
+\index{declaração!for}
 
 %A lot of computations involve processing a string one character at a
 %time.  Often they start at the beginning, select each character in
 %turn, do something to it, and continue until the end.  This pattern of
 %processing is called a {\bf traversal}.  One way to write a traversal
 %is with a {\tt while} loop:
+
 Processar uma string, um caractere por vez, envolve uma série de computação.
 Normalmente eles começam no começo da palavra, selecionam um caractere por
 vez, fazem alguma coisa com ele, e continuam até o final. Este padrão de
@@ -227,12 +233,14 @@ executado. O último caractere acessado é o caractere com o índice
 %Write a {\tt while} loop that starts at the last character in the string
 %and works its way backwards to the first character in the string, 
 %printing each letter on a separate line, except backwards.
+
 Escreva um loop {\tt while} que comece no último caractere da string e volte
 de trás pra frente até o primeiro caractere da string, imprimindo cada letra
 em uma linha separada.
 \end{ex}
 
 %Another way to write a traversal is with a {\tt for} loop:
+
 Outra forma de percorrer uma string é com um loop {\tt for}:
 
 \beforeverb
@@ -245,7 +253,8 @@ for char in fruit:
 %Each time through the loop, the next character in the string is assigned
 %to the variable {\tt char}.  The loop continues until no characters are
 %left.
-Cada vez que percorrer o loop, o caractere na string é atribuido a variável 
+
+Cada vez que percorrer o loop, o caractere na string é atribuido a variável
 {\tt char}. O loop continua até que não haja mais caractere na string.
 
 
@@ -267,6 +276,7 @@ Cada vez que percorrer o loop, o caractere na string é atribuido a variável
 
 %A segment of a string is called a {\bf slice}.  Selecting a slice is
 %similar to selecting a character:
+
 Um segmento de uma string é chamado de {\bf fatia}. Selecionando uma fatia
 é similar a selecionar um caractere:
 
@@ -290,6 +300,7 @@ posição ``m'', incluindo o primeiro mas excluindo o último.
 %If you omit the first index (before the colon), the slice starts at
 %the beginning of the string.  If you omit the second index, the slice
 %goes to the end of the string:
+
 Se você omitir o primeiro índice (antes dos dois pontos), a fatia inicia no
 começo da string. Se você omitir o segundo índice, a fatia irá até o fim da
 string:
@@ -306,6 +317,7 @@ string:
 %
 %If the first index is greater than or equal to the second the result
 %is an {\bf empty string}, represented by two quotation marks:
+
 Se o primeiro índice é maior ou igual ao segundo, o resultado é uma
 {\bf string vazia}, representado entre duas aspas.
 
@@ -329,7 +341,7 @@ disto, isto é igual a qualquer outra string.
 \begin{ex}
 %Given that {\tt fruit} is a string, what does
 %{\tt fruit[:]} mean?
-Dado uma string {\tt fruit}, o que significa {\tt fruit[:]}?
+Dado uma stringi, {\tt fruit}, o que significa a declaração {\tt fruit[:]}?
 %\index{copy!slice}
 %\index{slice!copy}
 \index{cópia!fatia}
@@ -348,6 +360,7 @@ Dado uma string {\tt fruit}, o que significa {\tt fruit[:]}?
 %It is tempting to use the {\tt []} operator on the left side of an
 %assignment, with the intention of changing a character in a string.
 %For example:
+
 É tentador utilizar o operador {\tt []} no lado esquerdo de uma atribuição,
 com a intenção de mudar um caractere em uma string. Por exemplo:
 \index{TypeError}
@@ -384,6 +397,7 @@ sequência.
 %strings are {\bf immutable}, which means you can't change an
 %existing string.  The best you can do is create a new string
 %that is a variation on the original:
+
 A razão para o erro é que strings são {\bf imutáveis}, que significa que você
 não pode mudar uma string já existente. O melhor que você pode fazer é criar
 uma nova string que é uma variação da original:
@@ -407,20 +421,25 @@ Isto não tem efeito na string original.
 %\index{concatenation}
 \index{concatenação}
 
-\section{Looping and counting}
+%\section{Looping and counting}
 \section{Looping e contabilização}
-\label{counter}
+%\label{counter}
 \label{contador}
 
-\index{counter}
+%\index{counter}
 \index{contador}
 
 \index{counting and looping}
 \index{looping and counting}
 \index{looping!with strings}
 
+\index{contando e rodando}
+\index{rodando e contando}
+\index{rodando!com string}
+
 %The following program counts the number of times the letter {\tt a}
 %appears in a string:
+
 O programa a seguir conta o número de vezes que a letra {\tt a} aparece em
 uma string:
 
@@ -441,11 +460,11 @@ print count
 %When the loop exits, {\tt count}
 %contains the result---the total number of {\tt a}'s.
 %
-Este programa demonstra outro padrão de computação chamado {\bf contator}. A
+Este programa demonstra outro padrão de computação chamado {\bf contador}. A
 variável {\tt count} é iniciada em 0 e depois incrementada cada vez que uma
 letra {\tt a} é encontrada. Quando o laço existe, {\tt count} contém o
 resultado---o número total de {\tt a}'s.
-'
+
 \begin{ex}
 %\index{encapsulation}
 \index{encapsulamento}
@@ -453,6 +472,7 @@ resultado---o número total de {\tt a}'s.
 %Encapsulate this code in a function named {\tt
 %count}, and generalize it so that it accepts the string and the
 %letter as arguments.
+
 Encapsule este código em uma função chamada {\tt count}, e generalize para
 que aceite a string e a letra como argumento.
 \end{ex}
@@ -473,6 +493,7 @@ que aceite a string e a letra como argumento.
 
 %The word {\tt in} is a boolean operator that takes two strings and
 %returns {\tt True} if the first appears as a substring in the second:
+
 A palavra {\tt in} é um operador booleano que pega duas strings e retorna
 {\tt True} se a primeira aparaecer como substring na segunda:
 
@@ -495,6 +516,7 @@ False
 \index{comparação!index}
 
 %The comparison operators work on strings.  To see if two strings are equal:
+
 O operador de comparação funciona com strings. Para verificar se duas strings
 são iguais:
 
@@ -617,8 +639,8 @@ o nome do método a variável utilizando um ponto como delimitador.
 Por exemplo, o método {\tt upper} transforma uma string, retornando uma nova
 string com todas as letras em maiúsculo:
 
-\index{method}
-\index{string!method}
+%\index{method}
+%\index{string!method}
 \index{método}
 \index{string!método}
 
@@ -627,7 +649,7 @@ string com todas as letras em maiúsculo:
 Ao invés de usar a sintaxe de uma função {\tt upper(word)}, se usar a sintaxe
 de método {\tt word.upper()}.
 
-\index{dot notation}
+%\index{dot notation}
 \index{notação de ponto}
 
 \beforeverb
@@ -648,15 +670,16 @@ Esta forma de notação de ponto especifica o nome do método, {\tt upper}, e
 o nome da string para aplicar o método, {\tt word}. O parêntese vazio indica
 que este método não recebe argumento.
 
-\index{parentheses!empty}
+%\index{parentheses!empty}
 \index{parênteses!vazio}
 
 %A method call is called an {\bf invocation}; in this case, we would
 %say that we are invoking {\tt upper} on the {\tt word}.
+
 Uma chamado de método é dito como uma {\bf invocação}; neste caso, podemos
 dizer que estamos invocando {\tt upper} na palavra {\tt word}.
 
-\index{invocation}
+%\index{invocation}
 \index{invocação}
 
 %For example, there is a string method named {\tt find} that
@@ -695,8 +718,8 @@ O método {\tt find} consegue  encontrar substrings assim como caracteres:
 %
 Pode receber como segundo argumento o índice que indica onde deve começar:
 
-\index{optional argument}
-\index{argument!optional}
+%\index{optional argument}
+%\index{argument!optional}
 \index{argumento opcional}
 \index{argumento!opcional}
 
@@ -735,9 +758,9 @@ False
 \end{verbatim}
 \afterverb
 %
-You will note that {\tt startswith} requires case to match, so sometimes
-we take a line and map it all to lowercase before we do any checking
-using the {\tt lower} method.
+%You will note that {\tt startswith} requires case to match, so sometimes
+%we take a line and map it all to lowercase before we do any checking
+%using the {\tt lower} method.
 %
 Você perceberá que {\tt startswith} precisa de casos para casar, então algumas
 vezes nós pegamos uma linha e mapeamos toda para minúscula antes de fazer
@@ -755,12 +778,12 @@ True
 \end{verbatim}
 \afterverb
 %
-In the last example, the method {\tt lower} is called
-and then we use {\tt startswith}
-to see if the resulting lowercase string
-starts with the letter ``p''.  As long as we are careful
-with the order, we can make multiple method calls in a
-single expression.
+%In the last example, the method {\tt lower} is called
+%and then we use {\tt startswith}
+%to see if the resulting lowercase string
+%starts with the letter ``p''.  As long as we are careful
+%with the order, we can make multiple method calls in a
+%single expression.
 %
 No último exemplo, o método {\tt lower} é chamado e depois utilizamos
 {\tt startswith} para verificar se a string resultante em minúsculo começa
@@ -768,9 +791,10 @@ com a letra ``p''. Contanto que cuidemos com a ordem, podemos realizar
 múltiplas chamadas de métodos em uma única expressão.
 
 \begin{ex}
-\index{count method}
-\index{method!count}
-
+%\index{count method}
+%\index{method!count}
+\index{método contador}
+\index{método!contador}
 %There is a string method called {\tt count} that is similar
 %to the function in the previous exercise.  Read the documentation
 %of this method at
@@ -778,6 +802,7 @@ múltiplas chamadas de métodos em uma única expressão.
 %and write an invocation that counts the number of times the 
 %letter a  occurs
 %in \verb"'banana'".
+
 Existe um método de strings chamado {\tt count} que é similar a função do
 exercício anterior. Leia a documentação deste método no endereço:
 \url{https://docs.python.org/2/library/stdtypes.html#string-methods}
@@ -785,10 +810,11 @@ e escreva uma invocação que conte o número de vezes que a letra ``a'' ocorre
 em \verb"'banana'".
 \end{ex}
 
-\section{Parsing strings}
+%\section{Parsing strings}
 \section{Analisando strings}
 %Often, we want to look into a string and find a substring.  For example
 %if we were presented a series of lines formatted as follows:
+
 Normalmente queremos olhar uma string e procurar uma substring. Por exemplo
 se for apresentado uma série de linhas formatadas como a seguir:
 
@@ -991,9 +1017,10 @@ utilizado. Você pode ler mais sobre ele no endereço
 % The result takes up eight spaces with two
 % digits after the decimal point.  
 
-
-\section{Debugging}
-\index{debugging}
+%\section{Debugging}
+\section{Depurando}
+%\index{debugging}
+\index{depuração}
 
 %A skill that you should cultivate as you program is always
 %asking yourself, ``What could go wrong here?'' or alternatively,
@@ -1002,7 +1029,7 @@ utilizado. Você pode ler mais sobre ele no endereço
 
 Uma habilidade que você deve cultivar como programador é se perguntar sempre
 ``O que poderia dar errado?'' ou alternativamente, ``Que coisa louca nosso
-usuário pode fazer para quebrar nosso (aparentemente) programa perfeito?''.
+usuário pode fazer para quebrar nosso programa (aparentemente) perfeito?''.
 
 %For example, look at the program which we used to demonstrate
 %the {\tt while} loop in the chapter on iteration:
@@ -1063,8 +1090,10 @@ Uma possibilidade é utilizando o método {\tt startswith} que retorna
 \end{verbatim}
 \afterverb
 %
-\index{guardian pattern}
-\index{pattern!guardian}
+%\index{guardian pattern}
+%\index{pattern!guardian}
+\index{padrão de guarda}
+\index{padrão!guarda}
 %Another way is to safely write the {\tt if} statement using the {\bf guardian}
 %pattern and make sure the second logical expression is evaluated 
 %only where there is at least one character in the string.:
@@ -1107,8 +1136,8 @@ somente onde existe pelo menos um caractere na string.:
 	especificada pela string formatada.
 %\index{format operator}
 %\index{operator!format}
-\index{operador formatado}
-\index{operador!formato}
+\index{operador format}
+\index{operador!format}
 
 %\item[format sequence:] A sequence of characters in a format string,
 %like {\tt \%d}, that specifies how a value should be formatted.
@@ -1183,19 +1212,23 @@ contains format sequences.
 \index{padrão!pesquisa}
 
 
-\item[sequence:] An ordered set; that is, a set of
-values where each value is identified by an integer index.
-\index{sequence}
+%\item[sequence:] An ordered set; that is, a set of
+%values where each value is identified by an integer index.
+%\index{sequence}
 \item[sequência:] Um conjunto ordenado; que é, um conjunto de valores onde
 	cada valor é identificado por um índice inteiro.
+\index{sequência}
 
-\item[slice:] A part of a string specified by a range of indices.
-\index{slice}
-\item[fatia:] Uma parte da string especificado por um 
-\item[traverse:] To iterate through the items in a sequence,
+%\item[slice:] A part of a string specified by a range of indices.
+%\index{slice}
+\item[fatia:] Uma parte da string especificado por um
+\index{fatia}
+%\item[traverse:] To iterate through the items in a sequence,
 performing a similar operation on each.
-\index{traversal}
-\index{}
+\item[percorrer:] Percorrer através de ítens em uma sequência, executando uma
+	operação similar em cada um dos ítens.
+%\index{traversal}
+\index{percorrer}
 
 \end{description}
 
