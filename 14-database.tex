@@ -95,7 +95,7 @@ tabela, linha e coluna são referências formais para {\bf relação},
 Usaremos os termos menos formais neste capítulo.
 
 %\section{SQLite manager Firefox add-on}
-\section{Plugin do Firefox de Gerencia SQLite}
+\section{Plugin do Firefox de Gerenciamento do SQLite}
 %While this chapter will focus on using Python to work with data 
 %in SQLite database files, many operations can be done more
 %conveniently using a Firefox add-on called the {\bf SQLite
@@ -125,17 +125,17 @@ executar consultas SQL nos dados da base de dados.
 %will be most conveniently done in Python.
 
 De certa forma, o gerenciador de banco de dados é similar a um editor de texto
-quando utilizado arquivos de texto. Quando você quer fazer uma ou mais
+quando trabalha com arquivos de texto. Quando você quer fazer uma ou mais
 operações com um arquivo de texto, você pode simplesmente abrir o arquivo em
-um editor de texto e fazer as alterações que desejar. Quando você tem que fazer
-muitas alterações para fazer, normalmente você pode escrever um programa em
-Python simples para executar esta tarefa. Você encontrará os mesmos padrões
+um editor de texto e fazer as alterações que desejar. Quando você tem
+muitas alterações para fazer, normalmente você pode escrever um simples programa em 
+Python para executar esta tarefa. Você encontrará os mesmos padrões
 quando for trabalhar com banco de dados. Você fará operações em um gerenciador
 de banco de dados e as operações mais complexas serão mais convenientes se
 forem feitas com Python.
 
 %\section{Creating a database table}
-\section{Criado uma tabela em um banco de dados}
+\section{Criando uma tabela em um banco de dados}
 
 %Databases require more defined structure than Python lists 
 %or dictionaries\footnote{SQLite actually does allow some 
@@ -144,7 +144,7 @@ forem feitas com Python.
 %so the concepts apply equally to other database systems 
 %such as MySQL.}.
 
-Bancos de dados precisam de estruturas mais bem definidas do quê listas ou
+Bancos de dados precisam de estruturas mais bem definidas do que listas ou
 dicionários em Python\footnote{Atualmente o SQLite permite uma maior
   flexibilidade em relação aos tipos de dados que são armazenados em uma
   coluna, mas vamos manter os tipos de dados restritos neste capítulo, assim
@@ -187,7 +187,7 @@ de dados contém um grande número de informações.
 %database is as follows:
 
 O seguinte código cria um arquivo de banco de dados com uma tabela, chamada
-{\tt Tracks} e com duas colunas:
+{\tt Tracks}, contendo duas colunas:
 
 \index{sqlite3 module}
 \index{module!sqlite3}
@@ -232,7 +232,7 @@ Python está sendo executado.
 %{\tt cursor()} is very similar conceptually to calling
 %{\tt open()} when dealing with text files.
 
-Um {\bf cursos} é como um identificador de arquivo que podemos utilizar para
+Um {\bf cursor} é como um identificador de arquivo que podemos utilizar para
 realizar operações sobre as informações armazenadas em um banco de dados. Ao
 chamar a função {\tt cursor()}, conceitualmente, é similar ao chamar a função
 {\tt open()} quando estamos trabalhando com arquivos de texto.
@@ -245,7 +245,7 @@ chamar a função {\tt cursor()}, conceitualmente, é similar ao chamar a funç�
 %commands on the contents of the database using the {\tt execute()}
 %method.
 
-Uma vez que temos o cursos, podemos começar a executar comandos no conteúdo
+Uma vez que temos o cursor, podemos começar a executar comandos no conteúdo
 armazenado no banco de dados utilizando o método {\tt execute()}.
 
 %Database commands are expressed in a special language that has 
@@ -311,7 +311,7 @@ cur.execute('CREATE TABLE Tracks (title TEXT, plays INTEGER)')
 %
 Agora que criamos a tabela {\tt Tracks}, podemos inserir algum dado dentro
 dela utilizando a operação SQL {\tt INSERT}. Novamente, estamos
-estabelecendo uma conexão com o banco de dados e obtendo o {\tt cursos}.
+estabelecendo uma conexão com o banco de dados e obtendo o {\tt cursor}.
 E então executamos o comando SQL utilizando o cursor.
 
 %The SQL {\tt INSERT} command indicates which table we are using 
@@ -358,8 +358,8 @@ cur.close()
 %First we {\tt INSERT} two rows into our table and use {\tt commit()} 
 %to force the data to be written to the database file.
 
-Primeiro nós adicionamos com {\tt INSERT} duas linha na nossa tabela e
-usamos {\tt commit()} para forçar a escrita da informação no arquivo do banco
+Primeiro nós adicionamos com {\tt INSERT} duas linhas na nossa tabela e
+usaremos {\tt commit()} para forçar a escrita da informação no arquivo do banco
 de dados.
 
 \beforefig
@@ -381,7 +381,7 @@ de dados.
 Depois usamos o comando {\tt SELECT} para buscar a linha que acabamos de
 inserir na tabela. Com o comando {\tt SELECT}, indicamos que coluna gostaríamos
 {\tt (title, plays)} e de qual tabela queremos buscar a informação. Depois
-de confirmar a executação do comando {\tt SELECT}, o cursor pode ser utilizado
+de confirmar a execução do comando {\tt SELECT}, o cursor pode ser utilizado
 como repetição através de um comando {\tt for}. Por questões de eficiência, o
 cursor não lê toda a informação da base de dados quando executamos o comando
 {\tt SELECT}. Ao invés disto, a informação é lida sob demanda enquanto
@@ -408,7 +408,7 @@ Tracks:
 
 A iteração do {\tt for} encontrou duas linhas, e cada linha é uma tupla em
 Python com o primeiro valor como {\tt title} e o segundo como o número de
-{\tt plays}. Não se preocupe com o fato de a {\it strings} são mostrados com
+{\tt plays}. Não se preocupe com o fato de que {\it strings} são mostrados com
 o caractere {\tt u'} no começo. Isto é uma indicação que a {\it string} estão
 em {\bf Unicode}, o que indica que são capazes de armazenar um conjunto de
 caractere não-Latin.
@@ -575,7 +575,7 @@ UPDATE Tracks SET plays = 16 WHERE title = 'My Way'
 %
 A condição {\tt UPDATE} especifica uma tabela e depois uma lista de campos e
 valores que serão alterados após o comando {\tt SET}, e utilizando uma condição
-{\tt WHERE}, opctional, é possível selecionar as linhas que serão atualizadas.
+{\tt WHERE}, opcional, é possível selecionar as linhas que serão atualizadas.
 Uma condição {\tt UPDATE} irá mudar todas as linhas que casam com a condição
 {\tt WHERE}. Se a condição {\tt WHERE} não for especificada, o {\tt UPDATE}
 será aplicado em todas as linhas da tabela.
@@ -583,7 +583,7 @@ será aplicado em todas as linhas da tabela.
 %These four basic SQL commands (INSERT, SELECT, UPDATE, and DELETE) allow 
 %the four basic operations needed to create and maintain data.
 
-Os quatros comandos básicos de SQL (INSERT, SELECT, UPDTE e DELETE) permitem
+Os quatro comandos básicos de SQL (INSERT, SELECT, UPDTE e DELETE) permitem
 as quatro operações básicas necessárias para criação e manutenção das
 informações em um banco de dados.
 
@@ -596,9 +596,9 @@ informações em um banco de dados.
 %want to pull too much data or run the program for too long and
 %end up having your Twitter access shut off.}
 
-Nesta seção criaremos um programa simples para rastreamento que navegará
+Nesta seção, criaremos um programa simples para rastreamento que navegará
 através de contas de usuários do Twitter e construirá um banco de dados
-destas referentes as estes usuários.
+referentes a estes usuários.
 \emph{Nota: Tenha muito cuidado ao executar este programa. Você não irá querer
   extrair muitas informações ou executar o programa por muito tempo e acabar
   tendo sua conta do Twitter bloqueada.}
@@ -616,7 +616,6 @@ informações que você já tenha recuperado até agora. Não quer sempre reinic
 a recuperação dos dados desde o começo, então armazenamos as informações tão
 logo seja recuperada, assim o programa poderá reiniciar a busca do ponto onde
 parou.
-
 
 %We will start by retrieving one person's Twitter friends and their
 %statuses, looping through the list of friends, and adding each 
@@ -658,7 +657,7 @@ popular, podemos parar e recomeçar nosso programa quantas vezes quisermos.
 
 % TODO: Adicionar a referência do código para o lugar certo.
 Este programa é um pouco complexo. É baseado em um exercício apresentado
-anteriormente neste livro, que utiliza a API do Twitter
+anteriormente neste livro, que utiliza a API do Twitter.
 
 %Here is the source code for our Twitter spidering application:
 
@@ -734,8 +733,8 @@ cur.close()
 %
 Nossa base de dados está armazenada no arquivo {\tt spider.sqlite3} e possui
 uma tabela chamada {\tt Twitter}. Cada linha na tabela {\tt Twitter} tem uma
-coluna para o nome da conta, se recuperamos os amigos desta conta, e quantas
-vezes esta conta foi ``seguido''.
+coluna para o nome da conta, se já recuperamos os amigos desta conta, e quantas
+vezes esta conta foi ``seguida''.
 
 %In the main loop of the program, we prompt the user for a Twitter
 %account name or ``quit'' to exit the program.  
@@ -745,10 +744,10 @@ vezes esta conta foi ``seguido''.
 %not already in the database.  If the friend is already in the list, 
 %we add 1 to the {\tt friends} field in the row in the database.
 
-Na repetição principal do programa, perguntamos ao usuário uma conta de Twitter
+Na repetição principal do programa, pedimos ao usuário uma conta de Twitter
 ou ``quit'' para sair do programa. Se o usuário informar um usuário do Twitter,
 o programa começa a recuperar a lista de amigos e os status para aquele
-usuário e adiciona cada amigo na base de dados se não possuir. Se o amigo já
+usuário e adiciona cada amigo na base de dados, se ainda não existir. Se o amigo já
 está na lista, nós adicionamos ``1'' no campo {\tt friends} da base de dados.
 
 
@@ -824,7 +823,7 @@ da variável {\tt count}.
 %a two-element tuple that holds the values to be substituted into the SQL
 %in place of the question marks.
 
-Se a busca for bem sucedida, utilizamos a declação {\tt UPDATE} com a clausula 
+Se a busca for bem sucedida, utilizamos a declação {\tt UPDATE} com a cláusula 
 {\tt WHERE} para adicionar 1 na coluna {\tt friends} para a linha que
 corresponde com a conta do amigo. Note que existem dois espaços reservados
 (i.e., pontos de interrogações) no SQL, e o segundo parâmetro para o
@@ -838,7 +837,7 @@ lugar dos pontos de interrogações.
 %retrieved the \verb"screen_name" and set the friend count to zero.
 
 Se o bloco {\tt try} falhar, é provavelmente por que nenhum resultado
-corresponde a clausula em {\tt WHERE name = ?} do SELECT. Então no block
+corresponde a cláusula em {\tt WHERE name = ?} do SELECT. Então no block
 {\tt except}, utilizamos a declaração {\tt INSERT} para adicionar o
 \verb"screen_name" do amigo a tabela com a indicação que ainda não rastreamos
 o \verb"screen_name" e setamos o contador de amigos com 0 (zero).
@@ -895,7 +894,6 @@ cur.close()
 %columns of all of the rows in the table {\tt Twitter}, then 
 %loops through the rows and prints out each row.
 
-%
 Este programa abre o banco de dados e seleciona todas as colunas de todas as
 linhas na tabela {\tt Twitter}, depois itera em cada linha e imprime o valor
 dentro de cada uma.
@@ -922,7 +920,6 @@ Se executarmos este programa depois da primeira execução do nosso rastreador
 %have not retrieved the data for that \verb"screen_name", and 
 %everyone in the database has one friend.
 
-%
 Veremos uma linha para cada \verb"screen_name", que não tenhamos recuperado
 o dado daquele \verb"screen_name", e todos tem um amigo.
 
@@ -935,9 +932,8 @@ o dado daquele \verb"screen_name", e todos tem um amigo.
 Agora nosso banco de dados reflete quais amigos estão relacionados com a nossa
 primeira conta do Twitter ({\bf drchuck}) utilizada para rastreamento. Podemos
 executar o programa novamente e mandar rastrear a próxima conta
-``não processada'' e recuperar os amigos, simplemente pressionando {\tt enter}
+``não processada'' e recuperar os amigos, simplesmente pressionando {\tt enter}
 ao invés de informar uma conta do Twitter, conforme o exemplo a seguir:
-
 
 \beforeverb
 \begin{verbatim}
@@ -976,7 +972,6 @@ Twitter), o seguinte código é executado:
 %a try/except block to either extract a \verb"screen_name" from the retrieved
 %data or put out an error message and loop back up.
 
-%
 Utilizamos a declaração SQL {\tt SELECT} para recuperar o nome do primeiro
 ({\tt LIMIT 1}) usuário que ainda tem seu ``recuperamos este usuário'' com o
 valor setado em zero. Também utilizamos o padrão {\tt fetchone()[0]} dentro de
@@ -1048,7 +1043,7 @@ Podemos ver que gravamos de forma apropriada que visitamos os usuários
 {\tt lhawthorn} e {\tt opencontent}. E que as contas {\tt cnxorg} e
 {\tt kthanos} já tem dois seguidores. Desde que tenhamos recuperado os amigos
 de três pessoas ({\tt drchuck}, {\tt opencontent}, e {\tt lhawthorn}) nossa
-tabela tem agora 55 linhas de amigos recuperados.
+tabela tem agora 55 linhas de amigos para recuperar.
 
 %Each time we run the program and press enter it will pick the next 
 %unvisited account (e.g., the next account will be \verb"steve_coppin"),
@@ -1068,8 +1063,8 @@ e atualizaremos seus amigos que já estiverem na base de dados.
 %like with no loss of data.
 
 Assim que os dados do programa estejam armazenados no disco em um banco de
-dados o rastreamento pode ser suspenso e reiniciado tantas vezes quando
-quiser sem a perda de informações.
+dados, o rastreamento pode ser suspenso e reiniciado tantas vezes quanto
+quiser, sem a perda de informações.
 
 %\section{Basic data modeling}
 \section{Modelagem de dados básica}
@@ -1142,7 +1137,7 @@ INSERT INTO Pals (from_friend,to_friend) VALUES ('drchuck', 'lhawthorn')
 %string many times in the database.
 %
 Como estamos processando 20 amigos da conta do {\it Twitter} do {\tt drchuck},
-inserimor 20 registros com ``drchuck'' como primeiro parâmetro e assim
+vamos inserir 20 registros com ``drchuck'' como primeiro parâmetro e assim
 acaberemos duplicando a {\it string} muitas vezes no banco de dados.
 
 %This duplication of string data violates one of the best practices 
@@ -1152,7 +1147,7 @@ acaberemos duplicando a {\it string} muitas vezes no banco de dados.
 %numeric {\bf key} for the data and reference the actual data 
 %using this key.
 
-Esta duplicação de dados viola uma das melhores práticas da {\bf normatização
+Esta duplicação de dados, viola uma das melhores práticas da {\bf normatização
   de banco de dados} que basicamente afirma que nunca devemos colocar o mesmo
 dado mais de uma vez em um banco de dados. Se precisarmos inserir um dado mais
 de uma vez, criamos uma referência numérica {\bf key} (chave) para o dado, e
@@ -1168,7 +1163,7 @@ utilizamos a chave para referenciar o dado.
 %as possible.
 
 Na prática, uma {\it string} ocupa muito mais espaço do que um inteiro, no
-disco e na memória do nosso computador, e leva mais tempo do processor para
+disco e na memória do nosso computador, e leva mais tempo do processador para
 comparar e ordenar. Se tivermos somente algumas centenas de entradas, a base
 de dados e o tempo de processamento dificilmente importarão. Mas se tivermos
 um milhão de pessoas na nossa base de dados e uma possibilidade de 100 milhões
@@ -1246,15 +1241,15 @@ CREATE TABLE Follows
 Quando adicionamos a condição {\tt UNIQUE} a nossa tabela, estamos definindo
 um conjunto de regras e pedindo a base de dados para cumprir estas regras
 quando tentarmos inserir algum registro. Estamos criando estas regras como uma
-conveniencia no nosso programa, como veremos a seguir. As regras nos impede de
-cometer enganos e facilita na escrita dos nossos códigos.
+conveniência no nosso programa, como veremos a seguir. As regras nos impedem de
+cometer enganos e facilitam na escrita dos nossos códigos.
 
 %In essence, in creating this {\tt Follows} table, we are modelling a 
 %``relationship'' where one person ``follows'' someone else
 %and representing it with a pair of numbers indicating that (a) the people are
 %connected and (b) the direction of the relationship.
 
-Em essencia, criando a tabela {\tt Follows}, estamos modelando uma ``relação''
+Em essência, criando a tabela {\tt Follows}, estamos modelando uma ``relação''
 onde uma pessoa ``segue'' outro alguém e representamos isto com um par de
 números indicando que (a) as pessoas estão conectadas e (b) a direção do
 relacionamento.
@@ -1393,16 +1388,16 @@ para conectar as tabelas. Os padrões básicos são:
 \end{enumerate}
 
 %We will cover each of these in turn.
-Vamos tratar cada um dos ítens acima, em partes.
+Vamos tratar cada um dos itens acima, em partes.
 
 %\subsection{Constraints in database tables}
 \subsection{Restrições em uma tabela}
 
-As we design our table structures, we can tell the database system 
-that we would like it to enforce a few rules on us.   These rules
-help us from making mistakes and introducing incorrect data into 
-out tables.   When we create our tables:
-Assim como projetamos a estrutura da tabela, podemos informar ao banco de dados
+%As we design our table structures, we can tell the database system 
+%that we would like it to enforce a few rules on us.   These rules
+%help us from making mistakes and introducing incorrect data into 
+%out tables.   When we create our tables:
+Da forma como projetamos a estrutura da tabela, podemos informar ao banco de dados
 que gostaríamos de reforçar algumas regras. Estas regras nos ajudam a não
 cometer enganos e a não inserir dados incorretos nas nossas tabelas. Quando
 criamos nossas tabelas:
@@ -1474,7 +1469,6 @@ especificamos para a linha {\tt Follows}.
 %does not yet exist in the {\tt People} table, we must insert 
 %the record and get the {\tt id} value from the inserted
 %row.
-
 Quando solicitamos ao usuário uma conta do Twitter, se a conta existir,
 precisamos verificar o valor do {\tt id}. Se a conta não existir ainda
 na tabela {\tt People}, devemos inserir o registro e pegar o valor do
@@ -1546,7 +1540,7 @@ irá mudar para a seção {\tt except}.
 %affected rows is something other than 1, it is an error.  
 
 Se terminar no código do {\tt except}, isto significa que aquela linha não foi
-encontrada, então devemos inserí-la na linha. Usamos o {\tt INSERT OR IGNORE}
+encontrada, então devemos inserir o registro. Usamos o {\tt INSERT OR IGNORE}
 somente para evitar erros e depois chamamos {\tt commit()} para forçar que a
 base de dados seja atualizada. Depois que a escrita esteja completa, nós
 podemos checar, com {\tt cur.rowcount}, para ver quantas linhas foram afetadas.
@@ -1614,7 +1608,7 @@ Enter a Twitter account, or quit: quit
 
 %
 Nós iniciamos com a conta {\tt drchuck} e depois deixamos o programa pegar
-automaticamente as próximas duas contas para recuperar e adicionar a nossa
+automaticamente as próximas duas contas para recuperar e adicionar à nossa
 base de dados.
 
 %The following is the first few rows in the {\tt People} 
@@ -1655,7 +1649,7 @@ Follows:
 %you would see the friends of users 2 and 3 as well.
 
 %
-Você também pode ver os campos {\tt id}. {\tt name} e {\tt visited} na tabela
+Você também pode ver os campos {\tt id}, {\tt name} e {\tt visited} na tabela
 {\tt People} e os números dos finais das conexões na tabela {\tt Follows}. Na
 tabela {\tt People}, podemos ver que as primeiras três pessoas foram visitadas
 e seus dados foram recuperados. Os dados na tabela {\tt Follows} indica que
@@ -1676,7 +1670,7 @@ foram dos amigos do {\tt drchuck}. Se você mostrou mais linhas da tabela
 Agora que iniciamos a construção de um modelo de dados colocando nossos dados
 dentro de múltiplas tabelas e linhas conectadas nestas tabelas utilizando
 {\bf chaves}, precisamos olhar para algumas terminologias sobre as chaves.
-Existem genericamentes três tipos de chaves que são utilizadas em um banco de
+Existem genericamente, três tipos de chaves que são utilizadas em um banco de
 dados.
 
 \begin{itemize}
@@ -1690,13 +1684,13 @@ dados.
 %logical key is how we look up a row from the outside world, it makes
 %little sense to allow multiple rows with the same value in the table.
 
-\item Um {\bf chave lógica} é uma chave que o ``mundo real'' pode usar para
-  checar uma linha. Na nossa modelagem, o campo {\tt name} é uma chave lógica.
-  Ele é o nome que usamos para o usuário e nós na verdade para uma linha de
-  usuário diversas vezes no nosso programa usando o campo {\tt name}. Você
+\item Uma {\bf chave lógica} é uma chave que o ``mundo real'' pode usar para
+  consultar um registro. Na nossa modelagem, o campo {\tt name} é uma chave lógica.
+  Ele é o nome que usamos para consultar um registro de
+  usuário diversas vezes no nosso programa, usando o campo {\tt name}. Você
   perceberá que faz sentido adicionar a restrição de {\tt UNIQUE} para uma
   chave lógica. Uma vez que é através de chaves lógicas que consultamos uma
-  linha do mundo exterior, faz um pouco de sentido permitir que múltiplas
+  linha do mundo exterior, faz pouco sentido permitir que múltiplas
   linhas tenham o mesmo valor em uma tabela.
   
 %\item A {\bf primary key} is usually a number that is assigned
@@ -1768,15 +1762,15 @@ SELECT * FROM Follows JOIN People
 \end{verbatim}
 \afterverb
 %
-The {\tt JOIN} clause indicates that the fields we are selecting
-cross both the {\tt Follows} and {\tt People} tables.  The {\tt ON}
-clause indicates how the two tables are to be joined:  Take the rows
-from {\tt Follows} and append the row from {\tt People} where the
-field \verb"from_id" in {\tt Follows} is the same the {\tt id} value
-in the {\tt People} table.
+%The {\tt JOIN} clause indicates that the fields we are selecting
+%cross both the {\tt Follows} and {\tt People} tables.  The {\tt ON}
+%clause indicates how the two tables are to be joined:  Take the rows
+%from {\tt Follows} and append the row from {\tt People} where the
+%field \verb"from_id" in {\tt Follows} is the same the {\tt id} value
+%in the {\tt People} table.
 
 %
-O {\tt JOIN} indica que o cmapo que utilizamos são selecionados cruzando ambas
+O {\tt JOIN} indica os campos que utilizamos para selecionar registros, cruzando ambas
 as tabelas {\tt Follows} e {\tt People}. A cláusula {\tt ON} indica como as
 duas tabelas devem ser unidas: Junta as linhas da tabela {\tt Follows} às da
 tabela {\tt People} onde o campo \verb"from_id" em {\tt Follows} tem o mesmo
@@ -1792,10 +1786,10 @@ valor do campo {\tt id} na tabela {\tt People}.
 %and the \verb"from_id" from {\tt People}, then JOIN creates a metarow 
 %for \emph{each} of the matching pairs of rows, duplicating data as needed.
 
-O resultado do {\tt JOIN} cria uma super ``metalinha'' que tem os dois campos
+O resultado do {\tt JOIN} cria uma super ``meta-linha'' que tem os dois campos
 da tabela {\tt People} que casam com os campos da tabela {\tt Follows}. Onde
 existir mais de uma ocorrência entre o campo {\tt id} e o \verb"from_id" da
-tabela {\tt People}, então o {\tt JOIN} cria uma ``metalinha'' para \emph{cada}
+tabela {\tt People}, então o {\tt JOIN} cria uma ``meta-linha'' para \emph{cada}
 par de linhas que correspondem, duplicando os dados conforme for necessário.
 
 %The following code demonstrates the data that we will have in the 
@@ -1847,7 +1841,7 @@ cur.close()
 
 %
 Neste programa, primeiro descarregamos a tabela {\tt People} e {\tt Follows} e
-depois descarregamos um subconjunto de dados das tabelas juntos.
+depois descarregamos um subconjunto de dados das tabelas juntas.
 
 %Here is the output of the program:
 
@@ -1884,8 +1878,8 @@ Connections for id=2:
 %set of rows is the result of the {\tt SELECT} with the {\tt JOIN} clause.
 
 %
-Você vê as colunas das tabelas {\tt People} e {\tt Follows} e por último
-conjunto de linhas é o resultado do {\tt SELECT} com o {\tt JOIN}.
+Você vê as colunas das tabelas {\tt People} e {\tt Follows} e por último, o
+conjunto de linhas que é o resultado do {\tt SELECT} com o {\tt JOIN}.
 
 %In the last select, we are looking for accounts that are friends of 
 %``opencontent'' (i.e., {\tt People.id=2}).
@@ -1903,8 +1897,8 @@ No último {\tt SELECT}, nós estamos procurando por contas que tem amigos de
 Em cada uma das ``meta-linhas'' da última seleção, as primeiras duas colunas
 são da tabela {\tt Follows} seguidas pelas colunas três até cinco da tabela
 {\tt People}. Você também pode ver que a segunda coluna (\verb"Follows.to_id")
-relaciona a terceira coluna ({\tt People.id}) em cada uma das ``meta-linha''
-que foram juntas.
+relaciona a terceira coluna ({\tt People.id}) em cada uma das ``meta-linhas''
+que foram unidas.
 
 %\section{Summary}
 \section{Sumário}
@@ -1922,7 +1916,7 @@ que foram juntas.
 Este capítulo cobriu os fundamentos para o uso, básico, de banco de dados no
 Python. É muito mais complicado escrever código para usar um banco de dados
 para armazenar informações do que dicionários ou arquivos com Python, então
-se existe poucas razões para utilizar um banco de dados, a menos que sua
+existem poucas razões para se utilizar um banco de dados, a menos que a sua
 aplicação realmente precise das capacidades de um banco de dados. As situações
 onde um banco de dados podem ser muito úteis são: (1) quando sua aplicação
 precisa realizar pequenas atualizações com um conjunto grande de dados, (2)
@@ -1946,9 +1940,9 @@ várias tabelas e conexões/relações entre as linhas em diferentes tabelas.
 Quando você começar a fazer relações entre as tabelas, é importante fazer
 algum planejamento e seguir as regras de normatização de banco de dados
 para fazer um melhor uso das capacidades dos bancos de dados. Uma vez que a
-principal motivação para utilizar um banco de dados é que você tem um grande
+principal motivação para utilizar um banco de dados é que você tenha um grande
 conjunto de dados para tratar, é importante modelar os dados eficientemente,
-assim seus programas poderão rodas tão rápido quanto for possível.
+assim seus programas poderão rodar tão rápido quanto for possível.
 
 %\section{Debugging}
 \section{Depuração}
@@ -1957,7 +1951,7 @@ assim seus programas poderão rodas tão rápido quanto for possível.
 %results using the SQLite Database Browser.  The browser allows you 
 %to quickly check to see if your program is working properly.
 
-É comum quando você está desenvolvendo um programa em Python para se conectar
+Algo comum quando se está desenvolvendo um programa em Python para se conectar
 em um banco de dados SQLite, é executar um programa para checar os resultados
 utilizando o Navegador SQLite. O navegador permitirá que rapidamente verifique
 se o seu programa está funcionando corretamente.
@@ -2061,7 +2055,7 @@ valores tem que ser únicos).
 
 \item[chave lógica:] Uma chave que o ``mundo externo'' utiliza para consultar
   uma linha em particular. Por exemplo em uma tabela de contas de usuários, o
-  email de uma pessoa pode ser um bom candidato a chave lógica para a
+  e-mail de uma pessoa pode ser um bom candidato a chave lógica para a
   informação de usuário.
   \index{chave lógica}
   
