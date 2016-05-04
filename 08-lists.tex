@@ -1267,8 +1267,6 @@ idênticos.
 %\index{equivalence}
 %\index{identity}
 
-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-
 Até agora estivemos utilizando a nomenclatura ``objeto'' ou ``valor'', mas, é
 mais preciso dizer que um objeto tem um valor. Se você executa 
 {\tt a = [1,2,3]}, {\tt a} refere-se a um objeto lista do qual o
@@ -1282,16 +1280,19 @@ elementos, diríamos que tem o mesmo valor.
 
 \index{objeto}
 \index{valor}
+%\index{object}
+%\index{value}
 
-
-\section{Aliasing}
+\section{Aliasing - Interferência entre variáveis}
+%\section{Aliasing}
 
 \index{aliasing}
 \index{aliasing!referência}
+%\index{aliasing}
+%\index{reference!aliasing}
 
 Se {\tt a} refere-se a um objeto e você atribui {\tt b = a},
-então ambas as varáveis referem-se ao mesmo objeto:
-
+então ambas as variáveis referem-se ao mesmo objeto:
 % If {\tt a} refers to an object and you assign {\tt b = a},
 % then both variables refer to the same object:
 
@@ -1308,23 +1309,21 @@ True
 A associação de uma variável com um objeto é chamada
 {\bf referência}. Neste exemplo existem duas referências para o
 mesmo objeto.
-
 % The association of a variable with an object is called a {\bf
 % reference}.  In this example, there are two references to the same
 % object.
 
 \index{referência}
+%\index{reference}
 
-Um objeto com mais de uma referência tem mais de uma nome,
-entâo dizemos que o objeto é {\bf aliased}.
-
+Um objeto com mais de uma referência tem mais de um nome,
+então dizemos que o objeto é {\bf aliased}.
 % An object with more than one reference has more
 % than one name, so we say that the object is {\bf aliased}.
 
 \index{mutabilidade}
 
-
-Se o objeto apelidade é mutável,
+Se o objeto {\bf aliased} é mutável,
 modificações feitas com um alias 
 afetará as outras:
 
@@ -1340,20 +1339,18 @@ afetará as outras:
 \end{verbatim}
 \afterverb
 %
+
 Embora este comportamento possa ser útil, é passível de erro. De maneira
-geral é mais seguro evitar aliasing quando você está trabalhando com objetos mutáveis.
-
-
+geral é mais seguro evitar {\bf aliasing} quando você está trabalhando com objetos mutáveis.
 %Although this behavior can be useful, it is error-prone.  In general,
 %it is safer to avoid aliasing when you are working with mutable
 %objects.
 
 \index{imutabilidade}
+%\index{mutability}
 
-Para objetos imutáveis como strings, aliasing não chega a ser um problema. 
+Para objetos imutáveis como strings, {\bf aliasing} não chega a ser um problema. 
 Neste exemplo:
-
-
 %For immutable objects like strings, aliasing is not as much of a
 %problem.  In this example:
 
@@ -1364,23 +1361,19 @@ b = 'banana'
 \end{verbatim}
 \afterverb
 %
-Isso quase nunca faz diferença se {\tt a} e {\tt b} fazem referência à mesma string ou não.
 
-
+Isso quase nunca faz diferença, se {\tt a} e {\tt b} fazem referência à mesma string ou não.
 %it almost never makes a difference whether {\tt a} and {\tt b} refer
 %to the same string or not.
 
-
 \section{Argumentos de Lista}
+%\section{List arguments}
 
 \index{como argumento!lista}
 \index{argumento}
 \index{lista!argumento}
 \index{referência}
 \index{parâmetro}
-
-%\section{List arguments}
-
 %\index{list!as argument}
 %\index{argument}
 %\index{argument!list}
@@ -1390,8 +1383,6 @@ Isso quase nunca faz diferença se {\tt a} e {\tt b} fazem referência à mesma 
 Quando você passa uma lista para uma função, a função pega uma referência para a lista.
 Se a função modifica a lista passada como argumento, o "caller" vê a mudança.
 Por exemplo, \verb"delete_head" remove o primeiro elemento da lista:
-
-
 %When you pass a list to a function, the function gets a reference
 %to the list.
 %If the function modifies a list parameter, the caller sees the change.
@@ -1405,7 +1396,6 @@ def delete_head(t):
 \afterverb
 %
 Aqui está como isto é utilizado:
-
 %Here's how it is used:
 
 \beforeverb
@@ -1417,14 +1407,13 @@ Aqui está como isto é utilizado:
 \end{verbatim}
 \afterverb
 %
-O parâmetro {\tt t} e a variável {\tt letters} são aliases para o mesmo objeto.
 
+O parâmetro {\tt t} e a variável {\tt letters} são {\bf aliases} para o mesmo objeto.
 %The parameter {\tt t} and the variable {\tt letters} are
 %aliases for the same object.
 
 Isso é importante para distinguir entre operações que modificam listas e operações que criam novas listas.
 Por exemplo, o método {\tt append} modifica uma lista, mas o operador {\tt +} cria uma nova lista:
-
 %It is important to distinguish between operations that
 %modify lists and operations that create new lists.  For
 %example, the {\tt append} method modifies a list, but the
@@ -1434,7 +1423,6 @@ Por exemplo, o método {\tt append} modifica uma lista, mas o operador {\tt +} c
 \index{append!método}
 \index{concatenada!lista}
 \index{lista!concatenada}
-
 %\index{append method}
 %\index{method!append}
 %\index{list!concatenation}
@@ -1459,8 +1447,7 @@ False
 \afterverb
 
 Esta diferença é importante quando você escreve funções que supostamente devem modificar listas.
-Por exemplo, a função \emph{does not} deleta o início de uma lista:
-
+Por exemplo, esta função \emph{não} deleta o início de uma lista:
 %This difference is important when you write functions that
 %are supposed to modify lists.  For example, this function
 %\emph{does not} delete the head of a list:
@@ -1474,23 +1461,17 @@ def bad_delete_head(t):
 
 O operador de fatiamento cria uma nova lista e a atribuição faz {\tt t} se referir a isto,
 porém nada disso tem efeito na lista passada como argumento.
-
-
-
 %The slice operator creates a new list and the assignment
 %makes {\tt t} refer to it, but none of that has any effect
 %on the list that was passed as an argument.
 
 \index{operador de fatiamento}
 \index{fatiamento!operador}
-
-
 %\index{slice operator}
 %\index{operator!slice}
 
 Uma alternativa é escrever uma função que cria e retorna uma nova lista.
 Por exemplo, {\tt tail} retorna tudo, menos o primeiro elemento de uma lista: 
-
 %An alternative is to write a function that creates and
 %returns a new list.  For
 %example, {\tt tail} returns all but the first
@@ -1503,9 +1484,9 @@ def tail(t):
 \end{verbatim}
 \afterverb
 %
+
 Esta função deixa a lista original inalterada.
 Aqui está como isto é utilizado:
-
 %This function leaves the original list unmodified.
 %Here's how it is used:
 
@@ -1518,33 +1499,29 @@ Aqui está como isto é utilizado:
 \end{verbatim}
 \afterverb
 
-
 \begin{ex}
 
 Escreva uma função chamada {\tt chop} que recebe uma lista e a modifica,
 removendo o primeiro e o último elementos e retorna {\tt None}.
-
-Então escreva uma função chamada {\tt middle} que recebe uma lista e retorna
-uma nova lista que contenha tudo menos o primeiro e o último elementos.
-
 %Write a function called {\tt chop} that takes a list and modifies
 %it, removing the first and last elements, and returns {\tt None}.
 
+Então escreva uma função chamada {\tt middle} que recebe uma lista e retorna
+uma nova lista que contenha tudo menos o primeiro e o último elementos.
 %Then write a function called {\tt middle} that takes a list and
 %returns a new list that contains all but the first and last
 %elements.
 
 \end{ex}
 
+\section{Depurando}
+\index{depurando}
+%\section{Debugging}
+%\index{debugging}
 
-\section{Debugging}
-\index{debugging}
-
-O uso descuidado de listas ( e outros objetos mutáveis) 
-pode levar a longas horas de debugging. Aqui estão algumas das
+O uso descuidado de listas (e outros objetos mutáveis) 
+pode levar a longas horas de depuração. Aqui estão algumas das
 armadilhas mais comuns e maneiras de evitá-las.
-
-
 %Careless use of lists (and other mutable objects)
 %can lead to long hours of debugging.  Here are some common
 %pitfalls and ways to avoid them:
@@ -1554,14 +1531,11 @@ armadilhas mais comuns e maneiras de evitá-las.
 \item Não esqueça que a maioria dos métodos de lista modificam o argumento
   e retornam {\tt None}. Isto é o oposto dos métodos de string, os quais retornam
   uma nova string e deixam o original inalterado.
-
-Se você está acostumado a escrever código para strings assim:
-
-
 %\item Don't forget that most list methods modify the argument and
 %  return {\tt None}.  This is the opposite of the string methods,
 %  which return a new string and leave the original alone.
 
+Se você está acostumado a escrever código para strings assim:
 %If you are used to writing string code like this:
 
 \beforeverb
@@ -1581,22 +1555,21 @@ t = t.sort()           # ERRADO!
 
 \index{método sort}
 \index{sort!método}
+%\index{sort method}
+%\index{method!sort}
 
 Por {\tt sort} retornar {\tt None}, a
-próxima operação que você realizar com {\tt tt} provalmente falhará.
-
-Antes de usar métodos e operadores de lista você deveria ler a documentação com
-cuidado e então testá-los no modo interativo. Os métodos e operadores que as listas
-compartilham com outras sequências ( como strings ) são documentados em
-\url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
-Os métodos e operadores que se aplicam apenas a sequências mutáveis são documentados
-em
-\url{https://docs.python.org/2/library/stdtypes.html#mutable-sequence-types}.
-
-
+próxima operação que você executar com {\tt tt} provavelmente falhará.
 %Because {\tt sort} returns {\tt None}, the
 %next operation you perform with {\tt t} is likely to fail.
 
+Antes de usar métodos e operadores de lista você deveria ler a documentação com
+cuidado e então testá-los no modo interativo. Os métodos e operadores que as listas
+compartilham com outras sequências (como strings) são documentados em
+\url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
+Os métodos e operadores que se aplicam apenas a sequências mutáveis são documentados
+em:
+\url{https://docs.python.org/2/library/stdtypes.html#mutable-sequence-types}.
 %Before using list methods and operators, you should read the
 %documentation carefully and then test them in interactive mode.  The
 %methods and operators that lists share with other sequences (like
@@ -1608,23 +1581,20 @@ em
 
 \item Pegue um idioma e fique como ele.
 \index{idioma}
-
 %\item Pick an idiom and stick with it.
 %\index{idiom}
 
 Parte do problema com listas é que existem muitas maneiras 
 de fazer as coisas. Por exemplo, para remover um elemento
 de uma lista, você pode usar {\tt pop}, {\tt remove}, {\tt del},
-ou mesmo atribuição de um fatiamento ( slice ).
-
-Para adicionar um elemento, você pode utilizar oe método {\tt append} 
-ou o operador {\tt +}. Mas não esqueça que esses estão corretos:
-
+ou mesmo atribuição de um fatiamento (slice).
 %Part of the problem with lists is that there are too many
 %ways to do things.  For example, to remove an element from
 %a list, you can use {\tt pop}, {\tt remove}, {\tt del},
 %or even a slice assignment.
 
+Para adicionar um elemento, você pode utilizar os métodos {\tt append} 
+ou o operador {\tt +}. Mas não esqueça que esses estão corretos:
 %To add an element, you can use the {\tt append} method or
 %the {\tt +} operator.  But don't forget that these are right: 
 
@@ -1651,7 +1621,6 @@ Experimente cada um desses exemplos no modo interativo para ter
 certeza que você entende o que eles fazem. Note que apenas o último
 causa um erro de runtime; os outros três são legais, mas fazem a coisa
 errada.
-
 %Try out each of these examples in interactive mode to make sure
 %you understand what they do.  Notice that only the last
 %one causes a runtime error; the other three are legal, but they
@@ -1659,21 +1628,16 @@ errada.
 
 
 \item Faça cópias para evitar aliasing.
+%\item Make copies to avoid aliasing.
 
 \index{copiando para evitar! aliasing}
 \index{copiar!para evitar aliasing}
-
-
-%\item Make copies to avoid aliasing.
-
 %\index{aliasing!copying to avoid}
 %\index{copy!to avoid aliasing}
 
 Se você quer usar um método como {\tt sort} que modifica
 o argumento, mas você também precisa manter a lista original,
 você pode fazer uma cópia.
-
-
 %If you want to use a method like {\tt sort} that modifies
 %the argument, but you need to keep the original list as
 %well, you can make a copy.
@@ -1686,9 +1650,8 @@ t.sort()
 \afterverb
 
 Neste exemplo você também pode usar a função built-in {\tt sorted},
-a qual retorna uma nova lista ordenada e deixa a original inalterda.
+a qual retorna uma nova lista ordenada e deixa a original inalterada.
 Mas, neste caso você deve evitar {\tt sorted} como um nome de variável!
-
 %In this example you could also use the built-in function {\tt sorted},
 %which returns a new, sorted list and leaves the original alone.
 %But in that case you should avoid using {\tt sorted} as a variable
@@ -1698,11 +1661,10 @@ Mas, neste caso você deve evitar {\tt sorted} como um nome de variável!
 %\item Lists, {\tt split}, and files
 
 Quando lemos e analisamos arquivos, existem muitas oportunidades
-para encontrar entrada que pode causar falha em nosso programa,
-então é uma boa idéia revisitar o padrão {\bf protetor} quando
+para encontrar entradas que podem causar falhas em nosso programa,
+então é uma boa ideia revisitar o padrão {\bf protetor} quando
 se trata de escrever programas que leiam de um arquivo e procurem
 por uma ``agulha no palheiro''.
-
 %When we read and parse files, there are many opportunities
 %to encounter input that can crash our program so it is a good 
 %idea to revisit the {\bf guardian} pattern when it comes
@@ -1711,7 +1673,6 @@ por uma ``agulha no palheiro''.
 
 Vamos revisitar nosso programa que procura pelo dia da semana
 nas linhas do nosso arquivo:
-
 %Let's revisit our program that is looking for the day of the
 %week on the from lines of our file:
 
@@ -1725,8 +1686,6 @@ Já que estamos quebrando esta linha em palavras, poderíamos distribuir
 isso com o uso do {\tt startswith} e simplesmente olhar a primeira palavra
 da linha para determinar se estamos interessados na linha. Podemos usar {\tt continue} 
 para pular linhas que não possuem ``From'' como primeira palavra:
-
-
 %Since we are breaking this line into words, we could dispense
 %with the use of {\tt startswith} and simply look at the 
 %first word of the line to determine if we are interested
@@ -1743,6 +1702,7 @@ for line in fhand:
 \end{verbatim}
 \afterverb
 %
+
 Isso parece muito mais simples e nós nem mesmo precisamos fazer o
 {\tt rstrip} para remover o newline ao final do arquivo.
 Mas, é melhor assim?
@@ -1761,23 +1721,21 @@ IndexError: list index out of range
 \end{verbatim}
 \afterverb
 %
+
 Funciona de certa maneira e vemos o dia da primeira
 (Sat), mas então o programa falha com um erro traceback.
-O que deu errado? Que dados bagunçado causaram a falha do
+O que deu errado? Que dados bagunçados causaram a falha do
 nosso elegante, inteligente e Pythonico programa?
-
 %It kind of works and we see the day from the first line
 %(Sat), but then the program fails with a traceback error.
 %What went wrong?  What messed-up data caused our elegant, 
 %clever, and very Pythonic program to fail?
 
 Você pode ficar olhando por um longo tempo e tentar decifrá-lo ou
-pedir ajuda para alguém, porém abordagem mais rápida e inteligente
+pedir ajuda para alguém, porém a abordagem mais rápida e inteligente
 é adicionar um {\tt print}. O melhor lugar para colocar um print é
 logo antes da linha onde o programa falhou e imprimir os dados que 
 parecem estar causando a falha.
-
-
 %You could stare at it for a long time and puzzle through
 %it or ask someone for help, but the quicker and smarter
 %approach is to add a {\tt print} statement.  The best place
@@ -1787,10 +1745,9 @@ parecem estar causando a falha.
 
 Essa abordagem deve gerar muitas linhas na saída do programa,
 mas, ao menos você imediatamente terá alguma pista sobre o problema.
-Então adicione um print da varável {\tt words} logo antes da linha cinco.
+Então adicione um print da variável {\tt words} logo antes da linha cinco.
 Nós até mesmo colocamos um prefixo: ``Debug:'' na linha, assim podemos 
 manter nossa saída normal separada da saída de debug.
-
 %Now this approach may generate a lot of lines of output, but
 %at least you will immediately have some clue as to the 
 %problem at hand.  So we add a print of the variable
@@ -1811,7 +1768,6 @@ for line in fhand:
 Quando executamos o programa, há muita saída passando pela tela,
 mas ao fim vemos nossa saída de debug e um traceback, dessa forma
 sabemos o que aconteceu antes do traceback.
-
 %When we run the program, a lot of output scrolls off the screen
 %but at the end, we see our debug output and the traceback so 
 %we know what happened just before the traceback.
@@ -1828,11 +1784,11 @@ IndexError: list index out of range
 \end{verbatim}
 \afterverb
 %
-Cada linha de debug imprime uma lista de palavras que temos quando
-quando dividimos {\tt split}  a linha em palavras. Quando o programa
-falha, a lista de palavras está vazia \verb"[]". Se abrimos um arquivo
-em um editor de texto e olharmos neste ponto, ele parecerá conforme a seguir:
 
+Cada linha de debug imprime uma lista de palavras que temos quando
+quando dividimos a linha em palavras {\tt split}. Quando o programa
+falha, a lista de palavras está vazia \verb"[]". Se abrirmos um arquivo
+em um editor de texto e olharmos neste ponto, ele parecerá conforme a seguir:
 %Each debug line is printing the list of words which we get
 %when we {\tt split} the line into words.  When the program fails,
 %the list of words is empty \verb"[]".  If we open the file in a
@@ -1849,12 +1805,11 @@ Detalhes: http://source.sakaiproject.org/viewsvn/?view=rev&rev=39772
 \end{verbatim}
 \afterverb
 %
-O error ocorre quando nosso programa encontra uma linha em branco! Claro, uma linha em
+
+O erro ocorre quando nosso programa encontra uma linha em branco! Claro, uma linha em
 branco tem ``zero palavras''. Porque não pensamos nisso quando estávamos escrevendo o código?
 Quando o código procura pela primeira palavra (\verb"word[0]") para ver se encontra ``From'',
 nós então temos um erro ``index out of range''.
-
-
 %The error occurs when our program encounters a blank line! Of course there
 %are ``zero words'' on a blank line.  Why didn't we think of that 
 %when we were writing the code?  When the code looks for the first
@@ -1864,9 +1819,7 @@ nós então temos um erro ``index out of range''.
 Este é claro, o lugar perfeito para adicionar algum código {\bf protetor} para
 evitar a checagem da primeira palavra caso ela não exista.
 Existem muitas maneiras de proteger este código; escolheremos checar
-o número de palavras que temos antes de olharmos a primeira palavras:
-
-
+o número de palavras que temos antes de olharmos a primeira palavra:
 %This of course is the perfect place to add some {\bf guardian} code 
 %to avoid checking the first word if the first word is not there.
 %There are many ways to protect this code; we will choose to 
@@ -1885,11 +1838,11 @@ for line in fhand:
 \end{verbatim}
 \afterverb
 %
-Primeiramente comentamos o print de debug ao invés de remove-lo,
-para caso nossa modificação falhe e precisarmos investigar novamente.
+
+Primeiramente, comentamos o print de debug ao invés de removê-lo,
+para caso nossa modificação falhe, precisaremos investigar novamente.
 Então adicionamos uma instrução protetora que verifica se temos zero palavras, caso positivo,
 usamos {\tt continue} para pular para a próxima linha no arquivo.
-
 %First we commented out the debug print statement instead of removing it, 
 %in case our modification fails and we need to debug again.  Then we added
 %a guardian statement that checks to see if we have zero words, and if so, 
@@ -1897,40 +1850,30 @@ usamos {\tt continue} para pular para a próxima linha no arquivo.
 
 Podemos pensar nas duas instruções {\tt continue} nos ajudando a refinar
 o conjunto de linhas que são ``interessantes'' para nós e quais queremos
-processar mais um pouco. Uma linha que não tenha palavras é ``não é interessante''
- para nós então, pulamos para a próxima linha. Uma linha que não tenha ``From''
- como a sua primeira palavra não é interessante para nós, então nós a pulamos.
-
+processar mais um pouco. Uma linha que não tenha palavras ``não é interessante''
+para nós então, pulamos para a próxima linha. Uma linha que não tenha ``From''
+como a sua primeira palavra não é interessante para nós, então nós a pulamos.
 %We can think of the two {\tt continue} statements as helping us refine
 %the set of lines which are ``interesting'' to us and which we want 
 %to process some more.  A line which has no words is ``uninteresting'' to 
 %us so we skip to the next line.  A line which does not have ``From''
 %as its first word is uninteresting to us so we skip it.
 
-O programado jeito que foi modificado agora executa com sucesso, então talvez está correto.
-Nossa instrução protetora assegurará que {\tt words[0]} nuncá falhará,
+O programa, da forma como foi modificado, executa com sucesso, então talvez esteja correto.
+Nossa instrução protetora assegurará que {\tt words[0]} nunca falhará,
 mas talvez isso não seja o suficiente. Quando estamos programando, devemos sempre estar pensando,
 ``O que pode dar errado?''
-
 %The program as modified runs successfully, so perhaps it is correct.  Our
 %guardian statement does make sure that the {\tt words[0]} will never fail, 
 %but perhaps it is not enough.  When we are programming, we must always be 
 %thinking, ``What might go wrong?''
 
 \begin{ex}
-Descubra qual a linha do programa acima ainda não está corretamente protegida.
-Veja se você pode construir uma arquivo de texto que causará falha no programa e
+Descubra qual linha do programa acima, ainda não está corretamente protegida.
+Veja se você pode construir um arquivo de texto que causará falha no programa e
 então modifique o programa para que então a linha esteja corretamente protegida e
 teste para ter certeza de que o programa processará o novo arquivo de texto.
 \end{ex}
-
-\begin{ex}
-Reescreva o código protetor no exemplo acima sem as duas instruções {\tt if}. Ao invés
-disso, use uma expressão lógica combinada com o operador lógico {\tt and} com apenas uma
-instrução {\tt of}.
-\end{ex}
-
-\end{enumerate}
 %\begin{ex}
 %Figure out which line of the above program is still not properly guarded.
 %See if you can construct a text file which causes the program to fail
@@ -1938,111 +1881,100 @@ instrução {\tt of}.
 %test it to make sure it handles your new text file.
 %\end{ex}
 
+\begin{ex}
+Reescreva o código protetor, no exemplo acima, sem as duas instruções {\tt if}. Ao invés
+disso, use uma expressão lógica combinada com o operador lógico {\tt and} com apenas uma
+instrução {\tt if}.
+\end{ex}
 %\begin{ex}
 %Rewrite the guardian code in the above example without two
 %{\tt if} statements.  Instead, use a compound logical expression using the
 %{\tt and} logical operator with a single {\tt if} statement.
 %\end{ex}
 
-
-
+\end{enumerate}
 
 \section{Glossário}
-
 %\section{Glossary}
 
 \begin{description}
 
-\item[aliasing:] Uma circunstância onde duas ou mais varáveis se referem ao mesmo objeto.
+\item[aliasing:] Uma circunstância onde duas ou mais variáveis, referem-se ao mesmo objeto.
 \index{aliasing}
+%\item[aliasing:] A circumstance where two or more variables refer to the same
+%object.
+%\index{aliasing}
 
-\item[delimitador:] Um caracter ou string usado para indicar onde uma string deve ser dividida.
+\item[delimitador:] Um caractere (ou string) usada para indicar onde uma string deve ser dividida.
 \index{delimitador}
+%\item[delimiter:] A character or string used to indicate where a
+%string should be split.
+%\index{delimiter}
 
 \item[elemento:] Um dos valores em uma lista (ou outra sequência);
-também chamado de ítens.
+também chamado de itens.
 \index{elemento}
+%\item[element:] One of the values in a list (or other sequence);
+%also called items.
+%\index{element}
 
 \item[equivalente:] Ter os mesmos valores.
 \index{equivalente}
+%\item[equivalent:] Having the same value.
+%\index{equivalent}
 
 \item[index:] Um valor inteiro que indica um elemento em uma lista.
 \index{index}
 
 \item[idêntico:] É o mesmo objeto (o que indica equivalência).
 \index{idêntico}
-
-\item[lista:] Uma sequência de valores.
-\index{lista}
-
-\item[percorrer lista:] Acesso sequencial a cada elemento de uma lista.
-\index{lista!percorrer}
-
-\item[lista aninhada:] Uma lista que é um elemento de outra lista.
-\index{lista aninhada}
-
-\item[objeto:] Algo a que uma variável pode se referir. Uma objeto tem um tipo e valor.
-\index{objeto}
-
-\item[referência:] Uma associação entre uma varável e seu valor.
-\index{referência}
-
-%\item[aliasing:] A circumstance where two or more variables refer to the same
-%object.
-%\index{aliasing}
-
-%\item[delimiter:] A character or string used to indicate where a
-%string should be split.
-%\index{delimiter}
-
-%\item[element:] One of the values in a list (or other sequence);
-%also called items.
-%\index{element}
-
-%\item[equivalent:] Having the same value.
-%\index{equivalent}
-
 %\item[index:] An integer value that indicates an element in a list.
 %\index{index}
 
+\item[lista:] Uma sequência de valores.
+\index{lista}
 %\item[identical:] Being the same object (which implies equivalence).
 %\index{identical}
 
+\item[percorrer lista:] Acesso sequencial a cada elemento de uma lista.
+\index{lista!percorrer}
 %\item[list:] A sequence of values.
 %\index{list}
 
+\item[lista aninhada:] Uma lista que é um elemento de outra lista.
+\index{lista aninhada}
 %\item[list traversal:] The sequential accessing of each element in a list.
 %\index{list!traversal}
 
+\item[objeto:] Algo a que uma variável pode se referir. Uma objeto tem um tipo e valor.
+\index{objeto}
 %\item[nested list:] A list that is an element of another list.
 %\index{nested list}
 
+\item[referência:] Uma associação entre uma variável e seu valor.
+\index{referência}
 %\item[object:] Something a variable can refer to.  An object
 %has a type and a value.
 %\index{object}
 
-%\item[reference:] The association between a variable and its value.
-%\index{reference}
-
 \end{description}
 
-
-\section{Exercises}
+\section{Exercícios}
 
 \begin{ex}
-Faça download de uma cópia do arquivo em
+Faça o download de uma cópia do arquivo em
 %Download a copy of the file from 
 \url{www.py4inf.com/code/romeo.txt}
 \index{Romeo and Juliet}
 
 Escreva um programa para abrir o arquivo {\tt romeo.txt}
-e ler linha por linha. Para cada linha divida a linha em uma lista
+e ler linha por linha. Para cada linha, divida a linha em uma lista
 de palavras usando a função {\tt split}.
 %Write a program to open the file {\tt romeo.txt} and read it
 %line by line.  For each line, split the line into  a list of 
 %words using the {\tt split} function.
 
-Para cada palavra verifique se a palavra já está em uma lista.
+Para cada palavra, verifique se a palavra já está em uma lista.
 Se a palavra não está na lista, adicione à lista.
 %For each word, check to see if the word is already in a list.  
 %If the word is not in the list, add it to the list.  
@@ -2074,17 +2006,16 @@ que é a segunda palavra na linha do From.
 
 {\tt From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008 }
 
-Você irá analisar a linha do From a imprimir a segunda palavra
+Você irá analisar a linha do From, imprimir a segunda palavra
 para cada linha com From, então você também contará o número de 
 linhas com From ( e não From:) e imprimirá e calculará ao final.
-
-Este é um bom exemplo de saída com algumas linhas removidas:
-
 %You will parse the From line and print out the second word for 
 %each From line, then you will also count the number of 
 %From (not From:) lines and print out a count at the end.
 
+Este é um bom exemplo de saída com algumas linhas removidas:
 %This is a good sample output with a few lines removed:
+
 \beforeverb
 \begin{verbatim}
 python fromcount.py 
@@ -2100,21 +2031,19 @@ cwen@iupui.edu
 cwen@iupui.edu
 cwen@iupui.edu
 Existiam 27 linhas no arquivos onde From era a primeira palavra
-%There were 27 lines in the file with From as the first word
 \end{verbatim}
 \afterverb
 %
 \end{ex}
 
 \begin{ex}
+
 Reescreva o programa que leva o usuário para uma lista de 
 números e imprime o máximo e o mínimo para os números no fim 
 quando o usuário digita ``done''. Escreva um programa para armazenar
-em uma lista os números que o usuário digitar e use as funções
+em uma lista, os números que o usuário digitar e use as funções
 {\tt max()} e {\tt min()} para calcular o máximo e o mínimo ao fim
 do loop.
-
-
 %Rewrite the program that prompts the user for a list of 
 %numbers and prints out the maximum and minimum of the
 %numbers at the end when the user enters ``done''.  Write
@@ -2138,4 +2067,3 @@ Minimum: 2.0
 %
 
 \end{ex}
-
