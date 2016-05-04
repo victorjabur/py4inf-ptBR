@@ -1,0 +1,957 @@
+% LaTeX source for ``Python for Informatics: Exploring Information''
+% Copyright (c)  2010-  Charles R. Severance, All Rights Reserved
+
+%\chapter{Iteration}
+%\index{iteration}
+\chapter{Interação}
+\index{interação}
+
+%\section{Updating variables}
+%\label{update}
+\section{Atualizando variáveis}
+\label{atualizar}
+
+%\index{update}
+%\index{variable!updating}
+\index{atualizar}
+\index{varivável!atualizando}
+
+% common pattern in assignment statements is an assignment statement
+%that updates a variable -- 
+%where the new value of the variable depends on the old.
+
+Um padrão comum nas instruções de atribuição é uma instrução de atribuição
+que atualiza uma variável -- onde o novo valor da variável depende da antiga.
+
+\beforeverb
+\begin{verbatim}
+x = x+1
+\end{verbatim}
+\afterverb
+%
+%This means ``get the current value of {\tt x}, add 1, and then
+%update {\tt x} with the new value.''
+
+%
+Isto significa ``pega o valor atual de {\tt x}, adicione 1, e depois atualize
+{\tt x} com o novo valor.''
+
+%If you try to update a variable that doesn't exist, you get an
+%error, because Python evaluates the right side before it assigns
+%a value to {\tt x}:
+
+Se você tentar atualizar uma variável que não existe, você receberá um erro,
+porque Python avalia o lado direito antes de atribuir um valor a {\tt x}:
+
+\beforeverb
+\begin{verbatim}
+>>> x = x+1
+NameError: name 'x' is not defined
+\end{verbatim}
+\afterverb
+%
+%Before you can update a variable, you have to {\bf initialize}
+%it, usually with a simple assignment:
+
+Antes de você atualizar uma variável, é necessário {\bf inicializá-la},
+usualmente com uma simples atribuição:
+
+%\index{initialization (before update)}
+\index{inicialização (antes de atualizar)}
+
+\beforeverb
+\begin{verbatim}
+>>> x = 0
+>>> x = x+1
+\end{verbatim}
+\afterverb
+%
+%Updating a variable by adding 1 is called an {\bf increment};
+%subtracting 1 is called a {\bf decrement}.
+
+%
+Atualizando uma variável, adicionando 1, é o que chamamos {\bf incremento};
+subtraindo 1 é o que chamamos de {\bf decremento}.
+
+%\index{increment}
+%\index{decrement}
+\index{incremento}
+\index{drecremento}
+
+%\section{The {\tt while} statement}
+\section{A condição {\tt while}}
+
+%\index{statement!while}
+%\index{while loop}
+%\index{loop!while}
+%\index{iteration}
+
+\index{condição!while}
+\index{laço while}
+\index{laço!while}
+\index{interação}
+
+%Computers are often used to automate repetitive tasks.  Repeating
+%identical or similar tasks without making errors is something that
+%computers do well and people do poorly.
+%Because iteration is so common, Python provides several
+%language features to make it easier.  
+
+Computadores são normalmente utilizado para automatizar tarefas repetitivas.
+A repetição de tarefas identicas ou similares sem produzir erros é algo
+computadores fazem bem e pessoal não muito. Pelo fato de iterações serem tão
+comuns, Python disponibiliza muitas funcionalidades para tornar isto fácil.
+
+%One form of iteration in Python is the {\tt while} statement.  Here is 
+%a simple program that counts down from five and then says ``Blastoff!''.
+
+Uma das formas de iterações em Python é a declaração {\tt while}. Aqui está
+um programa simples que realiza uma contagem regressiva a partir de cinco e
+depois diz ``Blastoff!''.
+
+\beforeverb
+\begin{verbatim}
+n = 5
+while n > 0:
+    print n
+    n = n-1
+print 'Blastoff!'
+\end{verbatim}
+\afterverb
+%
+%You can almost read the {\tt while} statement as if it were English.
+%It means, ``While {\tt n} is greater than 0,
+%display the value of {\tt n} and then reduce the value of
+%{\tt n} by 1.  When you get to 0, exit the {\tt while} statement and
+%display the word {\tt Blastoff!}''
+
+%
+Você quase pode ler a declaração {\tt while} como se ela fosse escrita em
+Inglês. Ou seja, ``Enquanto {\tt n} for maior que 0, mostre o valor de {\tt n}
+e então subtraia o valor de {\tt n} em 1. Quando chegar ao 0, saia da
+declaração do {\tt while} e mostra a palavra {\tt Blastoff!}''.
+
+%\index{flow of execution}
+\index{fluxo de execução}
+
+%More formally, here is the flow of execution for a {\tt while} statement:
+%Formalmente, este é o fluxo de execução de uma declaração {\tt while}:
+
+\begin{enumerate}
+
+%\item Evaluate the condition, yielding {\tt True} or {\tt False}.
+\item Avalia a condição, produzindo {\tt True} ou {\tt False}.
+
+%\item If the condition is false, exit the {\tt while} statement
+%and continue execution at the next statement.
+\item Se a condição for falsa, sai da declaração do {\tt while} e continuar
+	a execução para a próxima declaração.
+
+%\item If the condition is true, execute the
+%body and then go back to step 1.
+\item Se a condição for verdadeira, executa o corpo do {\tt while} e depois
+	volta para o passo 1.
+
+\end{enumerate}
+
+%This type of flow is called a {\bf loop} because the third step
+%loops back around to the top.  We call each time we execute the body of 
+%the loop an {\bf iteration}.  For the above loop, we 
+%would say, ``It had five iterations'', which means that the body of
+%the loop was executed five times.
+
+Este tipo de fluxo é chamado de {\bf laço} ({\it loop}) devido ao terceiro
+passo que retorna para o início da declaraçã. Chamamos cada vez que executamos
+o corpo do laço de {\bf iteração}. Para o laço anterior, podemos dizer que,
+``tem cinco iterações'', que significa que o corpo do laço será executado
+cinco vezes.
+
+%\index{condition}
+%\index{loop}
+%\index{body}
+\index{condição}
+\index{laço}
+\index{corpo}
+
+%The body of the loop should change the value of one or more variables
+%so that eventually the condition becomes false and the loop
+%terminates.  
+%We call the variable that changes each time the loop
+%executes and controls when the loop finishes the 
+%{\bf iteration variable}.
+%If there is no iteration variable, the loop will repeat forever, 
+%resulting in an {\bf infinite loop}.  
+
+O corpo do laço deve mudar o valor de uma ou mais variáveis para que a
+condição eventualmente se torne fals e o laço termine. Podemos chamar a
+variável que muda a cada vez que o laço executa e controla quando ele irá
+terminar de {\bf variável de iteração}. Se não houver variável de iteração,
+o laço irá se repetir para sempre, resultando em um {\bf laço infinito}.
+
+%\section{Infinite loops}
+\section{Laços infinitos}
+
+%An endless source of amusement for 
+%programmers is the observation that the directions on shampoo,
+%``Lather, rinse, repeat,'' are an infinite loop because 
+%there is no {\bf iteration variable} telling you how many times
+%to execute the loop.
+
+Um recurso interminável de diversão para programadores é a observação do ato
+de se ensaboar, ``ensaboe, enxague e repita'', é um laço infinito porque não
+há variável de iteração dizendo quantas vezes o laço deve ser executado.
+
+%\index{infinite loop}
+%\index{loop!infinite}
+\index{laço infinito}
+\index{laço!infinito}
+
+%In the case of {\tt countdown}, we can prove that the loop
+%terminates because we know that the value of {\tt n} is finite, and we
+%can see that the value of {\tt n} gets smaller each time through the
+%loop, so eventually we have to get to 0.  Other times a loop is obviously
+%infinite because it has no iteration variable at all.
+
+No caso de {\tt contagem regressiva}, nós provamos que o laço terminou porque
+sabemos que o valor de {\tt n} é finito, e podemos ver que o valor de {\tt n}
+diminui cada vez que passa pelo laço, então eventualmente nós teremos 0. Em
+outros casos o laço é obviamente infinito porque não tem variável de iteração.
+
+%\section{``Infinite loops'' and {\tt break}}
+%\index{break statement}
+%\index{statement!break}
+
+\section{``Laços infinitos'' e {\tt break}}
+\index{declaração break}
+\index{declaração!break}
+
+%Sometimes you don't know it's time to end a loop until you get half
+%way through the body.  In that case you can write an infinite loop on purpose
+%and then use the {\tt break} statement to jump out of the loop.
+
+Algumas vezes você não sabe se é hora de acabar o laço até que você percorra
+metade do corpo. Neste caso você pode escrever um laço infinito de propósito
+e então usar a declaração {\tt break} para sair do laço.
+
+%This loop is obviously an {\bf infinite loop} because the logical 
+%expression on the
+%{\tt while} statement is simply the logical constant {\tt True}:
+
+Este laço é obviamente um {\bf laço infinito} porque a expressão lógica do
+{\tt while} é a constante lógica {\tt True}
+
+\beforeverb
+\begin{verbatim}
+n = 10
+while True:
+    print n, 
+    n = n - 1
+print 'Done!'
+\end{verbatim}
+\afterverb
+%
+%If you make the mistake and run this code, you will learn quickly how
+%to stop a runaway Python process on your system or find where the power-off
+%button is on your computer.  
+%This program will 
+%run forever or until your battery runs out 
+%because the logical expression at the top of the loop 
+%is always true by virtue of the fact that the expression is the 
+%constant value {\tt True}.
+
+%
+Se você cometer o erro e executar este código, você aprenderá rapidamente como
+parar um processo Python no seu sistema ou onde está o botão de desligar do
+seu computador. Este programa executará eternamente ou até que sua bateria
+acabe por que a expressão lógica no início do laço será sempre verdadeiro
+em virtude do fato que a expressão é o valor constante {\tt True}.
+
+%While this is a dysfunctional infinite loop, we can still use this pattern
+%to build useful loops as long as we carefully add code to the 
+%body of the loop to explicitly exit the loop using {\tt break} 
+%when we have reached 
+%the exit condition.
+
+Enquanto este laço é um laço infinito disfuncional, nós continuamos utilizando
+este padão para construir laços úteis desde que adicionemos código de forma
+cuidadosa no corpo do laço para explicitamente sair do laço utilizando 
+{\tt break} quando alcançarmos a condição de saída.
+
+%For example, suppose you want to take input from the user until they
+%type {\tt done}.  You could write:
+
+Por exemplo, suponha que você queira obter a entrar do usuário, até que ele
+digite {\tt done}. Podemos escrver:
+
+\beforeverb
+\begin{verbatim}
+while True:
+    line = raw_input('> ')
+    if line == 'done':
+        break
+    print line
+print 'Done!'
+\end{verbatim}
+\afterverb
+%
+%The loop condition is {\tt True}, which is always true, so the
+%loop runs repeatedly until it hits the break statement.
+
+%
+A condição do laço é {\tt True}, ou seja, é sempre verdade, então o laço
+executará de forma repetida até que chegue a declaração do {\tt break}.
+
+%Each time through, it prompts the user with an angle bracket.
+%If the user types {\tt done}, the {\tt break} statement exits
+%the loop.  Otherwise the program echoes whatever the user types
+%and goes back to the top of the loop.  Here's a sample run:
+
+Em cada vezes, pergunta-se ao usuário com um sinal de menor. Se o usuário
+digitar {\tt done}, a declaração {\tt break} sai do laço. Caso contrário, o
+programa irá imprimir qualquer coisa que o usuáro digitar e retornar para o
+início do laço. Veja um exemplo:
+
+\beforeverb
+\begin{verbatim}
+> hello there
+hello there
+> finished
+finished
+> done
+Done!
+\end{verbatim}
+\afterverb
+%
+%This way of writing {\tt while} loops is common because you
+%can check the condition anywhere in the loop (not just at the
+%top) and you can express the stop condition affirmatively
+%(``stop when this happens'') rather than negatively (``keep going
+%until that happens.'').
+
+%
+Esta forma de escrever um laço {\tt while} é muito comum, porque você pode
+verificar a condição em qualquer lugar do laço (não somente no início) e
+pode definir explicitamente a condição de parar (``pare quando isto acontecer'')
+contrário de negativamente (``continue até que isto aconteça.'').
+
+%\section{Finishing iterations with {\tt continue}}
+%\index{continue statement}
+%\index{statement!continue}
+
+\section{Terminando as iterações com {\tt continue}}
+\index{declaração continue}
+\index{declaração!continue}
+
+%Sometimes you are in an iteration of a loop and want to finish the
+%current iteration and immediately jump to the next iteration.
+%In that case you can use the {\tt continue}
+%statement to skip to the next iteration without finishing the
+%body of the loop for the current iteration.
+
+Algumas vezes você está em uma iteração de um laço e quiser acabar a iteração
+atual e pular para a próxima iteração. Neste caso você pode utilizar a
+declaração {\tt continue} para passar para a próxima iteração sem terminar o
+corpo do laço da iteração atual.
+
+%Here is an example of a loop that copies its input until the user
+%types ``done'', but treats lines that start with the hash character
+%as lines not to be printed (kind of like Python comments).
+
+Aqui temos um exemplo de um laço que copia sua entrada até que o usuário
+digite ``done'', mas trata a linha que inicia com um caractere cerquilha
+{\tt #} como linha para não ser impressa (como um comentário em Python).
+
+\beforeverb
+\begin{verbatim}
+while True:
+    line = raw_input('> ')
+    if line[0] == '#' :
+        continue
+    if line == 'done':
+        break
+    print line
+print 'Done!'
+\end{verbatim}
+\afterverb
+%
+%Here is a sample run of this new program with {\tt continue} added.
+
+%
+Aqui temos um exemplo deste novo programa com o uso do {\tt continue}.
+
+\beforeverb
+\begin{verbatim}
+> hello there
+hello there
+> # don't print this
+> print this!
+print this!
+> done
+Done!
+\end{verbatim}
+\afterverb
+%
+%All the lines are printed except the one that starts with the hash
+%sign because when the {\tt continue} is executed, it ends 
+%the current iteration and jumps
+%back to the {\tt while} statement to start the next iteration, thus 
+%skipping the {\tt print} statement.
+
+%
+Todas as linhas serão impressas excepto aquela que inicia com o sinal de
+cerquilha porque quando o {\tt continue} é executado, ele termina a iteração
+atual e pula de volta para a declaração {\tt while} para começar uma nova
+iteração, mas passando a declaração {\tt print}.
+
+%\section{Definite loops using {\tt for} }
+%\index{for statement}
+%\index{statement!for}
+\section{Usando {\tt for} para laços}
+\index{declaração for}
+\index{declaração!for}
+
+%Sometimes we want to loop through a {\bf set} of things such 
+%as a list of words, the lines in a file, or a list of numbers.
+%When we have a list of things to loop through, we can
+%construct a \emph{definite} loop using a {\tt for} statement.
+%We call the {\tt while} statement an \emph{indefinite} loop
+%because it simply loops until some condition becomes {\tt False}, 
+%whereas the {\tt for} loop is looping through a known
+%set of items so it runs through as many iterations as there
+%are items in the set.
+
+Algumas vezes queremos que um laço passe por um {\bf conjunto} de coisas
+como uma lista de palavras, as linhas e um arquivo, ou uma lista de números.
+Quando temos uma lista de coisas para percorrer, construímos um laço
+\emph{limitado} utilizando a declaração {\tt for}. Nós chamamos uma declaração
+{\tt while} como um laço {\tt ilimitado} por que o laço executa até que alguma
+condição se torne {\tt False}, enquanto o laço {\tt for} é executado em um
+conjunto de itens conhecidos, então ele executa quantas iterações forem a
+quantidade de itens do conjunto.
+
+%The syntax of a {\tt for} loop is similar to the {\tt while} loop
+%in that there is a {\tt for} statement and a loop body:
+
+A sintaxe do laço {\tt for} é similar ao do {\tt while} em que há uma
+declaração {\tt for} e um corpo para o laço percorrer:
+
+\beforeverb
+\begin{verbatim}
+friends = ['Joseph', 'Glenn', 'Sally']
+for friend in friends:
+    print 'Happy New Year:', friend
+print 'Done!'
+\end{verbatim}
+\afterverb
+%
+%In Python terms, 
+%the variable {\tt friends} is a list\footnote{We will 
+%examine lists in more detail in a later chapter.} 
+%of three strings and the {\tt for}
+%loop goes through the list and executes the body once
+%for each of the three strings in the list resulting in this output:
+
+%
+Em Python, a variável {\tt friends} é uma lista\footnote{Nós analizaremos as
+	listas em mais detalhes e um capítulo mais adiante.} de três strings e o
+laço {\tt for} passa através da lista e executa o corpo uma vez para cada uma
+das três strings na lista, resultando na saída:
+
+\beforeverb
+\begin{verbatim}
+Happy New Year: Joseph
+Happy New Year: Glenn
+Happy New Year: Sally
+Done!
+\end{verbatim}
+\afterverb
+%
+
+%Translating this {\tt for} loop to English is not as direct as the 
+%{\tt while}, but if you think of friends as a {\bf set},
+%it goes like this: ``Run the statements in the body of the 
+%for loop once for each friend \emph{in} the set named friends.''
+
+Traduzindo este laço {\tt for} para o Português, não é tão direto como o laço
+{\tt while}, mas se você pensar em amigos como um {\bf conjunto}, fica
+parecido com isto: ``Execute a declaração no corpo do laço for uma vez para
+cada amigo \emph{nos} nomes dos amigos''.
+
+%Looking at the {\tt for} loop, {\bf for} and {\bf in} are reserved
+%Python keywords, and {\tt friend} and {\tt friends} are variables.
+
+Olhando ao laço {\tt for}, {\bf for} e {\bf in} são palavras reservadas do
+Python, e {\tt friend} e {\tt friends} são variáveis.
+
+{\tt {\bf for} friend {\bf in} friends{\bf :}\\
+	\verb"   "{\bf print} 'Happy New Year', friend }
+
+%In particular, {\tt friend} is the {\bf iteration variable} for 
+%the for loop.  The variable {\tt friend} changes for each iteration of
+%the loop and controls when the {\tt for} loop completes.  The 
+%{\bf iteration variable} steps successively through the 
+%three strings stored in the {\tt friends} variable.
+
+Em particular, {\tt friend} é a {\bf variável de iteração} do laço {\tt for}.
+A variável {\tt friend} muda para cada iteração do laço e controla quando o
+laço {\tt for} completa. A {\bf variável de iteração} passa sucessivamente
+através das três strings armazenadas na variável {\tt friends}.
+
+
+%\section{Loop patterns}
+\section{Laços padrões}
+
+%Often we use a {\tt for} or {\tt while} loop to go through a list of items
+%or the contents of a file and we are looking for something such as
+%the largest or smallest value of the data we scan through.
+
+Normalmente nós utilzamos os laços {\tt for} ou {\tt while} para percorrer
+uma lista de itens ou o conteúdo de um arquivo procurando por alguma coisa
+como o maior ou menor valor do dado que estamos percorrendo.
+
+%These loops are generally constructed by:
+
+Estes laços são normalmente construidos da seguinte forma:
+
+\begin{itemize}
+
+%\item Initializing one or more variables before the loop starts
+\item Inicializando uma ou mais variáveis antes de iniciar o laço
+
+%\item Performing some computation on each item in the loop body, 
+%possibly changing the variables in the body of the loop
+\item Realizando alguma verificação em cada item no corpo do laço,
+	possivelmente mudando as variáveis no corpo do laço
+
+%\item Looking at the resulting variables when the loop completes
+\item Olhando o resultado das variáveis quando o laço finaliza
+\end{itemize}
+
+%We will use a list of numbers to demonstrate the concepts and construction
+%of these loop patterns.  
+
+Utilizamos uma lista de números para demonstrar os conceitos e os padrões
+para construção de laços.
+
+%\subsection{Counting and summing loops}
+\subsection{Contando e somando laços}
+
+%For example, to count the number of items
+%in a list, we would write the following {\tt for} loop:
+
+Por exemplo, para contar o números de ítens em uma lista, podemos escrever
+o seguinte laço {\tt for}:
+
+\beforeverb
+\begin{verbatim}
+count = 0
+for itervar in [3, 41, 12, 9, 74, 15]:
+    count = count + 1
+print 'Count: ', count
+\end{verbatim}
+\afterverb
+%
+%We set the variable {\tt count} to zero before the loop starts,
+%then we write a {\tt for} loop to run through the list of numbers.
+%Our {\bf iteration} variable is named {\tt itervar} and while we do
+%not use {\tt itervar} in the loop, it does control the loop and cause
+%the loop body to be executed once for each of the values in the list.
+
+%
+Nós definimos a variável {\tt count} em zero antes do laço iniciar, então
+escrevemos um laço {\tt for} para percorrer uma lista de números. Nossa
+variável de iteração é chamada de {\tt itervar} e enquanto não usamos a
+variável {\tt itervar} no laço, ele controla o laço que o será executado
+somente uma vez para cada valor na lista.
+
+%In the body of the loop, we add 1 to the current value of {\tt count}
+%for each of the values in the list.  While the loop is executing, the 
+%value of {\tt count} is the number of values we have seen ``so far''.
+
+No corpo do laço, adicionamos 1 ao valor atual de {\tt count} para cada valor
+da lista. Enquanto o laço é executado, o valor da variável {\tt count} é o
+número de valores que nós vimos ``até agor''.
+
+%Once the loop completes, the value of {\tt count} is the total number
+%of items.   The total number ``falls in our lap'' at the end of the 
+%loop.  We construct the loop so that we have what we want when the loop
+%finishes.
+
+Uma vez que o laço termine, o valor de {\tt count} é o total de ítens. O
+total de itens ``cai no seu colo'' no final do laço. Construimos o laço para
+que tenhamos o que queremos quando o laço terminar.
+
+%Another similar loop that computes the total of a set of numbers
+%is as follows:
+
+Outro laço similar que calcula o total de um conjunto de números pode ser
+visto a seguir:
+
+\beforeverb
+\begin{verbatim}
+total = 0
+for itervar in [3, 41, 12, 9, 74, 15]:
+    total = total + itervar
+print 'Total: ', total
+\end{verbatim}
+\afterverb
+%
+%In this loop we \emph{do} use the {\bf iteration variable}.
+%Instead of simply adding one to the {\tt count} as in the previous loop, 
+%we add the actual number (3, 41, 12, etc.) to the running 
+%total during each loop iteration.
+%If you think about the variable {\tt total}, it contains the 
+%``running total of the values so far''.  So before the loop
+%starts {\tt total} is zero because we have not yet seen any values,
+%during the loop {\tt total} is the running total, and at the end of 
+%the loop {\tt total} is the overall total of all the values 
+%in the list.
+
+No laço nós \emph{fazemos} uso de {\bf variável de iteração}. Ao invés de
+simplesmente adicionar um a variável {\tt count} como vimos no laço anterior,
+nós adicionamos o número atual (3, 41, 12, etc.) ao total atual na iteração
+de cada vez que o laço é executado. Se vocẽ pensar sobre a variável
+{\tt total}, ela contém o ``o total dos valore até então''. Então, antes do
+laço iniciar o {\tt total} é zero porque nós não vimos nenhum valor, e durante
+o laço o valor de {\tt total} é o total atual, e no final do laço, {tt total}
+é a soma total de todos os valores na lista.
+
+%As the loop executes, {\tt total} accumulates the sum of the
+%elements; a variable used this way is sometimes called an
+%{\bf accumulator}.
+%\index{accumulator!sum}
+
+Enquanto o laço é executado, {\tt total} acumula a soma dos elementos; uma
+variável utilizada desta maneira é chamada de {\bf acumulador}.
+\index{acumulador!soma}
+
+%Neither the counting loop nor the summing loop are particularly 
+%useful in practice because there are built-in functions 
+%{\tt len()} and {\tt sum()} that compute the number of 
+%items in a list and the total of the items in the list
+%respectively.
+
+Nem o laço contador ou o laço somador são particularmentes úteis na prática
+porque Python tem funções nativas {\tt len()} e {\tt sum()} que calcula o
+número e o total de itens em uma lista, respectivamente.
+
+%\subsection{Maximum and minimum loops}
+\subsection{Laços de máximos e mínimos}
+
+%\index{loop!maximum}
+%\index{loop!minimum}
+%\index{None special value}
+%\index{special value!None}
+%\label{maximumloop}
+\index{laço!máximo}
+\index{laço!mínio}
+\index{Nenhum valor especial}
+\index{Valor especial!nenhum}
+\label{maximumloop}
+
+%To find the largest value in a list or sequence, we construct the
+%following loop:
+
+Para encontrar o maior valor em uma lista ou sequẽncia, construimos o seguinte
+laço:
+
+\beforeverb
+\begin{verbatim}
+largest = None
+print 'Before:', largest
+for itervar in [3, 41, 12, 9, 74, 15]:
+    if largest is None or itervar > largest :
+        largest = itervar
+    print 'Loop:', itervar, largest
+print 'Largest:', largest
+\end{verbatim}
+\afterverb
+%
+%When the program executes, the output is as follows:
+%
+Ao executar o programa, a saída é a sequinte:
+\beforeverb
+\begin{verbatim}
+Before: None
+Loop: 3 3
+Loop: 41 41
+Loop: 12 41
+Loop: 9 41
+Loop: 74 74
+Loop: 15 74
+Largest: 74
+\end{verbatim}
+\afterverb
+%
+%The variable {\tt largest} is best thought of as 
+%the ``largest value we have seen so far''.
+%Before the loop, we set {\tt largest} to the constant {\tt None}.  
+%{\tt None} is a special constant value which we can 
+%store in a variable to mark 
+%the variable as ``empty''.  
+%
+A variável {\tt largest} é visto como o ``maior valor que temos''. Antes do
+laço nós definimos {\tt largest} com a constante {\tt None}. {\tt None} é um
+valor especial que podemos utilizar em uma variável para definir esta
+variável como ``vazia''.
+
+%Before the loop starts, the largest value we have seen so far 
+%is {\tt None} since we have not yet seen any values.  While the 
+%loop is executing, if {\tt largest} is {\tt None} then we take
+%the first value we see as the largest so far.   You can see in 
+%the first iteration when the value of {\tt itervar} is 3,
+%since {\tt largest} is {\tt None}, we immediately set 
+%{\tt largest} to be 3.
+
+Antes que o laço inicia, o maior valor que temos até então é {\tt None}, uma
+vez que nós ainda não temos valo nenhum. Enquanto o laço está executndo, se
+{\tt largest} é {\tt None} então nós pegamos o primeiro valor que temos como
+o maior. Você pode ver na primeira iteração quando o valor de {\tt itervar} é
+3, uma vez que {\tt largest} é {\tt None}, nós imediatamente definimos a
+variável {\tt largest} para 3.
+
+%After the first iteration, {\tt largest} is no longer {\tt None},
+%so the second part of the compound logical expression that checks
+%{\tt itervar > largest} triggers only when we see a value that is
+%larger than the ``largest so far''.  When we see a new ``even larger''
+%value we take that new value for {\tt largest}.  You can see in the 
+%program output that {\tt largest} progresses from 3 to 41 to 74.
+
+Depois da primeira iteração, {\tt largest} não é mais {\tt None}, então a
+segunda parte composta da expressão lógica que verifica o gatilho
+{\tt itervar > largest} somente quando o valo é maior que o ``maior até agora''.
+Quando temos um novo valor ``ainda maior'' nós pegamos este novo valor e
+definimos como {\tt largest}. Você pode ver na saída do programa o
+progresso do {\tt largest} de 3 para 41 para 74.
+
+%At the end of the loop, we have scanned all of the values and
+%the variable {\tt largest} now does contain the largest value
+%in the list.
+
+No final do laço, nós analizamos todos os valores e a variável {\tt largest}
+agora contém o maior valor na lista.
+
+%To compute the smallest number, the code is very similar with one
+%small change:
+
+Para calcular o menor número, o código é muito similar com pequenas
+diferenças:
+
+\beforeverb
+\begin{verbatim}
+smallest = None
+print 'Before:', smallest
+for itervar in [3, 41, 12, 9, 74, 15]:
+    if smallest is None or itervar < smallest:
+        smallest = itervar
+    print 'Loop:', itervar, smallest
+print 'Smallest:', smallest
+\end{verbatim}
+\afterverb
+%
+%Again, {\tt smallest} is the ``smallest so far'' before, during, and after the 
+%loop executes.  When the loop has completed, {\tt smallest} contains the
+%minimum value in the list.
+
+Novamente, {\tt smallest} é o ``menor até agora'' antes, durante e depois do
+laço ser executado. Quando o laço se completa, {\tt smallest} contém o mínimo
+valor na lista.
+
+%Again as in counting and summing, the built-in functions 
+%{\tt max()} and {\tt min()} make writing these exact loops
+%unnecessary.
+
+De novo, assim como contagem e soma, as funções nativas {\tt max()} e
+{\tt min()} tornam estes laços desnecessários.
+
+%The following is a simple version of the Python built-in
+%{\tt min()} function:
+
+A seguir uma versão simples da função nativa {\tt min()} do Python:
+
+\beforeverb
+\begin{verbatim}
+def min(values):
+    smallest = None
+    for value in values:
+        if smallest is None or value < smallest:
+            smallest = value
+    return smallest
+\end{verbatim}
+\afterverb
+%
+%In the function version of the smallest code, we removed all of the 
+%{\tt print} statements so as to be equivalent to the {\tt min} 
+%function which is already built in to Python.
+
+%
+Nesta pequena versão da função, retiramos todos as declarações de {\tt print}
+para que fosse equivalente a função {\tt min} que é nativa no Python.
+
+%\section{Debugging}
+\section{Depurando}
+
+%As you start writing bigger programs, you might find yourself
+%spending more time debugging.  More code means more chances to
+%make an error and more places for bugs to hide.
+
+Assim que você começar a escrever programas maiores, você se encontrará
+gastando mais tempos depurando. Mais códigos significam mais chances de fazer
+mais erros e mais bugs para se esconder.
+
+%\index{debugging!by bisection}
+%\index{bisection, debugging by}
+\index{depurando!por biseção}
+\index{biseção, depuração por}
+
+%One way to cut your debugging time is ``debugging by bisection.''
+%For example, if there are 100 lines in your program and you
+%check them one at a time, it would take 100 steps.
+
+Uma forma de diminuir o tempo de depuração é ``depuração por biseção''. Por
+exemplo, se você tiver 100 linhas em seu programa e você verificá-la uma por
+vez, isto levaria 100 passos.
+
+%Instead, try to break the problem in half.  Look at the middle
+%of the program, or near it, for an intermediate value you
+%can check.  Add a {\tt print} statement (or something else
+%that has a verifiable effect) and run the program.
+
+Ao invés disto, tente quebrar o programa pela metade. Olhe para a metade do
+programa, ou próximo dele, por um valor intermediário que você possa verificar.
+Adicione a declaração de {\tt print} (ou alguma coisa que tenha um efeito
+verificável) e execute o programa.
+
+%If the mid-point check is incorrect, the problem must be in the
+%first half of the program.  If it is correct, the problem is
+%in the second half.
+
+Se a verificação do ponto intermediário estiver incorret, o problema pode
+estar na primeira metade do programa. Se estiver correto, o problema está
+na segunda parte.
+
+%Every time you perform a check like this, you halve the number
+%of lines you have to search.  After six steps (which is much
+%less than 100), you would be down to one or two lines of code,
+%at least in theory.
+
+Toda vez que você executar uma verificação como esta, você reduzirá o número
+de linha que você tem que procurar. Depois de seis passos (o que é muita menos
+que 100), você poderia diminuir para uma ou duas linha de código, pelo menos
+em teoria.
+
+%In practice it is not always clear what
+%the ``middle of the program'' is and not always possible to
+%check it.  It doesn't make sense to count lines and find the
+%exact midpoint.  Instead, think about places
+%in the program where there might be errors and places where it
+%is easy to put a check.  Then choose a spot where you
+%think the chances are about the same that the bug is before
+%or after the check.
+
+Na prática nem sempre está claro qual é a ``metade do programa'' e nem sempre
+é possível verificar. Não faz sentido contar as linhas e achar exatamente o
+meio do programa. Ao contrário, pense sobre lugares no programa onde podem
+haver erros e lugares onde é fácil colocar uma verificação, (um {\tt print})
+Então escolha um lugar onde você acha que pode ocorrer erros e faça uma
+verificação antes e depois a procurar de erros.
+
+%\section{Glossary}
+\section{Glossário}
+
+\begin{description}
+
+%\item[accumulator:] A variable used in a loop to add up or
+%accumulate a result.
+%\index{accumulator}
+\item[acumulador:] Uma variável utilizada em um laço para adicionar e
+	acumular o resultado.
+	\index{acumulador}
+
+%\item[counter:] A variable used in a loop to count the number
+%of times something happened.  We initialize a counter to 
+%zero and then increment the counter each time we want to
+%``count'' something.
+%\index{counter}
+
+\item[contador:] Uma variável utilizada em um laço para contar um número
+	de vezes que uma coisa aconteça. Nós inicializamos o contador em zero e
+	depois incrementamos o contador cada vez que quisermos ``contar'' alguma
+	coisa.
+	\index{contador}
+
+%\item[decrement:] An update that decreases the value of a variable.
+%\index{decrement}
+
+\item[decremento:] Uma atualização que diminui o valor de uma variável.
+	\index{decremento}
+
+%\item[initialize:] An assignment that gives an initial value to
+%a variable that will be updated.
+
+\item[inicializador:] Uma atribuição que dá um valor inicial para a variável
+	que será atualizada.
+
+%\item[increment:] An update that increases the value of a variable
+%(often by one).
+%\index{increment}
+
+\ite[incremento:] Uma atualização que aumenta o valor de uma varivel (muitas
+vezes por um).
+\index{incremento}
+
+%\item[infinite loop:] A loop in which the terminating condition is
+%never satisfied or for which there is no terminating condition.
+%\index{infinite loop}
+
+\item[laço infinito:] Um laço onde a condição terminal nunca é satisfeita ou
+	que não hava condição terminal.
+	\index{laço infinito}
+
+%\item[iteration:] Repeated execution of a set of statements using
+%either a function that calls itself or a loop.
+%\index{iteration}
+\item[iteração:] Execução repetida de um conjunto de declarações utilizando
+	uma função ou um laço que se executa.
+	\index{iteração}
+
+\end{description}
+
+
+%\section{Exercises}
+\section{Exercícios}
+
+\begin{ex}
+%Write a program which repeatedly reads numbers until the user
+%enters ``done''.
+%Once ``done'' is entered, print out the total, count, and average
+%of the numbers.  If the user enters anything other than a number, 
+%detect their mistake using {\tt try} and {\tt except} and 
+%print an error message and skip to the next number.
+
+Escreva um programa que repetidamente leia um número até que o usuário digite
+``done''. Uma vez que ``done'' é digitada, imprima o total, soma e a média dos
+números. Se o usuário digitar qualquer coisa diferente de um número, detecte
+o engano utilizando {\tt try} e {\tt except} e imprima uma mensagem de erro e
+passe para o próximo número.
+
+\begin{verbatim}
+Enter a number: 4
+Enter a number: 5
+Enter a number: bad data
+Invalid input
+Enter a number: 7
+Enter a number: done
+16 3 5.33333333333
+\end{verbatim}
+\end{ex}
+
+\begin{ex}
+%Write another program that prompts for a list of numbers as above
+%and at the end prints out both the maximum and minimum of the numbers instead of the average.
+
+Escreva outro programa que solicita uma lista de números, como acima, e no
+final imprima o máximo e o mínimo dos números ao invés da média.
+\end{ex}
+
+
