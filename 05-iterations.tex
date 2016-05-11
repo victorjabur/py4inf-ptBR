@@ -3,8 +3,8 @@
 
 %\chapter{Iteration}
 %\index{iteration}
-\chapter{Interação}
-\index{interação}
+\chapter{Iteração}
+\index{iteração}
 
 %\section{Updating variables}
 %\label{update}
@@ -79,17 +79,17 @@ subtraindo 1 é o que chamamos de {\bf decremento}.
 \index{drecremento}
 
 %\section{The {\tt while} statement}
-\section{A condição {\tt while}}
+\section{A instrução {\tt while}}
 
 %\index{statement!while}
 %\index{while loop}
 %\index{loop!while}
 %\index{iteration}
 
-\index{condição!while}
+\index{instrução!while}
 \index{laço while}
 \index{laço!while}
-\index{interação}
+\index{iteração}
 
 %Computers are often used to automate repetitive tasks.  Repeating
 %identical or similar tasks without making errors is something that
@@ -97,15 +97,15 @@ subtraindo 1 é o que chamamos de {\bf decremento}.
 %Because iteration is so common, Python provides several
 %language features to make it easier.  
 
-Computadores são normalmente utilizado para automatizar tarefas repetitivas.
-A repetição de tarefas identicas ou similares sem produzir erros é algo
-computadores fazem bem e pessoal não muito. Pelo fato de iterações serem tão
+Computadores são normalmente utilizados para automatizar tarefas repetitivas.
+A repetição de tarefas idênticas ou similares sem produzir erros é algo que
+computadores fazem bem e as pessoas não muito. Pelo fato de iterações serem tão
 comuns, Python disponibiliza muitas funcionalidades para tornar isto fácil.
 
 %One form of iteration in Python is the {\tt while} statement.  Here is 
 %a simple program that counts down from five and then says ``Blastoff!''.
 
-Uma das formas de iterações em Python é a declaração {\tt while}. Aqui está
+Uma das formas de iterações em Python é a instrução {\tt while}. Aqui está
 um programa simples que realiza uma contagem regressiva a partir de cinco e
 depois diz ``Blastoff!''.
 
@@ -126,16 +126,16 @@ print 'Blastoff!'
 %display the word {\tt Blastoff!}''
 
 %
-Você quase pode ler a declaração {\tt while} como se ela fosse escrita em
-Inglês. Ou seja, ``Enquanto {\tt n} for maior que 0, mostre o valor de {\tt n}
+Você quase pode ler a instrução {\tt while} como se ela fosse escrita em
+Português. Ou seja, ``Enquanto {\tt n} for maior que 0, mostre o valor de {\tt n}
 e então subtraia o valor de {\tt n} em 1. Quando chegar ao 0, saia da
-declaração do {\tt while} e mostra a palavra {\tt Blastoff!}''.
+declaração do {\tt while} e mostre a palavra {\tt Blastoff!}''.
 
 %\index{flow of execution}
 \index{fluxo de execução}
 
 %More formally, here is the flow of execution for a {\tt while} statement:
-%Formalmente, este é o fluxo de execução de uma declaração {\tt while}:
+Formalmente, este é o fluxo de execução de uma declaração {\tt while}:
 
 \begin{enumerate}
 
@@ -144,7 +144,7 @@ declaração do {\tt while} e mostra a palavra {\tt Blastoff!}''.
 
 %\item If the condition is false, exit the {\tt while} statement
 %and continue execution at the next statement.
-\item Se a condição for falsa, sai da declaração do {\tt while} e continuar
+\item Se a condição for falsa, sai da instrução {\tt while} e continua
 	a execução para a próxima declaração.
 
 %\item If the condition is true, execute the
@@ -160,9 +160,9 @@ declaração do {\tt while} e mostra a palavra {\tt Blastoff!}''.
 %would say, ``It had five iterations'', which means that the body of
 %the loop was executed five times.
 
-Este tipo de fluxo é chamado de {\bf laço} ({\it loop}) devido ao terceiro
-passo que retorna para o início da declaraçã. Chamamos cada vez que executamos
-o corpo do laço de {\bf iteração}. Para o laço anterior, podemos dizer que,
+Este tipo de fluxo é chamado de {\bf laço} ou ({\it loop}) devido ao terceiro
+passo que retorna para o início da instrução. Chamamos cada vez que executamos
+o corpo do laço da {\bf iteração}. Para o laço anterior, podemos dizer que,
 ``tem cinco iterações'', que significa que o corpo do laço será executado
 cinco vezes.
 
@@ -183,13 +183,15 @@ cinco vezes.
 %resulting in an {\bf infinite loop}.  
 
 O corpo do laço deve mudar o valor de uma ou mais variáveis para que a
-condição eventualmente se torne fals e o laço termine. Podemos chamar a
+condição eventualmente se torne false e o laço termine. Podemos chamar a
 variável que muda a cada vez que o laço executa e controla quando ele irá
 terminar de {\bf variável de iteração}. Se não houver variável de iteração,
 o laço irá se repetir para sempre, resultando em um {\bf laço infinito}.
 
 %\section{Infinite loops}
 \section{Laços infinitos}
+
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
 %An endless source of amusement for 
 %programmers is the observation that the directions on shampoo,

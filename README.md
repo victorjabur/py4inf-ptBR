@@ -24,8 +24,8 @@ Responsáveis pela Tradução por Capítulo
 
 | Capítulo              | Tradutor              | % Tradução | Revisor | % Revisão
 |---|---|---|---|---
-|00-cover.tex           |  Victor Jabur         | 100 % |  ?              | ?
-|00-preface.tex         |  Victor Jabur         | 100 % |  ?              | ?
+|00-cover.tex           |  Victor Jabur         | 100 % |  Maykon Chagas  | 100 %
+|00-preface.tex         |  Victor Jabur         | 100 % |  Maykon Chagas  | 100 %
 |01-intro.tex           |  Victor Jabur         | 100 % |  Rafael Covre   | 100 %
 |02-variables.tex       |  Eduardo Cândido      | 100 % |  Victor Jabur   | 100 %
 |03-conditional.tex     |  Fernando Moreira     | 100 % |  Victor Jabur   | 100 %
@@ -36,7 +36,7 @@ Responsáveis pela Tradução por Capítulo
 |08-lists.tex           |  Rafael Costa         | 100 % |  Victor Jabur   | 100 %
 |09-dictionaries.tex    |  Rafael Covre         | 100 % |  Victor Jabur   | 100 %
 |10-tuples.tex          |  Clodonil Trigo       | 60 %  |  ?              | ?
-|11-regex.tex           |  Felipe Souza         | 30 %  |  ?              | ?
+|11-regex.tex           |  Felipe Souza         | 75 %  |  ?              | ?
 |12-network.tex         |  Herbert Fortes       | 0 %   |  ?              | ?
 |13-web.tex             |  Romulo Melo          | 0 %   |  ?              | ?
 |14-database.tex        |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
