@@ -191,8 +191,6 @@ o laço irá se repetir para sempre, resultando em um {\bf laço infinito}.
 %\section{Infinite loops}
 \section{Laços infinitos}
 
-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-
 %An endless source of amusement for 
 %programmers is the observation that the directions on shampoo,
 %``Lather, rinse, repeat,'' are an infinite loop because 
@@ -217,7 +215,7 @@ há variável de iteração dizendo quantas vezes o laço deve ser executado.
 No caso de {\tt contagem regressiva}, nós provamos que o laço terminou porque
 sabemos que o valor de {\tt n} é finito, e podemos ver que o valor de {\tt n}
 diminui cada vez que passa pelo laço, então eventualmente nós teremos 0. Em
-outros casos o laço é obviamente infinito porque não tem variável de iteração.
+outros casos, o laço é obviamente infinito porque não tem variável de iteração.
 
 %\section{``Infinite loops'' and {\tt break}}
 %\index{break statement}
@@ -275,7 +273,7 @@ em virtude do fato que a expressão é o valor constante {\tt True}.
 %the exit condition.
 
 Enquanto este laço é um laço infinito disfuncional, nós continuamos utilizando
-este padão para construir laços úteis desde que adicionemos código de forma
+este padrão para construir laços úteis desde que adicionemos código de forma
 cuidadosa no corpo do laço para explicitamente sair do laço utilizando 
 {\tt break} quando alcançarmos a condição de saída.
 
@@ -283,7 +281,7 @@ cuidadosa no corpo do laço para explicitamente sair do laço utilizando
 %type {\tt done}.  You could write:
 
 Por exemplo, suponha que você queira obter a entrar do usuário, até que ele
-digite {\tt done}. Podemos escrver:
+digite {\tt done}. Podemos escrever:
 
 \beforeverb
 \begin{verbatim}
@@ -308,9 +306,9 @@ executará de forma repetida até que chegue a declaração do {\tt break}.
 %the loop.  Otherwise the program echoes whatever the user types
 %and goes back to the top of the loop.  Here's a sample run:
 
-Em cada vezes, pergunta-se ao usuário com um sinal de menor. Se o usuário
+A cada vez, pergunta-se ao usuário com um sinal de menor. Se o usuário
 digitar {\tt done}, a declaração {\tt break} sai do laço. Caso contrário, o
-programa irá imprimir qualquer coisa que o usuáro digitar e retornar para o
+programa irá imprimir qualquer coisa que o usuário digitar e retornar para o
 início do laço. Veja um exemplo:
 
 \beforeverb
@@ -350,7 +348,7 @@ contrário de negativamente (``continue até que isto aconteça.'').
 %statement to skip to the next iteration without finishing the
 %body of the loop for the current iteration.
 
-Algumas vezes você está em uma iteração de um laço e quiser acabar a iteração
+Algumas vezes você está em uma iteração de um laço e quer acabar a iteração
 atual e pular para a próxima iteração. Neste caso você pode utilizar a
 declaração {\tt continue} para passar para a próxima iteração sem terminar o
 corpo do laço da iteração atual.
@@ -360,8 +358,8 @@ corpo do laço da iteração atual.
 %as lines not to be printed (kind of like Python comments).
 
 Aqui temos um exemplo de um laço que copia sua entrada até que o usuário
-digite ``done'', mas trata a linha que inicia com um caractere cerquilha
-{\tt #} como linha para não ser impressa (como um comentário em Python).
+digite ``done'', mas trata a linha que inicia com um caractere cerquilha 
+como linha para não ser impressa (como um comentário em Python).
 
 \beforeverb
 \begin{verbatim}
@@ -377,7 +375,6 @@ print 'Done!'
 \afterverb
 %
 %Here is a sample run of this new program with {\tt continue} added.
-
 %
 Aqui temos um exemplo deste novo programa com o uso do {\tt continue}.
 
@@ -400,7 +397,7 @@ Done!
 %skipping the {\tt print} statement.
 
 %
-Todas as linhas serão impressas excepto aquela que inicia com o sinal de
+Todas as linhas serão impressas, exceto aquela que inicia com o sinal de
 cerquilha porque quando o {\tt continue} é executado, ele termina a iteração
 atual e pula de volta para a declaração {\tt while} para começar uma nova
 iteração, mas passando a declaração {\tt print}.
@@ -423,7 +420,7 @@ iteração, mas passando a declaração {\tt print}.
 %are items in the set.
 
 Algumas vezes queremos que um laço passe por um {\bf conjunto} de coisas
-como uma lista de palavras, as linhas e um arquivo, ou uma lista de números.
+como uma lista de palavras, as linhas de um arquivo, ou uma lista de números.
 Quando temos uma lista de coisas para percorrer, construímos um laço
 \emph{limitado} utilizando a declaração {\tt for}. Nós chamamos uma declaração
 {\tt while} como um laço {\tt ilimitado} por que o laço executa até que alguma
@@ -454,8 +451,8 @@ print 'Done!'
 %for each of the three strings in the list resulting in this output:
 
 %
-Em Python, a variável {\tt friends} é uma lista\footnote{Nós analizaremos as
-	listas em mais detalhes e um capítulo mais adiante.} de três strings e o
+Em Python, a variável {\tt friends} é uma lista\footnote{Nós analisaremos as
+	listas em mais detalhes em um capítulo mais adiante.} de três strings e o
 laço {\tt for} passa através da lista e executa o corpo uma vez para cada uma
 das três strings na lista, resultando na saída:
 
@@ -499,21 +496,20 @@ A variável {\tt friend} muda para cada iteração do laço e controla quando o
 laço {\tt for} completa. A {\bf variável de iteração} passa sucessivamente
 através das três strings armazenadas na variável {\tt friends}.
 
-
 %\section{Loop patterns}
-\section{Laços padrões}
+\section{Padrões de Laços}
 
 %Often we use a {\tt for} or {\tt while} loop to go through a list of items
 %or the contents of a file and we are looking for something such as
 %the largest or smallest value of the data we scan through.
 
-Normalmente nós utilzamos os laços {\tt for} ou {\tt while} para percorrer
+Normalmente, utilizamos os laços {\tt for} ou {\tt while} para percorrer
 uma lista de itens ou o conteúdo de um arquivo procurando por alguma coisa
-como o maior ou menor valor do dado que estamos percorrendo.
+como o maior ou o menor valor do dado que estamos percorrendo.
 
 %These loops are generally constructed by:
 
-Estes laços são normalmente construidos da seguinte forma:
+Estes laços são normalmente construídos da seguinte forma:
 
 \begin{itemize}
 
@@ -541,7 +537,7 @@ para construção de laços.
 %For example, to count the number of items
 %in a list, we would write the following {\tt for} loop:
 
-Por exemplo, para contar o números de ítens em uma lista, podemos escrever
+Por exemplo, para contar o números de itens em uma lista, podemos escrever
 o seguinte laço {\tt for}:
 
 \beforeverb
@@ -572,15 +568,15 @@ somente uma vez para cada valor na lista.
 
 No corpo do laço, adicionamos 1 ao valor atual de {\tt count} para cada valor
 da lista. Enquanto o laço é executado, o valor da variável {\tt count} é o
-número de valores que nós vimos ``até agor''.
+número de valores que nós vimos ``até agora''.
 
 %Once the loop completes, the value of {\tt count} is the total number
 %of items.   The total number ``falls in our lap'' at the end of the 
 %loop.  We construct the loop so that we have what we want when the loop
 %finishes.
 
-Uma vez que o laço termine, o valor de {\tt count} é o total de ítens. O
-total de itens ``cai no seu colo'' no final do laço. Construimos o laço para
+Uma vez que o laço termina, o valor de {\tt count} é o total de itens. O
+total de itens ``cai no seu colo'' no final do laço. Construímos o laço para
 que tenhamos o que queremos quando o laço terminar.
 
 %Another similar loop that computes the total of a set of numbers
@@ -609,13 +605,13 @@ print 'Total: ', total
 %the loop {\tt total} is the overall total of all the values 
 %in the list.
 
-No laço nós \emph{fazemos} uso de {\bf variável de iteração}. Ao invés de
-simplesmente adicionar um a variável {\tt count} como vimos no laço anterior,
+Neste laço, nós \emph{fazemos} uso da {\bf variável de iteração}. Ao invés de
+simplesmente adicionar um a variável {\tt count}, como vimos no laço anterior,
 nós adicionamos o número atual (3, 41, 12, etc.) ao total atual na iteração
-de cada vez que o laço é executado. Se vocẽ pensar sobre a variável
-{\tt total}, ela contém o ``o total dos valore até então''. Então, antes do
+de cada vez que o laço é executado. Se você pensar sobre a variável
+{\tt total}, ela contém o ``o total dos valores até então''. Então, antes do
 laço iniciar o {\tt total} é zero porque nós não vimos nenhum valor, e durante
-o laço o valor de {\tt total} é o total atual, e no final do laço, {tt total}
+o laço, o valor de {\tt total} é o total atual, e no final do laço, {\tt total}
 é a soma total de todos os valores na lista.
 
 %As the loop executes, {\tt total} accumulates the sum of the
@@ -633,7 +629,7 @@ variável utilizada desta maneira é chamada de {\bf acumulador}.
 %items in a list and the total of the items in the list
 %respectively.
 
-Nem o laço contador ou o laço somador são particularmentes úteis na prática
+Nem o laço contador, nem o laço somador são particularmente úteis na prática
 porque Python tem funções nativas {\tt len()} e {\tt sum()} que calcula o
 número e o total de itens em uma lista, respectivamente.
 
@@ -654,7 +650,7 @@ número e o total de itens em uma lista, respectivamente.
 %To find the largest value in a list or sequence, we construct the
 %following loop:
 
-Para encontrar o maior valor em uma lista ou sequẽncia, construimos o seguinte
+Para encontrar o maior valor em uma lista ou sequência, construímos o seguinte
 laço:
 
 \beforeverb
@@ -671,7 +667,7 @@ print 'Largest:', largest
 %
 %When the program executes, the output is as follows:
 %
-Ao executar o programa, a saída é a sequinte:
+Ao executar o programa, a saída é a seguinte:
 \beforeverb
 \begin{verbatim}
 Before: None
@@ -692,7 +688,7 @@ Largest: 74
 %store in a variable to mark 
 %the variable as ``empty''.  
 %
-A variável {\tt largest} é visto como o ``maior valor que temos''. Antes do
+A variável {\tt largest} é vista como o ``maior valor que temos''. Antes do
 laço nós definimos {\tt largest} com a constante {\tt None}. {\tt None} é um
 valor especial que podemos utilizar em uma variável para definir esta
 variável como ``vazia''.
@@ -706,8 +702,8 @@ variável como ``vazia''.
 %{\tt largest} to be 3.
 
 Antes que o laço inicia, o maior valor que temos até então é {\tt None}, uma
-vez que nós ainda não temos valo nenhum. Enquanto o laço está executndo, se
-{\tt largest} é {\tt None} então nós pegamos o primeiro valor que temos como
+vez que nós ainda não temos valor nenhum. Enquanto o laço está executando, se
+{\tt largest} é {\tt None} então, pegamos o primeiro valor que temos como
 o maior. Você pode ver na primeira iteração quando o valor de {\tt itervar} é
 3, uma vez que {\tt largest} é {\tt None}, nós imediatamente definimos a
 variável {\tt largest} para 3.
@@ -721,7 +717,7 @@ variável {\tt largest} para 3.
 
 Depois da primeira iteração, {\tt largest} não é mais {\tt None}, então a
 segunda parte composta da expressão lógica que verifica o gatilho
-{\tt itervar > largest} somente quando o valo é maior que o ``maior até agora''.
+{\tt itervar > largest} somente quando o valor é maior que o ``maior até agora''.
 Quando temos um novo valor ``ainda maior'' nós pegamos este novo valor e
 definimos como {\tt largest}. Você pode ver na saída do programa o
 progresso do {\tt largest} de 3 para 41 para 74.
@@ -730,7 +726,7 @@ progresso do {\tt largest} de 3 para 41 para 74.
 %the variable {\tt largest} now does contain the largest value
 %in the list.
 
-No final do laço, nós analizamos todos os valores e a variável {\tt largest}
+No final do laço, analisamos todos os valores e a variável {\tt largest}
 agora contém o maior valor na lista.
 
 %To compute the smallest number, the code is very similar with one
@@ -798,19 +794,19 @@ para que fosse equivalente a função {\tt min} que é nativa no Python.
 %make an error and more places for bugs to hide.
 
 Assim que você começar a escrever programas maiores, você se encontrará
-gastando mais tempos depurando. Mais códigos significam mais chances de fazer
+gastando mais tempo depurando. Mais códigos significam mais chances de se fazer
 mais erros e mais bugs para se esconder.
 
 %\index{debugging!by bisection}
 %\index{bisection, debugging by}
-\index{depurando!por biseção}
-\index{biseção, depuração por}
+\index{depurando!por bisseção}
+\index{bisseção, depuração por}
 
 %One way to cut your debugging time is ``debugging by bisection.''
 %For example, if there are 100 lines in your program and you
 %check them one at a time, it would take 100 steps.
 
-Uma forma de diminuir o tempo de depuração é ``depuração por biseção''. Por
+Uma forma de diminuir o tempo de depuração é ``depuração por bisseção''. Por
 exemplo, se você tiver 100 linhas em seu programa e você verificá-la uma por
 vez, isto levaria 100 passos.
 
@@ -828,7 +824,7 @@ verificável) e execute o programa.
 %first half of the program.  If it is correct, the problem is
 %in the second half.
 
-Se a verificação do ponto intermediário estiver incorret, o problema pode
+Se a verificação do ponto intermediário estiver incorreta, o problema pode
 estar na primeira metade do programa. Se estiver correto, o problema está
 na segunda parte.
 
@@ -851,12 +847,12 @@ em teoria.
 %think the chances are about the same that the bug is before
 %or after the check.
 
-Na prática nem sempre está claro qual é a ``metade do programa'' e nem sempre
+Na prática, nem sempre está claro qual é a ``metade do programa'' e nem sempre
 é possível verificar. Não faz sentido contar as linhas e achar exatamente o
 meio do programa. Ao contrário, pense sobre lugares no programa onde podem
 haver erros e lugares onde é fácil colocar uma verificação, (um {\tt print})
 Então escolha um lugar onde você acha que pode ocorrer erros e faça uma
-verificação antes e depois a procurar de erros.
+verificação antes e depois da análise.
 
 %\section{Glossary}
 \section{Glossário}
@@ -898,8 +894,8 @@ verificação antes e depois a procurar de erros.
 %(often by one).
 %\index{increment}
 
-\ite[incremento:] Uma atualização que aumenta o valor de uma varivel (muitas
-vezes por um).
+\item[incremento:] Uma atualização que aumenta o valor de uma variável (muitas
+vezes em um).
 \index{incremento}
 
 %\item[infinite loop:] A loop in which the terminating condition is
@@ -907,7 +903,7 @@ vezes por um).
 %\index{infinite loop}
 
 \item[laço infinito:] Um laço onde a condição terminal nunca é satisfeita ou
-	que não hava condição terminal.
+	para o qual não exista condição terminal.
 	\index{laço infinito}
 
 %\item[iteration:] Repeated execution of a set of statements using
