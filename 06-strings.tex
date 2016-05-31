@@ -7,6 +7,7 @@
 
 %\section{A string is a sequence}
 \section{Uma string é uma sequência}
+
 %\index{sequence}
 %\index{character}
 %\index{bracket operator}
@@ -19,7 +20,7 @@
 %A string is a {\bf sequence} of characters.  
 %You can access the characters one at a time with the
 %bracket operator:
-Uma string é um {\bf sequência} de caracteres. Você pode acessar cada
+Uma string é uma {\bf sequência} de caracteres. Você pode acessar cada
 caractere, um por vez com o operador colchete, como pode ser visto no código
 a seguir:
 
@@ -84,7 +85,7 @@ diante até o fim da palavra.
 \centerline{\includegraphics[height=0.50in]{figs2/string.eps}}
 \afterfig
 
-$%\index{index!starting at zero}
+%\index{index!starting at zero}
 \index{índice!iniciando no zero}
 %\index{zero, index starting at}
 \index{zero, índice do começo}
@@ -113,7 +114,7 @@ TypeError: string indices must be integers
 \section{Obtendo o tamanho de uma {\it string} usando {\tt len}}
 
 %\index{len function}
-$%\index{function!len}
+%\index{function!len}
 \index{função len}
 \index{função!len}
 
@@ -182,7 +183,7 @@ de trás pra frente. A expressão {\tt fruit[-1]} mostra a última letra,
 
 %\section{Traversal through a string with a loop}
 \label{for}
-\section{Percorrendo uma {\it string} com um {\it loop}
+\section{Percorrendo uma {\it string} com um {\it loop} }
 %\index{traversal}
 %\index{loop!traversal}
 %\index{for loop}
@@ -201,7 +202,7 @@ de trás pra frente. A expressão {\tt fruit[-1]} mostra a última letra,
 %is with a {\tt while} loop:
 
 Processar uma string, um caractere por vez, envolve uma série de computação.
-Normalmente eles começam no começo da palavra, selecionam um caractere por
+Normalmente, eles começam no começo da palavra, selecionam um caractere por
 vez, fazem alguma coisa com ele, e continuam até o final. Este padrão de
 processamento é chamado de {\bf percorrer}. Uma forma de percorrer uma 
 {\it string}, por exemplo, é através de um loop com {\tt while}:
@@ -227,7 +228,7 @@ Este loop percorre a string e apresenta cada letra em uma linha própria. A
 condição do loop é {\tt índice < len(fruit)}, assim quando o {\tt índice} for
 igual ao tamanho da {\it string}, a condição se torna falsa, e o loop não é
 executado. O último caractere acessado é o caractere com o índice
-{\tt len(fruit)-1}, que é o último caractere na {\it string}}.
+{\tt len(fruit)-1}, que é o último caractere na {\it string}.
 
 \begin{ex}
 %Write a {\tt while} loop that starts at the last character in the string
@@ -277,7 +278,7 @@ Cada vez que percorrer o loop, o caractere na string é atribuido a variável
 %A segment of a string is called a {\bf slice}.  Selecting a slice is
 %similar to selecting a character:
 
-Um segmento de uma string é chamado de {\bf fatia}. Selecionando uma fatia
+Um segmento de uma string é chamado de {\bf fatia}. Selecionar uma fatia
 é similar a selecionar um caractere:
 
 \beforeverb
@@ -295,7 +296,7 @@ Python
 %excluding the last.
 %
 O operador {\tt[n:m]} retorna a parte da string da posição ``n'' até a
-posição ``m'', incluindo o primeiro mas excluindo o último.
+posição ``m'', incluindo o primeiro, mas excluindo o último.
 
 %If you omit the first index (before the colon), the slice starts at
 %the beginning of the string.  If you omit the second index, the slice
@@ -318,7 +319,7 @@ string:
 %If the first index is greater than or equal to the second the result
 %is an {\bf empty string}, represented by two quotation marks:
 
-Se o primeiro índice é maior ou igual ao segundo, o resultado é uma
+Se o primeiro índice for maior ou igual ao segundo, o resultado é uma
 {\bf string vazia}, representado entre duas aspas.
 
 %\index{quotation mark}
@@ -341,7 +342,7 @@ disto, isto é igual a qualquer outra string.
 \begin{ex}
 %Given that {\tt fruit} is a string, what does
 %{\tt fruit[:]} mean?
-Dado uma stringi, {\tt fruit}, o que significa a declaração {\tt fruit[:]}?
+Dada uma string, {\tt fruit}, o que significa a declaração {\tt fruit[:]}?
 %\index{copy!slice}
 %\index{slice!copy}
 \index{cópia!fatia}
@@ -415,7 +416,7 @@ Jello, world!
 %a slice of {\tt greeting}.  It has no effect on
 %the original string.
 %
-Neste exemplo concatenamos uma nova letra em uma fatia de {\tt greeting}.
+Neste exemplo, concatenamos uma nova letra em uma fatia de {\tt greeting}.
 Isto não tem efeito na string original.
 
 %\index{concatenation}
@@ -495,7 +496,7 @@ que aceite a string e a letra como argumento.
 %returns {\tt True} if the first appears as a substring in the second:
 
 A palavra {\tt in} é um operador booleano que pega duas strings e retorna
-{\tt True} se a primeira aparaecer como substring na segunda:
+{\tt True} se a primeira aparecer como substring na segunda:
 
 \beforeverb
 \begin{verbatim}
@@ -576,7 +577,7 @@ em mente em caso de ter que se defender contra alguém armado com um abacaxi.
 
 Strings são um exemplo de um {\bf objeto} em Python. Um objeto contém ambos
 dado (a string atual) e os {\bf métodos}, que são efetivamente funções
-construídas dentro do objeto e disponível para qualquer instancias do objeto.
+construídas dentro do objeto e disponível para quaisquer instâncias do objeto.
 
 %Python has a function called {\tt dir} which lists the methods available
 %for an object.  The {\tt type} function shows the type of an object 
@@ -618,9 +619,9 @@ capitalize(...)
 %a better source of documentation for string methods would be
 %\url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
 
-Enquanto a função {\tt dir} lista os métodos, e você pode utilizar {\tt help}
+A função {\tt dir} lista os métodos, e você pode utilizar {\tt help}
 para obter ajuda na documentação de um método, uma melhor fonte de
-documentação para métodos de string podem ser visto através do endereço
+documentação para métodos de string pode ser vista através do endereço
 \url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
 
 %Calling a {\bf method} is similar to calling a function---it 
@@ -628,7 +629,7 @@ documentação para métodos de string podem ser visto através do endereço
 %We call a method by appending the method name to the variable name
 %using the period as a delimiter.
 
-Chamando um {\bf método} é similar a chamar uma função---recebe argumentos e
+Chamar um {\bf método} é similar a chamar uma função---recebe argumentos e
 retorna um valor---mas a sintaxe é diferente. Nós chamamos um método anexando
 o nome do método a variável utilizando um ponto como delimitador.
 
@@ -646,7 +647,7 @@ string com todas as letras em maiúsculo:
 
 %Instead of the function syntax {\tt upper(word)}, it uses
 %the method syntax {\tt word.upper()}.
-Ao invés de usar a sintaxe de uma função {\tt upper(word)}, se usar a sintaxe
+Ao invés de usar a sintaxe de uma função {\tt upper(word)}, usa-se a sintaxe
 de método {\tt word.upper()}.
 
 %\index{dot notation}
@@ -701,11 +702,11 @@ posição de uma string em outra:
 %the letter we are looking for as a parameter.
 %
 Neste exemplo, nós invocamos {\tt find} na palavra {\tt word} e passamos a
-letra que estamos procurando como um parametro.
+letra que estamos procurando como um parâmetro.
 
 %The {\tt find} method can find substrings as well as characters:
 
-O método {\tt find} consegue  encontrar substrings assim como caracteres:
+O método {\tt find} consegue encontrar substrings, assim como caracteres:
 
 \beforeverb
 \begin{verbatim}
@@ -716,7 +717,7 @@ O método {\tt find} consegue  encontrar substrings assim como caracteres:
 %
 %It can take as a second argument the index where it should start:
 %
-Pode receber como segundo argumento o índice que indica onde deve começar:
+Pode receber como segundo argumento, o índice que indica onde deve começar:
 
 %\index{optional argument}
 %\index{argument!optional}
@@ -733,7 +734,7 @@ Pode receber como segundo argumento o índice que indica onde deve começar:
 %One common task is to remove white space (spaces, tabs, or newlines) from
 %the beginning and end of a string using the {\tt strip} method:
 %
-Em tarefas comuns para remover espaços em branco (espaços, tabs ou novas
+Uma tarefa comum é remover espaços em branco (espaços, tabs ou novas
 linhas) do início e final de uma string é usado o método {\tt strip}:
 
 \beforeverb
@@ -762,9 +763,9 @@ False
 %we take a line and map it all to lowercase before we do any checking
 %using the {\tt lower} method.
 %
-Você perceberá que {\tt startswith} precisa de casos para casar, então algumas
-vezes nós pegamos uma linha e mapeamos toda para minúscula antes de fazer
-qualquer verificação utilizando o método {\tt lower}.
+Você perceberá que {\tt startswith} precisa ser case sensitive para funcionar, 
+então algumas vezes nós pegamos uma linha e convertemos para minúscula antes 
+de fazer qualquer verificação, utilizando o método {\tt lower}.
 
 \beforeverb
 \begin{verbatim}
@@ -787,7 +788,7 @@ True
 %
 No último exemplo, o método {\tt lower} é chamado e depois utilizamos
 {\tt startswith} para verificar se a string resultante em minúsculo começa
-com a letra ``p''. Contanto que cuidemos com a ordem, podemos realizar
+com a letra ``p''. Contanto que nos preocupemos com a ordem, podemos realizar
 múltiplas chamadas de métodos em uma única expressão.
 
 \begin{ex}
@@ -795,6 +796,7 @@ múltiplas chamadas de métodos em uma única expressão.
 %\index{method!count}
 \index{método contador}
 \index{método!contador}
+
 %There is a string method called {\tt count} that is similar
 %to the function in the previous exercise.  Read the documentation
 %of this method at
@@ -812,11 +814,12 @@ em \verb"'banana'".
 
 %\section{Parsing strings}
 \section{Analisando strings}
+
 %Often, we want to look into a string and find a substring.  For example
 %if we were presented a series of lines formatted as follows:
 
 Normalmente queremos olhar uma string e procurar uma substring. Por exemplo
-se for apresentado uma série de linhas formatadas como a seguir:
+se forem apresentadas uma série de linhas formatadas como a seguir:
 
 \beforeverb
 \begin{alltt}
@@ -828,8 +831,8 @@ From stephen.marquard@{\bf uct.ac.za} Sat Jan  5 09:14:16 2008
 %{\tt uct.ac.za}) from each line, we can do this by using the {\tt find}
 %method and string slicing.
 
-e queremos tirar somente a segunda metade do endereço (i.e., {\tt uct.ac.za})
-de cada linha, nós podemos fazer isto utilizando o método {\tt find} fatiando
+e quisermos tirar somente a segunda metade do endereço (i.e., {\tt uct.ac.za})
+de cada linha, nós podemos fazer isto utilizando o método {\tt find}, fatiando
 a string.
 
 %First, we will find the position of the at-sign in the string.  Then we will
@@ -838,8 +841,8 @@ a string.
 %are looking for.
 
 Primeiro, nós encontraremos a posição do arroba (``@'') na string. Depois
-achamos a posição do primeiro espaço \emph{depois} do arroba. E então usamos
-o fatiamento da string para extrair a porção da string que estaos procurando.
+acharemos a posição do primeiro espaço, \emph{depois} do arroba. E então usaremos
+o fatiamento da string para extrair a porção da string que estamos procurando.
 
 \beforeverb
 \begin{verbatim}
@@ -863,8 +866,8 @@ uct.ac.za
 %from ``one beyond the at-sign through up to \emph{but not including} the 
 %space character''.  
 %
-Utilizamos uma versão do método {\tt find} que nos permite especificar uma
-posição na string onde queremos começar a procura. Quando fatiamos, extraímos
+Utilizamos uma versão do método {\tt find}, que nos permite especificar uma
+posição na string, onde queremos começar a procura. Quando fatiamos, extraímos
 os caracteres de ``um além do arroba até \emph{mas não incluindo} o caractere
 espaço''.
 
@@ -886,7 +889,7 @@ A documentação para o método {\tt find} está disponível no endereço
 %When applied to integers, {\tt \%} is the modulus operator.  But
 %when the first operand is a string, {\tt \%} is the format operator.
 
-O operador {\bf format}, {\tt \%} nos permite constuir strings, substituindo
+O operador {\bf format}, {\tt \%} nos permite construir strings, substituindo
 parte da string com dados armazenados em variáveis. Quando aplicados a
 inteiros, o {\tt \%} é o operador módulo. Mas quando o primeiro operando é
 uma string, o {\tt \%} é o operador {\tt format}.
@@ -930,7 +933,7 @@ inteiro {\tt 42}.
 %so you can embed a value in a sentence:
 
 Um sequência de {\tt format} pode aparecer em qualquer lugar em uma string,
-então você pode embutir uma valor em uma sequência:
+então você pode embutir um valor em uma sequência:
 
 \beforeverb
 \begin{verbatim}
@@ -946,10 +949,10 @@ então você pode embutir uma valor em uma sequência:
 %We will cover tuples in Chapter 10}.  Each format sequence is
 %matched with an element of the tuple, in order.
 %
-Se houver mais de uma sequência de {\tt format} na string, o segundo arqumento
+Se houver mais de uma sequência de {\tt format} na string, o segundo argumento
 tem que ser uma tupla\footnote{Um tupla é uma sequência de valores, separados
 	por vírgula dentro de um par de colchetes. Vamos abordar tuplas no
-	Capítulo 10}. Cada sequência de {\tt format} é combinado com um elemento
+	Capítulo 10}. Cada sequência de {\tt format} é combinada com um elemento
 da tupla, em ordem.
 
 %The following example uses \verb"'%d'" to format an integer,
@@ -957,8 +960,8 @@ da tupla, em ordem.
 %a floating-point number (don't ask why), and \verb"'%s'" to format
 %a string:
 
-O seguinte exemplo utiliza-se \verb"'%d'" para formatar um inteiro, o
-\verb"'%g'" para formatar um ponto-flutuante (não pergunte por quê), e
+O seguinte exemplo utiliza \verb"'%d'" para formatar um inteiro, o
+\verb"'%g'" para formatar um ponto-flutuante (não pergunte o por quê), e
 \verb"'%s'" para formatar string:
 
 \beforeverb
@@ -1007,15 +1010,23 @@ utilizado. Você pode ler mais sobre ele no endereço
 % formats a floating-point number to be 8 characters long, with
 % 2 digits after the decimal point:
 
-% \beforeverb
-% \begin{verbatim}
-% >>> '%8.2f' % 3.14159
-% '    3.14'
-% \end{verbatim}
-% \afterverb
-% %
-% The result takes up eight spaces with two
-% digits after the decimal point.  
+Você pode especificar o número de dígitos como parte do formato de uma sequência.
+Por exemplo, a sequência \verb"'%8.2f'"
+formata um número em ponto flutuante para ter 8 caracteres de comprimento, com
+2 dígitos depois do ponto decimal:
+
+\beforeverb
+\begin{verbatim}
+>>> '%8.2f' % 3.14159
+'    3.14'
+\end{verbatim}
+\afterverb
+%
+%The result takes up eight spaces with two
+%digits after the decimal point.  
+
+O resultado ocupa oito casas com dois dígitos
+depois do ponto decimal;
 
 %\section{Debugging}
 \section{Depurando}
@@ -1055,6 +1066,7 @@ print 'Done!'
 %
 Olhe o que acontece quando o usuário entrar com uma linha em branco no
 {\tt input}:
+
 \beforeverb
 \begin{verbatim}
 > hello there
@@ -1074,7 +1086,8 @@ Traceback (most recent call last):
 %solutions to this to make line three ``safe'' even if the line is 
 %empty.
 %
-O código funciona até que se use uma linha vazia. Então existe um caractere
+
+O código funciona, até que se use uma linha vazia. Então existe um caractere
 não zero, e assim recebemos um {\tt traceback}. Existem duas soluções para isto
 para tornar a linha três ``segura'' mesmo se a linha estiver vazia.
 
@@ -1094,13 +1107,14 @@ Uma possibilidade é utilizando o método {\tt startswith} que retorna
 %\index{pattern!guardian}
 \index{padrão de guarda}
 \index{padrão!guarda}
+
 %Another way is to safely write the {\tt if} statement using the {\bf guardian}
 %pattern and make sure the second logical expression is evaluated 
 %only where there is at least one character in the string.:
 
 Outra forma é escrever de forma segura uma condição de {\tt if} utilizando o
-padrão de {\bf guarda} e garantir a segunda expressão lógica é avaliada
-somente onde existe pelo menos um caractere na string.:
+padrão de {\bf guarda} e garantir que a segunda expressão lógica seja avaliada
+somente onde existe pelo menos um caractere na string:
 
 \beforeverb
 \begin{verbatim}
@@ -1112,8 +1126,8 @@ somente onde existe pelo menos um caractere na string.:
 %\section{Glossary}
 \section{Glossário}
 
-%\begin{description}
-\begin{descrição}
+\begin{description}
+
 %\item[counter:] A variable used to count something, usually initialized
 %to zero and then incremented.
 \item[contador:] Uma variável utilizada para contar alguma coisa, normalmente
@@ -1146,9 +1160,9 @@ somente onde existe pelo menos um caractere na string.:
 %\index{format sequence}
 \index{sequência formatadas}
 
-\item[format string:] A string, used with the format operator, that
-contains format sequences.
-\index{format string}
+%\item[format string:] A string, used with the format operator, that
+%contains format sequences.
+%\index{format string}
 
 \item[string formatada:] Uma string, utilizada com o operador {\tt format},
 	que contém uma sequência formatada.
@@ -1169,15 +1183,14 @@ contains format sequences.
 %\item[immutable:] The property of a sequence whose items cannot
 %be assigned.
 %\index{immutability}
-\item[imutável:] Propriedades de uma sequência dos ítens que não podem ser
+\item[imutável:] Propriedades de uma sequência dos itens que não podem ser
 	atribuídos.
 \index{imutabilidade}
-
 
 %\item[index:] An integer value used to select an item in
 %a sequence, such as a character in a string.
 %\index{index}
-\item[índice:] Um valor inteiro usado para selecionar um ítem em uma sequência,
+\item[índice:] Um valor inteiro usado para selecionar um item em uma sequência,
 	como um caractere em uma string.
 \index{índice}
 
@@ -1198,19 +1211,18 @@ contains format sequences.
 %you can use ``object'' and ``value'' interchangeably.
 %\index{object}
 
-\item[objeto:] Alguma valor que um variável se refere. Desta forma você pode
+\item[objeto:] Algum valor ao qual uma variável se refere. Desta forma você pode
 	utilizar ``objeto'' e ``valor'' de forma intercambiável.
 \index{objeto}
 
 %\item[search:] A pattern of traversal that stops
 %when it finds what it is looking for.
-\item[procura:] Um padrão que percorre e para quando encontra o que está
-	procurando.
+\item[procura:] Um padrão que percorre transversalmente e para quando 
+  encontra o que está procurando.
 %\index{search pattern}
 %\index{pattern!search}
 \index{padrão pesquisa}
 \index{padrão!pesquisa}
-
 
 %\item[sequence:] An ordered set; that is, a set of
 %values where each value is identified by an integer index.
@@ -1220,13 +1232,16 @@ contains format sequences.
 \index{sequência}
 
 %\item[slice:] A part of a string specified by a range of indices.
+
 %\index{slice}
-\item[fatia:] Uma parte da string especificado por um
+\item[fatia:] Uma parte da string especificada por uma
 \index{fatia}
+
 %\item[traverse:] To iterate through the items in a sequence,
-performing a similar operation on each.
-\item[percorrer:] Percorrer através de ítens em uma sequência, executando uma
-	operação similar em cada um dos ítens.
+%performing a similar operation on each.
+\item[percorrer:] Percorrer através de itens em uma sequência, executando uma
+	operação similar em cada um dos itens.
+
 %\index{traversal}
 \index{percorrer}
 
@@ -1271,7 +1286,7 @@ extraída em um número de ponto flutuante.
 
 Leia a documentação dos métodos de {\tt string} no endereço 
 \url{https://docs.python.org/2/library/stdtypes.html#string-methods}.
-Você pode querer experimentar alguns destes métodos para ter certa que
+Você pode querer experimentar alguns destes métodos para ter certeza que
 entendeu como funcionam. Por exemplo, {\tt strip} e {\tt replace} são
 particularmente úteis.
 
@@ -1285,5 +1300,5 @@ A documentação utiliza uma sintaxe que pode parecer confusa. Por exemplo, no
 \verb"find(sub[, start[, end]])", os colchetes indicam que o argumento é
 opcional. Desta forma, {\tt sub} é obrigatório, mas {\tt start} é opcional, e
 se você incluir o {\tt start}, então o {\tt end} é opcional.
-\end{ex}
 
+\end{ex}
