@@ -4,7 +4,7 @@
 \chapter{Expressões regulares}
 %\chapter{Regular expressions}
 
-Até agora temos percorrido os arquivos procurando por padrões e extraindo pedaços de linhas
+Até agora, temos percorrido os arquivos procurando por padrões e extraindo pedaços de linhas
 que achamos interessantes. Temos usado métodos string como {\tt split} e {\tt find} e usamos
 listas e fatiamento de strings para extrair partes das linhas.
 %So far we have been reading through files, looking for patterns and extracting various
@@ -64,7 +64,7 @@ for line in hand:
 %
 
 Abrimos o arquivo, iteramos linha por linha, e usamos a expressão regular {\tt search()} para
-imprimir apenas as linhas que contêm a string ``From:''. Este programa não usa o real poder 
+imprimir apenas as linhas que contém a string ``From:''. Este programa não usa o real poder 
 das expressões regulares, uma vez que poderíamos simplesmente usar {\tt line.find()} para
 obter o mesmo resultado.
 
@@ -85,7 +85,7 @@ extração sofisticada com pouco código.
 %characters to our regular expression allow us to do sophisticated matching and extraction while
 %writing very little code.
 
-Por exemplo, o acento circulflexo é usado em expressões 
+Por exemplo, o acento circunflexo é usado em expressões 
 regulares para identificar ``o início'' de uma linha.
 Nós poderíamos mudar nosso programa para casar apenas
 linhas em que ``From:'' estivesse no início como a seguir:
@@ -107,8 +107,8 @@ for line in hand:
 %
 
 Agora vamos casar apenas as linhas que {\em começam com} a string ``From:''. Esse é um exemplo 
-simples no qual poderíamos ter feito equivalente com o método {\tt startwith()} da biblioteca 
-string. Mas serve para introduzir a noção de que expressões regulares contêm caracteres de ação 
+simples no qual poderíamos ter feito equivalente com o método {\tt startswith()} da biblioteca 
+string. Mas serve para introduzir a noção de que expressões regulares contém caracteres de ação 
 especiais que nos dão mais controle sobre o que irá casar com a expressão regular.
 %Now we will only match lines that {\em start with} the string ``From:''.  This is still a very
 %simple example that we could have done equivalently with the {\tt startswith()} method from
@@ -133,7 +133,7 @@ ainda mais poderosas. O caractere especial mais utilizado é o ponto, que casa c
 
 No exemplo a seguir, a expressão regular ``F..m:'' casaria com qualquer uma das strings
 ``From:'', ``Fxxm:'', ``F12m:'', ou ``F!@m:'' porque o caractere ponto casa com qualquer
-caractereem um expressão regular.
+caractere em um expressão regular.
 %In the following example, the regular expression ``F..m:'' would match any of the strings
 %``From:'', ``Fxxm:'', ``F12m:'', or ``F!@m:'' since the period characters in the regular
 %expression match any character.
@@ -191,7 +191,7 @@ linha:
 \end{alltt}
 \afterverb
 
-Você pode pensar no curinga ``.+'' como uma expanção para casar todos os caracteres entre os 
+Você pode pensar no curinga ``.+'' como uma expansão para casar todos os caracteres entre os 
 dois pontos e o arroba. 
 %You can think of the ``.+'' wildcard as expanding to match all the characters between the 
 %colon character and the at-sign.  
@@ -213,9 +213,9 @@ casaria o último arroba na string com o ``.+'', como mostrado abaixo:
 \end{alltt}
 \afterverb
 
-É possível dizer ao asterisco ou ao sinal de adição para não serem tão ``ganaciosos'' 
+É possível dizer ao asterisco ou ao sinal de adição para não serem tão ``gananciosos'' 
 adicionando outro caracter. Veja a documentação detalhada para mais informações sobre 
-como desligar o comportamento ganacioso.
+como desligar o comportamento ganancioso.
 %It is possible to tell an asterisk or plus sign not to be so ``greedy'' by adding 
 %another character. See the detailed documentation for information on turning off the 
 %greedy behavior.
@@ -247,7 +247,7 @@ Author: stephen.marquard@uct.ac.za
 %
 
 Não queremos escrever código para cada tipo de linha, dividindo e fatiando diferentemente cada linha.
-O programa seguinte usa {\tt findall()} para encontrar as linhas com endereço de email e extrair um 
+O programa seguinte usa {\tt findall()} para encontrar as linhas com endereço de e-mail e extrair um 
 ou mais endereços de cada uma dessas linhas.
 %We don't want to write code for each of the types of lines, splitting and slicing differently for each
 %line. This following program uses {\tt findall()} to find the lines with email addresses in them and
@@ -266,7 +266,7 @@ print lst
 %
 
 O método {\tt findall()} procura a string no segundo argumento e retorna uma lista de todas
-as strings que se parecem com um endereço de email. Estamos usando uma sequência de dois 
+as strings que se parecem com um endereço de e-mail. Estamos usando uma sequência de dois 
 caracteres que casam com um caractere sem espaço em branco ({\textbackslash}S).
 %The {\tt findall()} method searches the string in the second argument and returns a list of
 %all of the strings that look like email addresses.   We are using a two-character sequence 
@@ -291,7 +291,7 @@ possíveis.
 %character.  The ``{\textbackslash}S+'' matches as many non-whitespace characters as possible.
 
 A expressão regular casaria duas vezes (csev@umich.edu e cwen@iupui.edu), mas não casaria com a
-string ``@2PM'' porque não há caracteres sem espaço em branco {\em before} o arroba.
+string ``@2PM'' porque não há caracteres sem espaço em branco {\em antes} do arroba.
 Podemos usar essa expressão regular em um programa para ler todas as linhas de um arquivo e 
 imprimir qualquer coisa que se pareça com um endereço de email como a seguir: 
 %The regular expression would match twice (csev@umich.edu and cwen@iupui.edu), but it would not
@@ -465,7 +465,7 @@ Nós podemos construir a seguinte expressão regular para selecionar as linhas:
 
 Traduzindo isso, estamos dizendo que queremos linhas que comecem com ``X-'', seguido de
 zero ou mais caracteres (``.*''), seguido de dois pontos (``:'') e, em seguida, um espaço. 
-Depois do espaço estamos buscando por um ou mais caracteres que são ou um dígito (0-9) ou um 
+Depois do espaço, estamos buscando por um ou mais caracteres que são ou um dígito (0-9) ou um 
 ponto ``[0-9.]+''. Repare que dentro dos colchetes, o ponto corresponde a um ponto real (i.e., 
 não é um curinga dentro dos colchetes).
 %Translating this, we are saying, we want lines that start with ``X-'', followed by zero or
@@ -532,7 +532,7 @@ regular.
 %\index{regex!parentheses}
 %\index{parentheses!regular expression}
 
-Então nós faremos a seguinte alteração em nosso programa:
+Então, faremos a seguinte alteração em nosso programa:
 %So we make the following change to our program:
 
 \beforeverb
@@ -641,7 +641,7 @@ até encontrar um não-dígito, ou no início ou no fim de uma linha.
 %non-digit, or the beginning or the end of a line.
 
 Agora podemos utilizar expressões regulares para refazer um exercício do início do livro no qual 
-estavamos interessados na hora do dia em que uma mensagem foi enviada. Olhamos as linhas da 
+estávamos interessados na hora do dia em que uma mensagem foi enviada. Olhamos as linhas da 
 seguinte forma: 
 %Now we can use regular expressions to redo an exercise from earlier in the book where we were
 %interested in the time of day of each mail message.   We looked for lines of the form:
@@ -758,12 +758,12 @@ y = re.findall('\$[0-9.]+',x)
 \afterverb
 %
 
-Já que prefixamos o sifrão com uma barra invertida, ele realmente casará com o sifrão 
+Já que prefixamos o caractere dólar com uma barra invertida, ele realmente casará com o dólar 
 na string de entrada ao invés de casar com o ``fim da linha'', e o resto da expressão 
 regular casa um ou mais dígitos ou o caractere ponto. {\em Note:} Dentro de colchetes, 
 caracteres não são ``especiais''. Então quando dizemos ``[0-9.]'', realmente significa 
 dígitos ou um ponto. Fora dos colchetes, um ponto é o caractere ``curinga'' para casar 
-qaulquer caractere. Dentro dos colchetes, o ponto é um ponto.
+qualquer caractere. Dentro dos colchetes, o ponto é um ponto.
 %Since we prefix the dollar sign with a backslash, it actually matches the dollar sign
 %in the input string instead of matching the ``end of line'', and the rest of the regular
 %expression matches one or more digits or the period character.  {\em Note:} Inside 
@@ -775,8 +775,8 @@ qaulquer caractere. Dentro dos colchetes, o ponto é um ponto.
 %\section{Summary}
 
 Embora isso tenha sido apenas uma visão superficial de expressões regulares, conseguimos 
-aprendemos um pouco sobre a linguagem de expressões regulares. Elas são strings de busca com 
-caracteres especiais que informam o que você quer ao o sistema de expressão regular, que por 
+aprender um pouco sobre a linguagem de expressões regulares. Elas são strings de busca com 
+caracteres especiais que informam o que você quer ao sistema de expressão regular, que por 
 sua vez define o ``casamento'' e o que é extraído das strings que casaram. Aqui temos alguns 
 desses caracteres especiais e sequências de caracteres:
 %While this only scratched the surface of regular expressions, we have learned a bit about
@@ -907,7 +907,7 @@ encontrará algumas pequenas diferenças entre as expressões regulares suportad
 expressões regulares suportadas pelo {\tt grep}. Por exemplo, {\tt grep} não suporta o 
 caractere sem espaço em branco ``{\textbackslash}S'' então você precisará usar uma notação um 
 pouco mais complexa ``[\verb"^" ]'', que simplesmente significa que corresponde a um caractere 
-ue é qualquer coisa a não ser um espaço.
+que é qualquer coisa a não ser um espaço.
 %This tells {\tt grep} to show you lines that start with the string ``From:'' in the file
 %{\tt mbox-short.txt}.   If you experiment with the {\tt grep} command a bit and read the
 %documentation for {\tt grep}, you will find some subtle differences between the regular
@@ -916,7 +916,7 @@ ue é qualquer coisa a não ser um espaço.
 %use the slightly more complex set notation ``[\verb"^" ]'', which simply means match a 
 %character that is anything other than a space.
 
-\section{Debugging}
+\section{Depuração}
 %\section{Debugging}
 
 Python possui uma documentação embutida simples e rudimentar que pode ser bastante útil se
@@ -1032,8 +1032,8 @@ de uma linha ou muitas outras capacidades semelhantes.
 %or many other similar capabilities.
 
 \item[curinga:]
-A special character that matches any character.  In regular expressions the wild-card
-character is the period.
+Um caractere especial que busca por qualquer caractere. Em expressões regulares, o 
+caractere wildcard é o ``ponto''
 \index{curinga}
 %\item[wild card:]
 %A special character that matches any character.  In regular expressions the wild-card
