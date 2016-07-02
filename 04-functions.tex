@@ -2,9 +2,11 @@
 % Copyright (c)  2010-  Charles R. Severance, All Rights Reserved
 
 \chapter{Functions}
+\chapter{Funções}
 \label{funcchap}
 
 \section{Function calls}
+\section{Chamadas de funções}
 \label{functionchap}
 \index{function call}
 
@@ -13,6 +15,11 @@ statements that performs a computation.  When you define a function,
 you specify the name and the sequence of statements.  Later, you can
 ``call'' the function by name.  
 We have already seen one example of a {\bf function call}:
+
+Em programação, uma {\bf função} é uma sequência de condições que executa uma
+tarefa. Quando você define uma função, você especifica o nome e a sequência de
+condições. Posteriormente, você pode ``chamar'' a função pelo nome. Nós já
+vimos um exemplo de {\bf chamada de função}:
 
 \beforeverb
 \begin{verbatim}
@@ -27,23 +34,40 @@ a value or variable that we are passing into the function as input
 to the function.  
 The result, for the {\tt type} function, is the type of the argument.
 
+O nome da função é {\tt type}. A expressão em parênteses é chamada de
+{\bf argumento} da função. O argumento é um valor ou variável que passamos
+como entrada para a função. O resultado, para a função {\tt type}, é o tipo
+do argumento.
+
 \index{parentheses!argument in}
 
 It is common to say that a function ``takes'' an argument and ``returns''
 a result.  The result is called the {\bf return value}.
 
+É comum dizer que uma função ``pega'' um arqumento e ``retorna'' um resultado.
+O resultado é chamado de {\bf valor de retorno}.
+
+
 \index{argument}
 \index{return value}
 
 \section{Built-in functions}
-
+\section{Funções embutidas (``baterias inclusas'')}
 Python provides a number of important built-in functions that
 we can use without needing to provide the function definition.
 The creators of Python wrote a set of functions 
 to solve common problems and included them in Python for us to use.
 
+O Python provê um grande número de funções imbutidas importantes que podemos
+utilizar sem a necessidade de definir como novas funções. Os criadores de
+Python escreveram um conjunto de funções para a resoluções de problemas comuns
+e incluiram-nas no Python para que utilizássemos.
+
 The {\tt max} and {\tt min} functions give us the largest and 
 smallest values in a list, respectively:
+
+As funções {\tt max} e {\tt min} nos dão o maior e o menor valor em uma lista,
+respectivamente:
 
 \beforeverb
 \begin{verbatim}
@@ -59,11 +83,19 @@ The {\tt max} function tells us the ``largest character'' in the
 string (which turns out to be the letter ``w'') and the {\tt min}
 function shows us the smallest character (which turns out to be a 
 space).
+%
+A função {\tt max} retorna o ``maior caractere'' quando usado com {\it strings}
+(que acaba sendo a letra ``w'') e função {\tt min} retorna o menor caractere
+(que é o espaço).
 
 Another very common built-in function is the {\tt len} function
 which tells us how many items are in its argument. If the argument
 to {\tt len} is a string, it returns the number of characters 
 in the string.
+
+Outra função muito comum é a função {\tt len} que nos diz quantos ítens tem
+no seu argumento. Se o argumento do {\tt len} é uma {\it string}, ela vai
+retornar o número de caracteres na {\it string}.
 
 \beforeverb
 \begin{verbatim}
@@ -75,11 +107,18 @@ in the string.
 %
 These functions are not limited to looking at strings. They can operate
 on any set of values, as we will see in later chapters.
+%
+Estas funções não estão limitadas ao uso com {\it strings}. Elas podem ser
+utilizadas em qualquer conjunto de valores, como veremos em capítulos adiante.
 
 You should treat the names of built-in functions as reserved words (i.e.,
 avoid using ``max'' as a variable name).
 
+Você deve tratar os nomes das funções embutidas como palavras reservadas (i.e.,
+evitando utilizar ``max'' como nome de variável).
+
 \section{Type conversion functions}
+\section{Funções de conversões de tipos}
 \index{conversion!type}
 \index{type conversion}
 
@@ -95,6 +134,10 @@ Python also provides built-in functions that convert values
 from one type to another.  The {\tt int} function takes any value and
 converts it to an integer, if it can, or complains otherwise:
 
+Python também provê funções para converter valores de um tipo para outro. A
+função {\tt int} pega um valor e converte para um inteiro, se ela conseguir,
+caso contrário ela vai ``reclamar'':
+
 \index{int function}
 \index{function!int}
 
@@ -109,6 +152,9 @@ ValueError: invalid literal for int(): Hello
 %
 {\tt int} can convert floating-point values to integers, but it
 doesn't round off; it chops off the fraction part:
+%
+A função {\tt int} pode converter um ponto-flutuante para um inteiro, mas ela
+não arredonda; ela somente corta a parte fracionária:
 
 \beforeverb
 \begin{verbatim}
@@ -121,6 +167,8 @@ doesn't round off; it chops off the fraction part:
 %
 {\tt float} converts integers and strings to floating-point
 numbers:
+%
+A função {\tt float} converte inteiros e {\it strings} para pontos-flutuantes:
 
 \index{float function}
 \index{function!float}
@@ -135,6 +183,8 @@ numbers:
 \afterverb
 %
 Finally, {\tt str} converts its argument to a string:
+%
+E por fim, {\tt str} converte seu arqumento para uma {\it string}:
 
 \index{str function}
 \index{function!str}
@@ -150,6 +200,7 @@ Finally, {\tt str} converts its argument to a string:
 %
 
 \section{Random numbers}
+\section{Números aleatórios}
 
 \index{random number}
 \index{number, random}
@@ -163,12 +214,25 @@ calculation to yield the same result.  For some applications, though,
 we want the computer to be unpredictable.  Games are an obvious
 example, but there are more.
 
+Dado a mesma entrada, a maioria dos programas de computadores geram sempre a
+mesma saída, por isso são chamados de {\bf determinísticos}. Determinismo é
+normalmente uma coisa boa, uma vez que esperamos que o mesmo cálculo retorne
+o mesmo resultado. Para algumas aplicações, no entanto, nós desejamos que o
+computador seja imprevisível. Os jogos são exemplos óbvios, mas existem outros.
+
 Making a program truly nondeterministic turns out to be not so easy,
 but there are ways to make it at least seem nondeterministic.  One of
 them is to use {\bf algorithms} that generate {\bf pseudorandom} numbers.
 Pseudorandom numbers are not truly random because they are generated
 by a deterministic computation, but just by looking at the numbers it
 is all but impossible to distinguish them from random.
+
+Fazer um programa realmente não-determinístico não é uma coisa tão fácil, mas
+existem formas de fazê-lo ao menos parecer não-determinístico. Umas das formas
+é utilizar {\bf algoritmos} que geram números pseudoaleatórios. Números
+pseudoaleatórios não são realmente aleatórios porque são gerados por uma
+computação determinística, mas somente olhando para os números é quase
+impossível distingui-los de números aleatórios.
 
 \index{random module}
 \index{module!random}
@@ -177,6 +241,9 @@ The {\tt random} module provides functions that generate
 pseudorandom numbers (which I will simply call ``random'' from
 here on).
 
+O módulo {\tt random} provê funções que geram números pseudoaleatórios (que
+eu vou chamar simplesmente de ``aleatórios'' a partir de agora).
+
 \index{random function}
 \index{function!random}
 
@@ -184,6 +251,11 @@ The function {\tt random} returns a random float
 between 0.0 and 1.0 (including 0.0 but not 1.0).  Each time you
 call {\tt random}, you get the next number in a long series.  To see a
 sample, run this loop:
+
+A função {\tt random} retorna um {\it float} aleatório entre 0.0 e 1.0
+(incluindo o 0.0, mas não o 1.0). Cada vez que a função {\tt random} é chamada
+você obtém um número com uma grande série. Para ver um exemplo disto, execute
+este laço:
 
 \beforeverb
 \begin{verbatim}
@@ -197,6 +269,9 @@ for i in range(10):
 %
 This program produces the following list of 10 random numbers
 between 0.0 and up to but not including 1.0.
+%
+Este programa produziu a seguinte lista de 10 números aleatórios entre 0.0
+e até, mas não incluindo, o 1.0.
 
 \beforeverb
 \begin{verbatim}
@@ -216,6 +291,8 @@ between 0.0 and up to but not including 1.0.
 \begin{ex}
 Run the program on your system and see what numbers you get.
 Run the program more than once and see what numbers you get.
+Execute o programa em seu computador e veja quais números você obtém.
+Execute o programa mais de uma vez no seu computador e veja quais números você obtém.
 \end{ex}
 
 The {\tt random} function is only one of many 
@@ -223,6 +300,10 @@ functions that handle random numbers.
 The function {\tt randint} takes the parameters {\tt low} and
 {\tt high}, and returns an integer between {\tt low} and
 {\tt high} (including both).
+
+A função {\tt random} é uma de muitas funções que tratam números aleatórios.
+A função {\tt randint} usa como parametros {\tt baixo} e {\tt alto}, e retorna
+um inteiro entre estes números (incluindo ambos os números passados).
 
 \index{randint function}
 \index{function!randint}
@@ -238,6 +319,9 @@ The function {\tt randint} takes the parameters {\tt low} and
 %
 To choose an element from a sequence at random, you can use
 {\tt choice}:
+
+Para escolher um elemento de uma sequência aleatória, você pode utilizar a
+função {\tt choice}:
 
 \index{choice function}
 \index{function!choice}
@@ -255,8 +339,14 @@ To choose an element from a sequence at random, you can use
 The {\tt random} module also provides functions to generate
 random values from continuous distributions including
 Gaussian, exponential, gamma, and a few more.
+%
+O módulo {\tt random} também provê funções para geração de valores
+distribuições contínuas incluindo Gaussianas, exponenciais, gama e algumas
+outras.
 
 \section{Math functions}
+\section{Funções matemáticas}
+
 \index{math function}
 \index{function, math}
 \index{module}
@@ -266,6 +356,9 @@ Python has a {\tt math} module that provides most of the familiar
 mathematical functions.  
 Before we can use the module, we have to import it:
 
+Python tem o módulo {\tt math} que provê as funções matemáticas mais
+conhecidas. Antes de utilizar o módulo, temos que importá-lo:
+
 \beforeverb
 \begin{verbatim}
 >>> import math
@@ -274,6 +367,9 @@ Before we can use the module, we have to import it:
 %
 This statement creates a {\bf module object} named math.  If
 you print the module object, you get some information about it:
+%
+Esta declaração cria um módulo objeto chamado math. Se você exibir o objeto
+módulo, obterá algumas informações sobre ele:
 
 \beforeverb
 \begin{verbatim}
@@ -286,6 +382,11 @@ The module object contains the functions and variables defined in the
 module.  To access one of the functions, you have to specify the name
 of the module and the name of the function, separated by a dot (also
 known as a period).  This format is called {\bf dot notation}.
+%
+O módulo contém funções e variáveis definidas. Para acessar umas destas
+funções, tem que especificar o nome do módulo e o nome da função, separados
+por um ponto (também conhecido como período). Este formato é conhecido como
+{\bf notação de ponto}.
 
 \index{dot notation}
 
@@ -302,6 +403,10 @@ known as a period).  This format is called {\bf dot notation}.
 The first example computes the logarithm base 10 of the
 signal-to-noise ratio.  The math module also provides a
 function called {\tt log} that computes logarithms base {\tt e}.
+%
+O primeiro exemplo calcula o logaritmo de base 10 da relação sinal-ruído. O
+módulo {\tt math} também provê uma função chamada {\tt log} que calcula o
+logaritmo de base {\tt e}.
 
 \index{log function}
 \index{function!log}
@@ -316,6 +421,13 @@ functions ({\tt cos}, {\tt tan}, etc.)  take arguments in radians. To
 convert from degrees to radians, divide by 360 and multiply by $2
 \pi$:
 
+O segundo exemplo descobre o seno de {\tt radianos}. O nome da variável é uma
+dica para informar que o {\tt sin} e as outras funções trigonométricas
+({\tt cos}, {\tt tan}, etc.) recebem como argumento valores em radianos. Para
+converter de graus para radianos, divide-se o valor por 360 e multiplica-se
+por 2 \pi$:
+
+
 \beforeverb
 \begin{verbatim}
 >>> degrees = 45
@@ -328,12 +440,18 @@ convert from degrees to radians, divide by 360 and multiply by $2
 The expression {\tt math.pi} gets the variable {\tt pi} from the math
 module.  The value of this variable is an approximation
 of $\pi$, accurate to about 15 digits.
+%
+A expressão {\tt math.pi} pega a variável {\tt pi} do módulo {\tt math}. O
+valor desta variável é uma aproximação do \pi, em exatos 15 dígitos.
 
 \index{pi}
 
 If you know
 your trigonometry, you can check the previous result by comparing it to
 the square root of two divided by two:
+
+Se você conhece trigometria, você pode verificar o resultado anterior
+comparando-o a raiz de 2 dividido por 2:
 
 \index{sqrt function}
 \index{function!sqrt}
@@ -348,6 +466,7 @@ the square root of two divided by two:
 
 
 \section{Adding new functions}
+\section{Adicionando novas funções}
 
 So far, we have only been using the functions that come with Python,
 but it is also possible to add new functions.
@@ -356,11 +475,19 @@ the sequence of statements that execute when the function is called.
 Once we define a function, we can reuse the function over and over 
 throughout our program.
 
+Até agora, utilizamos somente funções que já estão no Python, mas também é
+possível adicionar novas funções. Uma definição de uma função especifica o
+nome de uma nova função e a sequência das condições que serão executadas
+quando a função é chamada. Uma vez definida a função, podemos reutilizá-la
+diversas vezes em nosso programa.
+
 \index{function}
 \index{function definition}
 \index{definition!function}
 
 Here is an example:
+
+Aqui temos um exemplo:
 
 \beforeverb
 \begin{verbatim}
