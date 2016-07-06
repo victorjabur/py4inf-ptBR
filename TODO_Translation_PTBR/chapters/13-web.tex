@@ -1,25 +1,40 @@
 % The contents of this file is 
 % Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
 
-\chapter{Using Web Services}
+\chapter{Usando Web Services}
+%\chapter{Using Web Services}
 
-Once it became easy to retrieve documents and parse documents 
-over HTTP using programs, it did not take long to develop 
-an approach where we started producing documents that were specifically
-designed to be consumed by other 
-programs (i.e., not HTML to be displayed in a browser).
+Agora que se tornou mais facil retornar e analizar documentos
+HTTP utilizando programas, não levará muito tempo para desenvolver
+um sistema onde nós podemos começar à produzir documentos que serão
+especificamente desenhados para serem utilizados por outros
+programas (i.e., nenhum HTML para ser mostrado no navegador)
+%Once it became easy to retrieve documents and parse documents 
+%over HTTP using programs, it did not take long to develop 
+%an approach where we started producing documents that were specifically
+%designed to be consumed by other 
+%programs (i.e., not HTML to be displayed in a browser).
 
-There are two common formats that we use when exchanging data across the web.
-The ``eXtensible Markup Language'' or XML has been in use for a very long time 
-and is best suited for exchanging document-style data.   When programs just want 
-to exchange dictionaries, lists, or other internal information with each other,
-they use JavaScript Object Notation or JSON (see \url{www.json.org}).  
-We will look at both formats.
+Existem dois formatos comuns que nós usamos quando trocamos dados através da web.
+O ``eXtensible Markup Language'' ou XML é utilizado à muito tempo
+e é melhor desenhado para troca de document-style-data. Quando programas somente
+querem trocar dicionarios, listas, ou outra informaçao interterna entre eles, 
+eles usam JavaScript Object Notation ou JSON (sobre \url{www.json.org}).
+Nós vamos ver os dois formatos.
+%There are two common formats that we use when exchanging data across the web.
+%The ``eXtensible Markup Language'' or XML has been in use for a very long time 
+%and is best suited for exchanging document-style data.   When programs just want 
+%to exchange dictionaries, lists, or other internal information with each other,
+%they use JavaScript Object Notation or JSON (see \url{www.json.org}).  
+%We will look at both formats.
 
 \section{eXtensible Markup Language - XML}
+%\section{eXtensible Markup Language - XML}
 
-XML looks very similar to HTML, but XML is more structured 
-than HTML.  Here is a sample of an XML document:
+O XML é bem parecido com o HTML, porem o XML é melhor estruturado
+que o HTML. Aqui está um exemplo de um documento XML:
+%XML looks very similar to HTML, but XML is more structured 
+%than HTML.  Here is a sample of an XML document:
 
 \beforeverb
 \begin{verbatim}
@@ -33,21 +48,28 @@ than HTML.  Here is a sample of an XML document:
 \end{verbatim}
 \afterverb
 %
-Often it is helpful to think of an XML document as a tree structure
-where there is a top tag {\tt person} and other tags such as {\tt phone}
-are drawn as \emph{children} of their parent nodes.
+É mais facil pensar em um documento XML como uma estrutura em arvore
+onde tem uma tag no topo {\tt person} e outras tags como {\tt phone}
+são escritas como \emph{filhos} dos pais deles. 
+%Often it is helpful to think of an XML document as a tree structure
+%where there is a top tag {\tt person} and other tags such as {\tt phone}
+%are drawn as \emph{children} of their parent nodes.
 
 \beforefig
 \centerline{\includegraphics[height=1.50in]{figs2/xml-tree.eps}}
 \afterfig
 
-\section{Parsing XML}
+\section{Analizando o XML}
+%\section{Parsing XML}
 
 \index{ElementTree}
 \index{ElementTree!fromstring}
 \index{ElementTree!find}
-Here is a simple application that parses some XML
-and extracts some data elements from the XML:
+
+Aqui está uma simples aplicação que analiza algum XML
+e extrai alguns elementos do XML:
+%Here is a simple application that parses some XML
+%and extracts some data elements from the XML:
 
 \beforeverb
 \begin{verbatim}
@@ -68,15 +90,23 @@ print 'Attr:',tree.find('email').get('hide')
 \end{verbatim}
 \afterverb
 %
-Calling {\tt fromstring} converts the string representation
-of the XML into a ``tree'' of XML nodes.  When the
-XML is in a tree, we have a series of methods we can call to 
-extract portions of data from the XML.  
+Ao chamar {\tt fromstring} é feita a conversão da string que 
+representa o XML em uma ``arvore'' de conecções XML. Quando o
+XML esta em uma arvore, nós temos uma serie de metodos que nós
+podemos chamar para exrair informações do XML.
+%Calling {\tt fromstring} converts the string representation
+%of the XML into a ``tree'' of XML nodes.  When the
+%XML is in a tree, we have a series of methods we can call to 
+%extract portions of data from the XML.  
 
-The {\tt find} function searches through the 
-XML tree and retrieves a {\bf node} that matches the specified tag.
-Each node can have some text, some attributes (like hide), and
-some ``child'' nodes.   Each node can be the top of a tree of nodes.
+A função {\tt find} varre a arvore do XML
+e retorna um {\bf nó} que corresponde à aquela tag especifica.
+Cada nó pode conter algum texto, alguns atributos (como hide), e
+algum nó ``filho''. Cada nó pode ser o inicio de uma arvore de nós.
+%The {\tt find} function searches through the 
+%XML tree and retrieves a {\bf node} that matches the specified tag.
+%Each node can have some text, some attributes (like hide), and
+%some ``child'' nodes.   Each node can be the top of a tree of nodes.
 
 \beforeverb
 \begin{verbatim}
@@ -85,19 +115,28 @@ Attr: yes
 \end{verbatim}
 \afterverb
 %
-Using an XML parser such as {\tt ElementTree} has the advantage
-that while the XML in this example is quite simple, it turns
-out there are many rules regarding valid XML and using 
-{\tt ElementTree} allows us to extract data from XML without 
-worrying about the rules of XML syntax.
+Utilizar um analizador de XML como o {\tt ElementTree} teremos a
+vantagem que, enquanto o XML deste exemplo é bastante simples, 
+teremos muitas regras em relação à XML validos e usar o 
+{\tt ElementTree} nos permitirá extrair informações do XML sem
+se preoculpar com as regras de sintaxe do XML.
+%Using an XML parser such as {\tt ElementTree} has the advantage
+%that while the XML in this example is quite simple, it turns
+%out there are many rules regarding valid XML and using 
+%{\tt ElementTree} allows us to extract data from XML without 
+%worrying about the rules of XML syntax.
 
-\section{Looping through nodes}
+\section{Percorrendo os nós}
+%\section{Looping through nodes}
 
 \index{ElementTree!findall}
 \index{ElementTree!get}
-Often the XML has multiple nodes and we need to write a loop
-to process all of the nodes.  In the following program, 
-we loop through all of the {\tt user} nodes:
+Frequentemente o XML terá multiplos nós que nós podemos percorrer
+para processar todos os nós. No programa a seguir,
+nós percorremos por todos os nós do {\tt user}:
+%Often the XML has multiple nodes and we need to write a loop
+%to process all of the nodes.  In the following program, 
+%we loop through all of the {\tt user} nodes:
 
 \beforeverb
 \begin{verbatim}
@@ -128,11 +167,16 @@ for item in lst:
 \end{verbatim}
 \afterverb
 %
-The {\tt findall} method retrieves a Python list of subtrees that
-represent the {\tt user} structures in the XML tree.  Then we can 
-write a {\tt for} loop that looks at each of the user nodes, and 
-prints the {\tt name} and {\tt id} text elements as well as the 
-{\tt x} attribute from the {\tt user} node.
+O metodo {\tt findall} retorna uma lista do Python com sub-árvores
+que representam a estrutura {\tt user} da árvore do XML. Então nós 
+podemos escrever um loop {\tt for} que procura em cada nó do user,
+e imprime os elementos {\tt name} e {\tt id} assim como o 
+atributo {\tt x} do nó {\tt user}.
+%The {\tt findall} method retrieves a Python list of subtrees that
+%represent the {\tt user} structures in the XML tree.  Then we can 
+%write a {\tt for} loop that looks at each of the user nodes, and 
+%prints the {\tt name} and {\tt id} text elements as well as the 
+%{\tt x} attribute from the {\tt user} node.
 
 \beforeverb
 \begin{verbatim}
@@ -148,15 +192,21 @@ Attribute 7
 %
 
 \section{JavaScript Object Notation - JSON}
+%\section{JavaScript Object Notation - JSON}
 \index{JSON}
 \index{JavaScript Object Notation}
 
-The JSON format was inspired by the object and array format used in the JavaScript
-language.  But since Python was invented before JavaScript, Python's syntax
-for dictionaries and lists influenced the syntax of JSON.  So the format of JSON
-is nearly identical to a combination of Python lists and dictionaries.
+O formato JSON foi inspirado no formato do objeto array utilizado na linguagem JavaScript.
+Mas como o Python foi inventado antes do JavaScript, a sintaxe que o Python utiliza
+para dicionarios e listas influenciaram na sintaxe do JSON. Então o formato JSON é
+bem parecido com a combinação de listas e dicionarios do Python.
+%The JSON format was inspired by the object and array format used in the JavaScript
+%language.  But since Python was invented before JavaScript, Python's syntax
+%for dictionaries and lists influenced the syntax of JSON.  So the format of JSON
+%is nearly identical to a combination of Python lists and dictionaries.
 
-Here is a JSON encoding that is roughly equivalent to the simple XML from above:
+Aqui está uma codificação JSON que é quase equivalente ao simples XML abaixo:
+%Here is a JSON encoding that is roughly equivalent to the simple XML from above:
 
 \beforeverb
 \begin{verbatim}
@@ -173,31 +223,53 @@ Here is a JSON encoding that is roughly equivalent to the simple XML from above:
 \end{verbatim}
 \afterverb
 %
-You will notice some differences.  First, in XML, we can add attributes like
-``intl'' to the ``phone'' tag.  In JSON, we simply have key-value pairs.  Also
-the XML ``person'' tag is gone, replaced by a set of outer curly braces.  
+Você pode notar algumas diferenças. Primeira, no XML, nós podemos adicionar
+atributos como ``intl'' à tag ``phone''. No JSON, nós simplesmente temos chaves de
+valores pares. Além de que a tag ``person'' não existe mais, que substituida por
+um conjunto de chaves externas.
+%You will notice some differences.  First, in XML, we can add attributes like
+%``intl'' to the ``phone'' tag.  In JSON, we simply have key-value pairs.  Also
+%the XML ``person'' tag is gone, replaced by a set of outer curly braces.  
 
-In general, JSON structures are simpler than XML because JSON has fewer capabilities
-than XML.  But JSON has the advantage that it maps {\em directly} to some combination
-of dictionaries and lists.   And since nearly all programming languages 
-have something equivalent to Python's dictionaries and lists, JSON is a very
-natural format to have two cooperating programs exchange data.
+No geral, a estrutura JSON é mais simples que a do XML por conta do JSON ter menos
+utilidades que o XML. Mas o JSON tem a vantagem de mapear {\em directly} para alguma
+combinação de dicionarios e listas. E como quase todas as linguagens de programação 
+tem algo equivalente aos dicionarios e listas do Python, JSON é um formato natural 
+para fazer dois programas cooperarem e trocarem dados.
+%In general, JSON structures are simpler than XML because JSON has fewer capabilities
+%than XML.  But JSON has the advantage that it maps {\em directly} to some combination
+%of dictionaries and lists.   And since nearly all programming languages 
+%have something equivalent to Python's dictionaries and lists, JSON is a very
+%natural format to have two cooperating programs exchange data.
 
-JSON is quickly becoming the format of choice for nearly all data exchange between 
-applications because of its relative simplicity compared to XML.
+JSON está facilmente se tornando o formato escolhido para realizar troca de dados
+entre aplicações por conta de sua simplicidade se comparado ao XML.
+%JSON is quickly becoming the format of choice for nearly all data exchange between 
+%applications because of its relative simplicity compared to XML.
 
-\section{Parsing JSON}
+\section{Analizando JSON}
+%\section{Parsing JSON}
 
-We construct our JSON by nesting dictionaries (objects) and lists as needed.  In 
-this example, we represent a list of users where each user is a set of 
-key-value pairs (i.e., a dictionary).  So we have a list of dictionaries.
+Nós podemos contruir nosso JSON utilizando dicionarios (objetos) e listas conforme
+o necessario. Neste exemplo, n´os vamos representar uma lista de usuarios onde cada
+usuario é um valor de chave (i.e., um dicionario). Então nós temos uma lista de
+dicionarios.
+%We construct our JSON by nesting dictionaries (objects) and lists as needed.  In 
+%this example, we represent a list of users where each user is a set of 
+%key-value pairs (i.e., a dictionary).  So we have a list of dictionaries.
 
-In the following program, we use the built-in {\bf json} library to parse 
-the JSON and read through the data.   Compare this closely to the equivalent
-XML data and code above.  The JSON has less detail, so we must know in advance 
-that we are getting a list and that the list is of users and each user is a
-set of key-value pairs.  The JSON is more succinct (an advantage) but also is 
-less self-describing (a disadvantage).
+No programa a seguir, nós usamos o biblioteca contrutora {\bf json} para analizar
+o JSON e ler as informações. Compare ele de perto com a informação equivalente em XML
+abaixo. O JSON tem menos detalhes, então nós devemos previamente saber que nós
+estamos pegando uma lista e essa lista são usuarios e cada usuario é uma valor de 
+chave. O JSON é mais sucinto (uma vantagem) mas também é menos auto-explicativo 
+(uma desvantagem).
+%In the following program, we use the built-in {\bf json} library to parse 
+%the JSON and read through the data.   Compare this closely to the equivalent
+%XML data and code above.  The JSON has less detail, so we must know in advance 
+%that we are getting a list and that the list is of users and each user is a
+%set of key-value pairs.  The JSON is more succinct (an advantage) but also is 
+%less self-describing (a disadvantage).
 
 \beforeverb
 \begin{verbatim}
@@ -226,15 +298,23 @@ for item in info:
 \afterverb
 %
 
-If you compare the code to extract data from the parsed JSON and XML
-you will see that what we get from {\bf json.loads()} is a Python list
-which we traverse with a {\tt for} loop, and each item within that list
-is a Python dictionary.  Once the JSON has been parsed, we can use the Python
-index operator to extract the various bits of data for each user.  We don't
-have to use the JSON library to dig through the parsed JSON, since the returned
-data is simply native Python structures.
+Se você comparar o codigo para extrarir a informação do JSON e XML analizados,
+você vera que oque nós pegamos do {\bf json.loads()} é uma lista Python
+que nós percorremos com um {\tt for} loop, e cada item dentro desta lista
+é um dicionario Python. Uma vez que o JSON foi analizado, nós podemos usar o
+operador de indice do Python para extrair varias informações de cada usuario.
+Nós não precisamos usar a biblioteca JSON para percorrer o JSON analizado, 
+pois ela retornará uma informação já é uma estrutura do proprio Python.
+%If you compare the code to extract data from the parsed JSON and XML
+%you will see that what we get from {\bf json.loads()} is a Python list
+%which we traverse with a {\tt for} loop, and each item within that list
+%is a Python dictionary.  Once the JSON has been parsed, we can use the Python
+%index operator to extract the various bits of data for each user.  We don't
+%have to use the JSON library to dig through the parsed JSON, since the returned
+%data is simply native Python structures.
 
-The output of this program is exactly the same as the XML version above.
+A saida deste programa é exatamente a mesma que a versão em XML abaixo.
+%The output of this program is exactly the same as the XML version above.
 
 \beforeverb
 \begin{verbatim}
@@ -248,13 +328,21 @@ Attribute 7
 \end{verbatim}
 \afterverb
 %
-In general, there is an industry trend away from XML and towards JSON for 
-web services.  Because the JSON is simpler and more directly maps to native 
-data structures we already have in programming languages, the parsing 
-and data extraction code is usually simpler and more direct when using JSON.
-But XML is more self-descriptive than JSON and so there are 
-some applications where XML retains an advantage.  For example, most word 
-processors store documents internally using XML rather than JSON.
+Em geral, existem uma tendencia da industria utilizar cada vez mais o JSON
+do que o XML em serviços web. Por conta do JSON ser mais simples e mais
+direcionado para estruturas nativas que já existem nas linguagens de
+programação, a analize e extração de dados é usualmente simples e mais direto
+utilizando JSON. Mas o XML é mais auto-explicativo que o JSON então terá
+algumas aplicações em que o XML detem a vantagem. Por exemplo, a maioria de 
+processadores de palavras guardam documentos internamente utilizando XML
+em vez de JSON.
+%In general, there is an industry trend away from XML and towards JSON for 
+%web services.  Because the JSON is simpler and more directly maps to native 
+%data structures we already have in programming languages, the parsing 
+%and data extraction code is usually simpler and more direct when using JSON.
+%But XML is more self-descriptive than JSON and so there are 
+%some applications where XML retains an advantage.  For example, most word 
+%processors store documents internally using XML rather than JSON.
 
 \section{Application Programming Interfaces}
 
