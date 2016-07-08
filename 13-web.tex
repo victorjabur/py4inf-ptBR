@@ -1,12 +1,12 @@
 % The contents of this file is 
 % Copyright (c) 2009-  Charles R. Severance, All Righs Reserved
 
-\chapter{Usando Web Services}
+\chapter{Utilizando Serviços web}
 %\chapter{Using Web Services}
 
-Agora que se tornou mais facil retornar e analizar documentos
-HTTP utilizando programas, não levará muito tempo para desenvolver
-um sistema onde nós podemos começar à produzir documentos que serão
+Uma vez que se tornou mais fácil retornar e analisar documentos
+HTTP utilizando programas, não levará muito tempo para desenvolvermos
+um sistema onde nós poderemos começar a produzir documentos que serão
 especificamente projetados para serem utilizados por outros
 programas (i.e., não é o HTML que é mostrado no navegador).
 %Once it became easy to retrieve documents and parse documents 
@@ -18,9 +18,9 @@ programas (i.e., não é o HTML que é mostrado no navegador).
 Existem dois formatos comuns que nós usamos quando trocamos dados através da web.
 O ``eXtensible Markup Language'' ou XML é utilizado à muito tempo
 e é melhor projetado para troca de document-style-data. Quando programas somente
-querem trocar dicionarios, listas, ou outra informaçao interterna entre eles, 
-eles usam JavaScript Object Notation ou JSON (sobre \url{www.json.org}).
-Nós vamos ver os dois formatos.
+querem trocar dicionários, listas, ou outra informação interterna entre eles, 
+eles usam o JavaScript Object Notation ou JSON (sobre \url{www.json.org}).
+Nós iremos ver os dois formatos.
 %There are two common formats that we use when exchanging data across the web.
 %The ``eXtensible Markup Language'' or XML has been in use for a very long time 
 %and is best suited for exchanging document-style data.   When programs just want 
@@ -31,7 +31,7 @@ Nós vamos ver os dois formatos.
 \section{eXtensible Markup Language - XML}
 %\section{eXtensible Markup Language - XML}
 
-O XML é bem parecido com o HTML, porem o XML é melhor estruturado
+O XML é bem-parecido com o HTML, porém o XML é mais estruturado
 que o HTML. Aqui está um exemplo de um documento XML:
 %XML looks very similar to HTML, but XML is more structured 
 %than HTML.  Here is a sample of an XML document:
@@ -48,9 +48,9 @@ que o HTML. Aqui está um exemplo de um documento XML:
 \end{verbatim}
 \afterverb
 %
-É mais facil pensar em um documento XML como uma estrutura em arvore
+É mais fácil pensar em um documento XML como uma estrutura em árvore
 onde tem uma tag no topo {\tt person} e outras tags como {\tt phone}
-são escritas como \emph{filhos} dos pais deles. 
+são escritas como \emph{filhos} dos pais deles.
 %Often it is helpful to think of an XML document as a tree structure
 %where there is a top tag {\tt person} and other tags such as {\tt phone}
 %are drawn as \emph{children} of their parent nodes.
@@ -59,14 +59,14 @@ são escritas como \emph{filhos} dos pais deles.
 \centerline{\includegraphics[height=1.50in]{figs2/xml-tree.eps}}
 \afterfig
 
-\section{Analizando o XML}
+\section{Analisando o XML}
 %\section{Parsing XML}
 
 \index{ElementTree}
 \index{ElementTree!fromstring}
 \index{ElementTree!find}
 
-Aqui está uma simples aplicação que analiza algum XML
+Aqui está uma simples aplicação que analisa algum XML
 e extrai alguns elementos do XML:
 %Here is a simple application that parses some XML
 %and extracts some data elements from the XML:
@@ -91,18 +91,18 @@ print 'Attr:',tree.find('email').get('hide')
 \afterverb
 %
 Ao chamar {\tt fromstring} é feita a conversão da string que 
-representa o XML em uma ``arvore'' de conecções XML. Quando o
-XML esta em uma arvore, nós temos uma serie de metodos que nós
-podemos chamar para exrair informações do XML.
+representa o XML em uma ``árvore'' de conexões XML. Quando o
+XML esta em uma arvore, nós temos uma serie de métodos que nós
+podemos chamar para extrair informações do XML.
 %Calling {\tt fromstring} converts the string representation
 %of the XML into a ``tree'' of XML nodes.  When the
 %XML is in a tree, we have a series of methods we can call to 
 %extract portions of data from the XML.  
 
-A função {\tt find} varre a arvore do XML
-e retorna um {\bf nó} que corresponde à aquela tag especifica.
+A função {\tt find} varre a árvore do XML
+e retorna um {\bf nó} que corresponde a essa tag específica.
 Cada nó pode conter algum texto, alguns atributos (como hide), e
-algum nó ``filho''. Cada nó pode ser o inicio de uma arvore de nós.
+algum nó ``filho''. Cada nó pode ser o início de uma árvore de nós.
 %The {\tt find} function searches through the 
 %XML tree and retrieves a {\bf node} that matches the specified tag.
 %Each node can have some text, some attributes (like hide), and
@@ -115,11 +115,11 @@ Attr: yes
 \end{verbatim}
 \afterverb
 %
-Utilizar um analizador de XML como o {\tt ElementTree} teremos a
+Ao utilizar um analisador de XML como o {\tt ElementTree} teremos a
 vantagem que, enquanto o XML deste exemplo é bastante simples, 
 teremos muitas regras em relação à XML validos e usar o 
 {\tt ElementTree} nos permitirá extrair informações do XML sem
-se preoculpar com as regras de sintaxe do XML.
+se preocupar com as regras de sintaxe do XML.
 %Using an XML parser such as {\tt ElementTree} has the advantage
 %that while the XML in this example is quite simple, it turns
 %out there are many rules regarding valid XML and using 
@@ -131,7 +131,7 @@ se preoculpar com as regras de sintaxe do XML.
 
 \index{ElementTree!findall}
 \index{ElementTree!get}
-Frequentemente o XML terá multiplos nós que nós podemos percorrer
+Frequentemente o XML terá múltiplos nós que nós podemos percorrer
 para processar todos os nós. No programa a seguir,
 nós percorremos por todos os nós do {\tt user}:
 %Often the XML has multiple nodes and we need to write a loop
@@ -167,7 +167,7 @@ for item in lst:
 \end{verbatim}
 \afterverb
 %
-O metodo {\tt findall} retorna uma lista do Python com sub-árvores
+O método {\tt findall} retorna uma lista do Python com subárvores
 que representam a estrutura {\tt user} da árvore do XML. Então nós 
 podemos escrever um loop {\tt for} que procura em cada nó do user,
 e imprime os elementos {\tt name} e {\tt id} assim como o 
@@ -198,8 +198,8 @@ Attribute 7
 
 O formato JSON foi inspirado no formato do objeto array utilizado na linguagem JavaScript.
 Mas como o Python foi inventado antes do JavaScript, a sintaxe que o Python utiliza
-para dicionarios e listas influenciaram na sintaxe do JSON. Então o formato JSON é
-bem parecido com a combinação de listas e dicionarios do Python.
+para dicionários e listas influenciaram na sintaxe do JSON. Então o formato JSON é
+bem parecido com a combinação de listas e dicionários do Python.
 %The JSON format was inspired by the object and array format used in the JavaScript
 %language.  But since Python was invented before JavaScript, Python's syntax
 %for dictionaries and lists influenced the syntax of JSON.  So the format of JSON
@@ -225,16 +225,16 @@ Aqui está uma codificação JSON que é quase equivalente ao simples XML abaixo
 %
 Você pode notar algumas diferenças. Primeira, no XML, nós podemos adicionar
 atributos como ``intl'' à tag ``phone''. No JSON, nós simplesmente temos chaves de
-valores pares. Além de que a tag ``person'' não existe mais, que substituida por
+valores pares. Além de que a tag ``person'' não existe mais, pois foi substituída por
 um conjunto de chaves externas.
 %You will notice some differences.  First, in XML, we can add attributes like
 %``intl'' to the ``phone'' tag.  In JSON, we simply have key-value pairs.  Also
 %the XML ``person'' tag is gone, replaced by a set of outer curly braces.  
 
 No geral, a estrutura JSON é mais simples que a do XML por conta do JSON ter menos
-utilidades que o XML. Mas o JSON tem a vantagem de mapear {\em directly} para alguma
-combinação de dicionarios e listas. E como quase todas as linguagens de programação 
-tem algo equivalente aos dicionarios e listas do Python, JSON é um formato natural 
+utilidades que o XML. Mas o JSON tem a vantagem de mapear {\em diretamente} para alguma
+combinação de dicionários e listas. Como quase todas as linguagens de programação 
+tem algo equivalente aos dicionários e listas do Python, o JSON é um formato natural 
 para fazer dois programas cooperarem e trocarem dados.
 %In general, JSON structures are simpler than XML because JSON has fewer capabilities
 %than XML.  But JSON has the advantage that it maps {\em directly} to some combination
@@ -247,22 +247,22 @@ entre aplicações por conta de sua simplicidade se comparado ao XML.
 %JSON is quickly becoming the format of choice for nearly all data exchange between 
 %applications because of its relative simplicity compared to XML.
 
-\section{Analizando JSON}
+\section{Analisando o JSON}
 %\section{Parsing JSON}
 
-Nós podemos contruir nosso JSON utilizando dicionarios (objetos) e listas conforme
-o necessario. Neste exemplo, nós vamos representar uma lista de usuarios onde cada
-usuario é um conjunto de pares de valor-chave (i.e., um dicionario). Então nós temos
-uma lista de dicionarios.
+Nós podemos construir nosso JSON utilizando dicionários (objetos) e listas conforme
+o necessário. Neste exemplo, nós vamos representar uma lista de usuários onde cada
+usuário é um conjunto de pares de valor-chave (i.e., um dicionario). Então nós temos
+uma lista de dicionários.
 %We construct our JSON by nesting dictionaries (objects) and lists as needed.  In 
 %this example, we represent a list of users where each user is a set of 
 %key-value pairs (i.e., a dictionary).  So we have a list of dictionaries.
 
-No programa a seguir, nós usamos o biblioteca contrutora {\bf json} para analizar
+No programa a seguir, nós usamos a biblioteca construtora {\bf json} para analisar
 o JSON e ler as informações. Compare ele de perto com a informação equivalente em XML
 abaixo. O JSON tem menos detalhes, então nós devemos previamente saber que nós
-estamos pegando uma lista e essa lista são usuarios e cada usuario é uma valor de 
-chave. O JSON é mais sucinto (uma vantagem) mas também é menos auto-explicativo 
+estamos pegando uma lista e essa lista são usuários, e cada usuário é uma valor de 
+chave. O JSON é mais sucinto (uma vantagem) mas também é menos auto explicativo 
 (uma desvantagem).
 %In the following program, we use the built-in {\bf json} library to parse 
 %the JSON and read through the data.   Compare this closely to the equivalent
@@ -298,13 +298,13 @@ for item in info:
 \afterverb
 %
 
-Se você comparar o codigo para extrarir a informação do JSON e XML analizados,
-você vera que oque nós pegamos do {\bf json.loads()} é uma lista Python
+Se você comparar o código para extrair as informações do JSON e XML analisados,
+você vera que o que nós pegamos do {\bf json.loads()} é uma lista Python
 que nós percorremos com um {\tt for} loop, e cada item dentro desta lista
-é um dicionario Python. Uma vez que o JSON foi analizado, nós podemos usar o
-operador de indice do Python para extrair varias informações de cada usuario.
-Nós não precisamos usar a biblioteca JSON para percorrer o JSON analizado, 
-pois ela retornará uma informação já é uma estrutura do proprio Python.
+é um dicionario Python. Uma vez que o JSON foi analisado, nós pudemos usar o
+operador de índice do Python para extrair varias informações de cada usuário.
+Nós não precisamos usar a biblioteca JSON para percorrer o JSON analisado, 
+pois ela retornará uma informação que já é uma estrutura do próprio Python.
 %If you compare the code to extract data from the parsed JSON and XML
 %you will see that what we get from {\bf json.loads()} is a Python list
 %which we traverse with a {\tt for} loop, and each item within that list
@@ -313,7 +313,7 @@ pois ela retornará uma informação já é uma estrutura do proprio Python.
 %have to use the JSON library to dig through the parsed JSON, since the returned
 %data is simply native Python structures.
 
-A saida deste programa é exatamente a mesma que a versão em XML abaixo.
+A saída deste programa é exatamente a mesma que a versão em XML abaixo.
 %The output of this program is exactly the same as the XML version above.
 
 \beforeverb
@@ -328,12 +328,12 @@ Attribute 7
 \end{verbatim}
 \afterverb
 %
-Em geral, existem uma tendencia da industria utilizar cada vez mais o JSON
+Em geral, existem uma tendência da industria utilizar cada vez mais o JSON
 do que o XML em serviços web. Por conta do JSON ser mais simples e mais
 direcionado para estruturas nativas que já existem nas linguagens de
-programação, a analize e extração de dados é usualmente simples e mais direto
-utilizando JSON. Mas o XML é mais auto-explicativo que o JSON então terá
-algumas aplicações em que o XML detem a vantagem. Por exemplo, a maioria de 
+programação, a analise e extração de dados é usualmente simples e mais direta
+utilizando JSON. Mas o XML é mais auto explicativo que o JSON então terá
+algumas aplicações em que o XML detém a vantagem. Por exemplo, a maioria de 
 processadores de palavras armazenam documentos internamente utilizando XML
 em vez de JSON.
 %In general, there is an industry trend away from XML and towards JSON for 
@@ -349,18 +349,18 @@ em vez de JSON.
 
 Nós agora temos a habilidade de trocar dados entre aplicações utilizando 
 HiperText Transport Protocol (HTTP) e uma forma de representar dados complexos
-que nós estamos enviando e recebento entre estas aplicações utilizando 
+que nós estamos enviando e recebendo entre estas aplicações utilizando 
 eXtensible Markup Language (XML) ou JavaScript Object Notation (JSON)
 %We now have the ability to exchange data between applications using HyperText
 %Transport Protocol (HTTP) and a way to represent complex data that we are 
 %sending back and forth between these applications using eXtensible 
 %Markup Language (XML) or JavaScript Object Notation (JSON).
 
-O proximo passo é começar a definir um documento ``contratos'' entre
-aplicações utilizando essas tecnicas. Geralmente o nome para estes contratos
+O próximo passo é começar a definir e documentar ``contratos'' entre
+aplicações utilizando essas técnicas. Geralmente o nome para estes contratos
 administração-para-administração é {\bf Interface de Programação de 
-Aplicação} ou API.Quando nós usamos uma API, geralmente um programa tem 
-um conjunto de {\bf serviços} disponiveis para serem usados em outras
+Aplicação} ou API. Quando nós usamos uma API, geralmente um programa tem 
+um conjunto de {\bf serviços} disponíveis para serem usados em outras
 aplicações e disponibiliza as APIs (i.e, as ``regras'') que deve ser
 seguidas para acessar os serviços disponibilizados pelo programa.
 %The next step is to begin to define and document ``contracts'' between 
@@ -372,12 +372,12 @@ seguidas para acessar os serviços disponibilizados pelo programa.
 %access the services provided by the program.
 
 Quanto nós começamos a construir nossos programas onde a funcionalidade
-do nosso programa inclui acessar os servirçoes prestados por outros 
-programas, nós chamamos essa abordade de {\bf Arquitetura Orientada
+do nosso programa inclui acessar os serviços prestados por outros 
+programas, nós chamamos essa abordagem de {\bf Arquitetura Orientada
 a Serviços} ou SOA. Uma abordagem SOA é no geral onde nossa aplicação
 utiliza os serviços de outras aplicações. Uma abordagem não SOA é quando
-a aplicação é uma unica aplicação autônoma que contem todo o codigo
-necessario para inplementar a aplicação.
+a aplicação é uma única aplicação autônoma que contem todo o código
+necessário para implementar a aplicação.
 %When we begin to build our programs where the functionality of
 %our program includes access to services provided by other programs, 
 %we call the approach a {\bf Service-Oriented Architecture} or SOA.
@@ -386,16 +386,16 @@ necessario para inplementar a aplicação.
 %application is a single standalone application which contains all of the
 %code necessary to implement the application.
 
-Nós vemos varios exemplos de SOA quando utilizamos a internet. Nós podemos
-acessar um site e comprar passagens aereas, reservar hoteis, alugar carros
-neste unico site. A informaçao dos hoteis não é armazenada nos computadores
+Nós vemos vários exemplos de SOA quando utilizamos a internet. Nós podemos
+acessar um site e comprar passagens aéreas, reservar hotéis, alugar carros
+neste único site. A informação dos hotéis não é armazenada nos computadores
 das companhias aéreas. Em vez disso, os computadores desta companhia utilizam
-os serviços dos computadores dos hoteis e retornam os dados do hotel e
-apresentam para o usuario. Quando o usuario concorda em fazer uma reserva de
+os serviços dos computadores dos hotéis e retornam os dados do hotel e
+apresentam para o usuário. Quando o usuário concorda em fazer uma reserva de
 um hotel usando o site da companhia aérea, o site da companhia utiliza outro 
 serviço web que está nos sistemas do hotel onde realmente é realizada a reserva.
 E quando chega a hora de utilizar o seu cartão de credito para toda a transação,
-outro compudator continual envolvido durante o processo.
+outro computador continua envolvido durante o processo.
 %We see many examples of SOA when we use the web.  We can go to a single 
 %web site and book air travel, hotels, and automobiles all from a 
 %single site.  The data for hotels is not stored on the airline computers. 
@@ -410,11 +410,11 @@ outro compudator continual envolvido durante o processo.
 \centerline{\includegraphics[height=2.50in]{figs2/soa.eps}}
 \afterfig
 Uma Arquitetura Orientada a Serviços tem muitas vantagens incluindo: (1)
-nós sempre manteremos uma copia dos dados (isso é particulamente importante
-para coisas como reservas de hoteis onde nós não queremos as duplicar)
-e (2) os donos dos dados podem setar regras sobre como usar od dados deles.
+nós sempre manteremos apenas uma cópia dos dados (isso é particularmente
+importante para coisas como reservas de hotéis onde nós não queremos as duplicar)
+e (2) os donos dos dados podem criar regras sobre como usar os dados deles.
 Com essas vantagens, um sistema SOA precisa ser cuidadosamente projetado
-para ter boa performance e atender as necessidades dos usuarios.
+para ter boa performance e atender as necessidades dos usuários.
 %A Service-Oriented Architecture has many advantages including: (1) we 
 %always maintain only one copy of data (this is particularly important
 %for things like hotel reservations where we do not want to over-commit)
@@ -422,7 +422,7 @@ para ter boa performance e atender as necessidades dos usuarios.
 %data.   With these advantages, an SOA system must be carefully designed
 %to have good performance and meet the user's needs.
 
-Quando uma aplicação torna os serviçoes em sua API disponiveis para a internet,
+Quando uma aplicação torna os serviços em sua API disponíveis para a internet,
 nós os chamamos de {\bf serviços web}.
 %When an application makes a set of services in its API available over the web, 
 %we call these {\bf web services}. 
@@ -430,14 +430,17 @@ nós os chamamos de {\bf serviços web}.
 \section{Serviço web Google de geocodificação}
 %\section{Google geocoding web service}
 \index{Google}
-\index{geocoding}
-\index{web service}
+\index{geocodificação}
+\index{serviço web}
+%\index{Google}
+%\index{geocoding}
+%\index{web service}
 
-O Goole tem um excelente serviço web que nos permite usar seus bancos de
-dados de informações geograficas. Nós podemos enviar uma pesquisa geografica 
+O Google tem um excelente serviço web que nos permite usar seus bancos de
+dados de informações geográficas. Nós podemos enviar uma pesquisa geográfica 
 em forma de string como ``Ann Arbor, MI'' para a API de geodificação deles e o 
 Google retornara o seu melhor palpite de em qual lugar do mapa nós podemos 
-encontrar o local pesquisado e nos fala sobre lugares nas proximidades. 
+encontrar o local pesquisado e também nos falará sobre lugares nas proximidades. 
 %Google has an excellent web service that allows us to make use of their 
 %large database of geographic information.   We can submit a geographical
 %search string like ``Ann Arbor, MI'' to their geocoding API and have Google 
@@ -445,23 +448,24 @@ encontrar o local pesquisado e nos fala sobre lugares nas proximidades.
 %tell us about the landmarks nearby.
 
 
-O serviço de geocodificação é gratis, porem limitado, então você não pode fazer
+O serviço de geocodificação é grátis, porem limitado, então você não pode fazer
 um uso ilimitado da API em serviços comerciais. Mas se você tem alguns dados de
-localização que um usuario digitou em uma caixa de entrada, você pode usar
+localização que um usuário digitou em uma caixa de entrada, você pode usar
 esta API para deixar suas informações mais concisas.
 %The geocoding service is free but rate limited so you cannot make unlimited
 %use of the API in a commercial application.   But if you have some survey data
 %where an end user has entered a location in a free-format input box, you can use
 %this API to clean up your data quite nicely.  
 
-{\em Quando você está usando uma API gratis como a de geocodificação do Google,
+{\em Quando você está usando uma API grátis como a de geocodificação do Google,
 você precisa ser respeitoso sobre o uso desses recursos. Se muitas pessoas
 abusarem do serviço, o Google pode reduzir de forma significante seus serviços
 gratuitos.}
+\index{taxa de limitação}
 %{\em When you are using a free API like Google's geocoding API, you need
 %to be respectful in your use of these resources.  If too many people abuse the
 %service, Google might drop or significantly curtail its free service.}
-\index{rate limiting}
+%\index{rate limiting}
 
 Você pode ler documentos online sobre esse serviço, mas é bem simples e você
 pode até testar ele usando um navegador, somente digitando a seguinte URL em
@@ -472,12 +476,12 @@ seu navegador:
 
 \url{http://maps.googleapis.com/maps/api/geocode/json?sensor=false &address=Ann+Arbor%2C+MI}
 
-Tenha certeze de resolver a URL e remover qualquer espaço em branco antes de 
+Tenha certeza de resolver a URL e remover qualquer espaço em branco antes de 
 colar a URL em seu navegador.
 %Make sure to unwrap the URL and remove any spaces from the URL before pasting
 %it into your browser.
 
-A seguir temos uma simples aplicação que solicita ao usuario por uma string de
+A seguir temos uma simples aplicação que solicita ao usuário uma string de
 pesquisa, requisita a API de geocodificação do Google, e extrai informações do
 JSON que foi retornado.
 %The following is a simple application to prompt the user for a search string,
@@ -518,11 +522,11 @@ while True:
 \end{verbatim}
 \afterverb
 %
-O programa pega a string de pesquisa e constroi uma URL com a string
-como um parametro devidamente codificada e então usa o {\bf urllib}
+O programa pega a string de pesquisa e constrói uma URL com a string
+como um parâmetro devidamente codificada e então usa o {\bf urllib}
 para retornar o texto da API de geodificação do Google. Diferente
-de uma pagina web fixa,os dados que pegamos depende dos parametros 
-que nós enviamos e as informações geograficas armazenadas nos 
+de uma página web fixa, os dados que pegamos depende dos parâmetros 
+que nós enviamos e as informações geográficas armazenadas nos 
 servidores do Google.
 %The program takes the search string and constructs a URL with the
 %search string as a properly encoded parameter and then uses
@@ -530,16 +534,16 @@ servidores do Google.
 %Unlike a fixed web page, the data we get depends on the parameters
 %we send and the geographical data stored in Google's servers.
 
-Uma vez que retornamos os dados JSON, nós analizamos isso com a 
-biblioteca {\bf json} e fazmos algumas checagens para garantir que 
-recebemos a informação correta, então extraimos a informação que 
+Uma vez que retornamos os dados JSON, nós analisamos isso com a 
+biblioteca {\bf json} e fazemos algumas checagens para garantir que 
+recebemos a informação correta, então extraímos a informação que 
 nós necessitamos.
 %Once we retrieve the JSON data, we parse it with the {\bf json}
 %library and do a few checks to make sure that we received good data, 
 %then extract the information that we are looking for.
 
-A saida do programa está logo a seguir (algum dado retornado no JSON
-foi removido):
+A saída do programa está logo a seguir (algumas partes dos dados retornados
+no JSON foram removidas):
 %The output of the program is as follows (some of the returned
 %JSON has been removed):
 
@@ -595,18 +599,20 @@ variantes de JSON e XML da API de geocodificação do Google.
 %and XML variants of the Google geocoding API. 
 
 \section{Segurança e utilizanção de API}
-%\section{Security and API usage}
 \index{OAuth}
-\index{API!key}
+\index{API!chave}
+%\section{Security and API usage}
+%\index{OAuth}
+%\index{API!key}
 
 É bem comum que você necessite de algum tipo de 
-``chave de API'' para fazer uso de uma API de um fornecedor.
+``chave da API'' para fazer uso de uma API de um fornecedor.
 A ideia geral é que eles querem saber quem está usando os
-seriviços deles e o quanto cada usuario está usando.
-Entretanto eles tem partes pagas e gratuitas dos serviçoes
-deles, ou tem uma politca que limita o numero de requisições
-que um unico individuo pode realizar durante um determinado
-periodo de tempo.
+serviços deles e o quanto cada usuário está usando.
+Entretanto elas têm partes pagas e gratuitas dos serviços
+deles, ou uma política que limita o número de requisições
+que um único indivíduo pode realizar durante um determinado
+período de tempo.
 %It is quite common that you need some kind of 
 %``API key'' to make use of a vendor's API.  The
 %general idea is that they want to know who is using 
@@ -617,8 +623,8 @@ periodo de tempo.
 %time period.
 
 Uma vez que você tenha a chave da API, você simplesmente
-insere a chave como parte dos dados de POST ou possivelmente
-como um parametro da URL que está chamando a API.
+insere a chave como parte dos dados do POST ou possivelmente
+como um parâmetro da URL que está chamando a API.
 %Sometimes once you get your API key, you simply include
 %the key as part of POST data or perhaps as a parameter
 %on the URL when calling the API.
@@ -641,10 +647,10 @@ Você pode ler mais sobre o protocolo OAuth em
 Como a API do Twitter tornou-se cada vez mais valiosa, o
 Twitter virou de uma API aberta e publica para uma API que
 requisita o uso da assinatura OAuth em cada requisição a API.
-Felizmente ainda existe um numero de bibliotecas OAuth 
+Felizmente existem um bom número de bibliotecas OAuth 
 convenientes e gratuitas então você pode evitar ter de escrever
-uma implementação OAuth do inicio lendo a sobre a especificação.
-Estas bibliotecas são de complexidade variante e tem varios
+uma implementação OAuth do inicio lendo sobre a especificação.
+Estas bibliotecas são de complexidade variante e tem vários
 graus de riqueza. O site do OAuth contem informações sobre
 diversas bibliotecas OAuth.
 %As the Twitter API became increasingly valuable, Twitter
@@ -657,14 +663,13 @@ diversas bibliotecas OAuth.
 %richness.  The OAuth web site has information about various 
 %OAuth libraries.
 
-Para este proximo exemplo nós vamos baixar os arquivos
+Para o próximo exemplo nós vamos baixar os arquivos
 {\bf twurl.py}, {\bf hidden.py}, 
 {\bf oauth.py}, 
 e
 {\bf twitter1.py} a partir do 
 \url{www.py4inf.com/code} e colocar todos na mesma pasta
-em seu computador.
-on your computer.
+no computador.
 %For this next sample program we will download the files 
 %{\bf twurl.py}, {\bf hidden.py}, 
 %{\bf oauth.py}, 
@@ -673,11 +678,11 @@ on your computer.
 %\url{www.py4inf.com/code} and put them all in a folder
 %on your computer.
 
-Para poder usar estes programas você ira precisar ter uma conta
-no Twitter, e autorizar seu codigo python como uma aplicação,
-configurar uma chave, secreta, chave eletronica e chave eletronica
+Para poder usar estes programas você vai precisar ter uma conta
+no Twitter, e autorizar seu código Python como uma aplicação,
+configurar uma chave, segredo, chave eletronica e chave eletrônica
 secreta. Você devera editar o arquivo {\bf hidden.py} e armazenar
-estas quatro strings nas variaveis apropriadas no arquivo:
+estas quatro strings nas variáveis apropriadas no arquivo:
 %To make use of these programs you will need to have a Twitter
 %account, and authorize your Python code as an application,
 %set up a key, secret, token and token secret.  You will edit
@@ -700,7 +705,7 @@ O serviço web do Twitter é acessado utilizando uma URL como esta:
 \url{https://api.twitter.com/1.1/statuses/user_timeline.json}
 
 Uma vez que todas as informações de seguranças tenham sido adicionada,
-a URL parecerá com algo assim:
+a URL se parecerá com algo assim:
 %But once all of the security information has been added, the URL
 %will look more like:
 
@@ -715,18 +720,18 @@ https://api.twitter.com/1.1/statuses/user_timeline.json?count=2
 \afterverb
 %
 Você pode ler a especificação OAuth se você quiser saber mais
-sobre o siguinificado dos varios parametros que foram adicionados
+sobre o significado dos vários parâmetros que foram adicionados
 para suprir os requerimentos de segurança do OAuth.
 %You can read the OAuth specification if you want to
 %know more about the meaning of the various parameters that
 %are added to meet the security requirements of OAuth.  
 
-Para os programas que utiliza o Twitter, nós escondemos toda
+Para os programas que nós executamos com o Twitter, nós escondemos toda
 a complexidade nos arquivos {\bf oauth.py} e {\bf twurl.py}.
-Nós simplesmente configuramos os segretos em {\bf hidden.py}
-e então enviamos a URL desejada paraa função 
-{\bf twurl.augment()} e o codigo da biblioteca adiciona todos
-os parametros necessarios à URL para nós.
+Nós simplesmente configuramos os segredos em {\bf hidden.py}
+e então enviamos a URL desejada para a função 
+{\bf twurl.augment()} e o código da biblioteca adiciona todos
+os parâmetros necessários à URL para nós.
 %For the programs we run with Twitter, we hide all the 
 %complexity in the files {\bf oauth.py} and {\bf twurl.py}.
 %We simply set the secrets in {\bf hidden.py} and then 
@@ -735,7 +740,7 @@ os parametros necessarios à URL para nós.
 %parameters to the URL for us.
 
 Este programa ({\bf twitter1.py}) recupera a linha de tempo
-de um usuario do Twiter em particular e retorna isso para nós
+de um usuário do Twitter em particular e retorna isso para nós
 no formato JSON em uma string. Então nós simplesmente exibimos
 os primeiros 250 caracteres da string:
 %This program ({\bf twitter1.py}) retrieves the timeline
@@ -766,7 +771,7 @@ while True:
 \end{verbatim}
 \afterverb
 %
-Quando o programa é executado ele produz a seguinte saida:
+Quando o programa é executado ele produz a seguinte saída:
 %When the program runs it produces the following output: 
  
 \beforeverb
@@ -793,13 +798,13 @@ Enter Twitter Account:
 \end{verbatim}
 \afterverb
 %
-Juntamente com a linha de tempo retornada, o Twiter também 
+Juntamente com a linha de tempo retornada, o Twitter também 
 retorna metadados sobre a requisição nas headers da resposta HTTP.
 Uma header em particular, {\bf x-rate-limit-remaining}, nos 
 informa quantas requisições ainda podemos realizar antes que sejamos
-blockeados por um curto periodo de tempo. Você pode ver que nossas
-requisições restantes irão diminuir em um a cada veze que fazemos 
-uma requisição a API.
+bloqueados por um curto período de tempo. Você pode ver que nossas
+requisições restantes irão diminuir em um a cada vez que fazemos 
+uma requisição a esta API.
 %Along with the returned timeline data, Twitter also returns
 %metadata about the request in the HTTP response headers. 
 %One header in particular, {\bf x-rate-limit-remaining}, informs
@@ -808,10 +813,10 @@ uma requisição a API.
 %retrievals drop by one each time we make a request to the 
 %API.
 
-No exemplo a seguir, nós requisitamos os amigos de um usuario do
-Twiter, analizamos o JSON retornado, e extraimos algumas informações
-sobre os amigos. Nós tambem despejamos o JSON depois de analisar e
-fazer uma ``impressão bonita'' disso com uma identação de quatro
+No exemplo a seguir, nós requisitamos os amigos de um usuário do
+Twitter, analisamos o JSON retornado, e extraímos algumas informações
+sobre os amigos. Nós também descartamos o JSON depois de analisar e
+fazer uma ``impressão bonita'' dele com uma indentação de quatro
 caracteres para nos permitir estudar os dados quando nós quisermos
 extrair mais campos.
 %In the following example, we retrieve a user's Twitter friends,
@@ -849,17 +854,17 @@ while True:
 \end{verbatim}
 \afterverb
 %
-Desde que o JSON se tornou proximo das listas e dicionarios Python,
-nós podemos usar uma combinação de operadores de index e o repetidor
+Desde que o JSON se tornou próximo das listas e dicionários do Python,
+nós pudemos usar uma combinação de operadores de índex e o laço
 {\tt for} para vasculhar os dados retornados com muito pouco 
-codigo em Python.
+código em Python.
 %Since the JSON becomes a set of nested Python lists and dictionaries,
 %we can use a combination of the index operation and {\tt for} loops to 
 %wander through the returned data structures with very little 
 %Python code.
 
-A saida do programa se parece como a seguir (alguns itens dos dados
-estão encurtados para caber na pagina):
+A saída do programa se parece como a seguir (alguns itens dos dados
+estão encurtados para caberem na pagina):
 %The output of the program looks as follows (some of the data items 
 %are shortened to fit on the page):
 
@@ -911,14 +916,14 @@ Enter Twitter Account:
 \end{verbatim}
 \afterverb
 %
-O ultimo pedaço da saida é onde nós vemos o repetidor for lendo os
-cinco ``amigos'' mais recentes da conta do Twiter {\bf drchuck} e
-imprime os status mais recentes de cada amigo. Tem muitos mais dados
-disponiveis para se utilizar no JSON retornado. Se você olhar na 
-saida do programa, você pode ver também que o ``find the friends'' de
-uma conta em particular tem diferentes niveis de limitação que 
+O ultimo pedaço da saída é onde nós vemos o laço for lendo os
+cinco ``amigos'' recentes da conta do Twitter {\bf drchuck} e
+imprimindo os status mais recentes de cada amigo. Tem muito mais dados
+disponíveis para se utilizar no JSON retornado. Se você olhar na 
+saída do programa, você pode ver também que a ``procura de amigos'' de
+uma conta em particular tem diferentes níveis de limitação que 
 o numero de consultas de linha do tempo que podemos executar por 
-periodo de tempo.
+período de tempo.
 %The last bit of the output is where we see the for loop reading the
 %five most recent ``friends'' of the {\bf drchuck} Twitter account 
 %and printing the most recent status for each friend. There is a 
@@ -938,7 +943,7 @@ periodo de tempo.
 
 \begin{description}
 
-\item[API:] Interface de Programação de Aplicação -Um contrato entre
+\item[API:] Interface de Programação de Aplicação - Um contrato entre
 aplicações que define os padrões de interação entre dois componentes
 de aplicação.
 \index{API}
@@ -947,8 +952,8 @@ de aplicação.
 %two application components.
 %\index{API}
 
-\item[ElementTree:] Uma biblioteca feita em pyhon usada para analizar
-dados XML
+\item[ElementTree:] Uma biblioteca feita em Pyhon que é utilizada para
+analisar dados XML.
 \index[ElementTree]
 %\item[ElementTree:] A built-in Python library used to parse XML data.
 %\index{ElementTree}
@@ -984,19 +989,19 @@ marcação de dados estruturados.
 
 \end{description}
 
-\section{Execicios}
+\section{Exercícios}
 %\section{Exercises}
 
 \begin{ex}
 Altere o
 \url{www.py4inf.com/code/geojson.py} ou
 \url{www.py4inf.com/code/geoxml.py} para exibir os
-dois caracteres do codigo do pais dos dados retornados.
+dois caracteres do código do país dos dados retornados.
 Adicione um verificador de erros para que seu programa
-não procure se o codigo do pais não estiver lá. Uma vez
+não procure se o código do país não estiver lá. Uma vez
 que você tenha isso funcionando, procure por 
-``Oceano Atlantico'' e tenha certeza que o codigo consegue
-lidar com localizações que não estão em nenhum pais.
+``Oceano Atlantico'' e tenha certeza que o código consegue
+lidar com localizações que não estão em nenhum país.
 \end{ex}
 %Change either the 
 %\url{www.py4inf.com/code/geojson.py} or
