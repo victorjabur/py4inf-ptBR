@@ -889,27 +889,41 @@ Eric, the half a bee.
 \end{verbatim}
 \afterverb
 %
-The name of the variable we pass as an argument ({\tt michael}) has
-nothing to do with the name of the parameter ({\tt bruce}).  It
-doesn't matter what the value was called back home (in the caller);
-here in \verb"print_twice", we call everybody {\tt bruce}.
+%The name of the variable we pass as an argument ({\tt michael}) has
+%nothing to do with the name of the parameter ({\tt bruce}).  It
+%doesn't matter what the value was called back home (in the caller);
+%here in \verb"print_twice", we call everybody {\tt bruce}.
 
-\section{Fruitful functions and void functions}
+O nome da variável que passamos como um argumento ({\tt michael}) não tem
+relação com o nome do parâmetro ({\tt bruce}). Não importa que valor foi
+chamado (na chamada); aqui em \verb"print_twice", chamamos todos de {\tt bruce}
+
+%\section{Fruitful functions and void functions}
+\section{Funções férteis e funções vazias}
 
 \index{fruitful function}
 \index{void function}
 \index{function, fruitful}
 \index{function, void} 
 
-Some of the functions we are using, such as the math functions, yield
-results; for lack of a better name, I call them {\bf fruitful
-  functions}.  Other functions, like \verb"print_twice", perform an
-action but don't return a value.  They are called {\bf void
-  functions}.
+%Some of the functions we are using, such as the math functions, yield
+%results; for lack of a better name, I call them {\bf fruitful
+%functions}.  Other functions, like \verb"print_twice", perform an
+%action but don't return a value.  They are called {\bf void
+%functions}.
 
-When you call a fruitful function, you almost always
-want to do something with the result; for example, you might
-assign it to a variable or use it as part of an expression:
+Algumas funções que utilizamos, como as funções {\tt math}, apresentam
+resultados; pela falta de um nome melhor, vou chamá-las de
+{\bf funções férteis}. Outras funções como \verb"print_twice", realizam
+uma ação mas não retornam um valor. Elas são chamadas {\bf funções vazias}.
+
+%When you call a fruitful function, you almost always
+%want to do something with the result; for example, you might
+%assign it to a variable or use it as part of an expression:
+
+Quando você chama uma função fértil, você quase sempre quer fazer alguma
+coisa com o resultado; por exemplo, você pode querer atribuir a uma variável
+ou utilizar como parte de uma expressão:
 
 \beforeverb
 \begin{verbatim}
@@ -918,8 +932,11 @@ golden = (math.sqrt(5) + 1) / 2
 \end{verbatim}
 \afterverb
 %
-When you call a function in interactive mode, Python displays
-the result:
+%When you call a function in interactive mode, Python displays
+%the result:
+
+%
+Quando você chama uma função no modo interativo, Python apresenta o resultado:
 
 \beforeverb
 \begin{verbatim}
@@ -928,9 +945,13 @@ the result:
 \end{verbatim}
 \afterverb
 %
-But in a script, if you call a fruitful function and do 
-not store the result of the function in a variable,
-the return value vanishes into the mist!
+%But in a script, if you call a fruitful function and do 
+%not store the result of the function in a variable,
+%the return value vanishes into the mist!
+
+Mas em um script, se você chamar uma função fértil e não armazenar o
+resultado da função em uma variável, o valor retornado desaparecerá
+em meio a névoa!
 
 \beforeverb
 \begin{verbatim}
@@ -938,16 +959,24 @@ math.sqrt(5)
 \end{verbatim}
 \afterverb
 %
-This script computes the square root of 5, but since it doesn't store
-the result in a variable or display the result, it is not very useful.
+%This script computes the square root of 5, but since it doesn't store
+%the result in a variable or display the result, it is not very useful.
+
+%
+Este script calcula a raiz quadrada de 5, mas desde que não se armazene o
+resultado em uma variável ou mostre o resultado, isto não é muito útil.
 
 \index{interactive mode}
 \index{script mode}
 
-Void functions might display something on the screen or have some
-other effect, but they don't have a return value.  If you try to
-assign the result to a variable, you get a special value called
-{\tt None}.
+%Void functions might display something on the screen or have some
+%other effect, but they don't have a return value.  If you try to
+%assign the result to a variable, you get a special value called
+%{\tt None}.
+
+Funções vazias podem mostrar alguma coisa na tela ou ter algum outro efeito,
+mas elas não tem valor de retorno. Se você tentar atribuir o retorno a uma
+variável, você vai receber um valor especial chamado {\tt None}.
 
 \index{None special value}
 \index{special value!None}
@@ -962,8 +991,12 @@ None
 \end{verbatim}
 \afterverb
 %
-The value {\tt None} is not the same as the string \verb"'None'". 
-It is a special value that has its own type:
+%The value {\tt None} is not the same as the string \verb"'None'". 
+%It is a special value that has its own type:
+
+%
+O valor {\tt None} não é o mesmo de uma string \verb"'None'". É um valor
+especial que tem seu próprio tipo:
 
 \beforeverb
 \begin{verbatim}
@@ -972,10 +1005,15 @@ It is a special value that has its own type:
 \end{verbatim}
 \afterverb
 %
-To return a result from a function, we use the {\tt return} statement 
-in our function.  For example, we could make a very 
-simple function called {\tt addtwo}
-that adds two numbers together and returns a result.
+%To return a result from a function, we use the {\tt return} statement 
+%in our function.  For example, we could make a very 
+%simple function called {\tt addtwo}
+%that adds two numbers together and returns a result.
+
+%
+Para retornar um resultado de uma função, utilizamos a declaração
+{\tt return} na nossa função. Por exemplo, podemos criar uma função bem
+simplesa chamada, {\tt addtwo} que a soma dois números e retorna o resultado.
 
 \beforeverb
 \begin{verbatim}
@@ -988,16 +1026,23 @@ print x
 \end{verbatim}
 \afterverb
 %
-When this script executes, the {\tt print} statement will print out ``8''
-because the {\tt addtwo} function was called with 3 and 5 as arguments.
-Within the function, the parameters {\tt a} and {\tt b} were 3 and 5 
-respectively. The function computed the sum of the two numbers and placed
-it in the local function variable named {\tt added}. 
-Then it used the {\tt return} statement 
-to send the computed value back to the calling code 
-as the function result, which was assigned
-to the variable {\tt x} and printed out.
+%When this script executes, the {\tt print} statement will print out ``8''
+%because the {\tt addtwo} function was called with 3 and 5 as arguments.
+%Within the function, the parameters {\tt a} and {\tt b} were 3 and 5 
+%respectively. The function computed the sum of the two numbers and placed
+%it in the local function variable named {\tt added}. 
+%Then it used the {\tt return} statement 
+%to send the computed value back to the calling code 
+%as the function result, which was assigned
+%to the variable {\tt x} and printed out.
 
+Quando este script executa, a declaração {\tt print} irá exibir o valor ``8''
+porque a função {\tt addtwo} foi chamada com 3 e 5 como argumento. Dentro da
+a função, o parâmetro {\tt a} e {\tt b} são 3 e 5, respectivamente. A função
+calcula a soma dos dois números e coloca isto em uma variável local da função
+chamada {\tt added}. Depois é utilizada pela declaração {\tt return} para
+enviar o resultado calcula de volta para código como resultado da função, que
+foi atribuido a variável {\tt x} e exibido na tela.
 
 %\section{Why functions?}
 \section{Por que funções?}
