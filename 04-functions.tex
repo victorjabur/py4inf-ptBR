@@ -899,6 +899,8 @@ relação com o nome do parâmetro ({\tt bruce}). Não importa que valor foi
 chamado (na chamada); aqui em \verb"print_twice", chamamos todos de {\tt bruce}
 
 %\section{Fruitful functions and void functions}
+% from Maykon:
+% Não encontrei uma palavra mais adequada para Fruitful, acabou ficando fértil mesmo.
 \section{Funções férteis e funções vazias}
 
 \index{fruitful function}
@@ -1154,106 +1156,149 @@ no começo do programa e execute novamente. Se você não ver o \verb"hello",
 você não está executando o mesmo programa!
 
 
-\section{Glossary}
-
+%\section{Glossary}
+\section{Glossário}
 \begin{description}
 
-\item[algorithm:]  A general process for solving a category of
-problems.
+%\item[algorithm:]  A general process for solving a category of
+%problems.
+\item[algoritmo:] Um processo genérico para solução de problemas
 \index{algorithm}
 
-\item[argument:]  A value provided to a function when the function is called.
-This value is assigned to the corresponding parameter in the function.
+%\item[argument:]  A value provided to a function when the function is called.
+%This value is assigned to the corresponding parameter in the function.
+\item[argumento:] Um valor dado a uma função quando a função é chamada.
+Este valor é atribuido a um parâmetro correspondente na função.
 \index{argument}
 
-\item[body:] The sequence of statements inside a function definition.
+%\item[body:] The sequence of statements inside a function definition.
+\item[body (corpo):] Sequência de declarações dentro de uma função.
 \index{body}
 
-\item[composition:] Using an expression as part of a larger expression,
-or a statement as part of a larger statement.
+%\item[composition:] Using an expression as part of a larger expression,
+%or a statement as part of a larger statement.
+\item[composição:] Utilizando uma expressão como parte de uma expressão
+maior ou uma declaração como parte de uma declaração maior.
 \index{composition}
 
-\item[deterministic:] Pertaining to a program that does the same
-thing each time it runs, given the same inputs.
+%\item[deterministic:] Pertaining to a program that does the same
+%thing each time it runs, given the same inputs.
+\item[deterministico:] Refere-se a um programa que faz as mesmas coisas cada
+vez que é executado, dado os mesmos valores de entrada.
 \index{deterministic}
 
-\item[dot notation:]  The syntax for calling a function in another
-module by specifying the module name followed by a dot (period) and
-the function name.
+%\item[dot notation:]  The syntax for calling a function in another
+%module by specifying the module name followed by a dot (period) and
+%the function name.
+\item[notação de ponto:] Sintaxe para chamada de uma função em outro módulo
+especificado pelo nome do módulo seguido de um ponto (.) e o nome da função.
 \index{dot notation}
 
-\item[flow of execution:]  The order in which statements are executed during
-a program run.
+%\item[flow of execution:]  The order in which statements are executed during
+%a program run.
+\item[fluxo de execução:] A ordem em que cada declaração será executada
+durante a execução do programa.
 \index{flow of execution}
 
-\item[fruitful function:] A function that returns a value.
+%\item[fruitful function:] A function that returns a value.
+\item[função fértil:] Uma função que retorna um valor.
 \index{fruitful function}
 
-\item[function:] A named sequence of statements that performs some
-useful operation.  Functions may or may not take arguments and may or
-may not produce a result.
+%\item[function:] A named sequence of statements that performs some
+%useful operation.  Functions may or may not take arguments and may or
+%may not produce a result.
+\item[função:] Nome para uma sequência de declarações que executam alguma
+operação. Funções podem ou não receber argumentos e podem ou não produzir um
+resultado.
 \index{function}
 
-\item[function call:] A statement that executes a function. It
-consists of the function name followed by an argument list.
+%\item[function call:] A statement that executes a function. It
+%consists of the function name followed by an argument list.
+\item[chamada de função:] Uma declaração que executa uma função. Consiste do
+nome de uma função seguida por uma lista de argumento.
 \index{function call}
 
-\item[function definition:]  A statement that creates a new function,
-specifying its name, parameters, and the statements it executes.
+%\item[function definition:]  A statement that creates a new function,
+%specifying its name, parameters, and the statements it executes.
+\item[definição de função:] Uma declaração que cria uma nova função,
+especificando seu nome, parâmetros e as declarações que serão executadas.
 \index{function definition}
 
-\item[function object:]  A value created by a function definition.
-The name of the function is a variable that refers to a function
-object.
+%\item[function object:]  A value created by a function definition.
+%The name of the function is a variable that refers to a function
+%object.
+\item[função objeto:] Um valor criado pela definicação de uma função. O nome
+da função é uma variável que se refere a função objeto.
 \index{function definition}
 
-\item[header:] The first line of a function definition.
+%\item[header:] The first line of a function definition.
+\item[header (cabeça):] A primeira linha de uma função.
 \index{header}
 
-\item[import statement:] A statement that reads a module file and creates
-a module object.
+%\item[import statement:] A statement that reads a module file and creates
+%a module object.
+\item[declaração {\it import}:] Uma declaração que lê um arquivo de módulo e
+cria um módulo objeto.
 \index{import statement}
 \index{statement!import}
 
-\item[module object:] A value created by an {\tt import} statement
-that provides access to the data and code defined in a module.
+%\item[module object:] A value created by an {\tt import} statement
+%that provides access to the data and code defined in a module.
+\item[objeto módulo:] Um valor criado pela chamada de uma declaração {\tt import}
+que provê acesso aos dados e códigos definidos em um módulo.
 \index{module}
 
-\item[parameter:] A name used inside a function to refer to the value
-passed as an argument.
+%\item[parameter:] A name used inside a function to refer to the value
+%passed as an argument.
+\item[parâmetro:] Um nome utilizado dentro de uma função para referenciar ao
+valor passado por um argumento.
 \index{parameter}
 
-\item[pseudorandom:] Pertaining to a sequence of numbers that appear
-to be random, but are generated by a deterministic program.
+%\item[pseudorandom:] Pertaining to a sequence of numbers that appear
+%to be random, but are generated by a deterministic program.
+\item[pseudoaleatório:] Refere-se a uma sequência de número que parecem ser
+aleatórios, mas são gerados por um programa determinístico.
 \index{pseudorandom}
 
-\item[return value:]  The result of a function.  If a function call
-is used as an expression, the return value is the value of
-the expression.
+%\item[return value:]  The result of a function.  If a function call
+%is used as an expression, the return value is the value of
+%the expression.
+\item[valor de retorno:] O resultado de uma função. Se uma função for utilizada
+como uma expressão, o valor de retorno é o valor da expressão.
 \index{return value}
 
-\item[void function:] A function that does not return a value.
+%\item[void function:] A function that does not return a value.
+\item[função vazia:] Uma função que não possui um valor de retorno.
 \index{void function}
 
 
 \end{description}
 
 
-\section{Exercises}
+%\section{Exercises}
+\section{Exercícios}
 
 \begin{ex}
-What is the purpose of the "def" keyword in Python?
+%What is the purpose of the "def" keyword in Python?
+Qual o propósito da palavra-chave "def" em Python?
 
-a) It is slang that means "the following code is really cool"\\
-b) It indicates the start of a function\\
-c) It indicates that the following indented section of code is to be stored for later\\
-d) b and c are both true\\
-e) None of the above
+%a) It is slang that means "the following code is really cool"\\
+%b) It indicates the start of a function\\
+%c) It indicates that the following indented section of code is to be stored for later\\
+%d) b and c are both true\\
+%e) None of the above
+
+a) É uma gíria que significa "Este código é muito maneiro"\\
+b) Indica o início de uma função\\
+c) Indica que a seção de código a seguir indentada deve ser guardada para depois\\
+d) b e c são ambas verdadeiras\\
+e) Nenhuma das questões acima.
+
 \end{ex}
 
 \begin{ex}
-What will the following Python program print out?
-
+%What will the following Python program print out?
+Qual será o resultado do programa abaixo?
 \beforeverb
 \begin{verbatim}
 def fred():
@@ -1276,10 +1321,13 @@ e) Zap Zap Zap
 \end{ex}
 
 \begin{ex}
-Rewrite your pay computation with time-and-a-half for overtime
-and create a function called {\tt computepay} which takes
-two parameters ({\tt hours} and {\tt rate}).
+%Rewrite your pay computation with time-and-a-half for overtime
+%and create a function called {\tt computepay} which takes
+%two parameters ({\tt hours} and {\tt rate}).
 
+Reescreva o cálculo de pagamento com a metade do tempo por hora extra e crie
+uma função chamada {\tt computepay} que recebe dois parâmetros ({\tt hours} e 
+{\tt rate}).
 \begin{verbatim}
 Enter Hours: 45
 Enter Rate: 10
@@ -1288,10 +1336,13 @@ Pay: 475.0
 \end{ex}
 
 \begin{ex}
-Rewrite the grade program from the previous chapter 
-using a function called {\tt computegrade} that takes
-a score as its parameter and returns a grade as a string.
+%Rewrite the grade program from the previous chapter 
+%using a function called {\tt computegrade} that takes
+%a score as its parameter and returns a grade as a string.
 
+Reescreva o programa de escala dos capítulos anteriores utilizando uma função
+chamada {\tt computegrade} que recebe os pontos como parâmetros e retorna a
+escala como uma cadeia de caracteres ({\it string}).
 \begin{verbatim}
 Score   Grade
 > 0.9     A
@@ -1318,8 +1369,9 @@ Enter score: 0.5
 F
 \end{verbatim}
 
-Run the program repeatedly to test the various different values
-for input.
+%Run the program repeatedly to test the various different values
+%for input.
+Execute o programa repetidas vezes para testar os diferentes valores de entrada.
 \end{ex}
 
 
