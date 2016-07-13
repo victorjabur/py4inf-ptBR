@@ -4,22 +4,22 @@
 \chapter{Programas em redes}
 %\chapter{Networked programs}
 
-Enquanto muitos dos exemplos usados neste livro tem focado na leitura
-de arquivos a procura por dados neles, existem muitas fontes
-de informação diferentes quando se leva em conta a Internet.
+Enquanto muitos dos exemplos usados neste livro tem focado na leitura de
+arquivos e procura por dados neles, existem muitas fontes de informação
+diferentes quando se leva em conta a Internet.
 %While many of the examples in this book have focused on reading
 %files and looking for data in those files, there are many different
 %sources of information when one considers the Internet.
 
 Nesse capítulo fingiremos ser um navegador web a obter páginas
-web usando o HyperText Transport Protocol (HTTP), em português Protocolo
-de Transferência de Hipertexto.  Feito isso, faremos uma leitura
+web usando o Protocolo de Transferência de Hipertexto ({\it HyperText Transport
+Protocol} -- HTTP).  Feito isso, faremos uma leitura
 por dados da página web e os analisaremos.
 %In this chapter we will pretend to be a web browser and retrieve web
 %pages using the HyperText Transport Protocol (HTTP).  Then we will read
 %through the web page data and parse it.
 
-\section{Protocolo de Transferência de Hipertexto - HTTP na sigla em inglês}
+\section{Protocolo de Transferência de Hipertexto - HTTP}
 %\section{HyperText Transport Protocol - HTTP}
 
 O protocolo de rede que impulsiona a web é, na verdade, bem simples e 
@@ -31,46 +31,45 @@ sockets com um programa Python.
 %easy to make network connections and retrieve data over those
 %sockets in a Python program.
 
-Um {\bf socket} é bem parecido com um arquivo, exceto que um único socket 
+Um {\bf socket} é bem parecido com um arquivo, exceto que um único socket
 provê uma conexão de duas vias entre dois programas.  Você pode tanto ler
-quanto escrever pelo mesmo socket.  Se você escrever alguma coisa em um
+quanto escrever pelo mesmo socket. Se você escrever alguma coisa em um
 socket, a escrita é enviada para a aplicação na outra ponta do socket.
 Se você ler a partir de um socket, você está recebendo os dados que a outra
-aplicação está enviando.
+aplicação enviou.
 %A {\bf socket} is much like a file, except that a single  socket 
 %provides a two-way connection between two programs.  
 %You can both read from and write to the same socket.  If you write something to 
 %a socket, it is sent to the application at the other end of the socket.  If you 
 %read from the socket, you are given the data which the other application has sent.
 
-Mas se você tentar ler um socket enquanto que o programa na outra ponta do
-socket não envia nenhum dado---você tem que sentar e esperar.  Se os
+Mas se você tentar ler um socket enquanto o programa na outra ponta do
+socket não enviar nenhum dado---você tem que sentar e esperar.  Se os
 programas de ambos os lados do socket simplesmente esperarem por dados sem
-enviarem nada, eles irão esperar por muito tempo.
+enviarem nada, eles continuarão esperando até que alguém envie algum dado..
 %But if you try to read a socket when the program on the other end of the socket
 %has not sent any data---you just sit and wait.  If the programs on both ends
 %of the socket simply wait for some data without sending anything, they will wait for
 %a very long time.
 
-Então, uma parte importante de programas que se comunicam através da Internet
-é ter algum tipo de protocolo.  Um protocolo é um conjunto de regras precisas
-que determinam quem inicia, como é o relacionamento, e então quais são as
-respostas para a mensagem enviada, e quem envia a próxima. E assim por diante.
-Em certo sentido, como duas aplicações, cada uma em uma ponta do socket, vão
-dançar e garantir que uma não vai pisar no pé da outra.
+Então, uma parte importante dos programas que se comunicam através da Internet
+tem algum tipo de protocolo.  Um protocolo é um conjunto de regras precisas
+que determinam quem inicia, como será a comunidação, e então quais são as
+respostas para a mensagem enviada, e quem envia a próxima, e assim por diante.
+De certa forma as aplicações, cada uma em uma ponta do socket, estão dançando e
+tem que garantir que uma não vai pisar no pé da outra.
 %So an important part of programs that communicate over the Internet is to have some
 %sort of protocol.   A protocol is a set of precise rules that determine who
 %is to go first, what they are to do, and then what the responses are to that message,
 %and who sends next, and so on.  In a sense the two applications at either end 
 %of the socket are doing a dance and making sure not to step on each other's toes.
 
-Existem muitos documentos que descrevem esses protocolos de rede. O Protocolo
-de Transferência de Hipertexto descrito no seguinte documento:
+Existem muitos documentos que descrevem estes protocolos de rede. O Protocolo
+de Transferência de Hipertexto é descrito no seguinte documento:
 %There are many documents which describe these network protocols.  The HyperText Transport 
 %Protocol is described in the following document:
 
 \url{http://www.w3.org/Protocols/rfc2616/rfc2616.txt}
-%\url{http://www.w3.org/Protocols/rfc2616/rfc2616.txt}
 
 Este é um longo e complexo documento de 176 páginas, com muitos detalhes.  Se
 você achá-lo interessante, fique à vontade para lê-lo na integra.  Mas se
@@ -85,11 +84,10 @@ enviamos uma linha com o seguinte formato:
 %send a line of the form
 
 {\tt GET http://www.py4inf.com/code/romeo.txt HTTP/1.0 }
-%{\tt GET http://www.py4inf.com/code/romeo.txt HTTP/1.0 }
 
 onde o segundo parâmetro é a página web que estamos solicitando, e então
 enviamos também uma linha em branco. O servidor web irá responder com
-alguma informação de cabeçalho sobre o documento e uma linha em branco seguida
+algumas informações de cabeçalho sobre o documento e uma linha em branco seguida
 do conteúdo do documento.
 %where the second parameter is the web page we are requesting, and then 
 %we also send a blank line.  The web server will respond with some 
@@ -125,28 +123,11 @@ while True:
 mysock.close()
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import socket
-%
-%mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-%mysock.connect(('www.py4inf.com', 80))
-%mysock.send('GET http://www.py4inf.com/code/romeo.txt HTTP/1.0\n\n')
-%
-%while True:
-%    data = mysock.recv(512)
-%    if ( len(data) < 1 ) :
-%        break
-%    print data
-%
-%mysock.close()
-%\end{verbatim}
-%\afterverb
 
 Primeiro, o programa estabelece a conexão na porta 80 do 
-servidor \url{www.py4inf.com}.
-Como nosso programa faz o papel de um ``navegador web'', o protocolo HTTP
-informa que nós temos que enviar um comando GET seguido de uma linha em branco.
+servidor \url{www.py4inf.com}. Como nosso programa faz o papel de um 
+``navegador web'', o protocolo HTTP informa que nós temos que enviar um comando
+GET seguido de uma linha em branco.
 %First the program makes a connection to port 80 on 
 %the server \url{www.py4inf.com}.
 %Since our program is playing the role of the ``web browser'', the HTTP
@@ -155,9 +136,6 @@ informa que nós temos que enviar um comando GET seguido de uma linha em branco.
 \beforefig
 \centerline{\includegraphics[height=1.50in]{figs2/socket.eps}}
 \afterfig
-%\beforefig
-%\centerline{\includegraphics[height=1.50in]{figs2/socket.eps}}
-%\afterfig
 
 Uma vez enviada a linha em branco, escrevemos um loop que recebe do
 socket, dados em pedaços de 512 caracteres e imprime os dados até que não
@@ -188,47 +166,27 @@ Arise fair sun and kill the envious moon
 Who is already sick and pale with grief
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%HTTP/1.1 200 OK
-%Date: Sun, 14 Mar 2010 23:52:41 GMT
-%Server: Apache
-%Last-Modified: Tue, 29 Dec 2009 01:31:22 GMT
-%ETag: "143c1b33-a7-4b395bea"
-%Accept-Ranges: bytes
-%Content-Length: 167
-%Connection: close
-%Content-Type: text/plain
-%
-%But soft what light through yonder window breaks
-%It is the east and Juliet is the sun
-%Arise fair sun and kill the envious moon
-%Who is already sick and pale with grief
-%\end{verbatim}
-%\afterverb
 
-A saída começa com os cabeçalhos que o servidor web envia
-para descrever o documento.
-Por exemplo, o cabeçalho {\tt Content-Type} indica que
-o documento é um documento em texto plano ({\tt text/plain}).
+A saída começa com os cabeçalhos que o servidor web envia para descrever o
+documento. Por exemplo, o cabeçalho {\tt Content-Type} indica que o documento
+é um documento em texto plano ({\tt text/plain}).
 %The output starts with headers which the web server sends
 %to describe the document.
 %For example, the {\tt Content-Type} header indicates that
 %the document is a plain text document ({\tt text/plain}).
 
-Depois que o servidor nos envia os cabeçalhos, ele adiciona uma
-linha em branco para indicar o final dos cabeçalhos, e então, envia
-realmente os dados do arquivo {\tt romeo.txt}.
+Depois que o servidor nos enviar os cabeçalhos, ele adiciona uma linha em branco
+para indicar o final dos cabeçalhos, e então, envia realmente os dados do
+arquivo {\tt romeo.txt}.
 %After the server sends us the headers, it adds a blank line
 %to indicate the end of the headers, and then sends the actual
 %data of the file {\tt romeo.txt}.
 
-Esse exemplo mostra como fazer uma conexão de rede de baixo nível
-com sockets. Sockets podem ser usados para se comunicar com um
-servidor web ou com um servidor de e-mail ou muitos outros tipos
-de servidores. Tudo que é preciso é encontrar o documento que
-descreve o protocolo e escrever o código para enviar e receber os 
-dados de acordo com o protocolo.
+Esse exemplo mostra como fazer uma conexão de rede de baixo nível com sockets.
+Sockets podem ser usados para se comunicar com um servidor web ou com um
+servidor de e-mail ou muitos outros tipos de servidores. Tudo que é preciso é
+encontrar o documento que descreve o protocolo e escrever o código para enviar
+e receber os dados de acordo com o protocolo.
 %This example shows how to make a low-level network connection
 %with sockets.   Sockets can be used to communicate with a web
 %server or with a mail server or many other kinds of servers.
@@ -236,10 +194,9 @@ dados de acordo com o protocolo.
 %the protocol and write the code to send and receive the data
 %according to the protocol.
 
-Contudo, como o protocolo que nós mais comumente usamos é
-o protocolo web HTTP, o Python tem uma biblioteca especificamente
-desenvolvida para ter suporte ao protocolo HTTP. E assim, obter 
-documentos e dados através da web.
+Contudo, como o protocolo que nós usamos mais  comumente é o protocolo web
+HTTP, o Python tem uma biblioteca especificamente desenvolvida para ter suporte
+ao protocolo HTTP. E assim, obter documentos e dados através da web.
 %However, since the protocol that we use most commonly is
 %the HTTP web protocol, Python has a special 
 %library specifically designed to support the HTTP protocol 
@@ -251,18 +208,13 @@ documentos e dados através da web.
 \index{urllib!image}
 \index{image!jpg}
 \index{jpg}
-No exemplo acima, nós pegamos um arquivo em texto plano 
-que tinha novas linhas dentro do arquivo e nós simplesmente
-copiamos os dados para a tela a medida que o programa era
-executado. Nós podemos usar um programa similar para
-obter uma imagem através da web usando o HTTP. Ao invés de
-copiar os dados para a tela, a medida que o programa é
-executado, nós acumulamos os dados em uma string, retiramos
-os cabeçalhos, e então salvamos os dados da imagem em um
+No exemplo acima, nós pegamos um arquivo em texto plano que tinha novas linhas
+dentro do arquivo e nós simplesmente copiamos os dados para a tela a medida
+que o programa era executado. Nós podemos usar um programa similar para obter
+uma imagem através da web usando o HTTP. Ao invés de copiar os dados para a
+tela, a medida que o programa é executado, nós acumulamos os dados em uma
+string, retiramos os cabeçalhos, e então salvamos os dados da imagem em um
 arquivo. Como a seguir:
-%\index{urllib!image}
-%\index{image!jpg}
-%\index{jpg}
 %In the above example, we retrieved a plain text file 
 %which had newlines in the file and we simply copied the
 %data to the screen as the program ran.   We can use a similar
@@ -305,41 +257,6 @@ fhand.write(picture);
 fhand.close()
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import socket
-%import time
-%
-%mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-%mysock.connect(('www.py4inf.com', 80))
-%mysock.send('GET http://www.py4inf.com/cover.jpg HTTP/1.0\n\n')
-%
-%
-%count = 0
-%picture = "";
-%while True:
-%    data = mysock.recv(5120)
-%    if ( len(data) < 1 ) : break
-%    # time.sleep(0.25)
-%    count = count + len(data)
-%    print len(data),count
-%    picture = picture + data
-%
-%mysock.close()
-%
-%# Look for the end of the header (2 CRLF)
-%pos = picture.find("\r\n\r\n");
-%print 'Header length',pos
-%print picture[:pos]
-%
-%# Skip past the header and save the picture data
-%picture = picture[pos+4:]
-%fhand = open("stuff.jpg","wb")
-%fhand.write(picture);
-%fhand.close()
-%\end{verbatim}
-%\afterverb
-%%
 
 Quando o programa é executado, ele produz a seguinte saída:
 %When the program runs it produces the following output:
@@ -369,51 +286,22 @@ Connection: close
 Content-Type: image/jpeg
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%$ python urljpeg.py 
-%2920 2920
-%1460 4380
-%1460 5840
-%1460 7300
-%...
-%1460 62780
-%1460 64240
-%2920 67160
-%1460 68620
-%1681 70301
-%Header length 240
-%HTTP/1.1 200 OK
-%Date: Sat, 02 Nov 2013 02:15:07 GMT
-%Server: Apache
-%Last-Modified: Sat, 02 Nov 2013 02:01:26 GMT
-%ETag: "19c141-111a9-4ea280f8354b8"
-%Accept-Ranges: bytes
-%Content-Length: 70057
-%Connection: close
-%Content-Type: image/jpeg
-%\end{verbatim}
-%\afterverb
 
-Você pode ver que para esta url, o cabeçalho 
-{\tt Content-Type} indica que o corpo do
-documento é uma imagem ({\tt image/jpeg}).
-Uma vez terminado o programa, você pode ver os dados da imagem
-abrindo o arquivo {\tt stuff.jpg} com um visualizador
-de imagens.
+Você pode ver que para esta url, o cabeçalho {\tt Content-Type} indica que o
+corpo do documento é uma imagem ({\tt image/jpeg}). Uma vez terminado o
+programa, você pode ver os dados da imagem abrindo o arquivo {\tt stuff.jpg}
+com um visualizador de imagens.
 %You can see that for this url, the 
 %{\tt Content-Type} header indicates that
 %body of the document is an image ({\tt image/jpeg}).
 %Once the program completes, you can view the image data by opening
 %the file {\tt stuff.jpg} in an image viewer.
 
-Durante a execução do programa, você pode ver que não temos
-5120 caracteres para cada vez que chamamos o método
-{\tt recv()}. Nós pegamos tantos caracteres quantos foram
-transferidos através da rede, do servidor web para nós, no momento que
-chamamos {\tt recv()}.  Neste exemplo, pegamos 1460 ou 2920 
-caracteres a cada vez que requisitamos até chegar a 5120 caracteres
-de dados.
+Durante a execução do programa, você pode ver que não temos 5120 caracteres
+para cada vez que chamamos o método {\tt recv()}. Nós pegamos tantos
+caracteres quantos foram transferidos através da rede, do servidor web para
+nós, no momento que chamamos {\tt recv()}.  Neste exemplo, pegamos 1460 ou 2920
+caracteres a cada vez que requisitamos até chegar a 5120 caracteres de dados.
 %As the program runs, you can see that we don't get 5120 characters
 %each time we call the {\tt recv()} method.
 %We get as many characters as have been transferred across the network 
@@ -464,35 +352,6 @@ Connection: close
 Content-Type: image/jpeg
 \end{verbatim}
 \afterverb
-%\index{time}
-%\index{time.sleep}
-%We can slow down our successive {\tt recv()} calls by uncommenting the call 
-%to {\tt time.sleep()}.  This way, we wait a quarter of a second after each call
-%so that the server can ``get ahead'' of us and send more data to us
-%before we call {\tt recv()} again.  With the delay, in place the program 
-%executes as follows:
-%\beforeverb
-%\begin{verbatim}
-%$ python urljpeg.py 
-%1460 1460
-%5120 6580
-%5120 11700
-%...
-%5120 62900
-%5120 68020
-%2281 70301
-%Header length 240
-%HTTP/1.1 200 OK
-%Date: Sat, 02 Nov 2013 02:22:04 GMT
-%Server: Apache
-%Last-Modified: Sat, 02 Nov 2013 02:01:26 GMT
-%ETag: "19c141-111a9-4ea280f8354b8"
-%Accept-Ranges: bytes
-%Content-Length: 70057
-%Connection: close
-%Content-Type: image/jpeg
-%\end{verbatim}
-%\afterverb
 
 Agora, ao invés de uma primeira e última chamada a {\tt recv()}, nós agora
 pegamos 5120 caracteres a cada vez que pedimos novos dados.  
@@ -553,15 +412,6 @@ for line in fhand:
    print line.strip()
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import urllib
-%
-%fhand = urllib.urlopen('http://www.py4inf.com/code/romeo.txt')
-%for line in fhand:
-%   print line.strip()
-%\end{verbatim}
-%\afterverb
 
 Uma vez que a página web tenha sido aberta com 
 {\tt urllib.urlopen}, nós podemos tratá-la
@@ -591,14 +441,6 @@ Arise fair sun and kill the envious moon
 Who is already sick and pale with grief
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%But soft what light through yonder window breaks
-%It is the east and Juliet is the sun
-%Arise fair sun and kill the envious moon
-%Who is already sick and pale with grief
-%\end{verbatim}
-%\afterverb
 
 Como um exemplo, nós podemos escrever 
 um programa para obter os dados de
@@ -622,19 +464,6 @@ for line in fhand:
 print counts
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import urllib
-%
-%counts = dict()
-%fhand = urllib.urlopen('http://www.py4inf.com/code/romeo.txt')
-%for line in fhand:
-%    words = line.split()
-%    for word in words:
-%        counts[word] = counts.get(word,0) + 1   
-%print counts
-%\end{verbatim}
-%\afterverb
 
 Novamente, uma vez que nós abrimos a página web, 
 podemos fazer a leitura como um arquivo local.
@@ -699,16 +528,6 @@ Second Page</a>.
 </p>
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%<h1>The First Page</h1>
-%<p>
-%If you like, you can switch to the
-%<a href="http://www.dr-chuck.com/page2.htm">
-%Second Page</a>.
-%</p>
-%\end{verbatim}
-%\afterverb
 
 Nós podemos construir uma expressão regular bem formada para
 identificar e extrair os valores dos links do texto abaixo,
@@ -721,11 +540,6 @@ como a seguir:
 href="http://.+?"
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%href="http://.+?"
-%\end{verbatim}
-%\afterverb
 
 Nossa expressão regular procura por strings que iniciam com
 ``href="http://'', seguida de um ou mais caracteres
@@ -771,18 +585,6 @@ for link in links:
     print link
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import urllib
-%import re
-%
-%url = raw_input('Enter - ')
-%html = urllib.urlopen(url).read()
-%links = re.findall('href="(http://.*?)"', html)
-%for link in links:
-%    print link
-%\end{verbatim}
-%\afterverb
 
 O método de expressão regular {\tt findall} irá retornar para nós uma
 lista de todas as strings que coincidem com nossa expressão regular,
@@ -809,21 +611,6 @@ http://www.lib.umich.edu/espresso-book-machine
 http://www.py4inf.com/py4inf-slides.zip
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%python urlregex.py 
-%Enter - http://www.dr-chuck.com/page1.htm
-%http://www.dr-chuck.com/page2.htm
-%
-%python urlregex.py 
-%Enter - http://www.py4inf.com/book.htm
-%http://www.greenteapress.com/thinkpython/thinkpython.html
-%http://allendowney.com/
-%http://www.py4inf.com/code
-%http://www.lib.umich.edu/espresso-book-machine
-%http://www.py4inf.com/py4inf-slides.zip
-%\end{verbatim}
-%\afterverb
 
 As expressões regulares funcionam muito bem quando o seu HTML está bem
 formatado e previsível.  Mas como existem muitas páginas HTML ``quebradas''
@@ -912,21 +699,6 @@ for tag in tags:
    print tag.get('href', None)
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import urllib
-%from BeautifulSoup import *
-%
-%url = raw_input('Enter - ')
-%html = urllib.urlopen(url).read()
-%soup = BeautifulSoup(html)
-%
-%# Retrieve all of the anchor tags
-%tags = soup('a')
-%for tag in tags:
-%   print tag.get('href', None)
-%\end{verbatim}
-%\afterverb
 
 O programa pede um endereço web, e então abre a página web,
 lê os dados e passa os dados para o analisador BeautifulSoup, 
@@ -956,22 +728,6 @@ http://www.py4inf.com/code
 http://www.pythonlearn.com/
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%python urllinks.py 
-%Enter - http://www.dr-chuck.com/page1.htm
-%http://www.dr-chuck.com/page2.htm
-%
-%python urllinks.py 
-%Enter - http://www.py4inf.com/book.htm
-%http://www.greenteapress.com/thinkpython/thinkpython.html
-%http://allendowney.com/
-%http://www.si502.com/
-%http://www.lib.umich.edu/espresso-book-machine
-%http://www.py4inf.com/code
-%http://www.pythonlearn.com/
-%\end{verbatim}
-%\afterverb
 
 Você pode usar a BeautifulSoup para buscar várias partes de cada 
 tag como a seguir:
@@ -997,25 +753,6 @@ for tag in tags:
    print 'Attrs:',tag.attrs
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import urllib
-%from BeautifulSoup import *
-%
-%url = raw_input('Enter - ')
-%html = urllib.urlopen(url).read()
-%soup = BeautifulSoup(html)
-%
-%# Retrieve all of the anchor tags
-%tags = soup('a')
-%for tag in tags:
-%   # Look at the parts of a tag
-%   print 'TAG:',tag
-%   print 'URL:',tag.get('href', None)
-%   print 'Content:',tag.contents[0]
-%   print 'Attrs:',tag.attrs
-%\end{verbatim}
-%\afterverb
 
 Isso produz a seguinte saída:
 %This produces the following output:
@@ -1031,17 +768,6 @@ Content: [u'\nSecond Page']
 Attrs: [(u'href', u'http://www.dr-chuck.com/page2.htm')]
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%python urllink2.py 
-%Enter - http://www.dr-chuck.com/page1.htm
-%TAG: <a href="http://www.dr-chuck.com/page2.htm">
-%Second Page</a>
-%URL: http://www.dr-chuck.com/page2.htm
-%Content: [u'\nSecond Page']
-%Attrs: [(u'href', u'http://www.dr-chuck.com/page2.htm')]
-%\end{verbatim}
-%\afterverb
 
 Esses exemplos apenas começam a mostrar o poder da BeautifulSoup,
 quando se refere a análise de HTML. Veja a documentação e exemplos
@@ -1081,14 +807,6 @@ fhand.write(img)
 fhand.close()
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%img = urllib.urlopen('http://www.py4inf.com/cover.jpg').read()
-%fhand = open('cover.jpg', 'w')
-%fhand.write(img)
-%fhand.close()
-%\end{verbatim}
-%\afterverb
 
 Esse programa lê todos os dados, de uma vez, através da rede e 
 os armazena dentro da variável {\tt img}, na principal memória de seu,
@@ -1131,23 +849,6 @@ print size,'characters copied.'
 fhand.close()
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%import urllib
-%
-%img = urllib.urlopen('http://www.py4inf.com/cover.jpg')
-%fhand = open('cover.jpg', 'w')
-%size = 0
-%while True:
-%    info = img.read(100000)
-%    if len(info) < 1 : break
-%    size = size + len(info)
-%    fhand.write(info)
-%
-%print size,'characters copied.'
-%fhand.close()
-%\end{verbatim}
-%\afterverb
 
 Neste exemplo, nós lemos apenas 100,000 caracteres por vez e então 
 escrevemos esses caracteres no arquivo {\tt cover.jpg} antes de obter
@@ -1166,12 +867,6 @@ python curl2.py
 568248 characters copied.
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%python curl2.py 
-%568248 characters copied.
-%\end{verbatim}
-%\afterverb
 
 Se você tem um computador Unix ou Macintosh, você provavelmente tem um
 comando em seu sistema operacional que executa essa operação,
@@ -1187,11 +882,6 @@ como a seguir:
 curl -O http://www.py4inf.com/cover.jpg
 \end{verbatim}
 \afterverb
-%\beforeverb
-%\begin{verbatim}
-%curl -O http://www.py4inf.com/cover.jpg
-%\end{verbatim}
-%\afterverb
 
 O comando {\tt curl} é a abreviação para ``copy URL'', então esses dois 
 exemplos são, inteligentemente, chamados de {\tt curl1.py} e {\tt curl2.py} em 
