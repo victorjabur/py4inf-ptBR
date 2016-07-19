@@ -387,19 +387,18 @@ de realizar essa tarefa comum em Python pelo uso da biblioteca
 %perform this common task in Python by 
 %using the {\tt urllib} library.
 
-Usando a {\tt urllib}, você pode tratar uma página web
-de maneira muito parecida a um arquivo. Você simplesmente
-indica qual página web você gostaria de obter e a
-{\tt urllib} lida com todo o protocolo HTTP e detalhes sobre
-cabeçalhos.
+Usando a {\tt urllib}, você pode tratar uma página web de maneira muito
+parecida a um arquivo. Você simplesmente indica qual página web você
+gostaria de obter e a {\tt urllib} lida com todo o protocolo HTTP e detalhes
+sobre cabeçalhos.
 %Using {\tt urllib},
 %you can treat a web page much like a file.   You simply
 %indicate which web page you would like to retrieve and
 %{\tt urllib} handles all of the HTTP protocol and header 
 %details.
 
-O código equivalente para ler o arquivo {\tt romeo.txt} a partir
-da web usando a {\tt urllib} é como o seguinte:
+O código equivalente para ler o arquivo {\tt romeo.txt} a partir da web usando
+a {\tt urllib} é como o seguinte:
 %The equivalent code to read the {\tt romeo.txt} file
 %from the web using {\tt urllib} is as follows:
 
@@ -413,20 +412,16 @@ for line in fhand:
 \end{verbatim}
 \afterverb
 
-Uma vez que a página web tenha sido aberta com 
-{\tt urllib.urlopen}, nós podemos tratá-la
-como um arquivo e fazer a leitura usando um loop
-{\tt for}.   
+Uma vez que a página web tenha sido aberta com {\tt urllib.urlopen}, nós
+podemos tratá-la como um arquivo e fazer a leitura usando um loop {\tt for}.
 %Once the web page has been opened with 
 %{\tt urllib.urlopen}, we can treat it like 
 %a file and read through it using a 
 %{\tt for} loop.   
 
-Quando o programa é executado, nós apenas vemos na
-saída o conteúdo do arquivo. Os cabeçalhos
-continuam sendo enviados, mas o código da {\tt urllib}
-consome os cabeçalhos e apenas retorna os dados para
-nós.
+Quando o programa é executado, nós apenas vemos na saída o conteúdo do arquivo.
+Os cabeçalhos continuam sendo enviados, mas o código da {\tt urllib} consome
+os cabeçalhos e apenas retorna os dados para nós.
 %When the program runs, we only see the output
 %of the contents of the file.   The headers
 %are still sent, but the {\tt urllib} code
@@ -442,10 +437,9 @@ Who is already sick and pale with grief
 \end{verbatim}
 \afterverb
 
-Como um exemplo, nós podemos escrever 
-um programa para obter os dados de
-{\tt romeo.txt} e calcular a frequência
-de cada palavra existente dentro do arquivo como a seguir:
+Como exemplo, nós podemos escrever um programa para obter os dados de
+{\tt romeo.txt} e calcular a frequência de cada palavra existente dentro do
+arquivo, como a seguir:
 %As an example, we can write 
 %a program to retrieve the data for
 %{\tt romeo.txt} and compute the frequency
@@ -465,8 +459,8 @@ print counts
 \end{verbatim}
 \afterverb
 
-Novamente, uma vez que nós abrimos a página web, 
-podemos fazer a leitura como um arquivo local.
+Novamente, uma vez que nós abrimos a página web, podemos fazer a leitura como
+um arquivo local.
 %Again, once we have opened the web page, 
 %we can read it like a local file.
 
@@ -486,22 +480,20 @@ nessas páginas a procura de padrões.
 %that pretends to be a web browser and retrieves pages, then 
 %examines the data in those pages looking for patterns.
 
-Como um exemplo, um mecanismo de busca como o Google irá olhar os fontes
-de uma página web e extrair os links para outras páginas e obter
-essas páginas, extrair os links para outras páginas e obter essas
-páginas, extrair links e assim por diante. Usando essa técnica,
-o Google {\bf mapeia} seu caminho através de quase todas as páginas
-na web.   
+Como um exemplo, um mecanismo de busca como o Google irá olhar os fontes de
+uma página web e extrair os links para outras páginas e obter essas páginas,
+extrair os links para outras páginas e obter essas páginas, extrair links e
+assim por diante. Usando essa técnica, o Google {\bf mapeia} seu caminho
+através de quase todas as páginas na web.   
 %As an example, a search engine such as Google will look at the source 
 %of one web page and extract the links to other pages and retrieve
 %those pages, extracting links, and so on.   Using this technique,
 %Google {\bf spiders} its way through nearly all of the pages on 
 %the web.   
 
-O Google também usa a frequência de links das páginas que ele encontra
-para uma página em particular de maneira a medir o quão ``importante'' 
-uma página é, e em que altura a página deve aparecer em seus resultados de
-pesquisa.
+O Google também usa a frequência de links das páginas que ele encontra para
+uma página em particular de maneira a medir o quão ``importante'' uma página
+é, e em que posição a página deve aparecer em seus resultados de pesquisa.
 %Google also uses the frequency of links from pages it finds 
 %to a particular page as one measure of how ``important'' 
 %a page is and how high the page should appear in its search results.
@@ -510,8 +502,8 @@ pesquisa.
 %\section{Parsing HTML using regular expressions}
 
 Uma maneira simples de analisar o HTML é usar expressões regulares, para
-repetidamente, buscar por e extrair substrings que coincidam com um
-padrão em particular.
+repetidamente, buscar e extrair substrings que coincidam com um padrão em
+particular.
 %One simple way to parse HTML is to use regular expressions to repeatedly
 %search for and extract substrings that match a particular pattern.
 
@@ -529,9 +521,8 @@ Second Page</a>.
 \end{verbatim}
 \afterverb
 
-Nós podemos construir uma expressão regular bem formada para
-identificar e extrair os valores dos links do texto abaixo,
-como a seguir:
+Nós podemos construir uma expressão regular para identificar e extrair os
+valores dos links do texto abaixo, como a seguir:
 %We can construct a well-formed regular expression to match
 %and extract the link values from the above text as follows:
 
@@ -541,14 +532,13 @@ href="http://.+?"
 \end{verbatim}
 \afterverb
 
-Nossa expressão regular procura por strings que iniciam com
-``href="http://'', seguida de um ou mais caracteres
-(``.+?''), seguida por outra aspas.  O ponto de interrogação 
-adicionado ao ``.+?'' indica que a expressão é para coincidir
-com um padrão de forma ``não gananciosa'', ao invés de uma
-maneira ``gananciosa''. Um padrão não ganancioso tenta encontrar
-a {\em menor} string correspondente possível e a gananciosa tenta
-encontrar a {\em maior} string correspondente possível.
+Nossa expressão regular procura por strings que iniciam com ``href="http://'',
+seguida de um ou mais caracteres (``.+?''), seguida por outra aspas. O ponto
+de interrogação adicionado ao ``.+?'' indica que a expressão é para coincidir
+com um padrão de forma ``não gananciosa'', ao invés de uma maneira
+``gananciosa''. Um padrão não ganancioso tenta encontrar a {\em menor} string
+correspondente possível e a gananciosa tenta encontrar a {\em maior} string
+correspondente possível.
 \index{greedy}
 \index{non-greedy}
 %Our regular expression looks for strings that start with
@@ -562,9 +552,9 @@ encontrar a {\em maior} string correspondente possível.
 %\index{greedy}
 %\index{non-greedy}
 
-Nós adicionamos parênteses a nossa expressão regular para indicar
-qual parte de nossa string correspondente nós gostaríamos de extrair, e
-foi produzido o seguinte programa:
+Nós adicionamos parênteses a nossa expressão regular para indicar qual parte
+de nossa string correspondente nós gostaríamos de extrair, e foi produzido o
+seguinte programa:
 \index{regex!parentheses}
 \index{parentheses!regular expression}
 %We add parentheses to our regular expression to indicate
@@ -586,9 +576,9 @@ for link in links:
 \end{verbatim}
 \afterverb
 
-O método de expressão regular {\tt findall} irá retornar para nós uma
-lista de todas as strings que coincidem com nossa expressão regular,
-retornando apenas o texto do link entre as aspas duplas.
+O método de expressão regular {\tt findall} irá retornar para nós uma lista
+de todas as strings que coincidem com nossa expressão regular, retornando
+apenas o texto do link entre as aspas duplas.
 %The {\tt findall} regular expression method will give us a list of all
 %of the strings that match our regular expression, returning only
 %the link text between the double quotes.
@@ -614,56 +604,51 @@ http://www.py4inf.com/py4inf-slides.zip
 
 As expressões regulares funcionam muito bem quando o seu HTML está bem
 formatado e previsível.  Mas como existem muitas páginas HTML ``quebradas''
-por aí, a solução usando expressões regulares pode tanto perder alguns
-links válidos quanto terminar com dados ruins.
+por aí, a solução usando expressões regulares pode perder alguns links
+válidos ou terminar com dados ruins.
 %Regular expressions work very nicely when your HTML is well formatted
 %and predictable.  But since there are a lot of ``broken'' HTML pages
 %out there, a solution only using regular expressions might either miss
 %some valid links or end up with bad data.
 
-Isso pode ser resolvido pelo uso de uma robusta biblioteca de análise
-de HTML.
+Isso pode ser resolvido utilizando uma robusta biblioteca de análise de HTML.
 %This can be solved by using a robust HTML parsing library.
 
 \section{Analisando o HTML com o uso da BeautifulSoup}
-\index{BeautifulSoup}
 %\section{Parsing HTML using BeautifulSoup}
 %\index{BeautifulSoup}
 
-Existem várias bibliotecas Python que podem ajudar você a analisar
-o HTML e extrair dados das páginas.  Cada uma das bibliotecas
-tem suas vantagens e desvantagens e você pode escolher uma com base
-em suas necessidades.
+Existem várias bibliotecas Python que podem ajudar você a analisar o HTML e
+extrair dados das páginas. Cada uma das bibliotecas tem suas vantagens e
+desvantagens e você pode escolher uma com base em suas necessidades.
 %There are a number of Python libraries which can help you parse
 %HTML and extract data from the pages.  Each of the libraries
 %has its strengths and weaknesses and you can pick one based on 
 %your needs.
 
-Como exemplo, iremos simplesmente analisar alguma entrada HTML 
-e extrair os links usando a biblioteca {\bf BeautifulSoup}.   
-Você pode baixar e instalar o código BeautifulSoup de:
+Como exemplo, iremos simplesmente analisar alguma entrada HTML e extrair os
+links usando a biblioteca {\bf BeautifulSoup}. Você pode baixar e instalar o
+código BeautifulSoup de:
 %As an example, we will simply parse some HTML input 
 %and extract links using the {\bf BeautifulSoup} library.   
 %You can download and install the BeautifulSoup code
 %from:
 
 \url{http://www.crummy.com/software/}
-%\url{http://www.crummy.com/software/}
 
-Você pode baixar e fazer o ``install'' de BeautifulSoup ou 
-pode simplesmente colocar o arquivo {\tt BeautifulSoup.py} no mesmo
-diretório que está a sua aplicação.
+Você pode baixar e fazer a ``instalação'' da biblioteca BeautifulSoup ou pode
+simplesmente colocar o arquivo {\tt BeautifulSoup.py} no mesmo diretório que
+está a sua aplicação.
 %You can download and ``install'' BeautifulSoup or you 
 %can simply place the {\tt BeautifulSoup.py} file in the
 %same folder as your application.
 
-Ainda que o HTML se pareça com XML\footnote{O formato XML format será
-descrito no próximo capítulo.} e algumas páginas são cuidadosamente 
-construídas para ser um XML, a maioria do HTML é, geralmente, quebrado.
-O que faz com que um analisador XML rejeite toda a página HTML por
-concluir que ela está impropriamente formada. A BeautifulSoup tolera
-muitas imperfeições HTML e ainda consegue que você extraia facilmente
-os dados que você precisa.
+Ainda que o HTML se pareça com XML\footnote{O formato XML será descrito no
+próximo capítulo.} e algumas páginas são cuidadosamente construídas para ser
+um XML, a maioria do HTML é, geralmente, quebrado. O que faz com que um
+analisador XML rejeite toda a página HTML por concluir que ela está
+impropriamente formada. A BeautifulSoup tolera muitas imperfeições HTML e
+ainda permite que você extraia facilmente os dados que você precisa.
 %Even though HTML looks like XML\footnote{The XML format is described in
 %the next chapter.} and some pages are carefully 
 %constructed to be XML, most HTML is generally broken in ways
@@ -672,8 +657,8 @@ os dados que você precisa.
 %HTML and still lets you easily extract the data you need.
 
 Nós iremos usar a {\tt urllib} para ler a página e então usar a
-{\tt BeautifulSoup} para extrair os atributos {\tt href} das tags
-de ancoragem ({\tt a}).
+{\tt BeautifulSoup} para extrair os atributos {\tt href} das tags de ancoragem
+({\tt a}).
 \index{BeautifulSoup}
 \index{HTML}
 \index{parsing!HTML}
@@ -700,10 +685,9 @@ for tag in tags:
 \end{verbatim}
 \afterverb
 
-O programa pede um endereço web, e então abre a página web,
-lê os dados e passa os dados para o analisador BeautifulSoup, 
-e então obtém todas as tags de ancoragem e imprime o atributo
-{\tt href} de cada tag.
+O programa pede um endereço web, e então abre a página web, lê os dados e
+passa os dados para o analisador BeautifulSoup, e então obtém todas as tags
+de ancoragem e imprime o atributo {\tt href} de cada tag.
 %The program prompts for a web address, then opens the web
 %page, reads the data and passes the data to the BeautifulSoup
 %parser, and then retrieves all of the anchor tags and prints
@@ -729,8 +713,8 @@ http://www.pythonlearn.com/
 \end{verbatim}
 \afterverb
 
-Você pode usar a BeautifulSoup para buscar várias partes de cada 
-tag como a seguir:
+Você pode usar a BeautifulSoup para buscar várias partes de cada tag como a
+seguir:
 %You can use BeautifulSoup to pull out various parts of each 
 %tag as follows:
 
@@ -769,22 +753,21 @@ Attrs: [(u'href', u'http://www.dr-chuck.com/page2.htm')]
 \end{verbatim}
 \afterverb
 
-Esses exemplos apenas começam a mostrar o poder da BeautifulSoup,
-quando se refere a análise de HTML. Veja a documentação e exemplos
-em
+Estes exemplos apenas começam a mostrar o poder da BeautifulSoup, quando se
+refere a análise de HTML. Veja a documentação e exemplos em
 \url{http://www.crummy.com/software/BeautifulSoup/} para mais detalhes.
 %These examples only begin to show the power of BeautifulSoup
 %when it comes to parsing HTML.  See the documentation 
 %and samples at
 %\url{http://www.crummy.com/software/BeautifulSoup/} for more detail.
 
-\section{Lendo arquivos binários usando a urllib}
+\section{Lendo arquivos binários usando a {\tt urllib}}
 %\section{Reading binary files using urllib}
 
-Algumas vezes, você quer obter um arquivo não texto (ou binário), como
-um arquivo de imagem ou vídeo. Os dados nesses arquivos geralmente não
-são úteis para serem impressos, mas você pode facilmente fazer uma cópia
-da URL para um arquivo local em seu disco rígido usando a {\tt urllib}.
+Algumas vezes, você quer obter um arquivo não texto (ou binário), como um
+arquivo de imagem ou vídeo. Os dados nesses arquivos geralmente não são úteis
+para serem impressos, mas você pode facilmente fazer uma cópia da URL para um
+arquivo local em seu disco rígido usando a {\tt urllib}.
 \index{binary file}
 %Sometimes you want to retrieve a non-text (or binary) file such as
 %an image or video file. The data in these files is generally not 
@@ -792,9 +775,9 @@ da URL para um arquivo local em seu disco rígido usando a {\tt urllib}.
 %file on your hard disk using {\tt urllib}.
 %\index{binary file}
 
-O padrão é abrir a URL e usar {\tt read} para baixar o conteúdo completo
-do documento para dentro de uma variável string ({\tt img}), e então
-escrever essa informação em um arquivo local, como a seguir:
+O padrão é abrir a URL e usar {\tt read} para baixar o conteúdo completo do
+documento para dentro de uma variável string ({\tt img}), e então escrever
+essa informação em um arquivo local, como a seguir:
 %The pattern is to open the URL and use {\tt read} to download the entire
 %contents of the document into a string variable ({\tt img}) then write that
 %information to a local file as follows:
@@ -808,23 +791,23 @@ fhand.close()
 \end{verbatim}
 \afterverb
 
-Esse programa lê todos os dados, de uma vez, através da rede e 
-os armazena dentro da variável {\tt img}, na principal memória de seu,
-computador. Então abre o arquivo {\tt cover.jpg} e escreve os dados para
-o seu disco.  Isso irá funcionar se o tamanho do arquivo for menor que
-o tamanho da memória de seu computador.
+Esse programa lê todos os dados, de uma vez, através da rede e os armazena
+dentro da variável {\tt img}, na memória de seu, computador. Então abre o
+arquivo {\tt cover.jpg} e escreve os dados para o seu disco.  Isso irá
+funcionar se o tamanho do arquivo for menor que o tamanho da memória de seu
+computador.
 %This program reads all of the data in at once across the network and 
 %stores it in the variable {\tt img} in the main memory of your computer,
 %then opens the file {\tt cover.jpg} and writes the data out to your 
 %disk.  This will work if the size of the file is less than the size
 %of the memory of your computer.
 
-Contudo, se ele for um arquivo de áudio ou vídeo grande, esse programa
-pode falhar ou pelo menos rodar de forma extremamente vagarosa quando seu
-computador ficar sem memória.  Para evitar ficar sem memória, nós podemos
-obter os dados em blocos (ou buffers) e então escrever cada bloco no disco
-antes de obter o próximo bloco.  Desta forma o programa pode ler um arquivo
-de qualquer tamanho sem usar toda a memória que você tem em seu computador.
+Contudo, se ele for um arquivo de áudio ou vídeo grande, esse programa pode
+falhar ou pelo menos rodar de forma extremamente vagarosa quando seu computador
+ficar sem memória.  Para evitar este tipo de problema, nós podemos obter os
+dados em blocos (ou buffers) e então escrever cada bloco no disco antes de
+obter o próximo bloco.  Desta forma o programa pode ler um arquivo de qualquer
+tamanho sem usar toda a memória que você tem em seu computador.
 %However if this is a large audio or video file, this program may crash
 %or at least run extremely slowly when your computer runs out of memory.
 %In order to avoid running out of memory, we retrieve the data in blocks
@@ -850,9 +833,9 @@ fhand.close()
 \end{verbatim}
 \afterverb
 
-Neste exemplo, nós lemos apenas 100,000 caracteres por vez e então 
-escrevemos esses caracteres no arquivo {\tt cover.jpg} antes de obter
-os próximos 100,000 caracteres de dados a partir da web.
+Neste exemplo, nós lemos apenas 100,000 caracteres por vez e então escrevemos
+esses caracteres no arquivo {\tt cover.jpg} antes de obter os próximos 100,000
+caracteres de dados a partir da web.
 %In this example, we read only 100,000 characters at a time and then 
 %write those characters to the {\tt cover.jpg} file
 %before retrieving the next 100,000 characters of data from the
@@ -868,9 +851,8 @@ python curl2.py
 \end{verbatim}
 \afterverb
 
-Se você tem um computador Unix ou Macintosh, você provavelmente tem um
-comando em seu sistema operacional que executa essa operação,
-como a seguir:
+Se você tem um computador Unix ou Macintosh, você provavelmente tem um comando
+em seu sistema operacional que executa essa operação, como a seguir:
 \index{curl}
 %If you have a Unix or Macintosh computer, you probably have a command
 %built in to your operating system that performs this operation
@@ -883,12 +865,12 @@ curl -O http://www.py4inf.com/cover.jpg
 \end{verbatim}
 \afterverb
 
-O comando {\tt curl} é a abreviação para ``copy URL'', então esses dois 
-exemplos são, inteligentemente, chamados de {\tt curl1.py} e {\tt curl2.py} em 
+O comando {\tt curl} é a abreviação para ``copy URL'', então esses dois
+exemplos são, inteligentemente, chamados de {\tt curl1.py} e {\tt curl2.py} em
 \url{www.py4inf.com/code}, já que eles implementam uma funcionalidade similar
 ao comando {\tt curl}.  Existe também um programa exemplo {\tt curl3.py} que
-realiza essa tarefa de maneira um pouco mais efetiva, no caso de você
-realmente quiser usar esse padrão em um programa que você estiver escrevendo.
+realiza essa tarefa de maneira um pouco mais efetiva, caso você queira
+realmente usar esse padrão em um programa que esteja escrevendo.
 %The command {\tt curl} is short for ``copy URL'' and so these two 
 %examples are cleverly named {\tt curl1.py} and {\tt curl2.py} on 
 %\url{www.py4inf.com/code} as they implement similar functionality
@@ -902,11 +884,10 @@ realmente quiser usar esse padrão em um programa que você estiver escrevendo.
 \begin{description}
 %\begin{description}
 
-\item[BeautifulSoup:] Uma biblioteca Python para análise de documentos HTML
-e extração de dados desses documentos HTML que faz compensações nas
-maiorias das imperfeições em um HTML que os navegadores geralmente ignoram.
-Você pode baixar o código da BeautifulSoup em 
-\url{www.crummy.com}.
+\item[BeautifulSoup:] Uma biblioteca Python para análise de documentos HTML e
+extração de dados desses documentos HTML que faz compensações nas maiorias das
+imperfeições em um HTML que os navegadores geralmente ignoram. Você pode
+baixar o código da BeautifulSoup em \url{www.crummy.com}.
 \index{BeautifulSoup}
 %\item[BeautifulSoup:] A Python library for parsing HTML documents
 %and extracting data from HTML documents
@@ -917,10 +898,10 @@ Você pode baixar o código da BeautifulSoup em
 %\url{www.crummy.com}.
 %\index{BeautifulSoup}
 
-\item[port:] Um número que geralmente indica qual aplicação 
-você está contactando quando você faz uma conexão por socket com um servidor.
-Como um exemplo, o tráfego web, usualmente, usa a porta 80, enquanto o
-tráfego de e-mail usa a porta 25.
+\item[porta:] Um número que geralmente indica qual aplicação você está
+contactando quando você faz uma conexão por socket com um servidor. Como um
+exemplo, o tráfego web, usualmente, usa a porta 80, enquanto o tráfego de
+e-mail usa a porta 25.
 \index{port}
 %\item[port:] A number that generally indicates which application 
 %you are contacting when you make a socket connection to a server.
@@ -928,29 +909,28 @@ tráfego de e-mail usa a porta 25.
 %traffic uses port 25.
 %\index{port}
 
-\item[scrape:] Quando um programa finge ser um navegador web,
-obtém uma página web, e então olha o conteúdo da página web. 
-Geralmente os programas estão seguindo os links de uma página para
-encontrar a próxima página. Para que eles possam atravessar uma rede de páginas
-ou uma rede social.
-\index{socket}
+\item[scraping:] Quando um programa finge ser um navegador web, obtém uma página
+web, e então olha o conteúdo da página web. Geralmente os programas estão
+seguindo os links de uma página para encontrar a próxima página. Para que
+eles possam atravessar uma rede de páginas ou uma rede social.
+\index{web!scraping}
 %\item[scrape:] When a program pretends to be a web browser and
 %retrieves a web page, then looks at the web page content. 
 %Often programs are following the links in one page to find the next
 %page so they can traverse a network of pages or a social network.
 %\index{socket}
 
-\item[socket:] Uma conexão de rede entre duas aplicações. Onde as
-aplicações podem enviar e receber dados em ambas as direções.
+\item[socket:] Uma conexão de rede entre duas aplicações. Onde as aplicações
+podem enviar e receber dados em ambas as direções.
 \index{socket}
 %\item[socket:] A network connection between two applications
 %where the applications can send and receive data in either direction.
 %\index{socket}
 
-\item[spider:] O ato de um mecanismo de busca pela web obtendo uma
-página e então todas as páginas com ligações a partir dessa página e
-assim por diante até ele ter praticamente todas as páginas na Internet que
-ele usará para construir sua indexação de busca.
+\item[spider:] Um mecanismo que busca pela web obtendo uma página e então todas
+as páginas com ligações a partir dessa página e assim por diante até ele ter
+praticamente todas as páginas na Internet que ele usará para construir sua
+indexação de busca.
 \index{spider}
 %\item[spider:] The act of a web search engine retrieving a page and
 %then all the pages linked from a page and so on until they have 
@@ -965,13 +945,12 @@ ele usará para construir sua indexação de busca.
 %\section{Exercises}
 
 \begin{ex}
-Altere o programa socket {\tt socket1.py} para pedir ao usuário a 
-URL, e assim, ele possa ler qualquer página web.  
-Você pode usar {\tt split('/')} para quebrar a URL em partes de componentes
-para que você possa extrair o nome da máquina para a chamada {\tt connect}.
-Adicionar uma checagem de erro usando {\tt try} e {\tt except} para lidar
-com a conexão, caso o usuário digite um formato de URL impróprio ou
-não existente.  
+Altere o programa socket {\tt socket1.py} para pedir ao usuário a URL, e assim,
+ele possa ler qualquer página web. Você pode usar {\tt split('/')} para quebrar
+a URL em partes de componentes para que você possa extrair o nome da máquina
+para a chamada {\tt connect}. Adicionar uma checagem de erro usando {\tt try}
+e {\tt except} para lidar com a conexão, caso o usuário digite um formato de
+URL impróprio ou não existente.  
 \end{ex}
 %\begin{ex}
 %Change the socket program {\tt socket1.py} to prompt the user for 
@@ -998,7 +977,7 @@ final do documento.
 
 \begin{ex}
 Use a {\tt urllib} para replicar o exercício prévio de (1) obtenção de um
-documento a partir de uma URL, (2) exibindo até 3000 caracteres, e (3) 
+documento a partir de uma URL, (2) exibindo até 3000 caracteres, e (3)
 desfazendo a contagem do total de caracteres no documento.  Não se preocupe
 com os cabeçalhos neste exercício, apenas mostre os primeiros 3000 caracteres
 do conteúdo do documento.
@@ -1011,12 +990,11 @@ do conteúdo do documento.
 %\end{ex}
 
 \begin{ex}
-Altere o programa {\tt urllinks.py} para que ele extraia e conte 
-as tags parágrafo (p) de um documento HTML obtido e exiba a contagem
-de parágrafos como saída de seu programa.  
-Não exiba o texto de parágrafo, apenas faça a contagem.
-Teste seu programa em várias páginas web pequenas. E também em algumas
-páginas web grandes.
+Altere o programa {\tt urllinks.py} para que ele extraia e conte as tags
+parágrafo (p) de um documento HTML obtido e exiba a contagem de parágrafos
+como saída de seu programa. Não exiba o texto de parágrafo, apenas faça a
+contagem. Teste seu programa em várias páginas web pequenas. E também em
+algumas páginas web grandes.
 \end{ex}
 %\begin{ex}
 %Change the {\tt urllinks.py} program to extract and count 
@@ -1030,8 +1008,8 @@ páginas web grandes.
 
 \begin{ex}
 (Avançado) Altere o programa socket para que ele apenas mostre os dados
-após os cabeçalhos e uma linha em branco tiverem sido recebidos. Lembre 
-que o {\tt recv} está recebendo caracteres (nova linha e outros mais),
+após os cabeçalhos até que uma linha em branco tenha sido recebida. Lembre 
+que o {\tt recv} está recebendo caracteres (nova linha e outros caracteres),
 não linhas.
 \end{ex}
 %\begin{ex}
