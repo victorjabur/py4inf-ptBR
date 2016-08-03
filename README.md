@@ -38,7 +38,7 @@ Responsáveis pela Tradução por Capítulo
 |10-tuples.tex          |  Jucelio Jair         | 0 %   |  ?              | ?
 |11-regex.tex           |  Felipe Souza         | 100 % |  Maykon Chagas  | 0 %
 |12-network.tex         |  Herbert Fortes       | 100 % |  Maykon Chagas  | 100 %
-|13-web.tex             |  Joao Vitor Silvestre | 100 % |  Victor Jabur   | 0 %
+|13-web.tex             |  Joao Vitor Silvestre | 100 % |  Victor Jabur   | 100 %
 |14-database.tex        |  Maykon Chagas        | 100 % |  Victor Jabur   | 100 %
 |15-viz.tex             |  Victor Jabur         | 100 % |  Victor Jabur   | 100 %
 |16-tasks.tex           |  Paulo Henrique Silva | 100 % |  Victor Jabur   | 100 %
