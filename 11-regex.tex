@@ -4,9 +4,10 @@
 \chapter{Expressões regulares}
 %\chapter{Regular expressions}
 
-Até agora, temos percorrido os arquivos procurando por padrões e extraindo pedaços de linhas
-que achamos interessantes. Temos usado métodos string como {\tt split} e {\tt find} e usamos
-listas e fatiamento de strings para extrair partes das linhas.
+Até agora, temos percorrido os arquivos procurando por padrões e extraindo
+pedaços de linhas que achamos interessantes. Temos usado métodos para
+manipulação de string como {\tt split} e {\tt find} e usamos listas e
+fatiamento de strings para extrair partes das linhas.
 %So far we have been reading through files, looking for patterns and extracting various
 %bits of lines that we find interesting.  We have been using string methods like {\tt split}
 %and {\tt find} and using lists and string slicing to extract portions of the lines.
@@ -18,19 +19,21 @@ listas e fatiamento de strings para extrair partes das linhas.
 %\index{regex}
 %\index{re module}
 
-Esta tarefa de busca e extração é tão comum que Python tem uma biblioteca muito poderosa
-chamada {\bf expressões regulares} que lida com muitas destas tarefas de forma muito elegante.
-O motivo de não introduzirmos expressões regulares antes no livro é que enquanto elas são muito 
-poderosas, também são um pouco complicadas e leva algum tempo para se acostumar com sua sintaxe.
+Esta tarefa de busca e extração é tão comum que Python tem uma biblioteca
+muito poderosa chamada {\bf expressões regulares} que lida com muitas destas
+tarefas de forma muito elegante. O motivo de não introduzirmos expressões
+regulares antes no livro é que apesar de elas serem muito poderosas, também
+são um pouco complicadas e leva algum tempo para se acostumar com sua sintaxe.
 %This task of searching and extracting is so common that Python has a very powerful library
 %called {\bf regular expressions} that handles many of these tasks quite elegantly.  The
 %reason we have not introduced regular expressions earlier in the book is because while they
 %are very powerful, they are a little complicated and their syntax takes some getting used to. 
 
-Expressões regulares são quase uma própria pequena linguagem de programação para pesquisa e 
-análise de strings. Na verdade, livros inteiros foram escritos sobre o tema expressões regulares. 
-Neste capítulo, cobriremos apenas noções básicas do assunto. 
-Para mais detalhes sobre regulares expressões, veja:
+Expressões regulares são consideradas quase uma linguagem própria de
+programação para pesquisa e análise de strings. Na verdade, livros inteiros
+foram escritos sobre o tema expressões regulares. Neste capítulo, cobriremos
+apenas noções básicas do assunto. Para mais detalhes sobre regulares
+expressões, veja:
 
 %Regular expressions are almost their own little programming language for searching and parsing
 %strings.  As a matter of fact, entire books have been written on the topic of regular expressions.
@@ -41,15 +44,15 @@ Para mais detalhes sobre regulares expressões, veja:
 
 \url{https://docs.python.org/2/library/re.html}
 
-A biblioteca expressão regular {\tt re} deve ser importada para o seu programa antes que você 
-possa usá-la. O uso mais simples da biblioteca de expressão regular é a função {\tt search()}. 
-O programa a seguir demonstra um uso trivial da função search.
+A biblioteca de expressão regular {\tt re} deve ser importada para o seu
+programa antes que você possa usá-la. O uso mais simples da biblioteca de
+expressão regular é a função {\tt search()}. O programa a seguir demonstra
+um uso trivial da função {\it search}.
 %The regular expression library {\tt re} must be imported into your program before you can use it.
 %The simplest use of the regular expression library is the {\tt search()} function.  The following
 %program demonstrates a trivial use of the search function.
 
 \index{regex!search}
-%\index{regex!search}
 
 \beforeverb
 \begin{verbatim}
@@ -63,10 +66,10 @@ for line in hand:
 \afterverb
 %
 
-Abrimos o arquivo, iteramos linha por linha, e usamos a expressão regular {\tt search()} para
-imprimir apenas as linhas que contém a string ``From:''. Este programa não usa o real poder 
-das expressões regulares, uma vez que poderíamos simplesmente usar {\tt line.find()} para
-obter o mesmo resultado.
+Abrimos o arquivo, iteramos linha por linha, e usamos a função {\tt search()}
+para imprimir apenas as linhas que contém a string ``From:''. Este programa
+não usa o real poder das expressões regulares, uma vez que poderíamos
+simplesmente usar {\tt line.find()} para obter o mesmo resultado.
 
 %We open the file, loop through each line, and use the regular expression {\tt search()} to
 %only print out lines that contain the string ``From:''.   This program does not use the real
@@ -76,19 +79,19 @@ obter o mesmo resultado.
 \index{string!find}
 %\index{string!find}
 
-O poder das expressões regulares surge quando adicionamos caracteres especiais à string de busca, 
-isso nos permite controlar com mais precisão quais as linhas que casam com a string. 
-Adicionar estes caracteres especiais em nossa expressão regular nos permite um casamento e 
-extração sofisticada com pouco código.
+O poder das expressões regulares surge quando adicionamos caracteres especiais
+à string de busca, isso nos permite controlar com mais precisão quais as
+linhas que casam com a string. Adicionar estes caracteres especiais em nossa
+expressão regular nos permite um casamento e extração sofisticada com pouco
+código.
 %The power of the regular expressions comes when we add special characters to the search string
 %that allow us to more precisely control which lines match the string.  Adding these special
 %characters to our regular expression allow us to do sophisticated matching and extraction while
 %writing very little code.
 
-Por exemplo, o acento circunflexo é usado em expressões 
-regulares para identificar ``o início'' de uma linha.
-Nós poderíamos mudar nosso programa para casar apenas
-linhas em que ``From:'' estivesse no início como a seguir:
+Por exemplo, o acento circunflexo é usado em expressões regulares para
+identificar ``o início'' de uma linha. Nós poderíamos mudar nosso programa
+para casar apenas linhas em que ``From:'' estivesse no início como a seguir:
 %For example, the caret character is used in regular 
 %expressions to match ``the beginning'' of a line.
 %We could change our program to only match 
@@ -106,10 +109,11 @@ for line in hand:
 \afterverb
 %
 
-Agora vamos casar apenas as linhas que {\em começam com} a string ``From:''. Esse é um exemplo 
-simples no qual poderíamos ter feito equivalente com o método {\tt startswith()} da biblioteca 
-string. Mas serve para introduzir a noção de que expressões regulares contém caracteres de ação 
-especiais que nos dão mais controle sobre o que irá casar com a expressão regular.
+Agora vamos casar apenas as linhas que {\em começam com} a string ``From:''.
+Esse é um exemplo simples no qual poderíamos ter feito equivalente com o
+método {\tt startswith()} da biblioteca string. Mas serve para introduzir
+a noção de que expressões regulares contém caracteres de ação especiais que
+nos dão mais controle sobre o que irá casar com a expressão regular.
 %Now we will only match lines that {\em start with} the string ``From:''.  This is still a very
 %simple example that we could have done equivalently with the {\tt startswith()} method from
 %the string library.  But it serves to introduce the notion that regular expressions contain
