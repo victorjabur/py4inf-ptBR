@@ -124,8 +124,9 @@ nos dão mais controle sobre o que irá casar com a expressão regular.
 \section{Casamento de caractere em expressões regulares}
 %\section{Character matching in regular expressions}
 
-Existe um grande número de caracteres especiais que nos permitem escrever expressões regulares
-ainda mais poderosas. O caractere especial mais utilizado é o ponto, que casa com qualquer caracter.
+Existe um grande número de caracteres especiais que nos permitem escrever
+expressões regulares ainda mais poderosas. O caractere especial mais
+utilizado é o ponto, que casa com qualquer caracter.
 %There are a number of other special characters that let us build even more powerful regular
 %expressions.  The most commonly used special character is the period or full stop, which matches
 %any character.
@@ -135,9 +136,9 @@ ainda mais poderosas. O caractere especial mais utilizado é o ponto, que casa c
 %\index{wild card}
 %\index{regex!wild card}
 
-No exemplo a seguir, a expressão regular ``F..m:'' casaria com qualquer uma das strings
-``From:'', ``Fxxm:'', ``F12m:'', ou ``F!@m:'' porque o caractere ponto casa com qualquer
-caractere em um expressão regular.
+No exemplo a seguir, a expressão regular ``F..m:'' casaria com qualquer uma
+das strings ``From:'', ``Fxxm:'', ``F12m:'', ou ``F!@m:'' porque o caractere
+ponto casa com qualquer caractere em um expressão regular.
 %In the following example, the regular expression ``F..m:'' would match any of the strings
 %``From:'', ``Fxxm:'', ``F12m:'', or ``F!@m:'' since the period characters in the regular
 %expression match any character.
@@ -154,10 +155,11 @@ for line in hand:
 \afterverb
 %
 
-Isso é particularmente poderoso quando combinado à habilidade de indicar que um caractere pode
-ser repetido algumas vezes utilizando os caracteres ``*'' ou ``+'' em suas expressões regulares.
-Esses caracteres especiais significam que ao invés de casar com um único caractere na string de
-busca, eles casam com zero-ou-mais caracteres (no caso do asterisco) ou um-ou-mais caracteres 
+Isto é particularmente poderoso quando combinado à habilidade de indicar que
+um caractere pode ser repetido algumas vezes utilizando os caracteres ``*''
+ou ``+'' em suas expressões regulares. Esses caracteres especiais significam
+que ao invés de casar com um único caractere na string de busca, eles casam
+com zero-ou-mais caracteres (no caso do asterisco) ou um-ou-mais caracteres
 (no caso do sinal de adição).
 %This is particularly powerful when combined with the ability to indicate that a character can
 %be repeated any number of times using the ``*'' or ``+'' characters in your regular expression.
@@ -165,8 +167,8 @@ busca, eles casam com zero-ou-mais caracteres (no caso do asterisco) ou um-ou-ma
 %they match zero-or-more characters (in the case of the asterisk) or one-or-more of the characters
 %(in the case of the plus sign).
 
-Podemos ainda diminuir as linhas que casam utilizando um caractere repetido {\bf curinga} no 
-exemplo seguinte: 
+Podemos ainda diminuir as linhas que casam utilizando um caractere {\bf curinga}
+repetido no exemplo seguinte: 
 %We can further narrow down the lines that we match using a repeated {\bf wild card} character in
 %the following example:
 
@@ -182,9 +184,9 @@ for line in hand:
 \afterverb
 %
 
-A string de busca ``\verb"^"From:.+@'' casará com sucesso as linhas que comecem com ``From:'',
-seguidas por um ou mais caracteres (``.+''), seguidas por uma arroba. Então casará a seguinte
-linha:
+A string de busca ``\verb"^"From:.+@'' casará com sucesso as linhas que
+começam com ``From:'', seguidas por um ou mais caracteres (``.+''), seguidas
+por uma arroba. Então casará a seguinte linha:
 %The search string ``\verb"^"From:.+@'' will successfully match lines that start with ``From:'',
 %followed by one or more characters (``.+''), followed by an at-sign.  So this will match the
 %following line:
@@ -195,8 +197,8 @@ linha:
 \end{alltt}
 \afterverb
 
-Você pode pensar no curinga ``.+'' como uma expansão para casar todos os caracteres entre os 
-dois pontos e o arroba. 
+Você pode pensar no curinga ``.+'' como uma expansão para casar todos os
+caracteres entre os dois pontos e o arroba. 
 %You can think of the ``.+'' wildcard as expanding to match all the characters between the 
 %colon character and the at-sign.  
 
@@ -206,8 +208,9 @@ dois pontos e o arroba.
 \end{alltt}
 \afterverb
 
-É bom pensar no sinal de adição e no asterisco como ``insistentes''. Por exemplo, a string a seguir
-casaria o último arroba na string com o ``.+'', como mostrado abaixo:
+É bom pensar no sinal de adição e no asterisco como ``insistentes''. Por
+exemplo, a string a seguir casaria o último arroba na string com o ``.+'',
+como mostrado abaixo:
 %It is good to think of the plus and asterisk characters as ``pushy''.  For example, the following
 %string would match the last at-sign in the string as the ``.+'' pushes outwards, as shown below:
 
@@ -217,9 +220,9 @@ casaria o último arroba na string com o ``.+'', como mostrado abaixo:
 \end{alltt}
 \afterverb
 
-É possível dizer ao asterisco ou ao sinal de adição para não serem tão ``gananciosos'' 
-adicionando outro caracter. Veja a documentação detalhada para mais informações sobre 
-como desligar o comportamento ganancioso.
+É possível dizer ao asterisco ou ao sinal de adição para não serem tão
+``gananciosos'' adicionando outro caracter. Veja a documentação detalhada
+para mais informações sobre como desligar o comportamento ganancioso.
 %It is possible to tell an asterisk or plus sign not to be so ``greedy'' by adding 
 %another character. See the detailed documentation for information on turning off the 
 %greedy behavior.
