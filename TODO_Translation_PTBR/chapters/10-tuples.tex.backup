@@ -324,7 +324,7 @@ pelo tamanho das palavras.
 %more than one variable at a time when the left side is a 
 %sequence.
 Uma das características sintaticas unicas da linguagem Python é
-a abilidade de ter tuplas a esquerda de uma declaração de variavel.
+a abilidade de ter tuplas a esquerda de um comando de atribuição.
 Isso te permite declarar mais que uma variavel por vez quando o
 lado esquerdo for uma sequencia.
 
@@ -390,10 +390,8 @@ igualmente valida:
 \end{verbatim}
 \afterverb
 %
-%A particularly clever application of tuple assignment allows
-%us to {\bf swap} the values of two variables in a single statement:
-Uma aplicação particularmente inteligente de declaração de tuplas 
-nos permite {\bf trocar} os valores de duas variaveis em uma unica declaração:
+A particularly clever application of tuple assignment allows
+us to {\bf swap} the values of two variables in a single statement:
 
 \beforeverb
 \begin{verbatim}
