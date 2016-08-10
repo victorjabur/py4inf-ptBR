@@ -186,7 +186,8 @@ substituir uma tupla por outra:
 \afterverb
 %
 
-\section{Comparing tuples}
+%\section{Comparing tuples}
+\section{Comparando tuplas}
 
 \index{comparison!tuple}
 \index{tuple!comparison}
@@ -310,7 +311,9 @@ Claramente a linha perde muito do seu poder poético
 quanto se torna uma lista do Python e é ordenada
 pelo tamanho das palavras.
 
-\section{Tuple assignment}
+%\section{Tuple assignment}
+%\label{tuple assignment}
+\section{Declaração de tuplas}
 \label{tuple assignment}
 
 \index{tuple!assignment}
@@ -401,15 +404,23 @@ nos permite {\bf trocar} os valores de duas variaveis em uma unica declaração:
 \end{verbatim}
 \afterverb
 %
-Both sides of this statement are tuples, but
-the left side is a tuple of variables; the right side is a tuple of
-expressions.  Each value on the right side 
-is assigned to its respective variable on the left side.  
-All the expressions on the right side are evaluated before any
-of the assignments.
+%Both sides of this statement are tuples, but
+%the left side is a tuple of variables; the right side is a tuple of
+%expressions.  Each value on the right side 
+%is assigned to its respective variable on the left side.  
+%All the expressions on the right side are evaluated before any
+%of the assignments.
+Ambos os lados dessa declaração são tuplas, mas
+a da esquerda é uma tupla de variaveis; a da direita é uma tupla de
+expressões. Cada valor no lado esquerdo
+é uma atribuição a respectiva variavel no lado esquerdo.
+Todas as expressões no lado direito são avaliadas antes de qualquer
+uma das declarações.
 
-The number of variables on the left and the number of
-values on the right must be the same:
+%The number of variables on the left and the number of
+%values on the right must be the same:
+O número de veriaveis do lado esquerdo e o numero de valores
+no lado direito devem ser iguais:
 
 \index{exception!ValueError}
 \index{ValueError}
@@ -421,9 +432,12 @@ ValueError: too many values to unpack
 \end{verbatim}
 \afterverb
 %
-More generally, the right side can be any kind of sequence
-(string, list, or tuple).  For example, to split an email address
-into a user name and a domain, you could write:
+%More generally, the right side can be any kind of sequence
+%(string, list, or tuple).  For example, to split an email address
+%into a user name and a domain, you could write:
+Mas geralmente, o lado direito pode ser de qualquer tipo de sequência
+(string, lista, ou tupla). Por exemplo, para dividir um email em
+um nome de usuario e um dominio, você pode escrever:
 
 \index{split method}
 \index{method!split}
@@ -436,8 +450,11 @@ into a user name and a domain, you could write:
 \end{verbatim}
 \afterverb
 %
-The return value from {\tt split} is a list with two elements;
-the first element is assigned to {\tt uname}, the second to
+%The return value from {\tt split} is a list with two elements;
+%the first element is assigned to {\tt uname}, the second to
+%{\tt domain}.
+O valor retornado de {\tt split} é uma lista com dois elementos;
+o primeiro elemento é declarado para {\tt uname}, o segundo para
 {\tt domain}.
 
 \beforeverb
@@ -450,16 +467,20 @@ python.org
 \afterverb
 %
 
-\section{Dictionaries and tuples}
+%\section{Dictionaries and tuples}
+\section{Dicionarios e tuplas}
 
 \index{dictionary}
 \index{items method}
 \index{method!items}
 \index{key-value pair}
 
-Dictionaries have a method called {\tt items} that returns a list of
-tuples, where each tuple is a key-value 
-pair\footnote{This behavior is slightly different in Python 3.0.}.
+%Dictionaries have a method called {\tt items} that returns a list of
+%tuples, where each tuple is a key-value 
+%pair\footnote{This behavior is slightly different in Python 3.0.}.
+Dicionarios tem um metodo chamado {\tt items} que retorna uma lista de
+tuplas, onde cada tupla contem um par de chave e valor.
+\footnote{Esse procedimento é um pouco diferente no Python 3.0.}.
 
 \beforeverb
 \begin{verbatim}
@@ -470,13 +491,19 @@ pair\footnote{This behavior is slightly different in Python 3.0.}.
 \end{verbatim}
 \afterverb
 %
-As you should expect from a dictionary, the items are in no
-particular order.
+%As you should expect from a dictionary, the items are in no
+%particular order.
+Como você deve esperar de um dicionario, os itens estão sem
+uma ordem em particular.
 
-However, since the list of tuples is a list, and tuples are comparable,
-we can now sort the list of tuples.  Converting a dictionary
-to a list of tuples is a way for us to output the contents of a 
-dictionary sorted by key:
+%However, since the list of tuples is a list, and tuples are comparable,
+%we can now sort the list of tuples.  Converting a dictionary
+%to a list of tuples is a way for us to output the contents of a 
+%dictionary sorted by key:
+Entretanto, uma vez que a lista de tuplas é uma lista, e tuplas são comparaveis,
+nós agora podemos organizar a lista de tuplas. Convertento um dicionario
+em uma lista de tuplas é uma forma de nós exibirmos os conteudos de um
+dicionario organizado pelas chaves:
 
 \beforeverb
 \begin{verbatim}
@@ -490,16 +517,21 @@ dictionary sorted by key:
 \end{verbatim}
 \afterverb
 %
-The new list is sorted in ascending alphabetical order by the key value.
+%The new list is sorted in ascending alphabetical order by the key value.
+A nova lista é organizada em ordem alfabetica pelo nome da chave.
 
-\section{Multiple assignment with dictionaries}
+%\section{Multiple assignment with dictionaries}
+\section{Multipla declaração com dicionarios}
 
 \index{traverse!dictionary}
 \index{dictionary!traversal}
 
-Combining {\tt items}, tuple assignment, and {\tt for}, you
-can see a nice code pattern for traversing the keys and values of a dictionary
-in a single loop:
+%Combining {\tt items}, tuple assignment, and {\tt for}, you
+%can see a nice code pattern for traversing the keys and values of a dictionary
+%in a single loop:
+Combinando {\tt items}, declaração de tuplas, e o laço {\tt for}, você
+pode ver um bom modelo de codigo para percorrer as chaves e valores de um
+dicionario em um unico laço:
 
 \beforeverb
 \begin{verbatim}
@@ -508,16 +540,24 @@ for key, val in d.items():
 \end{verbatim}
 \afterverb
 %
-This loop has two {\bf iteration variables} because {\tt items} returns
-a list of tuples and {\tt key, val} is a tuple assignment
-that successively iterates through each of the key-value pairs in the
-dictionary.  
+%This loop has two {\bf iteration variables} because {\tt items} returns
+%a list of tuples and {\tt key, val} is a tuple assignment
+%that successively iterates through each of the key-value pairs in the
+%dictionary.  
+Esse laço tem duas {\bf variaveis de iteração} pois {\tt items} retorna
+uma lista de tuplas e {\tt key, val} é uma tupla de declaração
+que sucessivamente itera através de cada um dos pares de chave e valor no
+dicionario.
 
-For each iteration
-through the loop, both {\tt key} and {\tt value} are advanced to the
-next key-value pair in the dictionary (still in hash order).
+%For each iteration
+%through the loop, both {\tt key} and {\tt value} are advanced to the
+%next key-value pair in the dictionary (still in hash order).
+Para cada iteração
+através do laço, ambos {\tt key} e {\tt value} são avançados para o
+proximo par de chave e valor no dicionario (continua em uma ordem hash).
 
-The output of this loop is:
+%The output of this loop is:
+A saida desse laço será:
 
 \beforeverb
 \begin{verbatim}
@@ -527,17 +567,27 @@ The output of this loop is:
 \end{verbatim}
 \afterverb
 %
-Again, it is in hash key order (i.e., no particular order).
+%Again, it is in hash key order (i.e., no particular order).
+Novamente, está em uma hash ordenada pela chave (i.e., nenhuma ordem em particular).
 
-If we combine these two techniques, we can print out the contents
-of a dictionary sorted by the \emph{value} stored in each key-value
-pair.
+%If we combine these two techniques, we can print out the contents
+%of a dictionary sorted by the \emph{value} stored in each key-value
+%pair.
+Se nós combinarmos essas duas tecnicas, nós podemos imprimir o conteudo
+de um dicionario ordenado pelo \emph{valor} armazenado em cada par de 
+chave e valor.
 
-To do this, we first make a list of tuples where each tuple is 
-{\tt (value, key)}.  The {\tt items} method would give us a list of 
-{\tt (key, value)} tuples---but this time we want to sort by value, not key.
-Once we have constructed the list with the value-key tuples, it is a simple
-matter to sort the list in reverse order and print out the new, sorted list.
+%To do this, we first make a list of tuples where each tuple is 
+%{\tt (value, key)}.  The {\tt items} method would give us a list of 
+%{\tt (key, value)} tuples---but this time we want to sort by value, not key.
+%Once we have constructed the list with the value-key tuples, it is a simple
+%matter to sort the list in reverse order and print out the new, sorted list.
+Para fazer isso, nós primeiramente criamos uma lista de tuplas onde cada tupla é
+{\tt (valor, chave)}. O metodo {\tt items} nós dará uma lista de tuplas 
+{\tt (chave, valor)} ---mas agora nós queremos organizar pelos valores, não pelas chaves.
+Uma vez que tenha sido construida a lista com as tuplas de chave e valor, será
+simplesmente questão de organizar a lista em ordem reversa e exibir a nova 
+lista organizada.
 
 \beforeverb
 \begin{verbatim}
@@ -555,16 +605,23 @@ matter to sort the list in reverse order and print out the new, sorted list.
 \end{verbatim}
 \afterverb
 %
-By carefully constructing the list of tuples to have the value as the first
-element of each tuple, we can sort the list of tuples and get our dictionary
-contents sorted by value.
+%By carefully constructing the list of tuples to have the value as the first
+%element of each tuple, we can sort the list of tuples and get our dictionary
+%contents sorted by value.
+Esteja atento quando for construir a lista de tuplas para ter os valores como
+primeiro elemento de cada tupla, assim nós podemos organizar as tuplas e pegar os
+conteudos do dicionario organizado por valor.
 
-\section{The most common words}
+%\section{The most common words}
+\section{As palavras mais comuns}
 
 \index{Romeo and Juliet}
-Coming back to our running example of the text from \emph{Romeo and Juliet} 
-Act 2, Scene 2, we can augment our program to use this technique to 
-print the ten most common words in the text as follows:
+%Coming back to our running example of the text from \emph{Romeo and Juliet} 
+%Act 2, Scene 2, we can augment our program to use this technique to 
+%print the ten most common words in the text as follows:
+Voltando ao nosso exemplo de texto do \emph{Romeo and Juliet}
+Ato 2, cena 2, nós podemos aumentar nosso programa para usar essa tecnica
+para exibir as dez palavras mais comuns no texto como vocÊ pode ver a seguir:
 
 \beforeverb
 \begin{verbatim}
@@ -593,11 +650,16 @@ for key, val in lst[:10] :
 \end{verbatim}
 \afterverb
 %
-The first part of the program which reads the file and computes 
-the dictionary that maps each word to the count of words in the 
-document is unchanged.  But instead of simply printing out 
-{\tt counts} and ending the program, we construct a list 
-of {\tt (val, key)} tuples and then sort the list in reverse order.
+%The first part of the program which reads the file and computes 
+%the dictionary that maps each word to the count of words in the 
+%document is unchanged.  But instead of simply printing out 
+%{\tt counts} and ending the program, we construct a list 
+%of {\tt (val, key)} tuples and then sort the list in reverse order.
+A primeira parte do programa que lê o arquivo e computa o dicionario
+que mapeia cada palavra para contar as palavras no documento está
+inalterado. Mas ao inves de simplesmente exibir {\tt counts} e 
+finalizar o programa, nós construimos uma lista de tuplas 
+{\tt (valor, chave)} e então ordenamos a lista em ordem reversa.
 
 Since the value is first, it will be used for the comparisons. 
 If there is more than one tuple with the same value, it will look
