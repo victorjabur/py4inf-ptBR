@@ -186,7 +186,8 @@ substituir uma tupla por outra:
 \afterverb
 %
 
-\section{Comparing tuples}
+%\section{Comparing tuples}
+\section{Comparando tuplas}
 
 \index{comparison!tuple}
 \index{tuple!comparison}
@@ -310,7 +311,9 @@ Claramente a linha perde muito do seu poder poético
 quanto se torna uma lista do Python e é ordenada
 pelo tamanho das palavras.
 
-\section{Tuple assignment}
+%\section{Tuple assignment}
+%\label{tuple assignment}
+\section{Declaração de tuplas}
 \label{tuple assignment}
 
 \index{tuple!assignment}
@@ -613,9 +616,12 @@ conteudos do dicionario organizado por valor.
 \section{As palavras mais comuns}
 
 \index{Romeo and Juliet}
-Coming back to our running example of the text from \emph{Romeo and Juliet} 
-Act 2, Scene 2, we can augment our program to use this technique to 
-print the ten most common words in the text as follows:
+%Coming back to our running example of the text from \emph{Romeo and Juliet} 
+%Act 2, Scene 2, we can augment our program to use this technique to 
+%print the ten most common words in the text as follows:
+Voltando ao nosso exemplo de texto do \emph{Romeo and Juliet}
+Ato 2, cena 2, nós podemos aumentar nosso programa para usar essa tecnica
+para exibir as dez palavras mais comuns no texto como vocÊ pode ver a seguir:
 
 \beforeverb
 \begin{verbatim}
@@ -644,23 +650,37 @@ for key, val in lst[:10] :
 \end{verbatim}
 \afterverb
 %
-The first part of the program which reads the file and computes 
-the dictionary that maps each word to the count of words in the 
-document is unchanged.  But instead of simply printing out 
-{\tt counts} and ending the program, we construct a list 
-of {\tt (val, key)} tuples and then sort the list in reverse order.
+%The first part of the program which reads the file and computes 
+%the dictionary that maps each word to the count of words in the 
+%document is unchanged.  But instead of simply printing out 
+%{\tt counts} and ending the program, we construct a list 
+%of {\tt (val, key)} tuples and then sort the list in reverse order.
+A primeira parte do programa que lê o arquivo e computa o dicionario
+que mapeia cada palavra para contar as palavras no documento está
+inalterado. Mas ao inves de simplesmente exibir {\tt counts} e 
+finalizar o programa, nós construimos uma lista de tuplas 
+{\tt (valor, chave)} e então ordenamos a lista em ordem reversa.
 
-Since the value is first, it will be used for the comparisons. 
-If there is more than one tuple with the same value, it will look
-at the second element (the key), so tuples where the value is the
-same will be further sorted by the alphabetical order of the key.
+%Since the value is first, it will be used for the comparisons. 
+%If there is more than one tuple with the same value, it will look
+%at the second element (the key), so tuples where the value is the
+%same will be further sorted by the alphabetical order of the key.
+Uma vez que o valor seja o primeiro, ele será usado nas comparações.
+Se tiver mais que uma tupla com o mesmo valor, ele ira comparar
+com o segundo elemento (a chave), então em tuplas onde os valores são
+os mesmos ainda serão classificadas pela ordem alfabetica das chaves.
 
-At the end we write a nice {\tt for} loop which does a multiple
-assignment iteration and prints out the ten most common words
-by iterating through a slice of the list ({\tt lst[:10]}).
+%At the end we write a nice {\tt for} loop which does a multiple
+%assignment iteration and prints out the ten most common words
+%by iterating through a slice of the list ({\tt lst[:10]}).
+No final nós escrevemos um laço {\tt for} que faz multiplas
+iterações em declarações e exibe as dez palavras mais comuns iterando
+através de uma divisão da lista ({\tt lst[:10]}).
 
-So now the output finally looks like what we want for our word 
-frequency analysis.
+%So now the output finally looks like what we want for our word 
+%frequency analysis.
+Então a saida irá parece como o que nós queremos para o nosso
+analista de palavras repetidas.
 
 \beforeverb
 \begin{verbatim}
@@ -677,26 +697,39 @@ frequency analysis.
 \end{verbatim}
 \afterverb
 %
-The fact that this complex data parsing and analysis 
-can be done with an easy-to-understand 19-line Python
-program is one reason why Python is a good choice as a language 
-for exploring information.
+%The fact that this complex data parsing and analysis 
+%can be done with an easy-to-understand 19-line Python
+%program is one reason why Python is a good choice as a language 
+%for exploring information.
+O fato que esse complexo sistema de decomposição e analise de dados
+pode ser feito utilizando 19 linhas de facil compreenção no Python
+é uma das razões de o Python ser uma boa escolha para
+exmplorar informações.
 
-\section{Using tuples as keys in dictionaries}
+%\section{Using tuples as keys in dictionaries}
+\section{Usando tuplas como chaves em dicionarios}
 
 \index{tuple!as key in dictionary}
 \index{hashable}
 
-Because tuples are {\bf hashable} and lists are not, if we want to 
-create a {\bf composite} key to use in a dictionary we must use a tuple as
-the key.
+%Because tuples are {\bf hashable} and lists are not, if we want to 
+%create a {\bf composite} key to use in a dictionary we must use a tuple as
+%the key.
+Por conta de tuplas serem {\bf imutaveis} e listas não, se nós quisermos
+criar uma chave {\bf composta} para usar em um dicionario nós usamos a 
+tupla como chave.
 
-We would encounter a composite key if we wanted to create a 
-telephone directory that maps
-from last-name, first-name pairs to telephone numbers.  Assuming
-that we have defined the variables 
-{\tt last}, {\tt first}, and {\tt number}, we could write
-a dictionary assignment statement as follows:
+%We would encounter a composite key if we wanted to create a 
+%telephone directory that maps
+%from last-name, first-name pairs to telephone numbers.  Assuming
+%that we have defined the variables 
+%{\tt last}, {\tt first}, and {\tt number}, we could write
+%a dictionary assignment statement as follows:
+Nós devemos encontrar uma chave composta se nós quisermos criar
+uma lista telefonica que mapeia do ultimo nome, e os primeiros nomes
+para os numeros de telefones. Assumindo que nós definimos as
+variaveis {\tt last}, {\tt first}, e {\tt number}, nós podemos
+escrever uma declaração de um dicionario assim:
 
 \beforeverb
 \begin{verbatim}
@@ -704,8 +737,11 @@ directory[last,first] = number
 \end{verbatim}
 \afterverb
 %
-The expression in brackets is a tuple.  We could use tuple
-assignment in a {\tt for} loop to traverse this dictionary.
+%The expression in brackets is a tuple.  We could use tuple
+%assignment in a {\tt for} loop to traverse this dictionary.
+A expressão entres os colchetes é uma tupla. Nós podemos usar
+tuplas em declarações em um laço {\tt for} para percorrer esse
+dicionario.
 
 \index{tuple!in brackets}
 
@@ -716,21 +752,32 @@ for last, first in directory:
 \end{verbatim}
 \afterverb
 %
-This loop traverses the keys in {\tt directory}, which are tuples.  It
-assigns the elements of each tuple to {\tt last} and {\tt first}, then
-prints the name and corresponding telephone number.
+%This loop traverses the keys in {\tt directory}, which are tuples.  It
+%assigns the elements of each tuple to {\tt last} and {\tt first}, then
+%prints the name and corresponding telephone number.
+Esse laço percorre as chaves no {\tt directory}, que são tuplas. E
+atribui os elementos de cada tupla para o {\tt last} e {\tt first},
+então exibe o nome do número de telefone correspondente.
 
-\section{Sequences: strings, lists, and tuples---Oh My!}
+%\section{Sequences: strings, lists, and tuples---Oh My!}
+\section{Sequências: strings, listas, e tuplas---Oh!}
 \index{sequence}
 
-I have focused on lists of tuples, but almost all of the examples in
-this chapter also work with lists of lists, tuples of tuples, and
-tuples of lists.  To avoid enumerating the possible combinations, it
-is sometimes easier to talk about sequences of sequences.
+%I have focused on lists of tuples, but almost all of the examples in
+%this chapter also work with lists of lists, tuples of tuples, and
+%tuples of lists.  To avoid enumerating the possible combinations, it
+%is sometimes easier to talk about sequences of sequences.
+Nós estavamos focados em listas de tuplas, mas quase todos os exemplos
+deste capitulo também funcionam com listas de listas, tuplas de tuplas,
+e tuplas de listas. Para evitar de numerar possiveis combinações, é
+mais facil falar sobre sequências de sequências.
 
-In many contexts, the different kinds of sequences (strings, lists, and
-tuples) can be used interchangeably.  So how and why do you choose one
-over the others?
+%In many contexts, the different kinds of sequences (strings, lists, and
+%tuples) can be used interchangeably.  So how and why do you choose one
+%over the others?
+Em varios contextos, os diferentes tipos de sequências (strings, listas e
+tuplas) podem ser usadas de forma intercambiável. Então por que você
+escolheria um ao inves de outro?
 
 \index{string}
 \index{list}
@@ -738,36 +785,57 @@ over the others?
 \index{mutability}
 \index{immutability}
 
-To start with the obvious, strings are more limited than other
-sequences because the elements have to be characters.  They are
-also immutable.  If you need the ability to change the characters
-in a string (as opposed to creating a new string), you might
-want to use a list of characters instead.
+%To start with the obvious, strings are more limited than other
+%sequences because the elements have to be characters.  They are
+%also immutable.  If you need the ability to change the characters
+%in a string (as opposed to creating a new string), you might
+%want to use a list of characters instead.
+Para começar com o óbvio, strings são mais limitadas que outras
+sequências por conta dos elementos terem que ser caracteres. Elas
+também são imutaveis. Se você necessita da abilidade de mudar os
+caracteres em uma string (em vez de criar uma nova string), você 
+deveria usar uma lista de caracteres como alternativa.
 
-Lists are more common than tuples, mostly because they are mutable.
-But there are a few cases where you might prefer tuples:
+%Lists are more common than tuples, mostly because they are mutable.
+%But there are a few cases where you might prefer tuples:
+Listas são mais comuns que tuplas, principalmente por serem mutaveis.
+Mas tem alguns casos onde você ira preferir usar tuplas:
 
 \begin{enumerate}
 
-\item In some contexts, like a {\tt return} statement, it is
-syntactically simpler to create a tuple than a list.  In other
-contexts, you might prefer a list.
+%\item In some contexts, like a {\tt return} statement, it is
+%syntactically simpler to create a tuple than a list.  In other
+%contexts, you might prefer a list.
+\item Em alguns contextos, como uma declaração {\tt return}, será
+sintaticamente mais simples criar uma tupla do que uma lista. Em 
+outros contextos, você pode preferir usar uma lista.
 
-\item If you want to use a sequence as a dictionary key, you
-have to use an immutable type like a tuple or string.
+%\item If you want to use a sequence as a dictionary key, you
+%have to use an immutable type like a tuple or string.
+\item Se você quiser usar uma sequência como uma chave de dicionario,
+você deve usar uma do tipo imutavel, como uma tupla ou string.
 
-\item If you are passing a sequence as an argument to a function,
-using tuples reduces the potential for unexpected behavior
-due to aliasing.
+%\item If you are passing a sequence as an argument to a function,
+%using tuples reduces the potential for unexpected behavior
+%due to aliasing.
+\item Se você estiver passando uma sequencia como um argumento para
+uma função, utilizar tuplas reduz o potencial de ter um comportamento
+inexperado devido ao aliasing.
 
 \end{enumerate}
 
-Because tuples are immutable, they don't provide methods
-like {\tt sort} and {\tt reverse}, which modify existing lists.
-However Python provides the built-in functions {\tt sorted}
-and {\tt reversed}, which take any sequence as a parameter
-and return a new sequence with the same elements in a different
-order.
+%Because tuples are immutable, they don't provide methods
+%like {\tt sort} and {\tt reverse}, which modify existing lists.
+%However Python provides the built-in functions {\tt sorted}
+%and {\tt reversed}, which take any sequence as a parameter
+%and return a new sequence with the same elements in a different
+%order.
+Por conta das tuplas serem imutaveis, elas não tem metodos como o
+{\tt sort} e {\tt reverse}, os quais modificam a lista existente.
+No entando o Python fornece as funções embutidas {\tt sorted}
+e {\tt reversed}, as quais pegam qualquer sequencia como um parametro
+e retornam uma nova sequência com os mesmos elementos em uma ordem
+diferente.
 
 \index{sorted function}
 \index{function!sorted}
@@ -775,98 +843,156 @@ order.
 \index{function!reversed}
 
 
-\section{Debugging}
+%\section{Debugging}
+\section{Debugando}
 
 \index{debugging}
 \index{data structure}
 \index{shape error}
 \index{error!shape}
 
-Lists, dictionaries and tuples are known generically as {\bf data
-  structures}; in this chapter we are starting to see compound data
-structures, like lists of tuples, and dictionaries that contain tuples
-as keys and lists as values.  Compound data structures are useful, but
-they are prone to what I call {\bf shape errors}; that is, errors
-caused when a data structure has the wrong type, size, or composition,
-or perhaps you write some code and forget the shape of your data
-and introduce an error.
+%Lists, dictionaries and tuples are known generically as {\bf data
+%  structures}; in this chapter we are starting to see compound data
+%structures, like lists of tuples, and dictionaries that contain tuples
+%as keys and lists as values.  Compound data structures are useful, but
+%they are prone to what I call {\bf shape errors}; that is, errors
+%caused when a data structure has the wrong type, size, or composition,
+%or perhaps you write some code and forget the shape of your data
+%and introduce an error.
+Listas, dicionarios e tuplas são geralmente conhecidos como {\bf estruturas
+de dados}; neste capitulo nós estamos começando a ver estruturas de dados
+compostas, como listas de tuplas, e dicionarios que contem tuplas como
+chaves e listas como valores. Estruturas de dados compostos são uteis, mas
+elas são inclinadas a erros, os quais eu chamo de {\bf erros de forma};
+que são erros causados quando uma estrutura de dados contem o tipo errado,
+tamanho ou composição, ou talvez você tenha escrito algum codigo e esqueceu de 
+modelar seus dados e introduzir um erro.
 
-For example, if you are expecting a list with one integer and I
-give you a plain old integer (not in a list), it won't work.
+%For example, if you are expecting a list with one integer and I
+%give you a plain old integer (not in a list), it won't work.
+Por exemplo, se você estiver esperando uma lista com um inteiro e eu
+lhe der um unico inteiro (que não está em uma lista), não irá functionar.
 
-When you are debugging a program, and especially if you are
-working on a hard bug, there are four things to try:
+%When you are debugging a program, and especially if you are
+%working on a hard bug, there are four things to try:
+Quando você estiver debugando um programa, e especialmente se você
+estiver trabalhando em um bug dificil, tem algunas coisas que você 
+deve tentar:
 
 \begin{description}
 
-\item[reading:] Examine your code, read it back to yourself, and
-check that it says what you meant to say.
+%\item[reading:] Examine your code, read it back to yourself, and
+%check that it says what you meant to say.
+\item[lendo:] Examine o seu codigo, leia-o novamente para si mesmo, e 
+verifique se isso fala oque você quer que queria que dissesse.
 
-\item[running:] Experiment by making changes and running different
-versions.  Often if you display the right thing at the right place
-in the program, the problem becomes obvious, but sometimes you have to
-spend some time to build scaffolding.
+%\item[running:] Experiment by making changes and running different
+%versions.  Often if you display the right thing at the right place
+%in the program, the problem becomes obvious, but sometimes you have to
+%spend some time to build scaffolding.
+\item[rodando:] Experimente fazer alterações e rodar diferentes 
+versões. Frequentemente se você exibir a coisa certa no lugar certo
+no programa, o problema se tornará obvio, mas algumas vezes você deve 
+gastar algum tempo construindo um Scaffold. 
 
-\item[ruminating:] Take some time to think!  What kind of error
-is it: syntax, runtime, semantic?  What information can you get from
-the error messages, or from the output of the program?  What kind of
-error could cause the problem you're seeing?  What did you change
-last, before the problem appeared?
+%\item[ruminating:] Take some time to think!  What kind of error
+%is it: syntax, runtime, semantic?  What information can you get from
+%the error messages, or from the output of the program?  What kind of
+%error could cause the problem you're seeing?  What did you change
+%last, before the problem appeared?
+\item[refletir:] Gaste um tempo pensando! Que tipo de erro é esse:
+sintaxe, tempo de execução, semântico? Que informação você recebeu das
+mensagens de erro, ou da saida do programa? Que tipo de erro pode causar
+o problema que você está vendo? Oque você mudou por ultimo, antes
+do problema aparecer?
 
-\item[retreating:] At some point, the best thing to do is back
-off, undoing recent changes, until you get back to a program that
-works and that you understand.  Then you can start rebuilding.
+%\item[retreating:] At some point, the best thing to do is back
+%off, undoing recent changes, until you get back to a program that
+%works and that you understand.  Then you can start rebuilding.
+\item[retrocedendo:] Em alguma hora, a melhor coisa a se fazer é
+voltar atrás, desfazer as mudanças recentes, até que você volte ao 
+programa que funciona e que você conhece. Então você pode começar a
+reconstruir.
 
 \end{description}
 
-Beginning programmers sometimes get stuck on one of these activities
-and forget the others.  Each activity comes with its own failure
-mode.
+%Beginning programmers sometimes get stuck on one of these activities
+%and forget the others.  Each activity comes with its own failure
+%mode.
+Programadores iniciantes as vezes ficam presos em uma dessas ações
+e esquecem as outras. Cada ação vem com o seu próprio fracasso. 
 
 \index{typographical error}
 
-For example, reading your code might help if the problem is a
-typographical error, but not if the problem is a conceptual
-misunderstanding.  If you don't understand what your program does, you
-can read it 100 times and never see the error, because the error is in
-your head.
+%For example, reading your code might help if the problem is a
+%typographical error, but not if the problem is a conceptual
+%misunderstanding.  If you don't understand what your program does, you
+%can read it 100 times and never see the error, because the error is in
+%your head.
+Por exemplo, ler o seu codigo pode ajudar a descobrir se o problema é
+um erro tipográfico, mas não irá ajudar se o programa é um conceito
+mal entendido.
 
 \index{experimental debugging}
 
-Running experiments can help, especially if you run small, simple
-tests.  But if you run experiments without thinking or reading your
-code, you might fall into a pattern I call ``random walk programming'',
-which is the process of making random changes until the program
-does the right thing.  Needless to say, random walk programming
-can take a long time.
+%Running experiments can help, especially if you run small, simple
+%tests.  But if you run experiments without thinking or reading your
+%code, you might fall into a pattern I call ``random walk programming'',
+%which is the process of making random changes until the program
+%does the right thing.  Needless to say, random walk programming
+%can take a long time.
+Rodar experimentos pode ajudar, especialmente se você rodar pequenos e
+simples testes. Mas se você rodar experimentos sem pensar ou ler o seu
+codigo, você pode cair em um padrão chamado ``programação aleatória'',
+o qual é o processo de fazer mudanças aleatórias até o programa
+fazer a coisa certa. Desnecessário dizer, programação aleatória
+pode levar bastante tempo.
 
 \index{random walk programming}
 \index{development plan!random walk programming}
 
-You have to take time to think.  Debugging is like an
-experimental science.  You should have at least one hypothesis about
-what the problem is.  If there are two or more possibilities, try to
-think of a test that would eliminate one of them.
+%You have to take time to think.  Debugging is like an
+%experimental science.  You should have at least one hypothesis about
+%what the problem is.  If there are two or more possibilities, try to
+%think of a test that would eliminate one of them.
+Você deve reservar um tempo para pensar. Debugar é como uma ciência
+expiremental. Você deve ao menos uma hipótese sobre qual é 
+o problema. Se você tiver duas ou mais possibilidades, tente pensar
+em um teste que possa elimitar todas elas.
 
-Taking a break helps with the thinking.  So does talking.
-If you explain the problem to someone else (or even to yourself), you
-will sometimes find the answer before you finish asking the question.
+%Taking a break helps with the thinking.  So does talking.
+%If you explain the problem to someone else (or even to yourself), you
+%will sometimes find the answer before you finish asking the question.
+Fazer um intervalo ajuda a penser. Assim como falar. Se você
+explicar o problema para outra pessoa (ou até para si mesmo), você
+irá algumas vezes encontrar a resposta antes de terminar de fazer a pergunta.
 
-But even the best debugging techniques will fail if there are too many
-errors, or if the code you are trying to fix is too big and
-complicated.  Sometimes the best option is to retreat, simplifying the
-program until you get to something that works and that you
-understand.
+%But even the best debugging techniques will fail if there are too many
+%errors, or if the code you are trying to fix is too big and
+%complicated.  Sometimes the best option is to retreat, simplifying the
+%program until you get to something that works and that you
+%understand.
+Mas as vezes a melhor tecnica para debugar irá falhar se tiver muitos
+erros, ou se o codifo que você estiver tentando arrumar for muito grande
+e complicado. As vezes a melhor opção é recriar, simplificar o programa
+até você ter algo que funciona e que você entende.
 
-Beginning programmers are often reluctant to retreat because
-they can't stand to delete a line of code (even if it's wrong).
-If it makes you feel better, copy your program into another file
-before you start stripping it down.  Then you can paste the pieces
-back in a little bit at a time.
+%Beginning programmers are often reluctant to retreat because
+%they can't stand to delete a line of code (even if it's wrong).
+%If it makes you feel better, copy your program into another file
+%before you start stripping it down.  Then you can paste the pieces
+%back in a little bit at a time.
+Programadores iniciantes são muitas vezes relutantes em recuar, porque
+eles não conseguem lidar com deletar uma linha de codigo (mesmo que
+esteja errada). Se isso the faz se sentir melhor, copie o seu programa
+em outro arquivo antes de você começar a dissecar ele. Então você pode
+colar as partes de volta pouco a pouco.
 
-Finding a hard bug requires reading, running, ruminating, and
-sometimes retreating.  If you get stuck on one of these activities,
-try the others.
+%Finding a hard bug requires reading, running, ruminating, and
+%sometimes retreating.  If you get stuck on one of these activities,
+%try the others.
+Encontrar um bug dificil requer ler, rodar, refletir, e algumas vezes
+recuar. Se você ficar preso em uma dessas ações, tente outras.
 
 
 \section{Glossary}

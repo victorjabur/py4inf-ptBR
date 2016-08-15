@@ -2,15 +2,19 @@
 % Copyright (c)  2010-  Charles R. Severance, All Rights Reserved
 
 %\chapter{Tuples}
+%\label{tuplechap}
 \chapter{Tuplas}
 \label{tuplechap}
 
 %\section{Tuples are immutable}
 \section{TUplas são imutaveis}
 
-\index{tuple}
-\index{type!tuple}
-\index{sequence}
+%\index{tuple}
+%\index{type!tuple}
+%\index{sequence}
+\index{tupla}
+\index{tipo!tupla}
+\index{sequência}
 
 %A tuple\footnote{Fun fact: The word ``tuple'' comes from the names
 %given to sequences of numbers of varying lengths: single, 
@@ -32,10 +36,14 @@ A diferença importante é que tuplas são {\bf imutaveis}.
 Tuplas também são {\bf comparáveis} e {\bf nunca mudam} então nós
 organizamos listas delas e usamos tuplas como valores em dicionários Python.
 
-\index{mutability}
+%\index{mutability}
+%\index{hashable}
+%\index{comparable}
+%\index{immutability}
+\index{mutabilidade}
 \index{hashable}
-\index{comparable}
-\index{immutability}
+\index{comparavel}
+\index{imutabilidade}
 
 %Syntactically, a tuple is a comma-separated list of values:
 Sintaticamente, uma tupla é um lista de valores separados por virgulas:
@@ -66,8 +74,10 @@ para um codigo em Python:
 Para criar uma tupla com um unico elemento, você deve incluir a virgula
 final:
 
+%\index{singleton}
+%\index{tuple!singleton}
 \index{singleton}
-\index{tuple!singleton}
+\index{tupla!singleton}
 
 \beforeverb
 \begin{verbatim}
@@ -95,8 +105,10 @@ com uma string entre os parênteses, assim alterando o valor para uma string:
 Uma outra forma de construir uma tupla é a função construtora {\tt tuple}.
 Sem nenhum argumento, irá criar uma tupla vazia:
 
-\index{tuple function}
-\index{function!tuple}
+%\index{tuple function}
+%\index{function!tuple}
+\index{função tuple}
+\index{singleton}
 
 \beforeverb
 \begin{verbatim}
@@ -129,8 +141,10 @@ evitar usar como nome de alguma variavel.
 A maioria dos operadores das listas também functionam nas tuplas.
 Os conchetes indexam um elemento:
 
-\index{bracket operator}
-\index{operator!bracket}
+%\index{bracket operator}
+%\index{operator!bracket}
+\index{operador colchetes}
+\index{operador!colchetes}
 
 \beforeverb
 \begin{verbatim}
@@ -143,10 +157,14 @@ Os conchetes indexam um elemento:
 %And the slice operator selects a range of elements.
 E o o operador de corte seleciona uma serie de elementos.
 
-\index{slice operator}
-\index{operator!slice}
-\index{tuple!slice}
-\index{slice!tuple}
+%\index{slice operator}
+%\index{operator!slice}
+%\index{tuple!slice}
+%\index{slice!tuple}
+\index{operador slice}
+\index{operador!slice}
+\index{tupla!slice}
+\index{slice!tupla}
 
 \beforeverb
 \begin{verbatim}
@@ -160,10 +178,14 @@ E o o operador de corte seleciona uma serie de elementos.
 Mas se você tentar modificar algum elemento da tupla, você receberá
 um erro:
 
+%\index{exception!TypeError}
+%\index{TypeError}
+%\index{item assignment}
+%\index{assignment!item}
 \index{exception!TypeError}
 \index{TypeError}
-\index{item assignment}
-\index{assignment!item}
+\index{declaração de item}
+\index{declaração!item}
 
 \beforeverb
 \begin{verbatim}
@@ -1030,51 +1052,81 @@ extrair parte do conteudo.
 %\index{gather}
 \item[gather:] Uma operação de definir uma tupla como argumento 
 de tamanho varivael.
+\index{ganher}
 
-\item[hashable:] A type that has a hash function.  Immutable
-types like integers,
-floats, and strings are hashable; mutable types like lists and
-dictionaries are not.
+%\item[hashable:] A type that has a hash function.  Immutable
+%types like integers,
+%floats, and strings are hashable; mutable types like lists and
+%dictionaries are not.
+%\index{hashable}
+\item[imutavel:] Um tipo que tem uma função hash. Tipos imutaveis
+como inteiros,
+floats e strings são hashable; tipos mutaveis como listas e
+dicinarios não.
 \index{hashable}
 
-\item[scatter:] The operation of treating a sequence as a list of
-arguments.
+%\item[scatter:] The operation of treating a sequence as a list of
+%arguments.
+%\index{scatter}
+\item[scatter:] A operação de tratar uma sequencia como uma lista de
+argumentos.
 \index{scatter}
 
-\item[shape (of a data structure):] A summary of the type,
-size, and composition of a data structure.
-\index{shape}
+%\item[shape (of a data structure):] A summary of the type,
+%size, and composition of a data structure.
+%\index{shape}
+\item[forma (de uma estrutura de dados):] Um indice do tipo,
+tamanho e composição de uma estrutura de dados.
+\index{forma}
 
-\item[singleton:] A list (or other sequence) with a single element.
+%\item[singleton:] A list (or other sequence) with a single element.
+%\index{singleton}
+\item[singleton:] Uma lista (ou outra sequência) com um unico elemento.
 \index{singleton}
 
-\item[tuple:] An immutable sequence of elements.
-\index{tuple}
+%\item[tuple:] An immutable sequence of elements.
+%\index{tuple}
+\item[tupla:] Uma sequência imutavel de elementos.
+\index{tupla}
 
-\item[tuple assignment:] An assignment with a sequence on the
-right side and a tuple of variables on the left.  The right
-side is evaluated and then its elements are assigned to the
-variables on the left.
-\index{tuple assignment}
-\index{assignment!tuple}
+%\item[tuple assignment:] An assignment with a sequence on the
+%right side and a tuple of variables on the left.  The right
+%side is evaluated and then its elements are assigned to the
+%variables on the left.
+%\index{tuple assignment}
+%\index{assignment!tuple}
+\item[declaração com tupla:] Uma declaração com uma sequência do 
+lado direito e uma tupla de variaveis na esquerda. O lado direito
+recebe o valor e então o elemento é declarato para as variaveis
+no lado esquerdo.
 
 \end{description}
 
 
-\section{Exercises}
+%\section{Exercises}
+\section{Exercícios}
 
 \begin{ex}
-Revise a previous program as follows:  Read and 
-parse the ``From'' lines and pull out the 
-addresses from the line.   Count the number of
-messages from each person using a dictionary.
+%Revise a previous program as follows:  Read and 
+%parse the ``From'' lines and pull out the 
+%addresses from the line.   Count the number of
+%messages from each person using a dictionary.
+Faça uma revisão do programa seguindo: leia e
+analise as linhas ``From'' e extraia o endereço
+que esta nesta linha.   Conte o numero de mensagens
+de cada pessoa utilizando um dicionario.
 
-After all the data has been read, print 
-the person with the most commits by creating
-a list of (count, email) tuples from the 
-dictionary.   Then sort the list in reverse
-order and print out the person who has the most
-commits.
+%After all the data has been read, print 
+%the person with the most commits by creating
+%a list of (count, email) tuples from the 
+%dictionary.   Then sort the list in reverse
+%order and print out the person who has the most
+%commits.
+Despois que todos os dados forem lidos, exiba
+a pessoa que tem mais envios, criando uma lista
+de tuplas (contagem, email) do dicionario.   Então
+ordene a lista de forma reversa e exiba a pessoa 
+que teve mais envios.
 
 \beforeverb
 \begin{verbatim}
@@ -1090,12 +1142,18 @@ zqian@umich.edu 195
 \afterverb
 \end{ex}
 \begin{ex}
-This program counts the distribution of the hour of the day for 
-each of the messages. You can pull the hour from the ``From'' 
-line by finding the time string and then splitting that string 
-into parts using the colon character. Once you have accumulated 
-the counts for each hour, print out the counts, one per line, 
-sorted by hour as shown below. 
+%This program counts the distribution of the hour of the day for 
+%each of the messages. You can pull the hour from the ``From'' 
+%line by finding the time string and then splitting that string 
+%into parts using the colon character. Once you have accumulated 
+%the counts for each hour, print out the counts, one per line, 
+%sorted by hour as shown below. 
+Esse programa conta a distribuição das horas do dia para cada uma
+das mensagem. Você pode enviar uma hora a partir da linha ``From'' 
+, procurando a string de tempo e então dividindo essa string em 
+partes usando o caractere de dois pontos. Uma vez que tenha acumulado
+a contagem para cada hora, exiba as contagesm uma por linha,
+organizadas pela hora como é mostrado abaixo.
 \beforeverb
 \begin{verbatim}
 Sample Execution:
@@ -1119,17 +1177,27 @@ Enter a file name: mbox-short.txt
 
 
 \begin{ex}
-Write a program that reads a file and 
-prints the {\em letters} in decreasing order of frequency.  Your program
-should convert all the input to lower case and only count the letters a-z.
-Your program should not count spaces, digits, punctuation, or anything 
-other than the letters a-z.
-Find text samples from several different languages and see how letter frequency
-varies between languages.  Compare your results with the tables at
-\url{wikipedia.org/wiki/Letter_frequencies}.
+%Write a program that reads a file and 
+%prints the {\em letters} in decreasing order of frequency.  Your program
+%should convert all the input to lower case and only count the letters a-z.
+%Your program should not count spaces, digits, punctuation, or anything 
+%other than the letters a-z.
+%Find text samples from several different languages and see how letter frequency
+%varies between languages.  Compare your results with the tables at
+%\url{wikipedia.org/wiki/Letter_frequencies}.
+Escreva um programa que leia um arquivo e
+exiba as {\em letras} em ordem decrescente de frenquência. O seu programa 
+deve converter todas as entradas para letrasminusculas e contar unicamete as 
+letras de a até z. O seu programa não deve contar espaços, digitos, pontuações,
+ou algo alem das letras de a até z.
+Encontre exemplos de textos de diversas linguas diferentes e veja como a quantidade
+de letras varia entre linguagens. Compare os seus resultados com as tabelas em
+\url{pt.wikipedia.org/wiki/Frequência_de_letras}.
 
-\index{letter frequency}
-\index{frequency!letter}
+%\index{letter frequency}
+%\index{frequency!letter}
+\index{frequência de letras}
+\index{frequência!letras}
 
 \end{ex}
 
