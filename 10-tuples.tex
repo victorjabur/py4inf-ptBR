@@ -6,7 +6,7 @@
 \label{tuplechap}
 
 %\section{Tuples are immutable}
-\section{TUplas são imutaveis}
+\section{Tuplas são imutaveis}
 
 \index{tuple}
 \index{type!tuple}
@@ -22,9 +22,9 @@
 %Tuples are also {\bf comparable} and {\bf hashable} so we can 
 %sort lists of them and use tuples as key values in Python
 %dictionaries.
-Uma tupla\footnote{Curiosidade? A palavra ``tupla'' vem de nomes 
-dados a sequencias de numeros de diferentes tamanhos: unico, dobro,
-triplo, quadruplo, quíntuplo, séxtuplo, sétuplo, etc.} é uma sequencia
+Uma tupla\footnote{Curiosidade: A palavra ``tupla'' vem de nomes 
+dados a sequências de numeros de diferentes tamanhos: unico, dobro,
+triplo, quadruplo, quíntuplo, séxtuplo, sétuplo, etc.} é uma sequência
 de valores bem parecida com uma lista.
 Os valores guardados em uma tupla podem ser de qualquer tipo, e
 eles são indexados utilizando inteiros.
@@ -121,7 +121,7 @@ da chamada da {\tt tuple} será uma tupla com os elementos em sequência:
 %
 %Because {\tt tuple} is the name of a constructor, you should
 %avoid using it as a variable name.
-Por causa que {\tt tuple} é o mesmo nome do construtor, você deve
+Por causa de {\tt tuple} ser o nome do construtor, você deve
 evitar usar como nome de alguma variavel.
 
 %Most list operators also work on tuples.  The bracket operator
@@ -202,7 +202,7 @@ substituir uma tupla por outra:
 Os operadores de comparação funcionam com tuplas e outras sequências.
 O Python começa a comparar o primeiro elemento de cada sequência.
 Se eles forem iguais, irá para o proximo elemento, e assim sucessivamente,
-até encontrar um elemento que é diferente. Elementos subsequentes
+até encontrar um elemento seja diferente. Elementos subsequentes
 não são considerados (mesmo que eles sejam muito grandes).
 
 \beforeverb
@@ -228,15 +228,15 @@ Este recurso se presta a um padrão chamado {\bf DSU} para
 
 %\item[Decorate] a sequence by building a list of tuples
 %with one or more sort keys preceding the elements from the sequence,
-\item[Decorate]. Ordena uma sequência construindo uma lista de tuplas
-com uma ou mais chaves ordenadas precedendo os elementos da sequencia,
+\item[Decorate]. Organiza uma sequência construindo uma lista de tuplas
+com uma ou mais chaves ordenadas precedendo os elementos da sequência,
 
 %\item[Sort] the list of tuples using the Python built-in {\tt sort}, and
-\item[Sort]. Organiza a lista de tuplas utilizando o ferramenta embutida 
+\item[Sort]. Ordena a lista de tuplas utilizando o ferramenta embutida 
 {\tt sort} do Python, e
 
 %\item[Undecorate] by extracting the sorted elements of the sequence.
-\item[Undecorate]. Desordena extraindo os elementos ordenados da sequência.
+\item[Undecorate]. Desorganiza extraindo os elementos ordenados da sequência.
 
 \end{description}
 
@@ -250,7 +250,7 @@ com uma ou mais chaves ordenadas precedendo os elementos da sequencia,
 %For example, suppose you have a list of words and you want to
 %sort them from longest to shortest:
 Por exemplo, suponha que você tenha uma lista de palavras e você
-quer organiza-la da mais longa para a mais curta:
+quer organiza-la da palavra mais longa para a mais curta:
 
 \beforeverb
 \begin{verbatim}
@@ -290,7 +290,7 @@ somente considera o segundo elemento para quebrar o laços.
 %are sorted in {\em reverse} alphabetical order, so ``what'' appears
 %before ``soft'' in the following list.
 O segundo laço atravessa a lista de tuplas e constroi uma lista de 
-palavras ordenados por seu tamanho. A palavras de quatro caracteres
+palavras ordenadas por seu tamanho. A palavras de quatro caracteres
 são organizadas no {\em inverso} da ordem alfabética, então ``what''
 aparece antes de ``soft'' na lista a seguir.
 
@@ -329,13 +329,13 @@ pelo tamanho das palavras.
 Uma das características sintaticas unicas da linguagem Python é
 a abilidade de ter tuplas a esquerda de uma declaração de variavel.
 Isso te permite declarar mais que uma variavel por vez quando o
-lado esquerdo for uma sequencia.
+lado esquerdo for uma sequência.
 
 %In this example we have a two-element list (which is a sequence) and
 %assign the first and second elements of the sequence
 %to the variables {\tt x} and {\tt y} in a single statement.
-Nesse exemplo nós temos duas listas (que são uma sequencia) e
-designamos o primeiro e o segundo elemento da sequencia para as
+Nesse exemplo nós temos duas listas (que são uma sequência) e
+designamos o primeiro e o segundo elemento da sequência para as
 variaveis {\tt x} e {\tt y} em uma unica declaração.
 
 \beforeverb
@@ -355,7 +355,7 @@ variaveis {\tt x} e {\tt y} em uma unica declaração.
 %to be the following:\footnote{Python does not translate the 
 %syntax literally.  For example, if you try this with a dictionary,
 %it will not work as might expect.}
-Isto não é magica, o Python \emph{grosseiramente} traduz a
+Isso não é magica, o Python \emph{grosseiramente} traduz a
 sintaxe de declaração da tupla
 para ser a seguinte:\footnote{O Python não traduz a sintaxe
 literalmente. Por exemplo, se você tentar isso com um dicionario, não
@@ -479,7 +479,7 @@ python.org
 %tuples, where each tuple is a key-value 
 %pair\footnote{This behavior is slightly different in Python 3.0.}.
 Dicionarios tem um metodo chamado {\tt items} que retorna uma lista de
-tuplas, onde cada tupla contem um par de chave e valor.
+tuplas, onde cada tupla contem um par de chave-valor.
 \footnote{Esse procedimento é um pouco diferente no Python 3.0.}.
 
 \beforeverb
@@ -546,7 +546,7 @@ for key, val in d.items():
 %dictionary.  
 Esse laço tem duas {\bf variaveis de iteração} pois {\tt items} retorna
 uma lista de tuplas e {\tt key, val} é uma tupla de declaração
-que sucessivamente itera através de cada um dos pares de chave e valor no
+que sucessivamente itera através de cada um dos pares de chave-valor no
 dicionario.
 
 %For each iteration
@@ -554,7 +554,7 @@ dicionario.
 %next key-value pair in the dictionary (still in hash order).
 Para cada iteração
 através do laço, ambos {\tt key} e {\tt value} são avançados para o
-proximo par de chave e valor no dicionario (continua em uma ordem hash).
+proximo par de chave-valor no dicionario (continua em uma ordem hash).
 
 %The output of this loop is:
 A saida desse laço será:
@@ -575,7 +575,7 @@ Novamente, está em uma hash ordenada pela chave (i.e., nenhuma ordem em particu
 %pair.
 Se nós combinarmos essas duas tecnicas, nós podemos imprimir o conteudo
 de um dicionario ordenado pelo \emph{valor} armazenado em cada par de 
-chave e valor.
+chave-valor.
 
 %To do this, we first make a list of tuples where each tuple is 
 %{\tt (value, key)}.  The {\tt items} method would give us a list of 
@@ -585,7 +585,7 @@ chave e valor.
 Para fazer isso, nós primeiramente criamos uma lista de tuplas onde cada tupla é
 {\tt (valor, chave)}. O metodo {\tt items} nós dará uma lista de tuplas 
 {\tt (chave, valor)} ---mas agora nós queremos organizar pelos valores, não pelas chaves.
-Uma vez que tenha sido construida a lista com as tuplas de chave e valor, será
+Uma vez que tenha sido construida a lista com as tuplas de chave-valor, será
 simplesmente questão de organizar a lista em ordem reversa e exibir a nova 
 lista organizada.
 
@@ -818,7 +818,7 @@ você deve usar uma do tipo imutavel, como uma tupla ou string.
 %\item If you are passing a sequence as an argument to a function,
 %using tuples reduces the potential for unexpected behavior
 %due to aliasing.
-\item Se você estiver passando uma sequencia como um argumento para
+\item Se você estiver passando uma sequência como um argumento para
 uma função, utilizar tuplas reduz o potencial de ter um comportamento
 inexperado devido ao aliasing.
 
@@ -833,7 +833,7 @@ inexperado devido ao aliasing.
 Por conta das tuplas serem imutaveis, elas não tem metodos como o
 {\tt sort} e {\tt reverse}, os quais modificam a lista existente.
 No entando o Python fornece as funções embutidas {\tt sorted}
-e {\tt reversed}, as quais pegam qualquer sequencia como um parametro
+e {\tt reversed}, as quais pegam qualquer sequência como um parametro
 e retornam uma nova sequência com os mesmos elementos em uma ordem
 diferente.
 
