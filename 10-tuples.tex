@@ -7,7 +7,7 @@
 \label{tuplechap}
 
 %\section{Tuples are immutable}
-\section{Tuplas são imutaveis}
+\section{Tuplas são imutáveis}
 
 %\index{tuple}
 %\index{type!tuple}
@@ -26,15 +26,14 @@
 %Tuples are also {\bf comparable} and {\bf hashable} so we can 
 %sort lists of them and use tuples as key values in Python
 %dictionaries.
-Uma tupla\footnote{Curiosidade: A palavra ``tupla'' vem de nomes 
-dados a sequências de numeros de diferentes tamanhos: unico, dobro,
-triplo, quadruplo, quíntuplo, séxtuplo, sétuplo, etc.} é uma sequência
-de valores bem parecida com uma lista.
-Os valores guardados em uma tupla podem ser de qualquer tipo, e
-eles são indexados utilizando inteiros.
-A diferença importante é que tuplas são {\bf imutaveis}.
-Tuplas também são {\bf comparáveis} e {\bf nunca mudam} então nós
-organizamos listas delas e usamos tuplas como valores em dicionários Python.
+Uma tupla\footnote{Curiosidade: A palavra ``tupla'' vem dos nomes dados a
+sequências de números de diferentes tamanhos: único, dobro, triplo, quadruplo,
+quíntuplo, séxtuplo, sétuplo, etc.} é uma sequência de valores bem parecida
+com uma lista. Os valores guardados em uma tupla podem ser de qualquer tipo,
+e eles são indexados utilizando inteiros. A princial diferença é que tuplas
+são {\bf imutáveis}. Tuplas também são {\bf comparáveis} e {\bf nunca mudam}
+então nós organizamos listas delas e usamos tuplas como valores em dicionários
+Python.
 
 %\index{mutability}
 %\index{hashable}
@@ -46,7 +45,7 @@ organizamos listas delas e usamos tuplas como valores em dicionários Python.
 \index{imutabilidade}
 
 %Syntactically, a tuple is a comma-separated list of values:
-Sintaticamente, uma tupla é um lista de valores separados por virgulas:
+Sintaticamente, uma tupla é um lista de valores separados por vírgulas:
 
 \beforeverb
 \begin{verbatim}
@@ -57,9 +56,9 @@ Sintaticamente, uma tupla é um lista de valores separados por virgulas:
 %Although it is not necessary, it is common to enclose tuples in
 %parentheses to help us quickly identify tuples when we look at
 %Python code:
-Apesar disto não ser necessario, é comum fechar tuplas entre parênteses
-para ajudar-nos a rapidamente identificar tuplas quando nós olhamos
-para um codigo em Python:
+Apesar disto não ser necessário, é comum fechar tuplas entre parênteses para
+nos ajudar a identificar rapidamente que são tuplas quando nós olhamos para
+um codigo em Python:
 
 %\index{parentheses!tuples in}
 \index{parenteses!tuplas em}
@@ -72,8 +71,7 @@ para um codigo em Python:
 %
 %To create a tuple with a single element, you have to include the final
 %comma:
-Para criar uma tupla com um unico elemento, você deve incluir a virgula
-final:
+Para criar uma tupla com um único elemento, você deve incluir a virgula final:
 
 %\index{singleton}
 %\index{tuple!singleton}
@@ -90,8 +88,8 @@ final:
 %
 %Without the comma Python treats \verb"('a')" as an expression 
 %with a string in parentheses that evaluates to a string:
-Sem a virgula o Python irá tratar \verb"('a')" como uma expressão
-com uma string entre os parênteses, assim alterando o valor para uma string:
+Sem a virgula o Python irá tratar \verb"('a')" como uma expressão com uma
+string entre os parênteses, assim alterando o valor para uma string:
 
 \beforeverb
 \begin{verbatim}
@@ -121,8 +119,8 @@ Sem nenhum argumento, irá criar uma tupla vazia:
 %
 %If the argument is a sequence (string, list, or tuple), the result
 %of the call to {\tt tuple} is a tuple with the elements of the sequence:
-Se o argumento for uma sequência (string, lista ou tupla), o resultado
-da chamada da {\tt tuple} será uma tupla com os elementos em sequência:
+Se o argumento for uma sequência (string, lista ou tupla), o resultado da
+chamada da {\tt tuple} será uma tupla com os elementos em sequência:
 
 \beforeverb
 \begin{verbatim}
@@ -134,13 +132,13 @@ da chamada da {\tt tuple} será uma tupla com os elementos em sequência:
 %
 %Because {\tt tuple} is the name of a constructor, you should
 %avoid using it as a variable name.
-Por causa que {\tt tuple} é o mesmo nome do construtor, você deve
-evitar usar como nome de alguma variavel.
+Por {\tt tuple} ter o mesmo nome do construtor, você deve evitar usar como
+nome de alguma variável.
 
 %Most list operators also work on tuples.  The bracket operator
 %indexes an element:
-A maioria dos operadores das listas também functionam nas tuplas.
-Os conchetes indexam um elemento:
+A maioria dos operadores das listas também funcionam nas tuplas. Os colchetes
+indexam um elemento:
 
 %\index{bracket operator}
 %\index{operator!bracket}
@@ -156,7 +154,7 @@ Os conchetes indexam um elemento:
 \afterverb
 %
 %And the slice operator selects a range of elements.
-E o o operador de corte seleciona uma serie de elementos.
+E o operador de fatiamento seleciona uma série de elementos.
 
 %\index{slice operator}
 %\index{operator!slice}
@@ -176,8 +174,7 @@ E o o operador de corte seleciona uma serie de elementos.
 %
 %But if you try to modify one of the elements of the tuple, you get
 %an error:
-Mas se você tentar modificar algum elemento da tupla, você receberá
-um erro:
+Mas se você tentar modificar algum elemento da tupla, você receberá um erro:
 
 %\index{exception!TypeError}
 %\index{TypeError}
@@ -197,8 +194,8 @@ TypeError: object doesn't support item assignment
 %
 %You can't modify the elements of a tuple, but you can replace
 %one tuple with another:
-Você não pode modificar os elementos de uma tupla, mas você pode
-substituir uma tupla por outra:
+Você não pode modificar os elementos de uma tupla, mas você pode substituir
+uma tupla por outra:
 
 \beforeverb
 \begin{verbatim}
@@ -226,11 +223,11 @@ substituir uma tupla por outra:
 %sequence.  If they are equal, it goes on to the next element,
 %and so on, until it finds elements that differ.  Subsequent
 %elements are not considered (even if they are really big).
-Os operadores de comparação funcionam com tuplas e outras sequências.
-O Python começa a comparar o primeiro elemento de cada sequência.
-Se eles forem iguais, irá para o proximo elemento, e assim sucessivamente,
-até encontrar um elemento que é diferente. Elementos subsequentes
-não são considerados (mesmo que eles sejam muito grandes).
+Os operadores de comparação funcionam com tuplas e outras sequências. O
+Python começa a comparar o primeiro elemento de cada sequência. Se eles forem
+iguais, irá para o próximo elemento, e assim sucessivamente, até encontrar um
+elemento que é diferente. Elementos subsequentes não são considerados (mesmo
+que eles sejam muito grandes).
 
 \beforeverb
 \begin{verbatim}
@@ -244,26 +241,26 @@ True
 %The {\tt sort} function works the same way.  It sorts 
 %primarily by first element, but in the case of a tie, it sorts
 %by second element, and so on.  
-A função {\tt sort} funciona da mesma forma. Ela ordena
-primeiramente pelo primeiro elemento, mas no caso de um laço,
-ela ordena pelo segundo elemento, e assim sucessivamente.
+A função {\tt sort} funciona da mesma forma. Ela ordena inicialmente pelo
+primeiro elemento, mas no caso de um laço, ela ordena pelo segundo elemento,
+e assim sucessivamente.
 
 %This feature lends itself to a pattern called {\bf DSU} for 
-Este recurso se presta a um padrão chamado {\bf DSU} para
+Este recurso se refere a um padrão chamado {\bf DSU} para
 
 \begin{description}
 
 %\item[Decorate] a sequence by building a list of tuples
 %with one or more sort keys preceding the elements from the sequence,
-\item[Decorate]. Ordena uma sequência construindo uma lista de tuplas
-com uma ou mais chaves ordenadas precedendo os elementos da sequência,
+\item[Decorate] ordena uma sequência construindo uma lista de tuplas com uma
+ou mais chaves ordenadas precedendo os elementos da sequência,
 
 %\item[Sort] the list of tuples using the Python built-in {\tt sort}, and
-\item[Sort]. Organiza a lista de tuplas utilizando o ferramenta embutida 
+\item[Sort] organiza a lista de tuplas utilizando o ferramenta embutida
 {\tt sort} do Python, e
 
 %\item[Undecorate] by extracting the sorted elements of the sequence.
-\item[Undecorate]. Desordena extraindo os elementos ordenados da sequência.
+\item[Undecorate] desordena extraindo os elementos ordenados da sequência.
 
 \end{description}
 
@@ -282,7 +279,7 @@ com uma ou mais chaves ordenadas precedendo os elementos da sequência,
 %For example, suppose you have a list of words and you want to
 %sort them from longest to shortest:
 Por exemplo, suponha que você tenha uma lista de palavras e você
-quer organiza-la da mais longa para a mais curta:
+quer organizá-la, da mais longa para a mais curta:
 
 \beforeverb
 \begin{verbatim}
@@ -311,7 +308,8 @@ uma palavra precedida pelo seu tamanho.
 %only considers the second element to break ties.  The keyword argument
 %{\tt reverse=True} tells {\tt sort} to go in decreasing order.
 {\tt sort} compara o primeiro elemento, tamanho, em primeiro lugar, e
-somente considera o segundo elemento para quebrar o laços.
+somente considera o segundo elemento para quebrar o laços. O argumento
+{\tt reverse=True} informa ao {\tt sort} para ir em ordem descrescente.
 
 %\index{keyword argument}
 %\index{argument!keyword}
@@ -324,13 +322,13 @@ somente considera o segundo elemento para quebrar o laços.
 %words in descending order of length.  The four-character words
 %are sorted in {\em reverse} alphabetical order, so ``what'' appears
 %before ``soft'' in the following list.
-O segundo laço atravessa a lista de tuplas e constroi uma lista de 
-palavras ordenados por seu tamanho. A palavras de quatro caracteres
-são organizadas no {\em inverso} da ordem alfabética, então ``what''
-aparece antes de ``soft'' na lista a seguir.
+O segundo laço atravessa a lista de tuplas e constrói uma lista de palavras
+ordenados por seu tamanho. As palavras de quatro caracteres são organizadas
+no {\em inverso} da ordem alfabética, então ``what'' aparece antes de ``soft''
+na lista a seguir.
 
 %The output of the program is as follows:
-A saida do programa sera a seguinte:
+A saída do programa será a seguinte:
 %
 \beforeverb
 \begin{verbatim}
@@ -342,9 +340,8 @@ A saida do programa sera a seguinte:
 %Of course the line loses much of its poetic impact 
 %when turned into a Python list and sorted in 
 %descending word length order.
-Claramente a linha perde muito do seu poder poético
-quanto se torna uma lista do Python e é ordenada
-pelo tamanho das palavras.
+Claramente a linha perde muito do seu poder poético quanto se torna uma lista
+do Python e é ordenada pelo tamanho das palavras.
 
 %\section{Tuple assignment}
 %\label{tuple assignment}
@@ -365,17 +362,16 @@ pelo tamanho das palavras.
 %side of an assignment statement.  This allows you to assign
 %more than one variable at a time when the left side is a 
 %sequence.
-Uma das características sintaticas unicas da linguagem Python é
-a abilidade de ter tuplas a esquerda de uma declaração de variavel.
-Isso te permite declarar mais que uma variavel por vez quando o
-lado esquerdo for uma sequÊncia.
+Uma das principais características sintáticas da linguagem Python é a habilidade
+de ter tuplas a esquerda de uma declaração de variável. Isso te permite
+declarar mais que uma variável por vez quando o lado esquerdo for uma sequência.
 
 %In this example we have a two-element list (which is a sequence) and
 %assign the first and second elements of the sequence
 %to the variables {\tt x} and {\tt y} in a single statement.
-Nesse exemplo nós temos duas listas (que são uma sequência) e
-designamos o primeiro e o segundo elemento da sequência para as
-variaveis {\tt x} e {\tt y} em uma unica declaração.
+Nesse exemplo nós temos duas listas (que são uma sequência) e designamos o
+primeiro e o segundo elemento da sequência para as variáveis {\tt x} e
+{\tt y} em uma única declaração.
 
 \beforeverb
 \begin{verbatim}
@@ -394,11 +390,10 @@ variaveis {\tt x} e {\tt y} em uma unica declaração.
 %to be the following:\footnote{Python does not translate the 
 %syntax literally.  For example, if you try this with a dictionary,
 %it will not work as might expect.}
-Isto não é magica, o Python \emph{grosseiramente} traduz a
-sintaxe de declaração da tupla
-para ser a seguinte:\footnote{O Python não traduz a sintaxe
-literalmente. Por exemplo, se você tentar isso com um dicionario, não
-irá functionar como o experado.}
+Isto não é mágica, o Python \emph{grosseiramente} traduz a sintaxe de
+declaração da tupla para ser a seguinte\footnote{O Python não traduz a sintaxe
+literalmente. Por exemplo, se você tentar isso com um dicionário, não irá
+functionar como o experado.}:
 
 \beforeverb
 \begin{verbatim}
@@ -416,9 +411,8 @@ irá functionar como o experado.}
 %Stylistically when we use a tuple on the left side of the assignment
 %statement, we omit the parentheses, but the following is an equally 
 %valid syntax:
-Sistematicamente quando nós usamos uma tupla no lado esquerdo da
-declaração, nós omitimos os parenteses, mas a seguir temos uma sintaxe
-igualmente valida:
+Sistematicamente quando nós usamos uma tupla no lado esquerdo da declaração,
+nós omitimos os parenteses, mas a seguir temos uma sintaxe igualmente válida:
 
 \beforeverb
 \begin{verbatim}
@@ -434,8 +428,8 @@ igualmente valida:
 %
 %A particularly clever application of tuple assignment allows
 %us to {\bf swap} the values of two variables in a single statement:
-Uma aplicação particularmente inteligente de declaração de tuplas 
-nos permite {\bf trocar} os valores de duas variaveis em uma unica declaração:
+Uma aplicação particularmente inteligente de declaração de tuplas nos permite
+{\bf trocar} os valores de duas variáveis em uma única declaração:
 
 \beforeverb
 \begin{verbatim}
@@ -449,16 +443,14 @@ nos permite {\bf trocar} os valores de duas variaveis em uma unica declaração:
 %is assigned to its respective variable on the left side.  
 %All the expressions on the right side are evaluated before any
 %of the assignments.
-Ambos os lados dessa declaração são tuplas, mas
-a da esquerda é uma tupla de variaveis; a da direita é uma tupla de
-expressões. Cada valor no lado esquerdo
-é uma atribuição a respectiva variavel no lado esquerdo.
-Todas as expressões no lado direito são avaliadas antes de qualquer
-uma das declarações.
+Ambos os lados dessa declaração são tuplas, mas a da esquerda é uma tupla de
+variáveis; a da direita é uma tupla de expressões. Cada valor no lado esquerdo
+é uma atribuição a respectiva variável no lado esquerdo. Todas as expressões
+no lado direito são avaliadas antes de qualquer uma das declarações.
 
 %The number of variables on the left and the number of
 %values on the right must be the same:
-O número de veriaveis do lado esquerdo e o numero de valores
+O número de veriaveis do lado esquerdo e o número de valores
 no lado direito devem ser iguais:
 
 %\index{exception!ValueError}
@@ -509,13 +501,13 @@ python.org
 %
 
 %\section{Dictionaries and tuples}
-\section{Dicionarios e tuplas}
+\section{Dicionários e tuplas}
 
 %\index{dictionary}
 %\index{items method}
 %\index{method!items}
 %\index{key-value pair}
-\index{dicionario}
+\index{dicionário}
 \index{metodo items}
 \index{metodo!items}
 \index{par chave-valor}
@@ -523,7 +515,7 @@ python.org
 %Dictionaries have a method called {\tt items} that returns a list of
 %tuples, where each tuple is a key-value 
 %pair\footnote{This behavior is slightly different in Python 3.0.}.
-Dicionarios tem um metodo chamado {\tt items} que retorna uma lista de
+Dicionários tem um método chamado {\tt items} que retorna uma lista de
 tuplas, onde cada tupla contem um par de chave-valor.
 \footnote{Esse procedimento é um pouco diferente no Python 3.0.}.
 
@@ -538,7 +530,7 @@ tuplas, onde cada tupla contem um par de chave-valor.
 %
 %As you should expect from a dictionary, the items are in no
 %particular order.
-Como você deve esperar de um dicionario, os itens estão sem
+Como você deve esperar de um dicionário, os itens estão sem
 uma ordem em particular.
 
 %However, since the list of tuples is a list, and tuples are comparable,
@@ -546,9 +538,9 @@ uma ordem em particular.
 %to a list of tuples is a way for us to output the contents of a 
 %dictionary sorted by key:
 Entretanto, uma vez que a lista de tuplas é uma lista, e tuplas são comparaveis,
-nós agora podemos organizar a lista de tuplas. Convertento um dicionario
+nós agora podemos organizar a lista de tuplas. Convertento um dicionário
 em uma lista de tuplas é uma forma de nós exibirmos os conteudos de um
-dicionario organizado pelas chaves:
+dicionário organizado pelas chaves:
 
 \beforeverb
 \begin{verbatim}
@@ -566,19 +558,19 @@ dicionario organizado pelas chaves:
 A nova lista é organizada em ordem alfabetica pelo nome da chave.
 
 %\section{Multiple assignment with dictionaries}
-\section{Multipla declaração com dicionarios}
+\section{Multipla declaração com dicionários}
 
 %\index{traverse!dictionary}
 %\index{dictionary!traversal}
-\index{atravessar!dicionario}
-\index{dicionario!atravessar}
+\index{atravessar!dicionário}
+\index{dicionário!atravessar}
 
 %Combining {\tt items}, tuple assignment, and {\tt for}, you
 %can see a nice code pattern for traversing the keys and values of a dictionary
 %in a single loop:
 Combinando {\tt items}, declaração de tuplas, e o laço {\tt for}, você
 pode ver um bom modelo de codigo para percorrer as chaves e valores de um
-dicionario em um unico laço:
+dicionário em um único laço:
 
 \beforeverb
 \begin{verbatim}
@@ -591,17 +583,17 @@ for key, val in d.items():
 %a list of tuples and {\tt key, val} is a tuple assignment
 %that successively iterates through each of the key-value pairs in the
 %dictionary.  
-Esse laço tem duas {\bf variaveis de iteração} pois {\tt items} retorna
+Esse laço tem duas {\bf variáveis de iteração} pois {\tt items} retorna
 uma lista de tuplas e {\tt key, val} é uma tupla de declaração
 que sucessivamente itera através de cada um dos pares de chave-valor no
-dicionario.
+dicionário.
 
 %For each iteration
 %through the loop, both {\tt key} and {\tt value} are advanced to the
 %next key-value pair in the dictionary (still in hash order).
 Para cada iteração
 através do laço, ambos {\tt key} e {\tt value} são avançados para o
-proximo par de chave-valor no dicionario (continua em uma ordem hash).
+proximo par de chave-valor no dicionário (continua em uma ordem hash).
 
 %The output of this loop is:
 A saida desse laço será:
@@ -621,7 +613,7 @@ Novamente, está em uma hash ordenada pela chave (i.e., nenhuma ordem em particu
 %of a dictionary sorted by the \emph{value} stored in each key-value
 %pair.
 Se nós combinarmos essas duas tecnicas, nós podemos imprimir o conteudo
-de um dicionario ordenado pelo \emph{valor} armazenado em cada par de 
+de um dicionário ordenado pelo \emph{valor} armazenado em cada par de 
 chave-valor.
 
 %To do this, we first make a list of tuples where each tuple is 
@@ -657,7 +649,7 @@ lista organizada.
 %contents sorted by value.
 Esteja atento quando for construir a lista de tuplas para ter os valores como
 primeiro elemento de cada tupla, assim nós podemos organizar as tuplas e pegar os
-conteudos do dicionario organizado por valor.
+conteudos do dicionário organizado por valor.
 
 %\section{The most common words}
 \section{As palavras mais comuns}
@@ -702,7 +694,7 @@ for key, val in lst[:10] :
 %document is unchanged.  But instead of simply printing out 
 %{\tt counts} and ending the program, we construct a list 
 %of {\tt (val, key)} tuples and then sort the list in reverse order.
-A primeira parte do programa que lê o arquivo e computa o dicionario
+A primeira parte do programa que lê o arquivo e computa o dicionário
 que mapeia cada palavra para contar as palavras no documento está
 inalterado. Mas ao inves de simplesmente exibir {\tt counts} e 
 finalizar o programa, nós construimos uma lista de tuplas 
@@ -754,18 +746,18 @@ pode ser feito utilizando 19 linhas de facil compreenção no Python
 exmplorar informações.
 
 %\section{Using tuples as keys in dictionaries}
-\section{Usando tuplas como chaves em dicionarios}
+\section{Usando tuplas como chaves em dicionários}
 
 %\index{tuple!as key in dictionary}
 %\index{hashable}
-\index{tupla!como chave em um dicionario}
+\index{tupla!como chave em um dicionário}
 \index{hashable}
 
 %Because tuples are {\bf hashable} and lists are not, if we want to 
 %create a {\bf composite} key to use in a dictionary we must use a tuple as
 %the key.
-Por conta de tuplas serem {\bf imutaveis} e listas não, se nós quisermos
-criar uma chave {\bf composta} para usar em um dicionario nós usamos a 
+Por conta de tuplas serem {\bf imutáveis} e listas não, se nós quisermos
+criar uma chave {\bf composta} para usar em um dicionário nós usamos a 
 tupla como chave.
 
 %We would encounter a composite key if we wanted to create a 
@@ -776,9 +768,9 @@ tupla como chave.
 %a dictionary assignment statement as follows:
 Nós devemos encontrar uma chave composta se nós quisermos criar
 uma lista telefonica que mapeia do ultimo nome, e os primeiros nomes
-para os numeros de telefones. Assumindo que nós definimos as
-variaveis {\tt last}, {\tt first}, e {\tt number}, nós podemos
-escrever uma declaração de um dicionario assim:
+para os números de telefones. Assumindo que nós definimos as
+variáveis {\tt last}, {\tt first}, e {\tt number}, nós podemos
+escrever uma declaração de um dicionário assim:
 
 \beforeverb
 \begin{verbatim}
@@ -790,7 +782,7 @@ directory[last,first] = number
 %assignment in a {\tt for} loop to traverse this dictionary.
 A expressão entres os colchetes é uma tupla. Nós podemos usar
 tuplas em declarações em um laço {\tt for} para percorrer esse
-dicionario.
+dicionário.
 
 %\index{tuple!in brackets}
 \index{tupla!nos colchetes}
@@ -848,13 +840,13 @@ escolheria um ao inves de outro?
 %want to use a list of characters instead.
 Para começar com o óbvio, strings são mais limitadas que outras
 sequências por conta dos elementos terem que ser caracteres. Elas
-também são imutaveis. Se você necessita da abilidade de mudar os
+também são imutáveis. Se você necessita da abilidade de mudar os
 caracteres em uma string (em vez de criar uma nova string), você 
 deveria usar uma lista de caracteres como alternativa.
 
 %Lists are more common than tuples, mostly because they are mutable.
 %But there are a few cases where you might prefer tuples:
-Listas são mais comuns que tuplas, principalmente por serem mutaveis.
+Listas são mais comuns que tuplas, principalmente por serem mutáveis.
 Mas tem alguns casos onde você ira preferir usar tuplas:
 
 \begin{enumerate}
@@ -868,8 +860,8 @@ outros contextos, você pode preferir usar uma lista.
 
 %\item If you want to use a sequence as a dictionary key, you
 %have to use an immutable type like a tuple or string.
-\item Se você quiser usar uma sequência como uma chave de dicionario,
-você deve usar uma do tipo imutavel, como uma tupla ou string.
+\item Se você quiser usar uma sequência como uma chave de dicionário,
+você deve usar uma do tipo imutável, como uma tupla ou string.
 
 %\item If you are passing a sequence as an argument to a function,
 %using tuples reduces the potential for unexpected behavior
@@ -886,7 +878,7 @@ inexperado devido ao aliasing.
 %and {\tt reversed}, which take any sequence as a parameter
 %and return a new sequence with the same elements in a different
 %order.
-Por conta das tuplas serem imutaveis, elas não tem metodos como o
+Por conta das tuplas serem imutáveis, elas não tem métodos como o
 {\tt sort} e {\tt reverse}, os quais modificam a lista existente.
 No entando o Python fornece as funções embutidas {\tt sorted}
 e {\tt reversed}, as quais pegam qualquer sequência como um parametro
@@ -922,9 +914,9 @@ diferente.
 %caused when a data structure has the wrong type, size, or composition,
 %or perhaps you write some code and forget the shape of your data
 %and introduce an error.
-Listas, dicionarios e tuplas são geralmente conhecidos como {\bf estruturas
+Listas, dicionários e tuplas são geralmente conhecidos como {\bf estruturas
 de dados}; neste capitulo nós estamos começando a ver estruturas de dados
-compostas, como listas de tuplas, e dicionarios que contem tuplas como
+compostas, como listas de tuplas, e dicionários que contem tuplas como
 chaves e listas como valores. Estruturas de dados compostos são uteis, mas
 elas são inclinadas a erros, os quais eu chamo de {\bf erros de forma};
 que são erros causados quando uma estrutura de dados contem o tipo errado,
@@ -934,7 +926,7 @@ modelar seus dados e introduzir um erro.
 %For example, if you are expecting a list with one integer and I
 %give you a plain old integer (not in a list), it won't work.
 Por exemplo, se você estiver esperando uma lista com um inteiro e eu
-lhe der um unico inteiro (que não está em uma lista), não irá functionar.
+lhe der um único inteiro (que não está em uma lista), não irá functionar.
 
 %When you are debugging a program, and especially if you are
 %working on a hard bug, there are four things to try:
@@ -1058,7 +1050,7 @@ colar as partes de volta pouco a pouco.
 %Finding a hard bug requires reading, running, ruminating, and
 %sometimes retreating.  If you get stuck on one of these activities,
 %try the others.
-Encontrar um bug dificil requer ler, rodar, refletir, e algumas vezes
+Encontrar um bug difícil requer ler, rodar, refletir, e algumas vezes
 recuar. Se você ficar preso em uma dessas ações, tente outras.
 
 
@@ -1080,7 +1072,7 @@ Tipos que são comparaveis podem ser colocados em uma lista e ordenados.
 %organized in lists, dictionaries, tuples, etc.
 %\index{data structure}
 \item[estrutura de dados:] Uma coleção de valores relacionados, 
-frequentemente organizados em listas, dicionarios, tuplas, etc.
+frequentemente organizados em listas, dicionários, tuplas, etc.
 \index{estrutura de dados}
 
 %\item[DSU:] Abbreviation of ``decorate-sort-undecorate'', a
@@ -1096,7 +1088,7 @@ extrair parte do conteudo.
 %argument tuple.
 %\index{gather}
 \item[gather:] Uma operação de definir uma tupla como argumento 
-de tamanho varivael.
+de tamanho variável.
 \index{ganher}
 
 %\item[hashable:] A type that has a hash function.  Immutable
@@ -1104,10 +1096,9 @@ de tamanho varivael.
 %floats, and strings are hashable; mutable types like lists and
 %dictionaries are not.
 %\index{hashable}
-\item[imutavel:] Um tipo que tem uma função hash. Tipos imutaveis
-como inteiros,
-floats e strings são hashable; tipos mutaveis como listas e
-dicinarios não.
+\item[embaralhados:] Um tipo que tem uma função {\tt hash}. Tipos imutáveis
+como inteiros, floats e strings podem ser embaralhados; tipos mutáveis como
+listas e dicinarios não.
 \index{hashable}
 
 %\item[scatter:] The operation of treating a sequence as a list of
@@ -1120,18 +1111,18 @@ argumentos.
 %\item[shape (of a data structure):] A summary of the type,
 %size, and composition of a data structure.
 %\index{shape}
-\item[forma (de uma estrutura de dados):] Um indice do tipo,
-tamanho e composição de uma estrutura de dados.
+\item[forma (de uma estrutura de dado):] Um índice do tipo, tamanho e
+composição de uma estrutura de dados.:
 \index{forma}
 
 %\item[singleton:] A list (or other sequence) with a single element.
 %\index{singleton}
-\item[singleton:] Uma lista (ou outra sequência) com um unico elemento.
+\item[singleton:] Uma lista (ou outra sequência) com um único elemento.
 \index{singleton}
 
 %\item[tuple:] An immutable sequence of elements.
 %\index{tuple}
-\item[tupla:] Uma sequência imutavel de elementos.
+\item[tupla:] Uma sequência imutável de elementos.
 \index{tupla}
 
 %\item[tuple assignment:] An assignment with a sequence on the
@@ -1140,10 +1131,9 @@ tamanho e composição de uma estrutura de dados.
 %variables on the left.
 %\index{tuple assignment}
 %\index{assignment!tuple}
-\item[declaração com tupla:] Uma declaração com uma sequência do 
-lado direito e uma tupla de variaveis na esquerda. O lado direito
-recebe o valor e então o elemento é declarato para as variaveis
-no lado esquerdo.
+\item[declaração com tupla:] Uma declaração com uma sequência do lado direito
+e uma tupla de variáveis na esquerda. O lado direito recebe o valor e então o
+elemento é declarato para as variáveis no lado esquerdo.
 
 \end{description}
 
@@ -1156,10 +1146,9 @@ no lado esquerdo.
 %parse the ``From'' lines and pull out the 
 %addresses from the line.   Count the number of
 %messages from each person using a dictionary.
-Faça uma revisão do programa seguindo: leia e
-analise as linhas ``From'' e extraia o endereço
-que esta nesta linha.   Conte o numero de mensagens
-de cada pessoa utilizando um dicionario.
+Faça uma revisão do programa seguinte: leia e analise as linhas ``From'' e
+extraia o endereço que está nesta linha. Conte o número de mensagens de cada
+pessoa utilizando um dicionário.
 
 %After all the data has been read, print 
 %the person with the most commits by creating
@@ -1167,11 +1156,9 @@ de cada pessoa utilizando um dicionario.
 %dictionary.   Then sort the list in reverse
 %order and print out the person who has the most
 %commits.
-Despois que todos os dados forem lidos, exiba
-a pessoa que tem mais envios, criando uma lista
-de tuplas (contagem, email) do dicionario.   Então
-ordene a lista de forma reversa e exiba a pessoa 
-que teve mais envios.
+Despois que todos os dados forem lidos, exiba a pessoa que tem mais envios,
+criando uma lista de tuplas (contagem, email) do dicionário. Então ordene a
+lista de forma reversa e exiba a pessoa que teve mais envios.
 
 \beforeverb
 \begin{verbatim}
@@ -1186,6 +1173,7 @@ zqian@umich.edu 195
 \end{verbatim}
 \afterverb
 \end{ex}
+
 \begin{ex}
 %This program counts the distribution of the hour of the day for 
 %each of the messages. You can pull the hour from the ``From'' 
@@ -1193,12 +1181,11 @@ zqian@umich.edu 195
 %into parts using the colon character. Once you have accumulated 
 %the counts for each hour, print out the counts, one per line, 
 %sorted by hour as shown below. 
-Esse programa conta a distribuição das horas do dia para cada uma
-das mensagem. Você pode enviar uma hora a partir da linha ``From'' 
-, procurando a string de tempo e então dividindo essa string em 
-partes usando o caractere de dois pontos. Uma vez que tenha acumulado
-a contagem para cada hora, exiba as contagesm uma por linha,
-organizadas pela hora como é mostrado abaixo.
+Esse programa conta a distribuição das horas do dia para cada uma das
+mensagens. Você pode enviar uma hora a partir da linha ``From'', procurando
+a string de tempo e então dividindo essa string em partes usando o caractere
+de dois pontos. Uma vez que tenha acumulado a contagem para cada hora, exiba
+as contagens uma por linha, organizadas pela hora como é mostrado abaixo.
 \beforeverb
 \begin{verbatim}
 Sample Execution:
@@ -1230,14 +1217,13 @@ Enter a file name: mbox-short.txt
 %Find text samples from several different languages and see how letter frequency
 %varies between languages.  Compare your results with the tables at
 %\url{wikipedia.org/wiki/Letter_frequencies}.
-Escreva um programa que leia um arquivo e
-exiba as {\em letras} em ordem decrescente de frenquência. O seu programa 
-deve converter todas as entradas para letrasminusculas e contar unicamete as 
-letras de a até z. O seu programa não deve contar espaços, digitos, pontuações,
-ou algo alem das letras de a até z.
-Encontre exemplos de textos de diversas linguas diferentes e veja como a quantidade
-de letras varia entre linguagens. Compare os seus resultados com as tabelas em
-\url{pt.wikipedia.org/wiki/Frequência_de_letras}.
+Escreva um programa que leia um arquivo e exiba as {\em letras} em ordem
+decrescente de frenquência. O seu programa deve converter todas as entradas
+para letras minúsculas e contar unicamete as letras de {\tt a} até {\tt z}. O
+seu programa não deve contar espaços, digitos, pontuações, ou algo além das
+letras de {\tt a} até {\tt z}. Encontre exemplos de textos de diversas idiomas
+diferentes e veja como a quantidade de letras varia entre os idiomas. Compare
+os seus resultados com as tabelas em \url{pt.wikipedia.org/wiki/Frequência_de_letras}.
 
 %\index{letter frequency}
 %\index{frequency!letter}
